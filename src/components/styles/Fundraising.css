@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+.fundraising-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url('../../assets/fundraising-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  font-family: 'Montserrat';
+  font-weight: 800;
+  padding: 230px 0;
+}
+
+.montserrat {
+  font-family: 'Montserrat';
+}
+
+.art-red-paragraph {
+  font-weight: 500;
+}
+
+.you-will-make-a-difference {
+  font-weight: 700;
+  font-size: 55px;
+}
+
+.dark-blue {
+  color: #0083cc;
+}

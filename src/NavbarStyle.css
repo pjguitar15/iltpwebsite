@@ -1,0 +1,13 @@
+.brand {
+  font-weight: 400;
+  /* font-size: 35px; */
+}
+.brand > img {
+  padding: 1px 15px;
+  height: 100%;
+  width: 75px;
+}
+
+.iltp-brand-text {
+  line-height: 23px;
+}
