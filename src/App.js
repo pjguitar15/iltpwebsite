@@ -7,18 +7,24 @@ import MainHome from './components/HomeSections/MainHome'
 import AboutUs from './components/AboutUs/AboutUs'
 import News from './components/News/News'
 import Fundraising from './components/Fundraising/Fundraising'
+import ContactUs from './components/ContactUs/ContactUs'
+import NewsSlug from './components/News/NewsSlug'
+import ErrorPage from './components/ErrorPage/ErrorPage'
 
 const App = () => {
 
   return (
     <div>
       <Router basename='/'>
-        <NavbarComponent />
+
         <Routes>
-          <Route exact path='/' element={<MainHome />} />
-          <Route path='/about' element={<AboutUs />} />
-          <Route path='/news' element={<News />} />
-          <Route path='/fundraising' element={<Fundraising />} />
+          <Route path='/' element={<><NavbarComponent /><MainHome /></>} />
+          <Route path='/about' element={<><NavbarComponent /><AboutUs /></>} />
+          <Route path='/news' element={<><NavbarComponent /><News /></>} />
+          <Route path='/news/:id' element={<><NavbarComponent /><NewsSlug /></>} />
+          <Route path='/fundraising' element={<><NavbarComponent /><Fundraising /></>} />
+          <Route path='/contact' element={<><NavbarComponent /><ContactUs /></>} />
+          <Route path='*' element={<ErrorPage />} />
         </Routes>
         <GetInTouch />
         <Footer />

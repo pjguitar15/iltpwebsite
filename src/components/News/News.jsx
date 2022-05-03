@@ -1,13 +1,16 @@
-import React from 'react'
-import FeaturedNews from '../HomeSections/FeaturedNews'
-import LatestNews from '../HomeSections/LatestNews'
+import React, { useState } from 'react'
+import { NewsData } from '../../Data/NewsData'
+import { Card, Button, Container } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 // animate on scroll
 import 'aos/dist/aos.css'
 
 const News = () => {
+  const [data] = useState(NewsData)
+  let navigate = useNavigate()
   return (
-    <div>
+    <>
       <div
         data-aos='fade-down'
         data-aos-duration='2000'
@@ -18,9 +21,45 @@ const News = () => {
           News
         </h1>
       </div>
-      <FeaturedNews />
-      <LatestNews />
-    </div>
+      <Container className='py-5'>
+        <div className='row'>
+          {data.map((item, index) => (
+            <div
+              data-aos='zoom-in'
+              key={index}
+              className='p2 my-3 col-md-6 col-lg-4'
+            >
+              <Card>
+                <Card.Img
+                  style={{
+                    width: '100%',
+                    height: '15vw',
+                    objectFit: 'cover',
+                  }}
+                  variant='top'
+                  src={item.img}
+                />
+                <Card.Body>
+                  <Card.Title>{item.title}</Card.Title>
+                  <Card.Subtitle className='mb-2 text-muted'>
+                    {item.date}
+                  </Card.Subtitle>
+                  <Card.Text className='text-muted'>ID: {item.id}</Card.Text>
+                  <Button
+                    onClick={() => {
+                      navigate(`/news/${item.id}`)
+                    }}
+                    variant='outline-primary btn-sm'
+                  >
+                    Read more
+                  </Button>
+                </Card.Body>
+              </Card>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </>
   )
 }
 

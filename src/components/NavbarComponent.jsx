@@ -10,16 +10,19 @@ const NavbarComponent = () => {
   // useLocation
   const location = useLocation()
 
+  // scrolls back to top when location is changed
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [location])
 
+  // change background to white when passed 300 axis Y up
   const changeNavbarBackground = () => {
     if (
       (location.pathname === '/' ||
         location.pathname === '/about' ||
         location.pathname === '/fundraising' ||
-        location.pathname === '/news') &&
+        location.pathname === '/news' ||
+        location.pathname === '/contact') &&
       window.scrollY >= 300
     ) {
       setNavbar(true)

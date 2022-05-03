@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Container, Card, Button } from 'react-bootstrap'
 import '../styles/Home.css'
 import { NewsData } from '../../Data/NewsData'
+import { useNavigate } from 'react-router-dom'
 
 // animate on scroll
 import Aos from 'aos'
@@ -9,6 +10,8 @@ import 'aos/dist/aos.css'
 
 const FeaturedNews = () => {
   const [newsData] = useState(NewsData)
+
+  let navigate = useNavigate()
 
   useEffect(() => {
     Aos.init({ duration: 300 })
@@ -46,11 +49,15 @@ const FeaturedNews = () => {
                     <Card.Subtitle className='mb-2 text-muted'>
                       {item.date}
                     </Card.Subtitle>
-                    <Card.Text className='text-muted'>
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </Card.Text>
-                    <Button variant='outline-primary btn-sm'>Read more</Button>
+                    <Card.Text className='text-muted'>ID: {item.id}</Card.Text>
+                    <Button
+                      onClick={() => {
+                        navigate(`/news/${item.id}`)
+                      }}
+                      variant='outline-primary btn-sm'
+                    >
+                      Read more
+                    </Button>
                   </Card.Body>
                 </Card>
               </div>
