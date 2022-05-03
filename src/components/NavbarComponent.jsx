@@ -2,37 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { Navbar, Container, Nav, Button } from 'react-bootstrap'
 import iltpLogo from '../assets/iltp-logo.png'
 import '../NavbarStyle.css'
-import { useNavigate, useLocation, Link } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 
 const NavbarComponent = () => {
   const [navbar, setNavbar] = useState(false)
-  const [currentPath, setCurrentPath] = useState('')
 
   // useLocation
   const location = useLocation()
-
-  // use history hook
-  const navigate = useNavigate()
-
-  const goHome = () => {
-    navigate('/')
-    setCurrentPath('/')
-  }
-
-  const goToAboutUs = () => {
-    navigate('/about')
-    setCurrentPath('/about')
-  }
-
-  const goToNews = () => {
-    navigate('/news')
-    setCurrentPath('/news')
-  }
-
-  const goToFundraising = () => {
-    navigate('/fundraising')
-    setCurrentPath('/fundraising')
-  }
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -56,25 +32,27 @@ const NavbarComponent = () => {
 
   return (
     <Navbar
-      className={`bg-md-white  shadow-sm ${
-        currentPath !== '/test' ? 'fixed-top' : ''
-      } ${navbar ? 'bg-white shadow-sm' : 'bg-none shadow-none'}`}
+      className={`bg-md-white  shadow-sm fixed-top  ${
+        navbar ? 'bg-white shadow-sm' : 'bg-none shadow-none'
+      }`}
       expand='lg'
     >
       <Container>
-        <Navbar.Brand
-          style={{ cursor: 'pointer' }}
-          className='mt-3 mb-3 brand d-flex'
-          onClick={goHome}
-        >
-          <img className='mt-1' src={iltpLogo} alt='iltp logo' />
-          <div
-            className={`iltp-brand-text d-flex justify-content-center flex-column text-start 
-            ${navbar ? 'text-black' : 'text-white'}`}
+        <Navbar.Brand style={{ cursor: 'pointer' }}>
+          <Link
+            to='/'
+            style={{ textDecoration: 'none' }}
+            className='mt-3 mb-3 brand d-flex'
           >
-            <span>International Leadership</span>
-            <span>Training Program</span>
-          </div>
+            <img className='mt-1' src={iltpLogo} alt='iltp logo' />
+            <div
+              className={`iltp-brand-text d-flex justify-content-center flex-column text-start 
+            ${navbar ? 'text-black' : 'text-white'}`}
+            >
+              <span>International Leadership</span>
+              <span>Training Program</span>
+            </div>
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
