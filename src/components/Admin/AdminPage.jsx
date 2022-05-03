@@ -6,7 +6,7 @@ import AdminTestimonies from './AdminTestimonies'
 import AdminJumbo from './AdminJumbo'
 import AdminNav from './AdminNav'
 
-const AdminPage = () => {
+const AdminPage = ({ setIsLoggedIn }) => {
   const [isDashboard, setIsDashboard] = useState(true)
   const [isNewsPage, setIsNewsPage] = useState(false)
   const [isTestimonies, setIsTestimonies] = useState(false)
@@ -39,6 +39,11 @@ const AdminPage = () => {
     setIsTestimonies(false)
     setIsJumboImages(true)
   }
+
+  const handleLogout = () => {
+    alert('Thank you admin!')
+    setIsLoggedIn(false)
+  }
   return (
     <div>
       {/* Dashboard */}
@@ -59,6 +64,7 @@ const AdminPage = () => {
             isTestimonies={isTestimonies}
             handleJumboImages={handleJumboImages}
             isJumboImages={isJumboImages}
+            handleLogout={handleLogout}
           />
         </div>
         {/* col-10 p-5 */}

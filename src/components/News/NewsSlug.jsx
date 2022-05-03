@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Container, Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import { NewsData } from '../../Data/NewsData'
 import { useNavigate } from 'react-router-dom'
 import './Slug.css'

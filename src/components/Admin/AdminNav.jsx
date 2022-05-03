@@ -9,6 +9,7 @@ const AdminNav = ({
   isTestimonies,
   handleJumboImages,
   isJumboImages,
+  handleLogout,
 }) => {
   return (
     <div>
@@ -19,7 +20,9 @@ const AdminNav = ({
           isDashboard ? 'bg-white text-dark' : ''
         }m-0 py-3 admin-link`}
       >
-        <h6 className={`${!isDashboard ? 'text-white' : ''} m-0`}>Dashboard</h6>
+        <h6 className={`${!isDashboard ? 'text-white' : ''} m-0`}>
+          <i className='bi bi-speedometer me-2'></i>Dashboard
+        </h6>
       </div>
       <div
         onClick={handleNewsPage}
@@ -27,7 +30,9 @@ const AdminNav = ({
           isNewsPage ? 'bg-white text-dark' : ''
         }m-0 py-3 admin-link`}
       >
-        <h6 className={`${!isNewsPage ? 'text-white' : ''} m-0`}>News Page</h6>
+        <h6 className={`${!isNewsPage ? 'text-white' : ''} m-0`}>
+          <i className='bi bi-newspaper me-2'></i>News Page
+        </h6>
       </div>
       <div
         onClick={handleTestimonies}
@@ -36,7 +41,7 @@ const AdminNav = ({
         }m-0 py-3 admin-link`}
       >
         <h6 className={`${!isTestimonies ? 'text-white' : ''} m-0`}>
-          Testimonies
+          <i className='bi bi-person-lines-fill me-2'></i> Testimonies
         </h6>
       </div>
       <div
@@ -46,7 +51,12 @@ const AdminNav = ({
         }m-0 py-3 admin-link`}
       >
         <h6 className={`${!isJumboImages ? 'text-white' : ''} m-0`}>
-          Jumbotron Images
+          <i className='bi bi-blockquote-right me-2'></i>Jumbotron
+        </h6>
+      </div>
+      <div onClick={handleLogout} className={`m-0 py-3 admin-link`}>
+        <h6 className={`text-white m-0`}>
+          <i className='bi bi-box-arrow-left me-2'></i>Logout
         </h6>
       </div>
     </div>

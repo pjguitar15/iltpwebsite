@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import NavbarComponent from './components/NavbarComponent'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import GetInTouch from './components/GetInTouch'
@@ -12,13 +12,23 @@ import NewsSlug from './components/News/NewsSlug'
 import ErrorPage from './components/ErrorPage/ErrorPage'
 import AdminLogin from './components/Admin/AdminLogin'
 import AdminPage from './components/Admin/AdminPage'
+import ProtectedRoute from './components/Admin/ProtectedRoute'
+
+
+// useAuth
+//  export const useAuth = () => {
+//   const user = { loggedIn: isLoggedin }
+//   return user && user.loggedIn
+// }
 
 const App = () => {
+  const [isLoggedin, setIsLoggedIn] = useState(false)
+  const [user, setUser] = useState('')
+  const [password, setPassword] = useState('')
 
   return (
     <div>
-      <Router basename='/'>
-
+      <Router>
         <Routes>
           <Route path='/' element={<><NavbarComponent /><MainHome /><GetInTouch />
             <Footer /></>} />
@@ -32,11 +42,17 @@ const App = () => {
             <Footer /></>} />
           <Route path='/contact' element={<><NavbarComponent /><ContactUs /><GetInTouch />
             <Footer /></>} />
-          <Route path='/admin' element={<AdminLogin />} />
-          <Route path='/adminpage' element={<AdminPage />} />
-          <Route path='*' element={<ErrorPage />} />
-        </Routes>
+          <Route path='/admin' element={<AdminLogin setIsLoggedIn={setIsLoggedIn} isLoggedin={isLoggedin} setUser={setUser} user={user} password={password} setPassword={setPassword} />} />
 
+          {/* <Route path='/adminpage' element={<AdminPage />} /> */}
+          <Route path='*' element={<ErrorPage />} />
+
+          {/* Protected Route */}
+          <Route element={<ProtectedRoute test={true} isLoggedin={isLoggedin} />}>
+            <Route path='/adminpage' element={<AdminPage setIsLoggedIn={setIsLoggedIn} />} />
+          </Route>
+
+        </Routes>
       </Router>
 
     </div>

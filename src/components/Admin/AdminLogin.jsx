@@ -2,33 +2,41 @@ import React, { useState } from 'react'
 import { Form, Button, Alert } from 'react-bootstrap'
 import './Admin.css'
 import iltplogo from '../../assets/iltp-logo.png'
+import { useNavigate } from 'react-router-dom'
 
-const AdminLogin = () => {
-  const [user, setUser] = useState('')
-  const [password, setPassword] = useState('')
-
+const AdminLogin = ({
+  setUser,
+  user,
+  setPassword,
+  password,
+  setIsLoggedIn,
+  isLoggedin,
+}) => {
   const testUser = 'admin'
   const testPassword = 'admin'
-
-  //   Submit handler
-
-  const handleSubmit = (e) => {
+  // useNavigate
+  let navigate = useNavigate()
+  // admin login handler
+  const handleLogin = (e) => {
     e.preventDefault()
     if (user === testUser && password === testPassword) {
       alert('Login Success')
+      setIsLoggedIn(true)
+      navigate('/adminpage')
     } else {
       alert('Invalid Username/Password')
+      setIsLoggedIn(false)
+      console.log(isLoggedin)
     }
   }
-
   return (
     <div className='bg-dark'>
       <div className='Admin'>
-        <Form onSubmit={handleSubmit} className='col-lg-12 bg-light border p-5'>
+        <Form onSubmit={handleLogin} className='col-lg-12 bg-light border p-5'>
           <div className='col-4 mx-auto mb-3'>
             <img className='w-100' src={iltplogo} alt='iltp logo' />
           </div>
-          <h2 className='text-center mb-3'>Administrator Login</h2>
+          <h2 className='text-center mb-3'>Administrator Login </h2>
           <Form.Group className='mb-3' controlId='formBasicEmail'>
             <Form.Label>Username</Form.Label>
             <Form.Control
