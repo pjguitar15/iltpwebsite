@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import NavbarComponent from './components/NavbarComponent'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import GetInTouch from './components/GetInTouch'

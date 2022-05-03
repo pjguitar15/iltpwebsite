@@ -1,14 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import { FundraisingSectionsData } from '../../Data/FundraisingSectionsData'
 import fr1 from '../../assets/fundraising-photos/fr1.jpg'
 import fr2 from '../../assets/fundraising-photos/fr2.jpg'
-import fr3 from '../../assets/fundraising-photos/fr3.jpg'
-import fr4 from '../../assets/fundraising-photos/fr4.jpg'
-import fr5 from '../../assets/fundraising-photos/fr5.jpg'
-import fr6 from '../../assets/fundraising-photos/fr6.jpg'
-import fr7 from '../../assets/fundraising-photos/fr7.jpg'
-import fr8 from '../../assets/fundraising-photos/fr8.jpg'
 const FundraisingPhotos = () => {
   return (
     <div>

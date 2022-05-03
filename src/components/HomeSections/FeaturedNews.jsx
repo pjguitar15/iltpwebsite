@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Card, Button, Carousel } from 'react-bootstrap'
+import { Container, Card, Button } from 'react-bootstrap'
 import '../styles/Home.css'
 import { NewsData } from '../../Data/NewsData'
 
@@ -8,14 +8,7 @@ import Aos from 'aos'
 import 'aos/dist/aos.css'
 
 const FeaturedNews = () => {
-  const [featuredByThrees, setFeaturedByThrees] = useState([])
-  const [newsData, setNewsData] = useState(NewsData)
-  const [index, setIndex] = useState(0)
-
-  // handle carousel state
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex)
-  }
+  const [newsData] = useState(NewsData)
 
   useEffect(() => {
     Aos.init({ duration: 300 })
@@ -30,7 +23,7 @@ const FeaturedNews = () => {
         </Carousel> */}
         <div className='row'>
           {newsData
-            .filter((item) => item.newsType == 'featured')
+            .filter((item) => item.newsType === 'featured')
             .slice(0, 3)
             .map((item, index) => (
               <div

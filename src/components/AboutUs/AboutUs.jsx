@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import WhatWeDo from './WhatWeDo'
 import Objectives from './Objectives'
 import LogoAndDesc from './LogoAndDesc'

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Container, Carousel } from 'react-bootstrap'
 import '../styles/Home.css'
 
@@ -6,7 +6,6 @@ import '../styles/Home.css'
 import { TestimoniesData } from '../../Data/TestimoniesData'
 
 // animate on scroll
-import Aos from 'aos'
 import 'aos/dist/aos.css'
 
 const Testimonies = () => {

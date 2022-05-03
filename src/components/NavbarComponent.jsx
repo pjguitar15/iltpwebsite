@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Navbar, Container, Nav, Button } from 'react-bootstrap'
 import iltpLogo from '../assets/iltp-logo.png'
 import '../NavbarStyle.css'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, Link } from 'react-router-dom'
 
 const NavbarComponent = () => {
   const [navbar, setNavbar] = useState(false)
@@ -67,7 +67,7 @@ const NavbarComponent = () => {
           className='mt-3 mb-3 brand d-flex'
           onClick={goHome}
         >
-          <img className='mt-1' src={iltpLogo} />
+          <img className='mt-1' src={iltpLogo} alt='iltp logo' />
           <div
             className={`iltp-brand-text d-flex justify-content-center flex-column text-start 
             ${navbar ? 'text-black' : 'text-white'}`}
@@ -79,44 +79,55 @@ const NavbarComponent = () => {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='ms-auto'>
-            <Nav.Link
-              onClick={goHome}
+            <Link
               className={`${
                 navbar ? 'text-black' : 'text-white'
               } mx-3 nav-link-hover`}
+              to='/'
+              style={{ textDecoration: 'none' }}
             >
               Home
-            </Nav.Link>
-            <Nav.Link
+            </Link>
+            <Link
               className={`${
                 navbar ? 'text-black' : 'text-white'
               } mx-3 nav-link-hover`}
-              onClick={goToAboutUs}
+              to='/about'
+              style={{ textDecoration: 'none' }}
             >
-              About Us
-            </Nav.Link>
-            <Nav.Link
-              className={`${navbar ? 'text-black' : 'text-white'} mx-3 nav-link-hover`}
-              onClick={goToFundraising}
+              About
+            </Link>
+            <Link
+              className={`${
+                navbar ? 'text-black' : 'text-white'
+              } mx-3 nav-link-hover`}
+              to='/fundraising'
+              style={{ textDecoration: 'none' }}
             >
               Fundraising
-            </Nav.Link>
-            <Nav.Link
+            </Link>
+            <Link
               className={`${
                 navbar ? 'text-black' : 'text-white'
               } mx-3 nav-link-hover`}
-              onClick={goToNews}
+              to='/news'
+              style={{ textDecoration: 'none' }}
             >
               News
-            </Nav.Link>
-            <Nav.Link
-              className={`${navbar ? 'text-black' : 'text-white'} mx-3 nav-link-hover`}
-              onClick={goToFundraising}
+            </Link>
+            <Link
+              className={`${
+                navbar ? 'text-black' : 'text-white'
+              } mx-3 nav-link-hover`}
+              to='/contact'
+              style={{ textDecoration: 'none' }}
             >
               Contact Us
-            </Nav.Link>
+            </Link>
             <Button
-              onClick={() => alert('Still working on this -developer')}
+              onClick={() => {
+                alert('Still working on this -developer')
+              }}
               className='mx-3'
               variant='success'
             >
