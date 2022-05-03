@@ -4,6 +4,7 @@ import Dashboard from './Dashboard'
 import AdminNews from './AdminNews'
 import AdminTestimonies from './AdminTestimonies'
 import AdminJumbo from './AdminJumbo'
+import AdminNav from './AdminNav'
 
 const AdminPage = () => {
   const [isDashboard, setIsDashboard] = useState(true)
@@ -49,47 +50,16 @@ const AdminPage = () => {
           <h5 className='mt-2 text-white'>ILTP Admin</h5>
 
           {/* Navigation */}
-          <p className='text-muted'>Navigation</p>
-          <div
-            onClick={handleDashboard}
-            className={`${
-              isDashboard ? 'bg-white text-dark' : ''
-            }m-0 py-3 admin-link`}
-          >
-            <h6 className={`${!isDashboard ? 'text-white' : ''} m-0`}>
-              Dashboard
-            </h6>
-          </div>
-          <div
-            onClick={handleNewsPage}
-            className={`${
-              isNewsPage ? 'bg-white text-dark' : ''
-            }m-0 py-3 admin-link`}
-          >
-            <h6 className={`${!isNewsPage ? 'text-white' : ''} m-0`}>
-              News Page
-            </h6>
-          </div>
-          <div
-            onClick={handleTestimonies}
-            className={`${
-              isTestimonies ? 'bg-white text-dark' : ''
-            }m-0 py-3 admin-link`}
-          >
-            <h6 className={`${!isTestimonies ? 'text-white' : ''} m-0`}>
-              Testimonies
-            </h6>
-          </div>
-          <div
-            onClick={handleJumboImages}
-            className={`${
-              isJumboImages ? 'bg-white text-dark' : ''
-            }m-0 py-3 admin-link`}
-          >
-            <h6 className={`${!isJumboImages ? 'text-white' : ''} m-0`}>
-              Jumbotron Images
-            </h6>
-          </div>
+          <AdminNav
+            handleDashboard={handleDashboard}
+            isDashboard={isDashboard}
+            handleNewsPage={handleNewsPage}
+            isNewsPage={isNewsPage}
+            handleTestimonies={handleTestimonies}
+            isTestimonies={isTestimonies}
+            handleJumboImages={handleJumboImages}
+            isJumboImages={isJumboImages}
+          />
         </div>
         {/* col-10 p-5 */}
         <div className='col-10 p-5'>
