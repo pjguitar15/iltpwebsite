@@ -10,6 +10,8 @@ import Fundraising from './components/Fundraising/Fundraising'
 import ContactUs from './components/ContactUs/ContactUs'
 import NewsSlug from './components/News/NewsSlug'
 import ErrorPage from './components/ErrorPage/ErrorPage'
+import AdminLogin from './components/Admin/AdminLogin'
+import AdminPage from './components/Admin/AdminPage'
 
 const App = () => {
 
@@ -18,16 +20,23 @@ const App = () => {
       <Router basename='/'>
 
         <Routes>
-          <Route path='/' element={<><NavbarComponent /><MainHome /></>} />
-          <Route path='/about' element={<><NavbarComponent /><AboutUs /></>} />
-          <Route path='/news' element={<><NavbarComponent /><News /></>} />
-          <Route path='/news/:id' element={<><NavbarComponent /><NewsSlug /></>} />
-          <Route path='/fundraising' element={<><NavbarComponent /><Fundraising /></>} />
-          <Route path='/contact' element={<><NavbarComponent /><ContactUs /></>} />
+          <Route path='/' element={<><NavbarComponent /><MainHome /><GetInTouch />
+            <Footer /></>} />
+          <Route path='/about' element={<><NavbarComponent /><AboutUs /><GetInTouch />
+            <Footer /></>} />
+          <Route path='/news' element={<><NavbarComponent /><News /><GetInTouch />
+            <Footer /></>} />
+          <Route path='/news/:id' element={<><NavbarComponent /><NewsSlug /><GetInTouch />
+            <Footer /></>} />
+          <Route path='/fundraising' element={<><NavbarComponent /><Fundraising /><GetInTouch />
+            <Footer /></>} />
+          <Route path='/contact' element={<><NavbarComponent /><ContactUs /><GetInTouch />
+            <Footer /></>} />
+          <Route path='/admin' element={<AdminLogin />} />
+          <Route path='/adminpage' element={<AdminPage />} />
           <Route path='*' element={<ErrorPage />} />
         </Routes>
-        <GetInTouch />
-        <Footer />
+
       </Router>
 
     </div>

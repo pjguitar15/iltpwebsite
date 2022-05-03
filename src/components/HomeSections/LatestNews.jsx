@@ -42,7 +42,9 @@ const FeaturedNews = () => {
                     <Card.Subtitle className='mb-2 text-muted'>
                       {item.date}
                     </Card.Subtitle>
-                    <Card.Text className='mb-2 text-muted'>{item.id}</Card.Text>
+                    <Card.Text className='mb-2 text-muted'>
+                      {item.content.slice(0, 150)}...
+                    </Card.Text>
                     {/* test */}
                     <Button
                       onClick={() => {

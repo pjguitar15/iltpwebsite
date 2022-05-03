@@ -21,9 +21,6 @@ const FeaturedNews = () => {
     <div className='featuredNews'>
       <Container>
         <h3 className='text-center mb-5'>Featured News</h3>
-        {/* <Carousel activeIndex={index} onSelect={handleSelect}>
-          <Carousel.Item key={index} data-aos='zoom-in'></Carousel.Item>
-        </Carousel> */}
         <div className='row'>
           {newsData
             .filter((item) => item.newsType === 'featured')
@@ -49,7 +46,9 @@ const FeaturedNews = () => {
                     <Card.Subtitle className='mb-2 text-muted'>
                       {item.date}
                     </Card.Subtitle>
-                    <Card.Text className='text-muted'>ID: {item.id}</Card.Text>
+                    <Card.Text className='text-muted'>
+                      {item.content.slice(0, 150)}...
+                    </Card.Text>
                     <Button
                       onClick={() => {
                         navigate(`/news/${item.id}`)

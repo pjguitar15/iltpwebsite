@@ -17,14 +17,7 @@ const NavbarComponent = () => {
 
   // change background to white when passed 300 axis Y up
   const changeNavbarBackground = () => {
-    if (
-      (location.pathname === '/' ||
-        location.pathname === '/about' ||
-        location.pathname === '/fundraising' ||
-        location.pathname === '/news' ||
-        location.pathname === '/contact') &&
-      window.scrollY >= 300
-    ) {
+    if (window.scrollY >= 300) {
       setNavbar(true)
     } else {
       setNavbar(false)

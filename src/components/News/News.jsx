@@ -44,7 +44,9 @@ const News = () => {
                   <Card.Subtitle className='mb-2 text-muted'>
                     {item.date}
                   </Card.Subtitle>
-                  <Card.Text className='text-muted'>ID: {item.id}</Card.Text>
+                  <Card.Text className='text-muted'>
+                    {item.content.slice(0, 150)}...
+                  </Card.Text>
                   <Button
                     onClick={() => {
                       navigate(`/news/${item.id}`)
