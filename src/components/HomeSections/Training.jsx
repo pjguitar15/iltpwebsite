@@ -2,12 +2,14 @@ import React, { useEffect } from 'react'
 import { Container, Button } from 'react-bootstrap'
 import '../styles/Home.css'
 import PointingAtShirtImg from '../../assets/pointing-shirt.png'
+import { useNavigate } from 'react-router-dom'
 
 // animate on scroll
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 
 const Training = () => {
+  let navigate = useNavigate()
   useEffect(() => {
     Aos.init({ duration: 1000 })
   }, [])
@@ -31,7 +33,9 @@ const Training = () => {
               insightful leader. Develop the abilities and build a strong
               foundation as someone who can leader the community.
             </p>
-            <Button variant='success'>Learn more</Button>
+            <Button onClick={() => navigate('/about')} variant='success'>
+              Learn more
+            </Button>
           </div>
           <div
             data-aos='fade-left'

@@ -1,16 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 // animate on scroll
-import Aos from 'aos'
 import 'aos/dist/aos.css'
 
 const JoinUs = () => {
-  useEffect(() => {
-    Aos.init({ duration: 1000 })
-  }, [])
+  let navigate = useNavigate()
 
   return (
+    // background image is in join-us class
     <div className='join-us text-center'>
       <Container data-aos='zoom-in' data-aos-duration='500'>
         <div className='col-10 mx-auto become-a-member-div p-4 rounded-2 mb-4 bg-white'>
@@ -25,7 +24,12 @@ const JoinUs = () => {
             no cost.
           </p>
         </div>
-        <Button className='btn-warning mx-1'>Join Us</Button>
+        <Button
+          onClick={() => navigate('/contact')}
+          className='btn-warning mx-1'
+        >
+          Join Us
+        </Button>
         <Button className='btn-warning mx-1'>
           <i className='fa fa-paypal me-1'></i>Donate
         </Button>
