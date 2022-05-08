@@ -6,10 +6,6 @@ const Footer = () => {
   // use history hook
   const navigate = useNavigate()
 
-  // go home
-  // const goToHome = () => {
-  //   navigate('/')
-  // }
   return (
     <div>
       <footer className='page-footer bg-success text-white font-small blue pt-4'>

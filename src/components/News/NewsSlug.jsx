@@ -16,7 +16,7 @@ const NewsSlug = () => {
         .map((item, index) => (
           <div key={index}>
             <img className='slug-img' src={item.img} alt='image item' />
-            <div className='py-5 col-11 col-sm-10 col-xl-7 mx-auto'>
+            <div className='py-5 col-11 col-sm-10 col-xl-6 mx-auto'>
               <div>
                 <div className='col-12 col-lg-10 col-xl-8'>
                   <img
@@ -25,10 +25,22 @@ const NewsSlug = () => {
                     alt='image item'
                   />
                 </div>
-                <h1>{item.title}</h1>
+                <h2
+                  className='mb-4 mt-3 text-dark ps-3 text-uppercase'
+                  style={{
+                    borderLeft: 'solid #00B2B2 5px',
+                    letterSpacing: '2px',
+                  }}
+                >
+                  {item.title}
+                </h2>
                 <p className='text-muted'>{item.date}</p>
                 <p
-                  style={{ color: '#696969', textAlign: 'justify' }}
+                  style={{
+                    color: '#3C3744',
+                    textAlign: 'justify',
+                    fontWeight: '400',
+                  }}
                   className='slug-content mt-2'
                 >
                   {item.content}

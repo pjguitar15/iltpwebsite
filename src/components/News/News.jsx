@@ -27,9 +27,9 @@ const News = () => {
             <div
               data-aos='zoom-in'
               key={index}
-              className='p2 my-3 col-md-6 col-lg-4'
+              className='px-4 my-3 col-md-6 col-lg-4'
             >
-              <Card>
+              <Card className='shadow border-0'>
                 <Card.Img
                   style={{
                     width: '100%',
@@ -61,6 +61,7 @@ const News = () => {
           ))}
         </div>
       </Container>
+      <hr />
     </>
   )
 }
