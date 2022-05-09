@@ -5,8 +5,14 @@ import { NewsData } from '../../Data/NewsData'
 import { useNavigate } from 'react-router-dom'
 import './Slug.css'
 import 'aos/dist/aos.css'
+// Firebase imports
+import { db } from '../../firebase/firebase-config'
+import { collection, getDocs, query, orderBy } from 'firebase/firestore'
 const NewsSlug = () => {
-  const [data] = useState(NewsData)
+  const [firebaseData, setFirebaseData] = useState([])
+  // Loading State
+  const [isDataLoading, setIsDataLoading] = useState(false)
+  // const [data] = useState(NewsData)
   let navigate = useNavigate()
   let { id } = useParams()
   // target scroll location
@@ -20,19 +26,40 @@ const NewsSlug = () => {
     })
   }
 
+  // firebase collection ref
+  const collectionRef = collection(db, 'news-articles')
+
+  // fetch data from firebase
   useEffect(() => {
-    scrollToSection(startOfImage)
-  }, [id])
+    setIsDataLoading(true)
+    const q = query(collectionRef, orderBy('timestamp', 'desc'))
+    const getData = async () => {
+      const data = await getDocs(q)
+      setFirebaseData(
+        data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }))
+      )
+    }
+    getData()
+    setIsDataLoading(false)
+  }, [])
+
+  // useEffect(() => {
+  //   scrollToSection(startOfImage)
+  // }, [id])
 
   return (
     <div>
-      {data
+      
+      {firebaseData
         .filter((item) => item.id === id)
         .map((item, index) => (
           <div key={index} data-aos='fade-down' data-aos-duration='2000'>
-            <img className='slug-img' src={item.img} alt='image item' />
+            <img className='slug-img' src={item.img} alt='cover' />
             <div
-              ref={startOfImage}
+              // ref={startOfImage}
               className='py-5 col-11 col-sm-10 col-xl-6 mx-auto'
             >
               <div>
@@ -40,7 +67,7 @@ const NewsSlug = () => {
                   <img
                     className='slug-img-within-container mb-4 rounded'
                     src={item.img}
-                    alt='image item'
+                    alt='portrait'
                   />
                 </div>
                 <h2

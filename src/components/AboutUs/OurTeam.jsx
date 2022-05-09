@@ -25,6 +25,7 @@ const OurTeam = () => {
             >
               <div style={{ height: '20rem' }}>
                 <img
+                  alt='tests'
                   className='w-100 h-100'
                   style={{ objectFit: 'cover' }}
                   src={item.image}

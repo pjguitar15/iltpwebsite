@@ -26,16 +26,23 @@ const OurVision = () => {
   }
   return (
     <div className='mission-vision'>
-      <Container data-aos='fade-left' className='text-white text-end'>
-        <h1 className='text-success bebas'>Our Vision</h1>
-        <h1 style={visionStyle}>Vision</h1>
-        <p
-          className='text-dark lead col-md-6 ms-auto'
-          style={{ fontWeight: '300', fontSize: '28px' }}
-        >
-          "Impacting Lives Towards Peace envisions One Family under God - living
-          in peace and harmony beyond races and religions.”
-        </p>
+      <Container
+        className='text-white text-end'
+        style={{ position: 'relative' }}
+      >
+        <h1 data-aos='fade-right' style={visionStyle}>
+          Vision
+        </h1>
+        <div data-aos='fade-down' className='div m-0 p-0'>
+          <h1 className='text-success bebas'>Our Vision</h1>
+          <p
+            className='text-dark lead col-md-6 ms-auto'
+            style={{ fontWeight: '300', fontSize: '28px' }}
+          >
+            "Impacting Lives Towards Peace envisions One Family under God -
+            living in peace and harmony beyond races and religions.”
+          </p>
+        </div>
       </Container>
     </div>
   )

@@ -1,14 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { NewsData } from '../../Data/NewsData'
 import { Card, Button, Container } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
+// Firebase imports
+import { db } from '../../firebase/firebase-config'
+import { collection, getDocs, query, orderBy } from 'firebase/firestore'
 
 // animate on scroll
 import 'aos/dist/aos.css'
 
 const News = () => {
+  const [firebaseData, setFirebaseData] = useState([])
+  // Loading State
+  const [isDataLoading, setIsDataLoading] = useState(false)
   const [data] = useState(NewsData)
   let navigate = useNavigate()
+  // firebase collection ref
+  const collectionRef = collection(db, 'news-articles')
+
+  // fetch data from firebase
+  useEffect(() => {
+    setIsDataLoading(true)
+    const q = query(collectionRef, orderBy('timestamp', 'desc'))
+    const getData = async () => {
+      const data = await getDocs(q)
+      setFirebaseData(
+        data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }))
+      )
+    }
+    getData()
+    setIsDataLoading(false)
+  }, [])
   return (
     <>
       <div
@@ -23,7 +48,7 @@ const News = () => {
       </div>
       <Container className='py-5'>
         <div className='row'>
-          {data.map((item, index) => (
+          {firebaseData.map((item, index) => (
             <div
               data-aos='zoom-in'
               key={index}

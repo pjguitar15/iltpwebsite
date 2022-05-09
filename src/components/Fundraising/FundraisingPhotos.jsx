@@ -10,7 +10,7 @@ const FundraisingPhotos = () => {
         <Row data-aos='fade-up' data-aos-duration='1000'>
           <Col>
             <Row>
-              <Col md='8' style={{ height: '400px' }}>
+              <Col md='8' style={{ height: '400px' }} className='mb-3'>
                 <img
                   src={fr1}
                   className='w-100 h-100'
@@ -28,16 +28,16 @@ const FundraisingPhotos = () => {
               </Col>
             </Row>
             <Row
-              className='mt-5 p-4'
+              className='mt-5 p-4 '
               data-aos='fade-up'
               data-aos-duration='1000'
             >
-              <Col className='ms-auto' md='8' style={{ height: '400px' }}>
+              <Col className='ms-auto mb-3' md='8' style={{ height: '400px' }}>
                 <img
                   className='w-100 h-100'
                   style={{ objectFit: 'cover' }}
                   src={fr2}
-                  alt='image'
+                  alt='fundraising'
                 />
               </Col>
               <Col md='4'>

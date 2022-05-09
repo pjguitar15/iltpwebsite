@@ -1,13 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { NewsData } from '../../Data/NewsData.js'
-import NewsPageModal from './NewsPageModal.jsx'
+import UpdateNewsModal from './Modals/UpdateNewsModal.jsx'
 import './Admin.css'
+import AddNewsModal from './Modals/AddNewsModal/AddNewsModal.jsx'
+import { db } from '../../firebase/firebase-config'
+import { collection, getDocs, query, orderBy } from 'firebase/firestore'
 const AdminNews = () => {
-  const [data] = useState(NewsData)
+  const [firebaseData, setFirebaseData] = useState([])
   const [currentItem, setCurrentItem] = useState({})
+  // Loading State
+  const [isDataLoaded, setIsDataLoaded] = useState(false)
   // Modal State
-  const [modalShow, setModalShow] = useState(false)
+  const [updateModalShow, setUpdateModalShow] = useState(false)
+  const [addModalShow, setAddModalShow] = useState(false)
+
+  // firebase collection ref
+  const collectionRef = collection(db, 'news-articles')
+
+  // fetch data from firebase
+  useEffect(() => {
+    setIsDataLoaded(true)
+    const q = query(collectionRef, orderBy('timestamp', 'desc'))
+    const getData = async () => {
+      const data = await getDocs(q)
+      setFirebaseData(
+        data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }))
+      )
+    }
+    getData()
+    setIsDataLoaded(false)
+  }, [])
 
   // card click handler
   const cardClicked = (itemId, itemTitle, itemImg, itemContent) => {
@@ -17,7 +43,7 @@ const AdminNews = () => {
       img: itemImg,
       content: itemContent,
     })
-    setModalShow(true)
+    setUpdateModalShow(true)
   }
 
   // handle delete
@@ -25,21 +51,29 @@ const AdminNews = () => {
     console.log('delete!')
   }
 
+  // add news open modal handler
+  const addNewsHandler = () => {
+    setAddModalShow(true)
+  }
+
   return (
     <div>
-      <NewsPageModal
+      <UpdateNewsModal
         currentItem={currentItem}
-        show={modalShow}
-        setModalShow={setModalShow}
-        modalShow={modalShow}
-        onHide={() => setModalShow(false)}
+        setUpdateModalShow={setUpdateModalShow}
+        updateModalShow={updateModalShow}
+      />
+      <AddNewsModal
+        setAddModalShow={setAddModalShow}
+        addModalShow={addModalShow}
       />
       <h1>Configure News Page</h1>
       <p className='col-7'>Hello Admin! You can add, edit, and delete news</p>
-      <Button>Add News</Button>
+      <Button onClick={addNewsHandler}>Add News</Button>
       <div className='row'>
-        {data.map((item, index) => (
-          <div className='p-2 col-lg-4' key={index}>
+        {isDataLoaded ? 'Loading' : ''}
+        {firebaseData.map((item, index) => (
+          <div className='p-2 col-12 col-lg-6 col-xl-4' key={index}>
             <Card
               onClick={() =>
                 cardClicked(item.id, item.title, item.img, item.content)

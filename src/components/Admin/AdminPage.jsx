@@ -48,7 +48,7 @@ const AdminPage = ({ setIsLoggedIn }) => {
     <div>
       {/* Dashboard */}
       <div className='row m-0' style={{ height: '100vh' }}>
-        <div className='col-2 bg-dark pt-4 text-center px-0'>
+        <div className='col-12 col-md-5 col-lg-3 bg-dark pt-4 text-center px-0'>
           <div className='col-2 mx-auto'>
             <img src={iltplogo} className='w-100' alt='iltp logo' />
           </div>
@@ -68,7 +68,8 @@ const AdminPage = ({ setIsLoggedIn }) => {
           />
         </div>
         {/* col-10 p-5 */}
-        <div className='col-10 p-5'>
+        {/* col-12 col-md-3 col-lg-2 */}
+        <div className='col-12 col-md-7 col-lg-9 p-5'>
           {isDashboard ? <Dashboard /> : ''} {isNewsPage ? <AdminNews /> : ''}
           {isTestimonies ? <AdminTestimonies /> : ''}
           {isJumboImages ? <AdminJumbo /> : ''}

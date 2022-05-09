@@ -1,16 +1,41 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Card, Button } from 'react-bootstrap'
 import '../styles/Home.css'
-import { NewsData } from '../../Data/NewsData'
 import { useNavigate } from 'react-router-dom'
+// Firebase imports
+import { db } from '../../firebase/firebase-config'
+import { collection, getDocs, query, orderBy } from 'firebase/firestore'
 
 // animate on scroll
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 
 const FeaturedNews = () => {
-  const [newsData] = useState(NewsData)
+  const [firebaseData, setFirebaseData] = useState([])
+  // Loading State
+  const [isDataLoaded, setIsDataLoaded] = useState(false)
   let navigate = useNavigate()
+
+  // firebase collection ref
+  const collectionRef = collection(db, 'news-articles')
+
+  // fetch data from firebase
+  useEffect(() => {
+    setIsDataLoaded(true)
+    const q = query(collectionRef, orderBy('timestamp', 'desc'))
+    const getData = async () => {
+      const data = await getDocs(q)
+      setFirebaseData(
+        data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }))
+      )
+    }
+    getData()
+    setIsDataLoaded(false)
+  }, [])
+
   useEffect(() => {
     Aos.init({ duration: 1000 })
   }, [])
@@ -19,7 +44,7 @@ const FeaturedNews = () => {
       <Container>
         <h3 className='text-center mb-5'>Latest News</h3>
         <div className='row'>
-          {newsData
+          {firebaseData
             .filter((item) => item.newsType === 'latest')
             .map((item, index) => (
               <div

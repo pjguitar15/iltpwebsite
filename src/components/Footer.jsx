@@ -44,9 +44,9 @@ const Footer = () => {
             </div>
 
             <div className='col-md-3 mb-md-0 mb-3'>
-              <h5 className='text-uppercase text-start'>Links</h5>
+              <h5 className='text-uppercase text-center'>Links</h5>
               <ul
-                className='list-unstyled text-start col-4'
+                className='list-unstyled text-center'
                 style={{ cursor: 'pointer' }}
               >
                 <li>
@@ -101,6 +101,7 @@ const Footer = () => {
           Developed by{' '}
           <a
             target='_blank'
+            rel='noreferrer'
             href='https://philcobportfolio.netlify.app/'
             className='text-white'
           >

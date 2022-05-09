@@ -27,20 +27,20 @@ const OurMission = () => {
 
   return (
     <div className='bg-success mission-vision'>
-      <Container
-        data-aos='fade-right'
-        className='text-white'
-        style={{ position: 'relative' }}
-      >
-        <h1 className='bebas'>Our Mission</h1>
-        <h1 style={missionStyle}>Mission</h1>
-        <p
-          className='col-md-6 lead me-auto'
-          style={{ fontWeight: '300', fontSize: '28px' }}
-        >
-          "Impacting Lives Towards Peace raises self-awareness of the need to
-          unite families, communities, nations and the world."
-        </p>
+      <Container className='text-white' style={{ position: 'relative' }}>
+        <h1 data-aos='fade-left' style={missionStyle}>
+          Mission
+        </h1>
+        <div data-aos='fade-down' className='div m-0 p-0'>
+          <h1 className='bebas'>Our Mission</h1>
+          <p
+            className='col-md-6 lead me-auto'
+            style={{ fontWeight: '300', fontSize: '28px' }}
+          >
+            "Impacting Lives Towards Peace raises self-awareness of the need to
+            unite families, communities, nations and the world."
+          </p>
+        </div>
       </Container>
     </div>
   )
