@@ -12,6 +12,7 @@ import NewsSlug from './components/News/NewsSlug'
 import ErrorPage from './components/ErrorPage/ErrorPage'
 import AdminLogin from './components/Admin/AdminLogin'
 import AdminPage from './components/Admin/AdminPage'
+import MessageOnTop from './components/HomeSections/MessageOnTop'
 import ProtectedRoute from './components/Admin/ProtectedRoute'
 
 
@@ -30,7 +31,7 @@ const App = () => {
     <div>
       <Router>
         <Routes>
-          <Route path='/' element={<><NavbarComponent /><MainHome /><GetInTouch />
+          <Route path='/' element={<><MessageOnTop /><NavbarComponent /><MainHome /><GetInTouch />
             <Footer /></>} />
           <Route path='/about' element={<><NavbarComponent /><AboutUs /><GetInTouch />
             <Footer /></>} />

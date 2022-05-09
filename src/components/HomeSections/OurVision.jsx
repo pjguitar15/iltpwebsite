@@ -10,12 +10,29 @@ const OurVision = () => {
   useEffect(() => {
     Aos.init({ duration: 1000 })
   }, [])
+  const visionStyle = {
+    position: 'absolute',
+    color: 'grey',
+    top: '40%',
+    left: '0',
+    fontSize: '250px',
+    fontFamily: 'bebas neue',
+    opacity: 0.1,
+    userSelect: 'none' /* supported by Chrome and Opera */,
+    WebkitUserSelect: 'none' /* Safari */,
+    KhtmlUserSelect: 'none' /* Konqueror HTML */,
+    MozUserSelect: 'none' /* Firefox */,
+    MsUserSelect: 'none' /* Internet Explorer/Edge */,
+  }
   return (
     <div className='mission-vision'>
       <Container data-aos='fade-left' className='text-white text-end'>
         <h1 className='text-success bebas'>Our Vision</h1>
-
-        <p className='text-dark lead col-md-6 ms-auto'>
+        <h1 style={visionStyle}>Vision</h1>
+        <p
+          className='text-dark lead col-md-6 ms-auto'
+          style={{ fontWeight: '300', fontSize: '28px' }}
+        >
           "Impacting Lives Towards Peace envisions One Family under God - living
           in peace and harmony beyond races and religions.”
         </p>

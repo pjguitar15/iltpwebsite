@@ -44,8 +44,11 @@ const Footer = () => {
             </div>
 
             <div className='col-md-3 mb-md-0 mb-3'>
-              <h5 className='text-uppercase'>Links</h5>
-              <ul className='list-unstyled ' style={{ cursor: 'pointer' }}>
+              <h5 className='text-uppercase text-start'>Links</h5>
+              <ul
+                className='list-unstyled text-start col-4'
+                style={{ cursor: 'pointer' }}
+              >
                 <li>
                   <div
                     className='text-white text-decoration-underline'
@@ -88,11 +91,21 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className='footer-copyright text-center py-3'>
+        <div className='footer-copyright text-center'>
           <a className='text-white' href='https://mdbootstrap.com/'>
             iltp.org
           </a>
           © 2022 ILTP ORG | All Rights Reserved
+        </div>
+        <div className='text-center p-2'>
+          Developed by{' '}
+          <a
+            target='_blank'
+            href='https://philcobportfolio.netlify.app/'
+            className='text-white'
+          >
+            Philcob Suzuki Josol
+          </a>
         </div>
       </footer>
     </div>

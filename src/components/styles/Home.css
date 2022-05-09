@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800&display=swap');
+*::selection {
+  background: rgb(6, 139, 66);
+  color: #ffffff;
+}
+
 .jumbotron {
   height: 90vh;
 }
@@ -162,7 +167,7 @@
 .nav-link-hover:after {
   content: '';
   position: absolute;
-  background-color: rgb(10, 197, 10);
+  background-color: rgb(255, 255, 255);
   height: 3px;
   width: 0;
   left: 0;

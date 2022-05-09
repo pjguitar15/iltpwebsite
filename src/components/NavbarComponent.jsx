@@ -6,6 +6,7 @@ import { useLocation, Link } from 'react-router-dom'
 
 const NavbarComponent = () => {
   const [navbar, setNavbar] = useState(false)
+  const [marginTop, setMarginTop] = useState(true)
 
   // useLocation
   const location = useLocation()
@@ -16,19 +17,26 @@ const NavbarComponent = () => {
   }, [location])
 
   // change background to white when passed 300 axis Y up
-  const changeNavbarBackground = () => {
-    if (window.scrollY >= 300) {
+  const scrollListener = () => {
+    if (window.scrollY >= 250) {
       setNavbar(true)
     } else {
       setNavbar(false)
     }
+
+    // if y is 0
+    if (location.pathname === '/' && window.scrollY === 0) {
+      setMarginTop(true)
+    } else {
+      setMarginTop(false)
+    }
   }
 
-  window.addEventListener('scroll', changeNavbarBackground)
+  window.addEventListener('scroll', scrollListener)
 
   return (
     <Navbar
-      className={`bg-md-white  shadow-sm fixed-top  ${
+      className={`bg-md-white  shadow-sm fixed-top ${
         navbar ? 'bg-white shadow-sm' : 'bg-none shadow-none'
       }`}
       expand='lg'

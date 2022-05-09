@@ -2,13 +2,22 @@ import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import fr1 from '../../assets/fundraising-photos/fr1.jpg'
 import fr2 from '../../assets/fundraising-photos/fr2.jpg'
+import 'aos/dist/aos.css'
 const FundraisingPhotos = () => {
   return (
     <div>
       <Container className='py-5'>
-        <Row>
+        <Row data-aos='fade-up' data-aos-duration='1000'>
           <Col>
-            <Row className='bg-light p-4'>
+            <Row>
+              <Col md='8' style={{ height: '400px' }}>
+                <img
+                  src={fr1}
+                  className='w-100 h-100'
+                  style={{ objectFit: 'cover' }}
+                  alt=''
+                />
+              </Col>
               <Col md='4' className='me-auto'>
                 <h3>Fund Raising, Purpose, Finances</h3>
                 <p className='lead'>
@@ -17,11 +26,20 @@ const FundraisingPhotos = () => {
                   seminars and other operational expenses.
                 </p>
               </Col>
-              <Col md='4'>
-                <img src={fr1} className='w-100' alt='' />
-              </Col>
             </Row>
-            <Row className='mt-5 p-4'>
+            <Row
+              className='mt-5 p-4'
+              data-aos='fade-up'
+              data-aos-duration='1000'
+            >
+              <Col className='ms-auto' md='8' style={{ height: '400px' }}>
+                <img
+                  className='w-100 h-100'
+                  style={{ objectFit: 'cover' }}
+                  src={fr2}
+                  alt='image'
+                />
+              </Col>
               <Col md='4'>
                 <h3>Volunteers</h3>
                 <p className='lead'>
@@ -30,9 +48,6 @@ const FundraisingPhotos = () => {
                   learning from cross-cultural experiences as they come from
                   overseas.
                 </p>
-              </Col>
-              <Col md='4' className='ms-auto'>
-                <img src={fr2} className='w-100' alt='' />
               </Col>
             </Row>
             <hr />
