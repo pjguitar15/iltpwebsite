@@ -1,43 +1,57 @@
 import React, { useState } from 'react'
 import iltplogo from '../../assets/iltp-logo.png'
-import Dashboard from './Dashboard'
+import AdminOurTeam from './AdminOurTeam'
 import AdminNews from './AdminNews'
 import AdminTestimonies from './AdminTestimonies'
 import AdminJumbo from './AdminJumbo'
 import AdminNav from './AdminNav'
+import AdminAbout from './AdminAbout'
 
 const AdminPage = ({ setIsLoggedIn }) => {
-  const [isDashboard, setIsDashboard] = useState(true)
+  const [isOurTeam, setIsOurTeam] = useState(true)
   const [isNewsPage, setIsNewsPage] = useState(false)
   const [isTestimonies, setIsTestimonies] = useState(false)
   const [isJumboImages, setIsJumboImages] = useState(false)
+  const [isAboutPage, setIsAboutPage] = useState(false)
 
   const handleDashboard = () => {
-    setIsDashboard(true)
+    setIsOurTeam(true)
     setIsNewsPage(false)
     setIsTestimonies(false)
     setIsJumboImages(false)
+    setIsAboutPage(false)
   }
 
   const handleNewsPage = () => {
-    setIsDashboard(false)
+    setIsOurTeam(false)
     setIsNewsPage(true)
     setIsTestimonies(false)
     setIsJumboImages(false)
+    setIsAboutPage(false)
   }
 
   const handleTestimonies = () => {
-    setIsDashboard(false)
+    setIsOurTeam(false)
     setIsNewsPage(false)
     setIsTestimonies(true)
     setIsJumboImages(false)
+    setIsAboutPage(false)
   }
 
   const handleJumboImages = () => {
-    setIsDashboard(false)
+    setIsOurTeam(false)
     setIsNewsPage(false)
     setIsTestimonies(false)
     setIsJumboImages(true)
+    setIsAboutPage(false)
+  }
+
+  const handleAboutPage = () => {
+    setIsOurTeam(false)
+    setIsNewsPage(false)
+    setIsTestimonies(false)
+    setIsJumboImages(false)
+    setIsAboutPage(true)
   }
 
   const handleLogout = () => {
@@ -57,22 +71,25 @@ const AdminPage = ({ setIsLoggedIn }) => {
           {/* Navigation */}
           <AdminNav
             handleDashboard={handleDashboard}
-            isDashboard={isDashboard}
+            isDashboard={isOurTeam}
             handleNewsPage={handleNewsPage}
             isNewsPage={isNewsPage}
             handleTestimonies={handleTestimonies}
             isTestimonies={isTestimonies}
             handleJumboImages={handleJumboImages}
             isJumboImages={isJumboImages}
+            handleAboutPage={handleAboutPage}
+            isAboutPage={isAboutPage}
             handleLogout={handleLogout}
           />
         </div>
         {/* col-10 p-5 */}
         {/* col-12 col-md-3 col-lg-2 */}
         <div className='col-12 col-md-7 col-lg-9 p-5'>
-          {isDashboard ? <Dashboard /> : ''} {isNewsPage ? <AdminNews /> : ''}
+          {isOurTeam ? <AdminOurTeam /> : ''} {isNewsPage ? <AdminNews /> : ''}
           {isTestimonies ? <AdminTestimonies /> : ''}
           {isJumboImages ? <AdminJumbo /> : ''}
+          {isAboutPage ? <AdminAbout /> : ''}
         </div>
       </div>
     </div>

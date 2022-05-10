@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Button, Form, Spinner } from 'react-bootstrap'
 
 const ModalBody = ({
   handleSubmit,
@@ -90,7 +90,14 @@ const ModalBody = ({
           />
         </div>
         <Button disabled={submitLoading} className='mt-3' type='submit'>
-          {submitLoading ? 'Loading...' : 'Add to database'}
+          {submitLoading ? (
+            <>
+              <Spinner animation='border' variant='light me-2' size='sm' />
+              Loading please wait...
+            </>
+          ) : (
+            'Add to database'
+          )}
         </Button>
       </form>
     </div>

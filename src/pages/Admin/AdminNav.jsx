@@ -10,20 +10,13 @@ const AdminNav = ({
   handleJumboImages,
   isJumboImages,
   handleLogout,
+  handleAboutPage,
+  isAboutPage,
 }) => {
   return (
     <div>
       <p className='text-muted'>Navigation</p>
-      <div
-        onClick={handleDashboard}
-        className={`${
-          isDashboard ? 'bg-white text-dark' : ''
-        }m-0 py-3 admin-link`}
-      >
-        <h6 className={`${!isDashboard ? 'text-white' : ''} m-0`}>
-          <i className='bi bi-speedometer me-2'></i>Dashboard
-        </h6>
-      </div>
+
       <div
         onClick={handleNewsPage}
         className={`${
@@ -52,6 +45,26 @@ const AdminNav = ({
       >
         <h6 className={`${!isJumboImages ? 'text-white' : ''} m-0`}>
           <i className='bi bi-blockquote-right me-2'></i>Jumbotron
+        </h6>
+      </div>
+      <div
+        onClick={handleAboutPage}
+        className={`${
+          isAboutPage ? 'bg-white text-dark' : ''
+        }m-0 py-3 admin-link`}
+      >
+        <h6 className={`${!isAboutPage ? 'text-white' : ''} m-0`}>
+          <i className='bi bi-blockquote-right me-2'></i>About page
+        </h6>
+      </div>
+      <div
+        onClick={handleDashboard}
+        className={`${
+          isDashboard ? 'bg-white text-dark' : ''
+        }m-0 py-3 admin-link`}
+      >
+        <h6 className={`${!isDashboard ? 'text-white' : ''} m-0`}>
+          <i className='bi bi-speedometer me-2'></i>Our Team
         </h6>
       </div>
       <div onClick={handleLogout} className={`m-0 py-3 admin-link`}>
