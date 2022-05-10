@@ -6,7 +6,6 @@ import { useLocation, Link } from 'react-router-dom'
 
 const NavbarComponent = () => {
   const [navbar, setNavbar] = useState(false)
-  const [marginTop, setMarginTop] = useState(true)
 
   // useLocation
   const location = useLocation()
@@ -32,13 +31,6 @@ const NavbarComponent = () => {
       setNavbar(true)
     } else {
       setNavbar(false)
-    }
-
-    // if y is 0
-    if (location.pathname === '/' && window.scrollY === 0) {
-      setMarginTop(true)
-    } else {
-      setMarginTop(false)
     }
   }
 

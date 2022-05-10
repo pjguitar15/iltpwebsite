@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { Container, Card, Button } from 'react-bootstrap'
-import '../styles/Home.css'
+import React, { useState, useEffect } from 'react'
+import { Card, Button, Container } from 'react-bootstrap'
+import LoadingCard from '../../components/LoadingCard'
 import { useNavigate } from 'react-router-dom'
 // Firebase imports
 import { db } from '../../firebase/firebase-config'
 import { collection, getDocs, query, orderBy } from 'firebase/firestore'
 
 // animate on scroll
-import Aos from 'aos'
 import 'aos/dist/aos.css'
 
-const FeaturedNews = () => {
+const News = () => {
   const [firebaseData, setFirebaseData] = useState([])
   // Loading State
   const [isDataLoading, setIsDataLoading] = useState(false)
-
   let navigate = useNavigate()
-
   // firebase collection ref
   const collectionRef = collection(db, 'news-articles')
 
@@ -36,26 +33,30 @@ const FeaturedNews = () => {
     getData()
     setIsDataLoading(false)
   }, [])
-
-  useEffect(() => {
-    Aos.init({ duration: 300 })
-  }, [])
-
   return (
-    <div className='featuredNews'>
-      <Container>
-        <h3 className='text-center mb-5'>Featured News</h3>
+    <>
+      <div
+        data-aos='fade-down'
+        data-aos-duration='2000'
+        className='bg-success '
+        style={{ padding: '150px 0' }}
+      >
+        <h1 className='text-white display-1 text-center py-3 col-lg-4 mx-auto my-0'>
+          News
+        </h1>
+      </div>
+      <Container className='py-5'>
         <div className='row'>
-          {firebaseData
-            .filter((item) => item.newsType === 'featured')
-            .slice(0, 3)
-            .map((item, index) => (
+          {isDataLoading ? (
+            <LoadingCard />
+          ) : (
+            firebaseData.map((item, index) => (
               <div
                 data-aos='zoom-in'
                 key={index}
-                className='p2 my-3 col-md-6 col-lg-4'
+                className='px-4 my-3 col-md-6 col-lg-4'
               >
-                <Card>
+                <Card className='shadow border-0'>
                   <Card.Img
                     style={{
                       width: '100%',
@@ -84,11 +85,13 @@ const FeaturedNews = () => {
                   </Card.Body>
                 </Card>
               </div>
-            ))}
+            ))
+          )}
         </div>
       </Container>
-    </div>
+      <hr />
+    </>
   )
 }
 
-export default FeaturedNews
+export default News

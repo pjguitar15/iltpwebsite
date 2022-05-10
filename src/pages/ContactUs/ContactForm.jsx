@@ -3,8 +3,7 @@ import { Form, Button } from 'react-bootstrap'
 import emailjs from 'emailjs-com'
 
 const ContactForm = () => {
-  const [firstNameInput, setFirstNameInput] = useState('')
-  const [lastNameInput, setLastNameInput] = useState('')
+  const [fullNameInput, setFullNameInput] = useState('')
   const [emailInput, setEmailInput] = useState('')
   const [messageInput, setMessageInput] = useState('')
   const [contactNumberInput, setContactNumberInput] = useState('')
@@ -39,8 +38,7 @@ const ContactForm = () => {
       )
 
     // clear forms
-    setFirstNameInput('')
-    setLastNameInput('')
+    setFullNameInput('')
     setEmailInput('')
     setMessageInput('')
     setContactNumberInput('')
@@ -49,32 +47,20 @@ const ContactForm = () => {
     <div>
       <Form ref={form} onSubmit={handleSubmit} className='col-lg-7'>
         <Form.Group className='mb-3'>
-          <Form.Label>First Name</Form.Label>
+          <Form.Label>Full Name</Form.Label>
           <Form.Control
             disabled={submitLoading}
             required
-            value={firstNameInput}
+            value={fullNameInput}
             onChange={(e) => {
-              setFirstNameInput(e.target.value)
+              setFullNameInput(e.target.value)
             }}
             type='text'
             name='name'
-            placeholder='Enter your first name'
+            placeholder='Enter your full name'
           />
         </Form.Group>
-        <Form.Group className='mb-3'>
-          <Form.Label>Last Name</Form.Label>
-          <Form.Control
-            disabled={submitLoading}
-            required
-            value={lastNameInput}
-            onChange={(e) => {
-              setLastNameInput(e.target.value)
-            }}
-            type='text'
-            placeholder='Enter your last name'
-          />
-        </Form.Group>
+
         <Form.Group className='mb-3' controlId='formBasicEmail'>
           <Form.Label>Email address</Form.Label>
           <Form.Control

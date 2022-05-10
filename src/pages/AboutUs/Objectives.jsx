@@ -1,9 +1,4 @@
 import React from 'react'
-import icon1 from '../../assets/icons/icon1.svg'
-import icon2 from '../../assets/icons/icon2.svg'
-import icon3 from '../../assets/icons/icon3.svg'
-import icon4 from '../../assets/icons/icon4.svg'
-import icon5 from '../../assets/icons/icon5.svg'
 // objectives cards
 import acknowledgeCard from '../../assets/objectives-imgs/acknowledge.png'
 import cultivateCard from '../../assets/objectives-imgs/cultivate.png'
@@ -66,7 +61,7 @@ const Objectives = () => {
         <div className='row mx-auto'>
           {/* map here */}
           {cardNames.map((item, index) => (
-            <div className='col-12 col-md-6 col-lg-4 col-xl-3 mx-auto mb-4 px-2'>
+            <div className='col-12 col-md-6 col-lg-4 mx-auto mb-4 px-2'>
               <div key={index} className=' position-relative p-0'>
                 <img
                   className='w-100'

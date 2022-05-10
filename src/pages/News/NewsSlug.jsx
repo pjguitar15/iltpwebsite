@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
-import { NewsData } from '../../Data/NewsData'
 import { useNavigate } from 'react-router-dom'
 import './Slug.css'
 import 'aos/dist/aos.css'
@@ -52,7 +51,11 @@ const NewsSlug = () => {
 
   return (
     <div>
-      
+      {isDataLoading ? (
+        <h1 className='display-1 text-center'>LOADING...</h1>
+      ) : (
+        <h1 className='display-1 text-center'>LOADED</h1>
+      )}
       {firebaseData
         .filter((item) => item.id === id)
         .map((item, index) => (
