@@ -7,6 +7,7 @@ import OurVision from './OurVision'
 import Testimonies from './Testimonies'
 import Training from './Training'
 import JoinUs from './JoinUs'
+import Awards from './Awards'
 
 // animate on scroll
 import Aos from 'aos'
@@ -20,10 +21,11 @@ const MainHome = () => {
   return (
     <div>
       <JumbotronComponent data-aos='fade-up' />
-      <FeaturedNews data-aos='fade-up' />
-      <LatestNews data-aos='fade-up' />
+      <Awards />
       <OurMission data-aos='fade-up' />
       <OurVision data-aos='fade-up' />
+      <FeaturedNews data-aos='fade-up' />
+      <LatestNews data-aos='fade-up' />
       <Testimonies data-aos='fade-up' />
       <Training data-aos='fade-up' />
       <JoinUs data-aos='fade-up' />

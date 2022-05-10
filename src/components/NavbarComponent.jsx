@@ -16,6 +16,16 @@ const NavbarComponent = () => {
     window.scrollTo(0, 0)
   }, [location])
 
+  // disable text selection
+  const disableSelectNoUnderline = {
+    userSelect: 'none' /* supported by Chrome and Opera */,
+    WebkitUserSelect: 'none' /* Safari */,
+    KhtmlUserSelect: 'none' /* Konqueror HTML */,
+    MozUserSelect: 'none' /* Firefox */,
+    MsUserSelect: 'none' /* Internet Explorer/Edge */,
+    textDecoration: 'none',
+  }
+
   // change background to white when passed 300 axis Y up
   const scrollListener = () => {
     if (window.scrollY >= 250) {
@@ -53,8 +63,10 @@ const NavbarComponent = () => {
               className={`iltp-brand-text d-flex justify-content-center flex-column text-start 
             ${navbar ? 'text-black' : 'text-white'}`}
             >
-              <span>International Leadership</span>
-              <span>Training Program</span>
+              <span style={disableSelectNoUnderline}>
+                International Leadership
+              </span>
+              <span style={disableSelectNoUnderline}>Training Program</span>
             </div>
           </Link>
         </Navbar.Brand>
@@ -66,7 +78,7 @@ const NavbarComponent = () => {
                 navbar ? 'text-black' : 'text-white'
               } mx-3 nav-link-hover`}
               to='/'
-              style={{ textDecoration: 'none' }}
+              style={disableSelectNoUnderline}
             >
               Home
             </Link>
@@ -75,7 +87,7 @@ const NavbarComponent = () => {
                 navbar ? 'text-black' : 'text-white'
               } mx-3 nav-link-hover`}
               to='/about'
-              style={{ textDecoration: 'none' }}
+              style={disableSelectNoUnderline}
             >
               About
             </Link>
@@ -84,7 +96,7 @@ const NavbarComponent = () => {
                 navbar ? 'text-black' : 'text-white'
               } mx-3 nav-link-hover`}
               to='/fundraising'
-              style={{ textDecoration: 'none' }}
+              style={disableSelectNoUnderline}
             >
               Fundraising
             </Link>
@@ -93,7 +105,7 @@ const NavbarComponent = () => {
                 navbar ? 'text-black' : 'text-white'
               } mx-3 nav-link-hover`}
               to='/news'
-              style={{ textDecoration: 'none' }}
+              style={disableSelectNoUnderline}
             >
               News
             </Link>
@@ -102,7 +114,7 @@ const NavbarComponent = () => {
                 navbar ? 'text-black' : 'text-white'
               } mx-3 nav-link-hover`}
               to='/contact'
-              style={{ textDecoration: 'none' }}
+              style={disableSelectNoUnderline}
             >
               Contact Us
             </Link>

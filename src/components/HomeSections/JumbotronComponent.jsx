@@ -28,7 +28,7 @@ const JumbotronComponent = () => {
       <Carousel
         data-aos='fade-down'
         data-aos-duration='1000'
-        className='bg-warning text-light jumbotron m-0 d-flex align-items-center justify-content-center flex-column'
+        className='text-light jumbotron m-0 d-flex align-items-center justify-content-center flex-column'
         activeIndex={index}
         onSelect={handleSelect}
         pause='false'

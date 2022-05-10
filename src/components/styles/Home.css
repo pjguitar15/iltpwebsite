@@ -179,3 +179,14 @@
   width: 100%;
   color: white !important;
 }
+
+.awards {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(253, 253, 253, 0.5)
+    ),
+    url('../../assets/award-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

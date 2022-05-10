@@ -80,6 +80,7 @@ const ModalBody = ({
             Add a photo
           </label>
           <input
+            disabled={submitLoading}
             required
             className='form-control'
             type='file'

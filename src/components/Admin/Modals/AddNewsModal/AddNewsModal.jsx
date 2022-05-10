@@ -1,17 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Modal, Button, Form } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 import { db } from '../../../../firebase/firebase-config'
-import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-  serverTimestamp,
-  query,
-  orderby,
-} from 'firebase/firestore'
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 import Axios from 'axios'
 import ModalBody from './ModalBody'
 
@@ -26,10 +16,6 @@ const AddNewsModal = ({ setAddModalShow, addModalShow }) => {
 
   // connect to collections
   const collectionRef = collection(db, 'news-articles')
-
-  useEffect(() => {
-    console.log(cloudinaryUrl)
-  }, [cloudinaryUrl])
 
   // handle submit
   const handleSubmit = async (e) => {
@@ -49,11 +35,13 @@ const AddNewsModal = ({ setAddModalShow, addModalShow }) => {
           content: contentInput,
           img: res.data.url,
           newsType: selectValue,
+          show: true,
           timestamp: serverTimestamp(),
         })
       })
       .then(() => {
-        console.log('Upload is done')
+        // Add React State Realtime Effect here
+
         setSubmitLoading(false)
         alert('Submitted Successfuly!')
         setAddModalShow(false)

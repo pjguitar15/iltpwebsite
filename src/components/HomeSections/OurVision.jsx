@@ -25,7 +25,7 @@ const OurVision = () => {
     MsUserSelect: 'none' /* Internet Explorer/Edge */,
   }
   return (
-    <div className='mission-vision'>
+    <div className='mission-vision bg-light'>
       <Container
         className='text-white text-end'
         style={{ position: 'relative' }}
