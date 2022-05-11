@@ -41,9 +41,9 @@ const NewsSlug = () => {
           id: doc.id,
         }))
       )
+      setIsDataLoading(false)
     }
     getData()
-    setIsDataLoading(false)
   }, [])
 
   // useEffect(() => {

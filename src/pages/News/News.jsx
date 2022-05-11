@@ -29,9 +29,9 @@ const News = () => {
           id: doc.id,
         }))
       )
+      setIsDataLoading(false)
     }
     getData()
-    setIsDataLoading(false)
   }, [])
   return (
     <>
