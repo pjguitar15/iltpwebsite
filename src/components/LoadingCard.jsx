@@ -2,7 +2,7 @@ import React from 'react'
 import './LoadingCard.css'
 const LoadingCard = () => {
   return (
-    <div class='row'>
+    <div className='row'>
       <div className='col-sm-6 col-lg-4 mx-auto p-3'>
         <div className='div shadow-sm w-100' style={{ height: '400px' }}>
           <div className='w-100 skeleton' style={{ height: '230px' }}></div>

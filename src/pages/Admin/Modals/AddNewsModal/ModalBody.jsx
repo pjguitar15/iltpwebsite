@@ -51,6 +51,7 @@ const ModalBody = ({
             News Type
           </label>
           <Form.Select
+            disabled={submitLoading}
             required
             onChange={(e) => setSelectValue(e.target.value)}
             aria-label='Default select example'

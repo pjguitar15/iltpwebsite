@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import iltplogo from '../../assets/iltp-logo.png'
 import AdminOurTeam from './AdminOurTeam'
 import AdminNews from './AdminNews'
-import AdminTestimonies from './AdminTestimonies'
+import AdminTestimonies from './TestimoniesPage/AdminTestimonies'
 import AdminJumbo from './AdminJumbo'
 import AdminNav from './AdminNav'
 import AdminAbout from './AdminAbout'
 
 const AdminPage = ({ setIsLoggedIn }) => {
-  const [isOurTeam, setIsOurTeam] = useState(true)
-  const [isNewsPage, setIsNewsPage] = useState(false)
+  const [isNewsPage, setIsNewsPage] = useState(true)
+  const [isOurTeam, setIsOurTeam] = useState(false)
   const [isTestimonies, setIsTestimonies] = useState(false)
   const [isJumboImages, setIsJumboImages] = useState(false)
   const [isAboutPage, setIsAboutPage] = useState(false)

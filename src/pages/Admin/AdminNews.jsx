@@ -6,7 +6,14 @@ import LoadingCard from '../../components/LoadingCard.jsx'
 import './Admin.css'
 import AddNewsModal from './Modals/AddNewsModal/AddNewsModal.jsx'
 import { db } from '../../firebase/firebase-config'
-import { collection, getDocs, query, orderBy } from 'firebase/firestore'
+import {
+  collection,
+  getDocs,
+  query,
+  orderBy,
+  doc,
+  deleteDoc,
+} from 'firebase/firestore'
 const AdminNews = () => {
   const [firebaseData, setFirebaseData] = useState([])
   const [currentItem, setCurrentItem] = useState({})
@@ -37,19 +44,23 @@ const AdminNews = () => {
   }, [])
 
   // card click handler
-  const cardClicked = (itemId, itemTitle, itemImg, itemContent) => {
+  const openModal = (itemId, itemTitle, itemImg, itemContent, itemDate) => {
     setCurrentItem({
       id: itemId,
       title: itemTitle,
       img: itemImg,
       content: itemContent,
+      date: itemDate,
     })
     setUpdateModalShow(true)
   }
 
   // handle delete
-  const deleteHandler = () => {
-    console.log('delete!')
+  const deleteHandler = async (id) => {
+    const userDoc = doc(db, 'news-articles', id)
+    await deleteDoc(userDoc)
+    alert('Item deleted')
+    window.location.reload(false)
   }
 
   // add news open modal handler
@@ -77,13 +88,7 @@ const AdminNews = () => {
         ) : (
           firebaseData.map((item, index) => (
             <div className='p-2 col-12 col-lg-6 col-xl-4' key={index}>
-              <Card
-                onClick={() =>
-                  cardClicked(item.id, item.title, item.img, item.content)
-                }
-                className='admin-news-card'
-                style={{ cursor: 'pointer' }}
-              >
+              <Card>
                 <Card.Img
                   style={{ height: '100px', objectFit: 'cover' }}
                   variant='top'
@@ -92,8 +97,24 @@ const AdminNews = () => {
                 <Card.Body>
                   <Card.Title>{item.title}</Card.Title>
                   <Card.Text>{item.content.slice(0, 100)}...</Card.Text>
-                  <Button variant='warning me-1 btn-sm'>Update</Button>
-                  <Button onClick={deleteHandler} variant='danger btn-sm'>
+                  <Button
+                    onClick={() =>
+                      openModal(
+                        item.id,
+                        item.title,
+                        item.img,
+                        item.content,
+                        item.date
+                      )
+                    }
+                    variant='warning me-1 btn-sm'
+                  >
+                    Update
+                  </Button>
+                  <Button
+                    onClick={() => deleteHandler(item.id)}
+                    variant='danger btn-sm'
+                  >
                     Delete
                   </Button>
                 </Card.Body>

@@ -41,7 +41,7 @@ const FeaturedNews = () => {
     Aos.init({ duration: 1000 })
   }, [])
   return (
-    <div className='featuredNews'>
+    <div className='featuredNews pb-5'>
       <Container>
         <h3 className='text-center mb-5'>Latest News</h3>
         <div className='row'>

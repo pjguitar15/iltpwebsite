@@ -41,9 +41,8 @@ const AddNewsModal = ({ setAddModalShow, addModalShow }) => {
       })
       .then(() => {
         // Add React State Realtime Effect here
-
         setSubmitLoading(false)
-        alert('Submitted Successfuly!')
+        alert('Submitted Successfuly! Page will refresh')
         setAddModalShow(false)
         // set to emptry string onSubmit
         setTitleInput('')
