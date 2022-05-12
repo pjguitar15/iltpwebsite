@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import WhatWeDo from './WhatWeDo'
 import Objectives from './Objectives'
 import LogoAndDesc from './LogoAndDesc'
@@ -6,9 +6,13 @@ import OurTeam from './OurTeam'
 import { Container } from 'react-bootstrap'
 import '../styles/AboutUs.css'
 
+import Aos from 'aos'
 import 'aos/dist/aos.css'
 
 const AboutUs = () => {
+  useEffect(() => {
+    Aos.init({ duration: 600 })
+  }, [])
   return (
     <div>
       <h1

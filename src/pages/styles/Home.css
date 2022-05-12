@@ -145,6 +145,21 @@
   padding: 200px 0;
 }
 
+.contact-us-bg {
+  background-image: url('../../assets/contacts-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.news-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.5)),
+    url('../../assets/news-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
 .get-in-touch {
   padding: 120px 0;
 }

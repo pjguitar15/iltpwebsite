@@ -8,6 +8,7 @@ import { collection, getDocs, query, orderBy } from 'firebase/firestore'
 
 // animate on scroll
 import 'aos/dist/aos.css'
+import Aos from 'aos'
 
 const News = () => {
   const [firebaseData, setFirebaseData] = useState([])
@@ -19,6 +20,8 @@ const News = () => {
 
   // fetch data from firebase
   useEffect(() => {
+    Aos.init({ duration: 600 })
+
     setIsDataLoading(true)
     const q = query(collectionRef, orderBy('timestamp', 'desc'))
     const getData = async () => {
@@ -38,7 +41,7 @@ const News = () => {
       <div
         data-aos='fade-down'
         data-aos-duration='2000'
-        className='bg-success '
+        className='news-bg'
         style={{ padding: '150px 0' }}
       >
         <h1 className='text-white display-1 text-center py-3 col-lg-4 mx-auto my-0'>

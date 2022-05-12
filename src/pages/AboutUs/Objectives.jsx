@@ -61,7 +61,11 @@ const Objectives = () => {
         <div className='row mx-auto'>
           {/* map here */}
           {cardNames.map((item, index) => (
-            <div className='col-12 col-md-6 col-lg-4 mx-auto mb-4 px-2'>
+            <div
+              data-aos='flip-up'
+              data-aos-duration='1000'
+              className='col-12 col-md-6 col-lg-3 mx-auto mb-4 px-2'
+            >
               <div key={index} className=' position-relative p-0'>
                 <img
                   className='w-100'
@@ -70,8 +74,6 @@ const Objectives = () => {
                   alt='promoteCard'
                 />
                 <div
-                  data-aos='fade-up'
-                  data-aos-duration='1000'
                   style={textCenterOnImg}
                   className='text-center text-white p-0'
                 >

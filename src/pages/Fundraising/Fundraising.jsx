@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import DonationArt from './DonationArt'
 import FundraisingPhotos from './FundraisingPhotos'
-import 'aos/dist/aos.css'
 import '../styles/Fundraising.css'
 import DonateIcon from '../../assets/icons/donate-icon.png'
+
+// animate on scroll imports
+import Aos from 'aos'
+import 'aos/dist/aos.css'
+
 const Fundraising = () => {
+  useEffect(() => {
+    Aos.init({ duration: 600 })
+  }, [])
   return (
     <div>
       <h1

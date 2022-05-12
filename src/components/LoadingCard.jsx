@@ -3,7 +3,7 @@ import './LoadingCard.css'
 const LoadingCard = () => {
   return (
     <div class='row'>
-      <div className='col-4 mx-auto p-3'>
+      <div className='col-sm-6 col-lg-4 mx-auto p-3'>
         <div className='div shadow-sm w-100' style={{ height: '400px' }}>
           <div className='w-100 skeleton' style={{ height: '230px' }}></div>
           <div className='w-100 bg-white  p-3' style={{ height: '170px' }}>
@@ -29,8 +29,8 @@ const LoadingCard = () => {
             ></div>
           </div>
         </div>
-      </div>{' '}
-      <div className='col-4 mx-auto p-3'>
+      </div>
+      <div className='col-sm-6 col-lg-4 mx-auto p-3'>
         <div className='div shadow-sm w-100' style={{ height: '400px' }}>
           <div className='w-100 skeleton' style={{ height: '230px' }}></div>
           <div className='w-100 bg-white  p-3' style={{ height: '170px' }}>
@@ -56,8 +56,8 @@ const LoadingCard = () => {
             ></div>
           </div>
         </div>
-      </div>{' '}
-      <div className='col-4 mx-auto p-3'>
+      </div>
+      <div className='col-sm-6 col-lg-4 mx-auto p-3'>
         <div className='div shadow-sm w-100' style={{ height: '400px' }}>
           <div className='w-100 skeleton' style={{ height: '230px' }}></div>
           <div className='w-100 bg-white  p-3' style={{ height: '170px' }}>
@@ -83,8 +83,8 @@ const LoadingCard = () => {
             ></div>
           </div>
         </div>
-      </div>{' '}
-      <div className='col-4 mx-auto p-3'>
+      </div>
+      <div className='col-sm-6 col-lg-4 mx-auto p-3'>
         <div className='div shadow-sm w-100' style={{ height: '400px' }}>
           <div className='w-100 skeleton' style={{ height: '230px' }}></div>
           <div className='w-100 bg-white  p-3' style={{ height: '170px' }}>
@@ -110,13 +110,13 @@ const LoadingCard = () => {
             ></div>
           </div>
         </div>
-      </div>{' '}
-      <div className='col-4 mx-auto p-3'>
-        <div className='div bg-warning shadow-sm ' style={{ height: '400px' }}>
+      </div>
+      <div className='col-sm-6 col-lg-4 mx-auto p-3'>
+        <div className='div shadow-sm w-100' style={{ height: '400px' }}>
           <div className='w-100 skeleton' style={{ height: '230px' }}></div>
           <div className='w-100 bg-white  p-3' style={{ height: '170px' }}>
             <div
-              className='col-7 roundedEdge skeleton'
+              className='col-7 skeleton roundedEdge'
               style={{ height: '28px' }}
             ></div>
             <div
@@ -137,13 +137,13 @@ const LoadingCard = () => {
             ></div>
           </div>
         </div>
-      </div>{' '}
-      <div className='col-4 mx-auto p-3'>
-        <div className='div bg-warning shadow-sm' style={{ height: '400px' }}>
+      </div>
+      <div className='col-sm-6 col-lg-4 mx-auto p-3'>
+        <div className='div shadow-sm w-100' style={{ height: '400px' }}>
           <div className='w-100 skeleton' style={{ height: '230px' }}></div>
           <div className='w-100 bg-white  p-3' style={{ height: '170px' }}>
             <div
-              className='col-7 roundedEdge skeleton'
+              className='col-7 skeleton roundedEdge'
               style={{ height: '28px' }}
             ></div>
             <div

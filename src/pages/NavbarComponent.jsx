@@ -38,7 +38,8 @@ const NavbarComponent = () => {
 
   return (
     <Navbar
-      className={`bg-md-white  shadow-sm fixed-top ${
+      // style={{ width: '100vh' }}
+      className={`bg-md-white shadow-sm fixed-top ${
         navbar ? 'bg-white shadow-sm' : 'bg-none shadow-none'
       }`}
       expand='lg'
