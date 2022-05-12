@@ -14,6 +14,7 @@ import AdminLogin from './pages/Admin/AdminLogin'
 import AdminPage from './pages/Admin/AdminPage'
 import MessageOnTop from './pages/HomeSections/MessageOnTop'
 import ProtectedRoute from './pages/Admin/ProtectedRoute'
+import UpdateTestimonies from './pages/Admin/TestimoniesPage/UpdateTestimonies'
 
 
 // useAuth
@@ -51,6 +52,7 @@ const App = () => {
           {/* Protected Route */}
           <Route element={<ProtectedRoute test={true} isLoggedin={isLoggedin} />}>
             <Route path='/adminpage' element={<AdminPage setIsLoggedIn={setIsLoggedIn} />} />
+            <Route path='/adminpage/testimonies/:id' element={<UpdateTestimonies setIsLoggedIn={setIsLoggedIn} />} />
           </Route>
 
         </Routes>

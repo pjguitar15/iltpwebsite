@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import './Slug.css'
 import 'aos/dist/aos.css'
 import LoadingCard from '../../components/LoadingCard'

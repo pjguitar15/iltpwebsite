@@ -81,7 +81,10 @@ const AdminNews = () => {
       />
       <h1>Configure News Page</h1>
       <p className='col-7'>Hello Admin! You can add, edit, and delete news</p>
-      <Button onClick={addNewsHandler}>Add News</Button>
+      <hr />
+      <Button className='mb-3' onClick={addNewsHandler}>
+        Add News
+      </Button>
       <div className='row'>
         {isLoading ? (
           <LoadingCard />
