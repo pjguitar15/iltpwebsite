@@ -27,7 +27,7 @@ const OurMission = () => {
 
   return (
     <div className='bg-success mission-vision'>
-      <Container className='text-white' style={{ position: 'relative' }}>
+      <Container className='text-white px-4' style={{ position: 'relative' }}>
         <h1 data-aos='fade-left' style={missionStyle}>
           Mission
         </h1>

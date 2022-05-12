@@ -1,14 +1,22 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
+// import photos
+import VolunteerPhoto from '../../assets/volunteer.jpg'
 const WhatWeDo = () => {
   return (
     <div>
       <div className='py-3 bg-success'>
-        <h1 className='bebas text-center text-white m-0'>What we do</h1>
+        <h1 className='bebas text-center text-white m-0'>
+          Volunteer Service and Cultural Learning
+        </h1>
       </div>
       <Container data-aos='fade-right' data-aos-duration='2000'>
+        {/* Long photo here */}
+        <div className='col-12 mt-5'>
+          <img className='w-100 h-100' src={VolunteerPhoto} alt='Volunteer' />
+        </div>
         {/* Volunteer Service and Cultural Learning */}
-        <div className='row' style={{ margin: '100px 0' }}>
+        <div className='row' style={{ margin: '40px 0' }}>
           <h4 className='mb-4'>Volunteer Service and Cultural Learning</h4>
           <div className='col-md-6'>
             <p className='about-paragraph'>

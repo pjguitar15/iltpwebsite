@@ -27,7 +27,7 @@ const OurVision = () => {
   return (
     <div className='mission-vision bg-light'>
       <Container
-        className='text-white text-end'
+        className='text-white text-end px-4'
         style={{ position: 'relative' }}
       >
         <h1 data-aos='fade-right' style={visionStyle}>

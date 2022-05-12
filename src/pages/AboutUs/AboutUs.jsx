@@ -28,14 +28,13 @@ const AboutUs = () => {
 
       {/* Our team section */}
       <OurTeam />
-      <div className='text-center py-4 my-4 text-decoration-underline'>
+      <div className='text-center py-4 mb-5 mt-4 text-decoration-underline'>
         <h4>Our Vision is One Family under God beyond race and religion.</h4>
         <h4>
           Our Mission is to raise future leaders by impacting lives towards
           peace.
         </h4>
       </div>
-      <hr />
     </div>
   )
 }

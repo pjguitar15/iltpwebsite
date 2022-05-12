@@ -37,10 +37,20 @@
 }
 
 .jumbo-header {
-  font-size: 55px;
+  font-size: 35px;
   font-family: 'Montserrat';
   font-weight: 500;
 }
+
+/* media query for jumbotron text */
+@media (min-width: 992px) {
+  .jumbo-header {
+    font-size: 55px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+  }
+}
+
 .mission-vision div {
   padding: 100px 0;
 }

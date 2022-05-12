@@ -86,6 +86,7 @@ const NewsSlug = () => {
                         color: '#3C3744',
                         textAlign: 'justify',
                         fontWeight: '400',
+                        whiteSpace: 'pre-line',
                       }}
                       className='slug-content mt-2'
                     >

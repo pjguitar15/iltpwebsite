@@ -6,7 +6,7 @@ import 'aos/dist/aos.css'
 
 const GetInTouch = () => {
   return (
-    <div className='get-in-touch'>
+    <div className='get-in-touch bg-light'>
       <Container>
         <h1
           data-aos='zoom-in'

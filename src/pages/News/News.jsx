@@ -89,7 +89,6 @@ const News = () => {
           )}
         </div>
       </Container>
-      <hr />
     </>
   )
 }

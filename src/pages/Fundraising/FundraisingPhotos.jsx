@@ -51,7 +51,7 @@ const FundraisingPhotos = () => {
               </Col>
             </Row>
             <hr />
-            <div className='shadow-sm rounded mt-5 py-3'>
+            <div className='mt-5 py-3'>
               <div className='text-center'>
                 <i
                   className='bi bi-heart-fill text-danger'
