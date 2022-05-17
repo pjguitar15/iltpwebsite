@@ -11,7 +11,7 @@ const JoinUs = () => {
   return (
     // background image is in join-us class
     <div className='join-us text-center'>
-      <Container data-aos='zoom-in' data-aos-duration='500'>
+      <Container>
         <div className='col-10 mx-auto become-a-member-div p-4 rounded-2 mb-4 bg-white'>
           <h1 className='join-us-h1 bebas text-warning display-1 m-0'>
             Join Us!

@@ -17,11 +17,7 @@ const Training = () => {
     <div className='bg-dark training text-center text-lg-start'>
       <Container>
         <div className='row'>
-          <div
-            data-aos='fade-right'
-            data-aos-duration='300'
-            className='col-lg-7 col-12'
-          >
+          <div className='col-lg-7 col-12'>
             <h1 className='text-left m-0 future-leaders bebas'>
               The Future Leaders
             </h1>
@@ -37,11 +33,7 @@ const Training = () => {
               Learn more
             </Button>
           </div>
-          <div
-            data-aos='fade-left'
-            data-aos-duration='300'
-            className='col-lg-5 col-12'
-          >
+          <div className='col-lg-5 col-12'>
             <img
               className='poiting-at-shirt-img d-none d-lg-inline'
               src={PointingAtShirtImg}

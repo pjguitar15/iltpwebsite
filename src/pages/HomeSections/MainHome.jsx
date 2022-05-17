@@ -24,7 +24,7 @@ const MainHome = () => {
       <Awards />
       <OurMission data-aos='fade-up' />
       <OurVision data-aos='fade-up' />
-      <FeaturedNewsSection data-aos='fade-up' />
+      <FeaturedNewsSection />
       <LatestNews data-aos='fade-up' />
       <Testimonies data-aos='fade-up' />
       <Training data-aos='fade-up' />

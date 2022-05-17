@@ -3,7 +3,7 @@ import { Button, Card } from 'react-bootstrap'
 
 const FeaturedNewsCard = ({ item, navigate }) => {
   return (
-    <div data-aos='zoom-in' className='p2 my-3 col-md-6 col-lg-4'>
+    <div data-aos='zoom-in' className='col-md-6 col-lg-4'>
       <Card>
         <Card.Img
           style={{

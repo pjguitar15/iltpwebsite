@@ -27,7 +27,7 @@ const TestimonyCarousel = ({ index, handleSelect, loading, testimonyData }) => {
                   width: '100px',
                 }}
                 src={item.img}
-                alt=''
+                alt='iltp members'
               />
             </div>
             <div className='testimony-person mt-4 bg-light mx-auto'>
