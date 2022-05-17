@@ -1,13 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
-const TestimonyCard = ({ item }) => {
-  let navigate = useNavigate()
+import ConfirmModal from '../../../components/ConfirmModal'
 
-  //   Navigate and take id
+const TestimonyCard = ({ item }) => {
+  // Modal State
+  const [show, setShow] = useState(false)
+  // Delete loading state
+  const [deleteLoading, setDeleteLoading] = useState(false)
+  let navigate = useNavigate()
+  const handleShow = () => setShow(true)
+
   return (
     <div className='col-sm-6 col-lg-6 col-xl-3 my-4 p-2'>
+      <ConfirmModal
+        deleteLoading={deleteLoading}
+        setDeleteLoading={setDeleteLoading}
+        item={item}
+        show={show}
+        setShow={setShow}
+        handleShow={handleShow}
+      />
       <div className='border'>
         <div
           className='testimony-image col-12 mx-auto'
@@ -31,7 +45,7 @@ const TestimonyCard = ({ item }) => {
           >
             Update
           </Button>
-          <Button size='sm' variant='danger'>
+          <Button onClick={handleShow} size='sm' variant='danger'>
             Delete
           </Button>
         </div>

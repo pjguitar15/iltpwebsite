@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import { db } from '../../../../firebase/firebase-config'
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 import Axios from 'axios'
-import ModalBody from './ModalBody'
+import AddNewsForm from '../../../../components/AddNewsForm'
 
 const AddNewsModal = ({ setAddModalShow, addModalShow }) => {
   const [titleInput, setTitleInput] = useState('')
@@ -11,7 +11,6 @@ const AddNewsModal = ({ setAddModalShow, addModalShow }) => {
   const [contentInput, setContentInput] = useState('')
   const [submitLoading, setSubmitLoading] = useState(false)
   const [imageSelected, setImageSelected] = useState()
-  const [cloudinaryUrl, setCloudinaryUrl] = useState('')
   const [selectValue, setSelectValue] = useState('')
 
   // connect to collections
@@ -67,7 +66,7 @@ const AddNewsModal = ({ setAddModalShow, addModalShow }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ModalBody
+          <AddNewsForm
             handleSubmit={handleSubmit}
             submitLoading={submitLoading}
             setTitleInput={setTitleInput}

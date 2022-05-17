@@ -5,6 +5,9 @@ import cultivateCard from '../../assets/objectives-imgs/cultivate.png'
 import enhanceCard from '../../assets/objectives-imgs/enhance.png'
 import experienceCard from '../../assets/objectives-imgs/experience.png'
 import promoteCard from '../../assets/objectives-imgs/promote.png'
+
+// Objectives Card
+import ObjectivesCard from '../../components/ObjectivesCard'
 import 'aos/dist/aos.css'
 const Objectives = () => {
   const cardNames = [
@@ -61,37 +64,13 @@ const Objectives = () => {
         <div className='row mx-auto'>
           {/* map here */}
           {cardNames.map((item, index) => (
-            <div
-              data-aos='flip-up'
-              data-aos-duration='1000'
-              className='col-12 col-md-6 col-lg-3 mx-auto mb-4 px-2'
-            >
-              <div key={index} className=' position-relative p-0'>
-                <img
-                  className='w-100'
-                  style={{ position: 'relative' }}
-                  src={item.card}
-                  alt='promoteCard'
-                />
-                <div
-                  style={textCenterOnImg}
-                  className='text-center text-white p-0'
-                >
-                  <h4 className='m-0 pb-2 px-2' style={bottomBorder}>
-                    {item.title}
-                  </h4>
-                  <p
-                    className='mt-4'
-                    style={{
-                      fontWeight: '500',
-                      fontSize: '20px',
-                    }}
-                  >
-                    {item.text}
-                  </p>
-                </div>
-              </div>
-            </div>
+            // textCenterOnImg, bottomBorder,
+            <ObjectivesCard
+              key={index}
+              item={item}
+              textCenterOnImg={textCenterOnImg}
+              bottomBorder={bottomBorder}
+            />
           ))}
         </div>
       </div>

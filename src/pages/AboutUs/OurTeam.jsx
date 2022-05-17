@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap'
 import '../styles/AboutUs.css'
 import { OurTeamData } from '../../Data/OurTeamData'
 import 'aos/dist/aos.css'
+import OurTeamCard from '../../components/OurTeamCard'
 const OurTeam = () => {
   const [data] = useState(OurTeamData)
   return (
@@ -17,23 +18,7 @@ const OurTeam = () => {
       <Container className='py-5' style={{ marginTop: '60px' }}>
         <div className='row'>
           {data.map((item, index) => (
-            <div
-              data-aos='fade-down'
-              data-aos-duration='1000'
-              key={index}
-              className='col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4'
-            >
-              <div style={{ height: '20rem' }}>
-                <img
-                  alt='tests'
-                  className='w-100 h-100'
-                  style={{ objectFit: 'cover' }}
-                  src={item.image}
-                />
-              </div>
-              <h6 className='mt-3'>{item.name}</h6>
-              <div className='org-title'>{item.position}</div>
-            </div>
+            <OurTeamCard key={index} item={item} />
           ))}
         </div>
       </Container>

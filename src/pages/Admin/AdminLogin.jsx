@@ -28,7 +28,6 @@ const AdminLogin = ({
     } else {
       alert('Invalid Username/Password')
       setIsLoggedIn(false)
-      console.log(isLoggedin)
     }
   }
   return (

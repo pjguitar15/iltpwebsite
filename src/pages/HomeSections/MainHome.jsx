@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import JumbotronComponent from './JumbotronComponent'
-import FeaturedNews from './FeaturedNews'
+import FeaturedNewsSection from './FeaturedNewsSection'
 import LatestNews from './LatestNews'
 import OurMission from './OurMission'
 import OurVision from './OurVision'
@@ -24,7 +24,7 @@ const MainHome = () => {
       <Awards />
       <OurMission data-aos='fade-up' />
       <OurVision data-aos='fade-up' />
-      <FeaturedNews data-aos='fade-up' />
+      <FeaturedNewsSection data-aos='fade-up' />
       <LatestNews data-aos='fade-up' />
       <Testimonies data-aos='fade-up' />
       <Training data-aos='fade-up' />

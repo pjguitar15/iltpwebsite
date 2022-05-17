@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container, Carousel } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import cert2022 from '../../assets/iltp-cert/cert-2022.jpg'
 import cert2020 from '../../assets/iltp-cert/cert-2020.jpg'
 import cert2019 from '../../assets/iltp-cert/cert-2019.jpg'
@@ -12,6 +12,7 @@ import certOther1 from '../../assets/iltp-cert/cert-other-1.jpg'
 import certOther2 from '../../assets/iltp-cert/cert-other-2.jpg'
 import certOther3 from '../../assets/iltp-cert/cert-other-3.jpg'
 import presidentAward from '../../assets/PVSAimage.png'
+import AwardsCarousel from '../../components/AwardsCarousel'
 
 const Awards = () => {
   const [index, setIndex] = useState(0)
@@ -69,31 +70,11 @@ const Awards = () => {
           ILTP PVSA Award 2015 - 2022
         </h1>
       </Container>
-      <Carousel
-        variant='dark'
-        data-aos='fade-down'
-        data-aos-duration='1000'
-        className='text-light m-0 d-flex align-items-center justify-content-center flex-column'
-        activeIndex={index}
-        onSelect={handleSelect}
-        pause='false'
-      >
-        {certificates.map((item, index) => (
-          <Carousel.Item key={index} interval={6000} className='px-5'>
-            <div className='row px-5 py-5 container mx-auto'>
-              <div className='col-md-6 col-lg-4 mx-auto mb-3'>
-                <img className='w-100 shadow' src={item.cert1} alt='cert' />
-              </div>
-              <div className='col-md-6 col-lg-4 mx-auto mb-3'>
-                <img className='w-100 shadow' src={item.cert2} alt='cert' />
-              </div>
-              <div className='col-md-6 col-lg-4 mx-auto mb-3'>
-                <img className='w-100 shadow' src={item.cert3} alt='cert' />
-              </div>
-            </div>
-          </Carousel.Item>
-        ))}
-      </Carousel>
+      <AwardsCarousel
+        index={index}
+        handleSelect={handleSelect}
+        certificates={certificates}
+      />
     </div>
   )
 }
