@@ -17,12 +17,13 @@ const AdminNav = ({ iltplogo, handleLogout, location }) => {
           location.pathname.slice(7) === 'news'
             ? 'bg-light text-dark'
             : 'text-light'
-        }m-0 py-3 admin-link`}
+        } m-0 py-3 admin-link`}
       >
         <h6 className={`m-0`}>
           <i className='bi bi-newspaper me-2'></i>News Page
         </h6>
       </div>
+
       <div
         onClick={() => navigate('/admin/testimonies')}
         className={`${

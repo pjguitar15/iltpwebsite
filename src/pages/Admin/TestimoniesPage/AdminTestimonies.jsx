@@ -35,16 +35,22 @@ const AdminTestimonies = () => {
   return (
     <div>
       <h1>Testimonies Pages</h1>
-      <Button onClick={() => navigate('/adminpage/add-testimony')}>
-        New Testimony
-      </Button>
+      <p className='lead'>You can add, edit, and delete testimonies here</p>
       <hr />
+      <Button size='sm' onClick={() => navigate('/admin/add-testimony')}>
+        Add Testimony
+      </Button>
       <div className='row'>
         {isDataLoading ? (
           <LoadingCard />
         ) : (
           firebaseData.map((item, index) => (
-            <TestimonyCard key={index} item={item} />
+            <TestimonyCard
+              setFirebaseData={setFirebaseData}
+              firebaseData={firebaseData}
+              key={index}
+              item={item}
+            />
           ))
         )}
       </div>

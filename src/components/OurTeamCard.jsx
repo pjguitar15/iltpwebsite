@@ -12,7 +12,7 @@ const OurTeamCard = ({ item }) => {
           alt='tests'
           className='w-100 h-100'
           style={{ objectFit: 'cover' }}
-          src={item.image}
+          src={item.img}
         />
       </div>
       <h6 className='mt-3'>{item.name}</h6>

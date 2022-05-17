@@ -7,10 +7,10 @@ const UpdateTestimonyForm = ({
   navigate,
 }) => {
   return (
-    <div>
+    <div className='py-4 border bg-light'>
       {/* Form */}
-      <h4 className='text-center mb-4'>Update Testimony Item</h4>
       <Form onSubmit={updateHandler} className='col-xl-6 mx-auto my-3'>
+        <h4 className='text-start mb-4 display-5'>Update Testimony Item</h4>
         {/* Image */}
         <div className='col-3'>
           <img className='w-100 rounded' src={currItem[0].img} alt='' />
@@ -18,7 +18,7 @@ const UpdateTestimonyForm = ({
         <Form.Group>
           <Form.Label className='form-text'>Name</Form.Label>
           <Form.Control
-            value={currItem[0].name || 'not loaded'}
+            value={currItem[0].name}
             onChange={(e) =>
               setCurrItem([{ ...currItem[0], name: e.target.value }])
             }
@@ -27,7 +27,7 @@ const UpdateTestimonyForm = ({
         <Form.Group>
           <Form.Label className='form-text'>Batch</Form.Label>
           <Form.Control
-            value={currItem[0].batchYear || 'not loaded'}
+            value={currItem[0].batchYear}
             onChange={(e) =>
               setCurrItem([{ ...currItem[0], batchYear: e.target.value }])
             }
@@ -39,7 +39,7 @@ const UpdateTestimonyForm = ({
             className='form-control'
             id='exampleFormControlTextarea1'
             rows='3'
-            value={currItem[0].content || 'not loaded'}
+            value={currItem[0].content}
             onChange={(e) =>
               setCurrItem([{ ...currItem[0], content: e.target.value }])
             }

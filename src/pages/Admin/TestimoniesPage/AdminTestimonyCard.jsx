@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
-import ConfirmModal from '../../../components/ConfirmModal'
+import ConfirmModal from '../../../components/ConfirmTestimonyDeleteModal'
 
-const TestimonyCard = ({ item }) => {
+const TestimonyCard = ({ item, firebaseData, setFirebaseData }) => {
   // Modal State
   const [show, setShow] = useState(false)
   // Delete loading state
@@ -15,6 +15,8 @@ const TestimonyCard = ({ item }) => {
   return (
     <div className='col-sm-6 col-lg-6 col-xl-3 my-4 p-2'>
       <ConfirmModal
+        firebaseData={firebaseData}
+        setFirebaseData={setFirebaseData}
         deleteLoading={deleteLoading}
         setDeleteLoading={setDeleteLoading}
         item={item}
@@ -39,7 +41,7 @@ const TestimonyCard = ({ item }) => {
           <h6>Batch: {item.batchYear}</h6>
           <p>{item.content.slice(0, 20)}...</p>
           <Button
-            onClick={() => navigate(`/adminpage/testimonies/${item.id}`)}
+            onClick={() => navigate(`/admin/testimonies/${item.id}`)}
             size='sm'
             variant='warning me-2'
           >

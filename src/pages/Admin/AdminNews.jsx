@@ -59,8 +59,8 @@ const AdminNews = () => {
   const deleteHandler = async (id) => {
     const userDoc = doc(db, 'news-articles', id)
     await deleteDoc(userDoc)
+    setFirebaseData(firebaseData.filter((element) => element.id !== id))
     alert('Item deleted')
-    window.location.reload(false)
   }
 
   // add news open modal handler
@@ -76,13 +76,15 @@ const AdminNews = () => {
         updateModalShow={updateModalShow}
       />
       <AddNewsModal
+        firebaseData={firebaseData}
+        setFirebaseData={setFirebaseData}
         setAddModalShow={setAddModalShow}
         addModalShow={addModalShow}
       />
       <h1>Configure News Page</h1>
-      <p className='col-7'>Hello Admin! You can add, edit, and delete news</p>
+      <p className='col-7 lead'>You can add, edit, and delete news here</p>
       <hr />
-      <Button className='mb-3' onClick={addNewsHandler}>
+      <Button size='sm' className='mb-3' onClick={addNewsHandler}>
         Add News
       </Button>
       <div className='row'>

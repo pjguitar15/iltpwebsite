@@ -13,15 +13,17 @@ import ErrorPage from './pages/ErrorPage/ErrorPage'
 import AdminLogin from './pages/Admin/AdminLogin'
 import MessageOnTop from './pages/HomeSections/MessageOnTop'
 import ProtectedRoute from './pages/Admin/ProtectedRoute'
-import UpdateTestimonies from './pages/Admin/TestimoniesPage/UpdateTestimonies'
-import AddTestimony from './pages/Admin/TestimoniesPage/AddTestimony'
 
 // admin pages
 import AdminNewsPage from './pages/Admin/AdminPages/AdminNewsPage'
 import AdminTestimonyPage from './pages/Admin/AdminPages/AdminTestimonyPage'
 import AdminJumbotronPage from './pages/Admin/AdminPages/AdminJumbotronPage'
+import UpdateTestimonies from './pages/Admin/TestimoniesPage/UpdateTestimonies'
+import AddTestimony from './pages/Admin/TestimoniesPage/AddTestimony'
 import AdminAboutPage from './pages/Admin/AdminPages/AdminAboutPage'
+import AddTeamMemberForm from './components/AddTeamMemberForm'
 import AdminTeamPage from './pages/Admin/AdminPages/AdminTeamPage'
+import AdminUpdateTeam from './pages/Admin/AdminUpdateTeam'
 
 // useAuth
 //  export const useAuth = () => {
@@ -68,8 +70,12 @@ const App = () => {
             <Route path='/admin/team' element={<AdminTeamPage setIsLoggedIn={setIsLoggedIn} />} />
 
             {/* Add Testimony Route */}
-            <Route path='/adminpage/add-testimony' element={<AddTestimony />} />
-            <Route path='/adminpage/testimonies/:id' element={<UpdateTestimonies setIsLoggedIn={setIsLoggedIn} />} />
+            <Route path='/admin/add-testimony' element={<AddTestimony />} />
+            <Route path='/admin/testimonies/:id' element={<UpdateTestimonies setIsLoggedIn={setIsLoggedIn} />} />
+
+            {/* Add Team Member Route */}
+            <Route path='/admin/team/add' element={<AddTeamMemberForm />} />
+            <Route path='/admin/team/update/:id' element={<AdminUpdateTeam />} />
           </Route>
 
         </Routes>

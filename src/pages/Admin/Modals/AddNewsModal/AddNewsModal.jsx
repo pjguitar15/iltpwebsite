@@ -5,7 +5,12 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 import Axios from 'axios'
 import AddNewsForm from '../../../../components/AddNewsForm'
 
-const AddNewsModal = ({ setAddModalShow, addModalShow }) => {
+const AddNewsModal = ({
+  setAddModalShow,
+  addModalShow,
+  firebaseData,
+  setFirebaseData,
+}) => {
   const [titleInput, setTitleInput] = useState('')
   const [dateInput, setDateInput] = useState('')
   const [contentInput, setContentInput] = useState('')
@@ -37,12 +42,26 @@ const AddNewsModal = ({ setAddModalShow, addModalShow }) => {
           show: true,
           timestamp: serverTimestamp(),
         })
+        // fake add to array
+        setFirebaseData([
+          {
+            title: titleInput,
+            date: dateInput,
+            content: contentInput,
+            img: res.data.url,
+            newsType: selectValue,
+            show: true,
+            timestamp: serverTimestamp(),
+          },
+          ...firebaseData,
+        ])
       })
       .then(() => {
         // Add React State Realtime Effect here
         setSubmitLoading(false)
         alert('Submitted Successfuly! Page will refresh')
         setAddModalShow(false)
+
         // set to emptry string onSubmit
         setTitleInput('')
         setDateInput('')

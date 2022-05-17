@@ -4,12 +4,28 @@ import '../styles/Home.css'
 import { JumbotronImageUrls } from '../../Data/JumbotronImageUrls'
 import { useNavigate } from 'react-router-dom'
 
+// Firebase import
+import { db } from '../../firebase/firebase-config'
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+  serverTimestamp,
+  query,
+  orderBy,
+} from 'firebase/firestore'
+
 // animate on scroll
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 
 const JumbotronComponent = () => {
   const [index, setIndex] = useState(0)
+  const [firebaseData, setFirebaseData] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   // useNavigate
   const navigate = useNavigate()
@@ -18,6 +34,20 @@ const JumbotronComponent = () => {
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex)
   }
+
+  // fetch data from firebase
+  useEffect(() => {
+    setIsLoading(true)
+    const collectionRef = collection(db, 'jumbotron-section')
+    const q = query(collectionRef)
+    const getData = async () => {
+      const data = await getDocs(q)
+      setFirebaseData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+      setIsLoading(false)
+    }
+
+    getData()
+  }, [])
 
   useEffect(() => {
     Aos.init({ duration: 2000 })
@@ -44,15 +74,26 @@ const JumbotronComponent = () => {
               />
             </div>
             <Carousel.Caption className='text-start'>
-              <h1 className='jumbo-header'>Impacting Lives</h1>
-              <h1 className='jumbo-header'>Towards Peace</h1>
+              <h1 className='jumbo-header col-md-7 col-xl-6'>
+                {isLoading ? (
+                  <span>Impacting Lives Towards Peace</span>
+                ) : (
+                  firebaseData.map((item, index) => <span>{item.title}</span>)
+                )}
+              </h1>
               <p
                 className='col-md-6'
                 style={{ fontSize: '23px', fontWeight: '100' }}
               >
-                We empower you with everything you need to be a successful and
-                insightful leader. Develop the abilities and build a strong
-                foundation as someone who can leader the community.
+                {isLoading ? (
+                  <span>
+                    We empower you with everything you need to be a successful
+                    and insightful leader. Develop the abilities and build a
+                    strong foundation as someone who can leader the community.
+                  </span>
+                ) : (
+                  firebaseData.map((item, index) => <span>{item.content}</span>)
+                )}
               </p>
               <p>
                 <Button

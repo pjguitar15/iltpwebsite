@@ -1,11 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import '../styles/AboutUs.css'
 import { OurTeamData } from '../../Data/OurTeamData'
 import 'aos/dist/aos.css'
 import OurTeamCard from '../../components/OurTeamCard'
+// firebase import
+import { db } from '../../firebase/firebase-config'
+import {
+  collection,
+  getDocs,
+  query,
+} from 'firebase/firestore'
 const OurTeam = () => {
   const [data] = useState(OurTeamData)
+  const [firebaseData, setFirebaseData] = useState([])
+  // fetch data from firebase
+  useEffect(() => {
+    const collectionRef = collection(db, 'team')
+    const q = query(collectionRef)
+    const getUsers = async () => {
+      const data = await getDocs(q)
+      setFirebaseData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    }
+
+    getUsers()
+  }, [])
   return (
     <div>
       <div className='bg-dark py-5'>
@@ -17,7 +36,7 @@ const OurTeam = () => {
       </div>
       <Container className='py-5' style={{ marginTop: '60px' }}>
         <div className='row'>
-          {data.map((item, index) => (
+          {firebaseData.map((item, index) => (
             <OurTeamCard key={index} item={item} />
           ))}
         </div>

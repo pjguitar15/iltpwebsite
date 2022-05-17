@@ -5,7 +5,7 @@ import { db } from '../../../firebase/firebase-config'
 import { collection, getDocs, updateDoc, doc, query } from 'firebase/firestore'
 import UpdateTestimonyForm from '../../../components/UpdateTestimonyForm'
 const UpdateTestimonies = () => {
-  const [currItem, setCurrItem] = useState([{ name: true }])
+  const [currItem, setCurrItem] = useState([{}])
   let { id } = useParams()
   let navigate = useNavigate()
 
@@ -32,12 +32,12 @@ const UpdateTestimonies = () => {
     }
     await updateDoc(userDoc, newFields)
     alert('Update success!')
-    navigate('/adminpage')
+    navigate('/admin/testimonies')
   }
 
   return (
-    <div className='bg-dark'>
-      <div className='bg-light p-5'>
+    <div>
+      <div className='p-5'>
         <Container>
           <UpdateTestimonyForm
             updateHandler={updateHandler}

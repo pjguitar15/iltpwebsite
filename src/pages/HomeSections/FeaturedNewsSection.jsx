@@ -46,7 +46,7 @@ const FeaturedNews = () => {
   return (
     <div className='featuredNews'>
       <Container>
-        <h3 className='text-center mb-5'>Featured News</h3>
+        <h3 className='text-center mt-3 mb-5'>Featured News</h3>
         <div className='row'>
           {isDataLoading ? (
             <LoadingCard />

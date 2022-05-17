@@ -5,6 +5,8 @@ import { deleteDoc, doc } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
 
 const ConfirmModal = ({
+  firebaseData,
+  setFirebaseData,
   show,
   setShow,
   deleteLoading,
@@ -20,7 +22,10 @@ const ConfirmModal = ({
     await deleteDoc(userDoc)
     setDeleteLoading(false)
     setShow(false)
-    navigate('/adminpage')
+    // Remove item from state to simulate realtime deletion
+    setFirebaseData(firebaseData.filter((element) => element.id !== item.id))
+
+    navigate('/admin/testimonies')
   }
 
   return (
