@@ -57,7 +57,7 @@ const UpdateTestimonyForm = ({
         <Button
           variant='primary'
           className='col-8 mt-1'
-          onClick={() => navigate('/adminpage')}
+          onClick={() => navigate('/admin/testimonies')}
           size='sm'
         >
           Go Back

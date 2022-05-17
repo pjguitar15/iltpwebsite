@@ -22,7 +22,7 @@ const AdminLogin = ({
     if (user === testUser && password === testPassword) {
       alert('Login Success')
       setIsLoggedIn(true)
-      navigate('/adminpage')
+      navigate('/admin/news')
       setUser('')
       setPassword('')
     } else {

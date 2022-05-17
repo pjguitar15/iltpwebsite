@@ -50,7 +50,7 @@ const AddTestimony = () => {
         setBatchYearInput('')
         setContentInput('')
         // navigate to adminpage
-        navigate('/adminpage')
+        navigate('/admin/testimonies')
       })
       .catch((err) => {
         alert(err)

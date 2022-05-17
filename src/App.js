@@ -11,12 +11,17 @@ import ContactUs from './pages/ContactUs/ContactUs'
 import NewsSlug from './pages/News/NewsSlug'
 import ErrorPage from './pages/ErrorPage/ErrorPage'
 import AdminLogin from './pages/Admin/AdminLogin'
-import AdminPage from './pages/Admin/AdminPage'
 import MessageOnTop from './pages/HomeSections/MessageOnTop'
 import ProtectedRoute from './pages/Admin/ProtectedRoute'
 import UpdateTestimonies from './pages/Admin/TestimoniesPage/UpdateTestimonies'
 import AddTestimony from './pages/Admin/TestimoniesPage/AddTestimony'
 
+// admin pages
+import AdminNewsPage from './pages/Admin/AdminPages/AdminNewsPage'
+import AdminTestimonyPage from './pages/Admin/AdminPages/AdminTestimonyPage'
+import AdminJumbotronPage from './pages/Admin/AdminPages/AdminJumbotronPage'
+import AdminAboutPage from './pages/Admin/AdminPages/AdminAboutPage'
+import AdminTeamPage from './pages/Admin/AdminPages/AdminTeamPage'
 
 // useAuth
 //  export const useAuth = () => {
@@ -52,7 +57,16 @@ const App = () => {
 
           {/* Protected Route */}
           <Route element={<ProtectedRoute test={true} isLoggedin={isLoggedin} />}>
-            <Route path='/adminpage' element={<AdminPage setIsLoggedIn={setIsLoggedIn} />} />
+            <Route path='/admin/news' element={<AdminNewsPage setIsLoggedIn={setIsLoggedIn} />} />
+            {/* adminpage/testimonies */}
+            <Route path='/admin/testimonies' element={<AdminTestimonyPage setIsLoggedIn={setIsLoggedIn} />} />
+            {/* adminpage/jumbotron */}
+            <Route path='/admin/jumbotron' element={<AdminJumbotronPage setIsLoggedIn={setIsLoggedIn} />} />
+            {/* adminpage/about */}
+            <Route path='/admin/about' element={<AdminAboutPage setIsLoggedIn={setIsLoggedIn} />} />
+            {/* adminpage/our-team */}
+            <Route path='/admin/team' element={<AdminTeamPage setIsLoggedIn={setIsLoggedIn} />} />
+
             {/* Add Testimony Route */}
             <Route path='/adminpage/add-testimony' element={<AddTestimony />} />
             <Route path='/adminpage/testimonies/:id' element={<UpdateTestimonies setIsLoggedIn={setIsLoggedIn} />} />

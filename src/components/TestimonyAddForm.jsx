@@ -87,7 +87,7 @@ const TestimonyAddForm = ({
               disabled={submitLoading}
               variant='primary'
               size='sm'
-              onClick={() => navigate('/adminpage')}
+              onClick={() => navigate('/admin/testimonies')}
             >
               Back
             </Button>
