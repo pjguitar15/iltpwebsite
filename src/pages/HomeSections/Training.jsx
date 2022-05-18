@@ -11,13 +11,14 @@ import 'aos/dist/aos.css'
 const Training = () => {
   let navigate = useNavigate()
   useEffect(() => {
-    Aos.init({ duration: 1000 })
+    Aos.init({ duration: 600 })
   }, [])
+
   return (
     <div className='bg-dark training text-center text-lg-start'>
       <Container>
         <div className='row'>
-          <div className='col-lg-7 col-12'>
+          <div data-aos='fade-right' className='col-lg-7 col-12'>
             <h1 className='text-left m-0 future-leaders bebas'>
               The Future Leaders
             </h1>
@@ -33,7 +34,7 @@ const Training = () => {
               Learn more
             </Button>
           </div>
-          <div className='col-lg-5 col-12'>
+          <div data-aos='fade-left' className='col-lg-5 col-12'>
             <img
               className='poiting-at-shirt-img d-none d-lg-inline'
               src={PointingAtShirtImg}

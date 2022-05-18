@@ -43,7 +43,12 @@ const AdminOurTeam = () => {
           <LoadingCard />
         ) : (
           firebaseData.map((item, index) => (
-            <AdminTeamCard item={item} key={index} />
+            <AdminTeamCard
+              firebaseData={firebaseData}
+              setFirebaseData={setFirebaseData}
+              item={item}
+              key={index}
+            />
           ))
         )}
       </div>

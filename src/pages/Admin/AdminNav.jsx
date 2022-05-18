@@ -48,7 +48,7 @@ const AdminNav = ({ iltplogo, handleLogout, location }) => {
           <i className='bi bi-blockquote-right me-2'></i>Jumbotron
         </h6>
       </div>
-      <div
+      {/* <div
         onClick={() => navigate('/admin/about')}
         className={`${
           location.pathname.slice(7) === 'about'
@@ -59,7 +59,7 @@ const AdminNav = ({ iltplogo, handleLogout, location }) => {
         <h6 className={`m-0`}>
           <i className='bi bi-blockquote-right me-2'></i>About page
         </h6>
-      </div>
+      </div> */}
       <div
         onClick={() => navigate('/admin/team')}
         className={`${

@@ -14,21 +14,17 @@ import Aos from 'aos'
 import 'aos/dist/aos.css'
 
 const MainHome = () => {
-  useEffect(() => {
-    Aos.init({ duration: 600 })
-  }, [])
-
   return (
     <div>
-      <JumbotronComponent data-aos='fade-up' />
+      <JumbotronComponent />
       <Awards />
-      <OurMission data-aos='fade-up' />
-      <OurVision data-aos='fade-up' />
+      <OurMission />
+      <OurVision />
       <FeaturedNewsSection />
-      <LatestNews data-aos='fade-up' />
-      <Testimonies data-aos='fade-up' />
-      <Training data-aos='fade-up' />
-      <JoinUs data-aos='fade-up' />
+      <LatestNews />
+      <Testimonies />
+      <Training />
+      <JoinUs />
     </div>
   )
 }
