@@ -2,8 +2,10 @@ import React from 'react'
 import { Container, Button } from 'react-bootstrap'
 import '../styles/Fundraising.css'
 import 'aos/dist/aos.css'
+import { useNavigate } from 'react-router-dom'
 import DonateIcon from '../../assets/icons/donate-icon.png'
 const DonationArt = () => {
+  const navigate = useNavigate()
   // donate handler
   const donateButton = () => {
     alert('im still working on this. thank you!')
@@ -31,7 +33,7 @@ const DonationArt = () => {
           Giving is not just about making a donation. It's about making a
           difference.
         </p>
-        <Button onClick={donateButton} variant='warning'>
+        <Button onClick={() => navigate('/paypal-payment')} variant='warning'>
           <i className='fa fa-paypal me-2'></i>Donate with Paypal
         </Button>
       </Container>

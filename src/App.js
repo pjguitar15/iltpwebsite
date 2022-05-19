@@ -26,6 +26,7 @@ import AdminTeamPage from './pages/Admin/AdminPages/AdminTeamPage'
 import AdminUpdateTeam from './pages/Admin/AdminUpdateTeam'
 
 import { PaypalTextPage } from './components/paypal-modal/PaypalTextPage'
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 const App = () => {
   const [isLoggedin, setIsLoggedIn] = useState(false)
@@ -34,50 +35,51 @@ const App = () => {
 
   return (
     <div>
-      <Router>
-        <Routes>
-          <Route path='/' element={<><NavbarComponent /><MainHome /><GetInTouch />
-            <Footer /></>} />
-          <Route path='/about' element={<><NavbarComponent /><AboutUs /><GetInTouch />
-            <Footer /></>} />
-          <Route path='/news' element={<><NavbarComponent /><News /><GetInTouch />
-            <Footer /></>} />
-          <Route path='/news/:id' element={<><NavbarComponent /><NewsSlug /><GetInTouch />
-            <Footer /></>} />
-          <Route path='/fundraising' element={<><NavbarComponent /><Fundraising /><GetInTouch />
-            <Footer /></>} />
-          <Route path='/contact' element={<><NavbarComponent /><ContactUs /><GetInTouch />
-            <Footer /></>} />
-          <Route path='/admin' element={<AdminLogin setIsLoggedIn={setIsLoggedIn} isLoggedin={isLoggedin} setUser={setUser} user={user} password={password} setPassword={setPassword} />} />
+      <PayPalScriptProvider options={{ 'client-id': 'AXj6FdyoEliRvd6VC_5K-rjTYbZ44nkTGf2OPHu9PDCD8T7FIRO6WYNOBcCxv3gaak2-7R2HwWT33W7-' }}>
+        <Router>
+          <Routes>
+            <Route path='/' element={<><NavbarComponent /><MainHome /><GetInTouch />
+              <Footer /></>} />
+            <Route path='/about' element={<><NavbarComponent /><AboutUs /><GetInTouch />
+              <Footer /></>} />
+            <Route path='/news' element={<><NavbarComponent /><News /><GetInTouch />
+              <Footer /></>} />
+            <Route path='/news/:id' element={<><NavbarComponent /><NewsSlug /><GetInTouch />
+              <Footer /></>} />
+            <Route path='/fundraising' element={<><NavbarComponent /><Fundraising /><GetInTouch />
+              <Footer /></>} />
+            <Route path='/contact' element={<><NavbarComponent /><ContactUs /><GetInTouch />
+              <Footer /></>} />
+            <Route path='/admin' element={<AdminLogin setIsLoggedIn={setIsLoggedIn} isLoggedin={isLoggedin} setUser={setUser} user={user} password={password} setPassword={setPassword} />} />
 
-          {/* <Route path='/adminpage' element={<AdminPage />} /> */}
-          <Route path='*' element={<ErrorPage />} />
+            {/* <Route path='/adminpage' element={<AdminPage />} /> */}
+            <Route path='*' element={<ErrorPage />} />
 
-          {/* Protected Route */}
-          {/* <Route element={<ProtectedRoute />}> */}
-          <Route path='/admin/news' element={<AdminNewsPage setIsLoggedIn={setIsLoggedIn} />} />
-          {/* adminpage/testimonies */}
-          <Route path='/admin/testimonies' element={<AdminTestimonyPage setIsLoggedIn={setIsLoggedIn} />} />
-          {/* adminpage/jumbotron */}
-          <Route path='/admin/jumbotron' element={<AdminJumbotronPage setIsLoggedIn={setIsLoggedIn} />} />
-          {/* adminpage/about */}
-          {/* <Route path='/admin/about' element={<AdminAboutPage setIsLoggedIn={setIsLoggedIn} />} /> */}
-          {/* adminpage/our-team */}
-          <Route path='/admin/team' element={<AdminTeamPage setIsLoggedIn={setIsLoggedIn} />} />
+            {/* Protected Route */}
+            {/* <Route element={<ProtectedRoute />}> */}
+            <Route path='/admin/news' element={<AdminNewsPage setIsLoggedIn={setIsLoggedIn} />} />
+            {/* adminpage/testimonies */}
+            <Route path='/admin/testimonies' element={<AdminTestimonyPage setIsLoggedIn={setIsLoggedIn} />} />
+            {/* adminpage/jumbotron */}
+            <Route path='/admin/jumbotron' element={<AdminJumbotronPage setIsLoggedIn={setIsLoggedIn} />} />
+            {/* adminpage/about */}
+            {/* <Route path='/admin/about' element={<AdminAboutPage setIsLoggedIn={setIsLoggedIn} />} /> */}
+            {/* adminpage/our-team */}
+            <Route path='/admin/team' element={<AdminTeamPage setIsLoggedIn={setIsLoggedIn} />} />
 
-          {/* Add Testimony Route */}
-          <Route path='/admin/add-testimony' element={<AddTestimony />} />
-          <Route path='/admin/testimonies/:id' element={<UpdateTestimonies setIsLoggedIn={setIsLoggedIn} />} />
+            {/* Add Testimony Route */}
+            <Route path='/admin/add-testimony' element={<AddTestimony />} />
+            <Route path='/admin/testimonies/:id' element={<UpdateTestimonies setIsLoggedIn={setIsLoggedIn} />} />
 
-          {/* Add Team Member Route */}
-          <Route path='/admin/team/add' element={<AddTeamMemberForm />} />
-          <Route path='/admin/team/update/:id' element={<AdminUpdateTeam />} />
-          {/* </Route> */}
+            {/* Add Team Member Route */}
+            <Route path='/admin/team/add' element={<AddTeamMemberForm />} />
+            <Route path='/admin/team/update/:id' element={<AdminUpdateTeam />} />
+            {/* </Route> */}
 
-          <Route path='/paypal-test' element={<PaypalTextPage />} />
-        </Routes>
-      </Router>
-
+            <Route path='/paypal-payment' element={<PaypalTextPage />} />
+          </Routes>
+        </Router>
+      </PayPalScriptProvider>
     </div>
   )
 }

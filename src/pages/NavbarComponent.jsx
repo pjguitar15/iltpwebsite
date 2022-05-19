@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { Navbar, Container, Nav, Button } from 'react-bootstrap'
 import iltpLogo from '../assets/iltp-logo.png'
 import '../NavbarStyle.css'
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation, Link, useNavigate } from 'react-router-dom'
 
 const NavbarComponent = () => {
   const [navbar, setNavbar] = useState(false)
 
-  // useLocation
+  // useLocation and useNavigate
   const location = useLocation()
+  const navigate = useNavigate()
 
   // scrolls back to top when location is changed
   useEffect(() => {
@@ -112,7 +113,7 @@ const NavbarComponent = () => {
             </Link>
             <Button
               onClick={() => {
-                alert('Still working on this -developer')
+                navigate('/paypal-payment')
               }}
               className='mx-3'
               variant='success'

@@ -10,13 +10,11 @@ const JoinUs = () => {
 
   return (
     // background image is in join-us class
-    <div className='join-us text-center'>
-      <div className='col-12 mx-auto become-a-member-div p-4 mb-4 bg-white'>
-        <h1 className='join-us-h1 bebas text-warning display-1 m-0'>
-          Join Us!
-        </h1>
-        <h5 className='text-muted'>Become a member/Support Us!</h5>
-        <p className='lead font-italic col-lg-7 mx-auto'>
+    <div className='join-us text-center text-white'>
+      <h1 className='display-1 m-0'>Join Us!</h1>
+      <div className='col-lg-6 bg-white text-dark mx-auto become-a-member-div p-4 mb-4 '>
+        <h3>Become a member/Support Us!</h3>
+        <p className='lead col-lg-7 mx-auto'>
           International Leadering Training Program is a non-profit organization.
           Our goal is to be able to host and coordinate events and activities
           youth and students can participate in for little to no cost.
@@ -25,7 +23,10 @@ const JoinUs = () => {
       <Button onClick={() => navigate('/contact')} className='btn-warning mx-1'>
         Join Us
       </Button>
-      <Button className='btn-warning mx-1'>
+      <Button
+        onClick={() => navigate('/paypal-payment')}
+        className='btn-warning mx-1'
+      >
         <i className='fa fa-paypal me-1'></i>Donate
       </Button>
     </div>
