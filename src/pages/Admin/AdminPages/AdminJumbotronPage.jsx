@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import iltplogo from '../../../assets/iltp-logo.png'
 import AdminOurTeam from '../AdminOurTeam'
 import AdminNews from '../AdminNews'
@@ -9,9 +9,19 @@ import AdminNav from '../AdminNav'
 import AdminAbout from '../AdminAbout'
 
 const AdminJumbotronPage = ({ setIsLoggedIn }) => {
-  // useLocation
+  // useLocation and useNavigate
   const location = useLocation()
+  const navigate = useNavigate()
   // remove all the boolean state and change the active base on the url
+
+  useEffect(() => {
+    let authToken = sessionStorage.getItem('Auth Token')
+    if (authToken) {
+      navigate('/admin/jumbotron')
+    } else {
+      navigate('/admin')
+    }
+  }, [])
 
   const handleLogout = () => {
     alert('Thank you admin!')
@@ -31,11 +41,7 @@ const AdminJumbotronPage = ({ setIsLoggedIn }) => {
           />
         </div>
         <div className='col-12 col-md-7 col-lg-9 p-5'>
-          {location.pathname.slice(7) === 'jumbotron' ? (
-            <AdminJumbo />
-          ) : (
-            ''
-          )}
+          {location.pathname.slice(7) === 'jumbotron' ? <AdminJumbo /> : ''}
         </div>
       </div>
     </div>

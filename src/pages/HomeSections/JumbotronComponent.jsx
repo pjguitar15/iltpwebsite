@@ -78,7 +78,9 @@ const JumbotronComponent = () => {
                 {isLoading ? (
                   <span>Impacting Lives Towards Peace</span>
                 ) : (
-                  firebaseData.map((item, index) => <span>{item.title}</span>)
+                  firebaseData.map((item, index) => (
+                    <span key={index}>{item.title}</span>
+                  ))
                 )}
               </h1>
               <p className='col-md-6 lead jumbo-paragraph'>

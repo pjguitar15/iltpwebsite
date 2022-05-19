@@ -1,8 +1,10 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "@firebase/firestore";
+// import firebase from "firebase/app"
+// import "firebase/auth"
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
-
-const firebaseConfig = {
+const app = firebase.initializeApp({
     apiKey: "AIzaSyAQwgM_CXLk9GSgPje7Mxv2ewKpboialpg",
     authDomain: "iltpwebsite.firebaseapp.com",
     projectId: "iltpwebsite",
@@ -10,7 +12,7 @@ const firebaseConfig = {
     messagingSenderId: "1039258363296",
     appId: "1:1039258363296:web:f237621cc287de4712b0c5",
     measurementId: "G-PQSL1Y881Q",
-};
+})
 
-export const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
+export const auth = app.auth()
+export default app

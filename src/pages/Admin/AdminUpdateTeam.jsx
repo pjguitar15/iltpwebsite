@@ -31,6 +31,15 @@ const AdminUpdateTeam = () => {
     getUsers()
   }, [])
 
+  useEffect(() => {
+    let authToken = sessionStorage.getItem('Auth Token')
+    if (authToken) {
+      navigate(`/admin/team/update/${id}`)
+    } else {
+      navigate('/admin')
+    }
+  }, [])
+
   return (
     <div className='bg-light mt-5 col-xl-10 mx-auto p-5 border'>
       <h4 className='text-center mb-5 display-4'>Update Item</h4>

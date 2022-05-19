@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Form, Button, Spinner } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 // Firebase imports
@@ -48,6 +48,14 @@ const AddTeamMemberForm = () => {
         alert(err)
       })
   }
+  useEffect(() => {
+    let authToken = sessionStorage.getItem('Auth Token')
+    if (authToken) {
+      navigate('/admin/team/add')
+    } else {
+      navigate('/admin')
+    }
+  }, [])
   return (
     <Container>
       <Form

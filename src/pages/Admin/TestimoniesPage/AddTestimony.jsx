@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 import { db } from '../../../firebase/firebase-config'
 import Axios from 'axios'
@@ -19,6 +19,14 @@ const AddTestimony = () => {
 
   // connect to collections
   const collectionRef = collection(db, 'testimonies')
+  useEffect(() => {
+    let authToken = sessionStorage.getItem('Auth Token')
+    if (authToken) {
+      navigate('/admin/add-testimony')
+    } else {
+      navigate('/admin')
+    }
+  }, [])
 
   // Submit handler
   const submitHandler = (e) => {

@@ -35,6 +35,14 @@ const UpdateTestimonies = () => {
     navigate('/admin/testimonies')
   }
 
+  useEffect(() => {
+    let authToken = sessionStorage.getItem('Auth Token')
+    if (authToken) {
+      navigate(`/admin/testimonies/:${id}`)
+    } else {
+      navigate('/admin')
+    }
+  }, [])
   return (
     <div>
       <div className='p-5'>

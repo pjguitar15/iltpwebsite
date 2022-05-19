@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import iltplogo from '../../../assets/iltp-logo.png'
 import AdminNav from '../AdminNav'
 import AdminOurTeam from '../AdminOurTeam'
 
 const AdminTeamPage = ({ setIsLoggedIn }) => {
-  // useLocation
+  // useLocation and useNavigate
   const location = useLocation()
-  // remove all the boolean state and change the active base on the url
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    let authToken = sessionStorage.getItem('Auth Token')
+    if (authToken) {
+      navigate('/admin/team')
+    } else {
+      navigate('/admin')
+    }
+  }, [])
 
   const handleLogout = () => {
     alert('Thank you admin!')

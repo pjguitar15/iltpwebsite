@@ -91,7 +91,6 @@ const NewsSlug = () => {
                     >
                       {item.content}
                     </p>
-                    <h6>News Type: {item.newsType}</h6>
                     <Button
                       onClick={() => {
                         navigate('/news')

@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Form, Button, Alert } from 'react-bootstrap'
 import './Admin.css'
 import iltplogo from '../../assets/iltp-logo.png'
 import { useNavigate } from 'react-router-dom'
+import { app } from '../../firebase/firebase-config'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
 const AdminLogin = ({
   setUser,
@@ -12,23 +14,35 @@ const AdminLogin = ({
   setIsLoggedIn,
   isLoggedin,
 }) => {
-  const testUser = 'admin'
-  const testPassword = 'admin'
   // useNavigate
   let navigate = useNavigate()
+  useEffect(() => {
+    let authToken = sessionStorage.getItem('Auth Token')
+    if (authToken) {
+      navigate('/admin/news')
+    } else {
+      navigate('/admin')
+    }
+  }, [])
   // admin login handler
   const handleLogin = (e) => {
     e.preventDefault()
-    if (user === testUser && password === testPassword) {
-      alert('Login Success')
-      setIsLoggedIn(true)
-      navigate('/admin/news')
-      setUser('')
-      setPassword('')
-    } else {
-      alert('Invalid Username/Password')
-      setIsLoggedIn(false)
-    }
+    const authentication = getAuth(app)
+    signInWithEmailAndPassword(authentication, user, password)
+      .then((response) => {
+        navigate('/admin/news')
+        sessionStorage.setItem(
+          'Auth Token',
+          response._tokenResponse.refreshToken
+        )
+        console.log(response._tokenResponse.refreshToken)
+      })
+      .catch((err) => {
+        const errorCode = err.code
+        const errorMessage = err.message
+        console.log(errorMessage)
+        alert('Incorrect username/password')
+      })
   }
   return (
     <div className='bg-dark'>
@@ -41,6 +55,7 @@ const AdminLogin = ({
           <Form.Group className='mb-3' controlId='formBasicEmail'>
             <Form.Label>Username</Form.Label>
             <Form.Control
+              required
               onChange={(e) => setUser(e.target.value)}
               value={user}
               type='text'
@@ -50,6 +65,7 @@ const AdminLogin = ({
           <Form.Group className='mb-3' controlId='formBasicPassword'>
             <Form.Label>Password</Form.Label>
             <Form.Control
+              required
               onChange={(e) => setPassword(e.target.value)}
               value={password}
               type='password'
