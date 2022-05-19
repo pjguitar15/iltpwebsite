@@ -49,6 +49,11 @@
     font-family: 'Montserrat';
     font-weight: 500;
   }
+
+  .jumbo-paragraph {
+    font-size: 23px !important;
+    font-weight: 100 !important;
+  }
 }
 
 .mission-vision div {

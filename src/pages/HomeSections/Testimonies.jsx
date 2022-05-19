@@ -38,8 +38,7 @@ const Testimonies = () => {
   }
 
   return (
-    <div className=' m-0'>
-      <div data-aos='flip-up' className='testimony-img m-0'></div>
+    <div className='m-0'>
       <div className='testimonies bg-white'>
         <Container
           data-aos='zoom-in'

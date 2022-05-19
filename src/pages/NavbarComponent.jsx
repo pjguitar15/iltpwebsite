@@ -38,20 +38,19 @@ const NavbarComponent = () => {
 
   return (
     <Navbar
-      // style={{ width: '100vh' }}
-      className={`bg-md-white shadow-sm fixed-top ${
+      className={`shadow-sm fixed-top ${
         navbar ? 'bg-white shadow-sm' : 'bg-none shadow-none'
       }`}
       expand='lg'
     >
       <Container>
-        <Navbar.Brand style={{ cursor: 'pointer' }}>
+        <Navbar.Brand className='py-0' style={{ cursor: 'pointer' }}>
           <Link
             to='/'
             style={{ textDecoration: 'none' }}
             className='mt-3 mb-3 brand d-flex'
           >
-            <img className='mt-1' src={iltpLogo} alt='iltp logo' />
+            <img className='mt-0' src={iltpLogo} alt='iltp logo' />
             <div
               className={`iltp-brand-text d-flex justify-content-center flex-column text-start 
             ${navbar ? 'text-black' : 'text-white'}`}
@@ -63,7 +62,7 @@ const NavbarComponent = () => {
             </div>
           </Link>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls='basic-navbar-nav' />
+        <Navbar.Toggle variant='success' aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='ms-auto'>
             <Link

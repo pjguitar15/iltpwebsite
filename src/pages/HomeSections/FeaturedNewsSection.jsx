@@ -53,7 +53,7 @@ const FeaturedNews = () => {
           ) : (
             firebaseData
               .filter((item) => item.newsType === 'featured')
-              .slice(0, 3)
+              .slice(0, 2)
               .map((item, index) => (
                 <FeaturedNewsCard key={index} item={item} navigate={navigate} />
               ))

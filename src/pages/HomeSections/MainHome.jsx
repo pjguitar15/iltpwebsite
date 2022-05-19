@@ -10,7 +10,6 @@ import JoinUs from './JoinUs'
 import Awards from './Awards'
 
 // animate on scroll
-import Aos from 'aos'
 import 'aos/dist/aos.css'
 
 const MainHome = () => {

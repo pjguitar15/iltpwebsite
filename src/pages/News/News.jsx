@@ -57,9 +57,9 @@ const News = () => {
               <div
                 data-aos='zoom-in'
                 key={index}
-                className='px-4 my-3 col-md-6 col-lg-4'
+                className='px-4 my-3 col-md-6'
               >
-                <Card className='shadow border-0'>
+                <Card className=' border-0 rounded-0'>
                   <Card.Img
                     style={{
                       width: '100%',
@@ -69,7 +69,7 @@ const News = () => {
                     variant='top'
                     src={item.img}
                   />
-                  <Card.Body>
+                  <Card.Body className='px-0'>
                     <Card.Title>{item.title}</Card.Title>
                     <Card.Subtitle className='mb-2 text-muted'>
                       {item.date}

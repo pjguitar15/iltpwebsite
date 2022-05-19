@@ -3,8 +3,8 @@ import { Button, Card } from 'react-bootstrap'
 
 const FeaturedNewsCard = ({ item, navigate }) => {
   return (
-    <div data-aos='zoom-in' className='col-md-6 col-lg-4'>
-      <Card>
+    <div data-aos='zoom-in' className='col-md-6 col-lg-6 my-2 px-3'>
+      <Card className='rounded-0 border-0'>
         <Card.Img
           style={{
             width: '100%',
@@ -13,10 +13,11 @@ const FeaturedNewsCard = ({ item, navigate }) => {
           }}
           variant='top'
           src={item.img}
+          className='rounded-0'
         />
-        <Card.Body>
-          <Card.Title>{item.title}</Card.Title>
-          <Card.Subtitle className='mb-2 text-muted'>{item.date}</Card.Subtitle>
+        <Card.Body className='px-0'>
+          <Card.Title className='mb-3'>{item.title}</Card.Title>
+          <Card.Subtitle className='mb-3 text-muted'>{item.date}</Card.Subtitle>
           <Card.Text className='text-muted'>
             {item.content.slice(0, 150)}...
           </Card.Text>
@@ -24,7 +25,7 @@ const FeaturedNewsCard = ({ item, navigate }) => {
             onClick={() => {
               navigate(`/news/${item.id}`)
             }}
-            variant='outline-primary btn-sm'
+            variant='outline-primary btn-sm mt-2'
           >
             Read more
           </Button>

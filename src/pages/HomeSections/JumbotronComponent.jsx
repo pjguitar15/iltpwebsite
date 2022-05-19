@@ -81,10 +81,7 @@ const JumbotronComponent = () => {
                   firebaseData.map((item, index) => <span>{item.title}</span>)
                 )}
               </h1>
-              <p
-                className='col-md-6'
-                style={{ fontSize: '23px', fontWeight: '100' }}
-              >
+              <p className='col-md-6 lead jumbo-paragraph'>
                 {isLoading ? (
                   <span>
                     We empower you with everything you need to be a successful

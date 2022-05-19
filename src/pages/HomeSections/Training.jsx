@@ -15,9 +15,9 @@ const Training = () => {
   }, [])
 
   return (
-    <div className='bg-dark training text-center text-lg-start'>
+    <div className='bg-dark training text-center text-lg-start mx-0 px-0'>
       <Container>
-        <div className='row'>
+        <div className='row mx-0'>
           <div data-aos='fade-right' className='col-lg-7 col-12'>
             <h1 className='text-left m-0 future-leaders bebas'>
               The Future Leaders
