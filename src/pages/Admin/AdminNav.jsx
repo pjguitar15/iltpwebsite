@@ -1,8 +1,14 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const AdminNav = ({ iltplogo, handleLogout, location }) => {
+const AdminNav = ({ iltplogo, location }) => {
   const navigate = useNavigate()
+  const handleLogout = () => {
+    alert('Thank you admin!')
+    // destroy token
+    sessionStorage.removeItem('Auth Token')
+    navigate('/admin')
+  }
   return (
     <div>
       <div className='col-2 mx-auto'>

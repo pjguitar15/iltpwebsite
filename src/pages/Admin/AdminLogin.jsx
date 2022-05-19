@@ -35,7 +35,6 @@ const AdminLogin = ({
           'Auth Token',
           response._tokenResponse.refreshToken
         )
-        console.log(response._tokenResponse.refreshToken)
       })
       .catch((err) => {
         const errorCode = err.code

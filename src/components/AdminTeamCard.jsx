@@ -16,7 +16,7 @@ const AdminTeamCard = ({ item, firebaseData, setFirebaseData }) => {
     alert('Item successfully deleted')
   }
   return (
-    <div className='col-xl-3'>
+    <div className='col-sm-6 col-xl-3'>
       <Card>
         <Card.Img src={item.img} />
         <Card.Body>

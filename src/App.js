@@ -25,11 +25,7 @@ import AddTeamMemberForm from './components/AddTeamMemberForm'
 import AdminTeamPage from './pages/Admin/AdminPages/AdminTeamPage'
 import AdminUpdateTeam from './pages/Admin/AdminUpdateTeam'
 
-// useAuth
-//  export const useAuth = () => {
-//   const user = { loggedIn: isLoggedin }
-//   return user && user.loggedIn
-// }
+import { PaypalTextPage } from './components/paypal-modal/PaypalTextPage'
 
 const App = () => {
   const [isLoggedin, setIsLoggedIn] = useState(false)
@@ -78,6 +74,7 @@ const App = () => {
           <Route path='/admin/team/update/:id' element={<AdminUpdateTeam />} />
           {/* </Route> */}
 
+          <Route path='/paypal-test' element={<PaypalTextPage />} />
         </Routes>
       </Router>
 
