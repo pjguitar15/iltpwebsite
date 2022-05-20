@@ -216,3 +216,13 @@
   background-size: cover;
   background-position: center;
 }
+
+.paypal-amount-input {
+  height: 150px !important;
+  font-size: 120px !important;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-weight: 100 !important;
+}

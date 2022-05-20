@@ -3,11 +3,17 @@ import { Container, Button, Form } from 'react-bootstrap'
 import { PayPalButtons } from '@paypal/react-paypal-js'
 import { useNavigate } from 'react-router-dom'
 import 'aos/dist/aos.css'
+import Aos from 'aos'
+import SuccessModal from './SuccessModal'
 
 export const PaypalTextPage = () => {
-  const [modalShow, setModalShow] = useState(false)
+  const [show, setShow] = useState(false)
   const [paidFor, setPaidFor] = useState(false)
   const [donationAmount, setDonationAmount] = useState(5)
+
+  useEffect(() => {
+    Aos.init({ duration: 2000 })
+  }, [])
 
   const navigate = useNavigate()
 
@@ -15,20 +21,16 @@ export const PaypalTextPage = () => {
     // Call backend function to fulfill order
     // if response is success
     setPaidFor(true)
-    // Refresh user's account or subscription status
-
-    console.log(orderId)
-    // if response is error
-    // alert("Your payment was processed successfully. However, we are unable to fulfill your purchase. Please contact us at support@designcode.io for assistance.");
-
-    if (paidFor) {
-      // Display success message, modal or redirect user to success page
-      alert('Thank you for your support!')
-    }
+    setShow(true)
   }
 
   return (
     <div className='bg-dark text-light py-5' style={{ minHeight: '100vh' }}>
+      <SuccessModal
+        setShow={setShow}
+        show={show}
+        donationAmount={donationAmount}
+      />
       <Container>
         <h1
           data-aos='fade-down'
@@ -39,14 +41,14 @@ export const PaypalTextPage = () => {
         </h1>
         {/* Select amount */}
         <Form.Group className='col-12 col-sm-6 col-lg-4 mx-auto'>
-          <h1
+          {/* <h1
             data-aos='fade-down'
             data-aos-duration='1000'
             style={{ fontSize: '100px' }}
             className='text-center py-4 lead'
           >
             ${donationAmount}.00
-          </h1>
+          </h1> */}
           <Form.Text className='text-light'>
             {/* <span data-aos='fade-left' data-aos-duration='1000'>
               You can change the amount here
@@ -55,12 +57,21 @@ export const PaypalTextPage = () => {
           <Form.Control
             data-aos='fade-up'
             data-aos-duration='1000'
-            className='text-center'
+            // inside Home.css
+            className='text-center paypal-amount-input'
             placeholder='$1.00'
             value={donationAmount}
             onChange={(e) => setDonationAmount(e.target.value)}
             type='number'
-            size='lg'
+            // size='lg'
+            style={{
+              height: '100px',
+              fontSize: '80px',
+              background: 'transparent',
+              border: 'none',
+              outline: 'none',
+              color: 'white',
+            }}
           />
         </Form.Group>
         {/* Paypal Button here */}
