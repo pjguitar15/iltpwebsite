@@ -38,93 +38,107 @@ const NavbarComponent = () => {
   window.addEventListener('scroll', scrollListener)
 
   return (
-    <Navbar
+    <div
       className={`shadow-sm fixed-top ${
         navbar ? 'bg-white shadow-sm' : 'bg-none shadow-none'
       }`}
-      expand='lg'
     >
-      <Container>
-        <Navbar.Brand className='py-0' style={{ cursor: 'pointer' }}>
-          <Link
-            to='/'
-            style={{ textDecoration: 'none' }}
-            className='mt-3 mb-3 brand d-flex'
-          >
-            <img className='mt-0' src={iltpLogo} alt='iltp logo' />
-            <div
-              className={`iltp-brand-text d-flex justify-content-center flex-column text-start 
-            ${navbar ? 'text-black' : 'text-white'}`}
-            >
-              <span style={disableSelectNoUnderline}>
-                International Leadership
-              </span>
-              <span style={disableSelectNoUnderline}>Training Program</span>
-            </div>
-          </Link>
-        </Navbar.Brand>
-        <Navbar.Toggle variant='success' aria-controls='basic-navbar-nav' />
-        <Navbar.Collapse id='basic-navbar-nav'>
-          <Nav className='ms-auto'>
+      {location.pathname === '/' ? (
+        <div
+          style={{ fontSize: '13px' }}
+          className={`bg-success opensans-thin text-white py-1 text-center ${
+            navbar ? 'd-none' : 'd-block'
+          }`}
+        >
+          Thank you for visiting our new ILTP website!
+        </div>
+      ) : (
+        ''
+      )}
+
+      <Navbar expand='lg'>
+        <Container>
+          <Navbar.Brand className='py-0' style={{ cursor: 'pointer' }}>
             <Link
-              className={`${
-                navbar ? 'text-black' : 'text-white'
-              } mx-3 nav-link-hover`}
               to='/'
-              style={disableSelectNoUnderline}
+              style={{ textDecoration: 'none' }}
+              className='mt-3 mb-3 brand d-flex'
             >
-              Home
+              <img className='mt-0' src={iltpLogo} alt='iltp logo' />
+              <div
+                className={`iltp-brand-text d-flex justify-content-center flex-column text-start 
+            ${navbar ? 'text-black' : 'text-white'}`}
+              >
+                <span style={disableSelectNoUnderline}>
+                  International Leadership
+                </span>
+                <span style={disableSelectNoUnderline}>Training Program</span>
+              </div>
             </Link>
-            <Link
-              className={`${
-                navbar ? 'text-black' : 'text-white'
-              } mx-3 nav-link-hover`}
-              to='/about'
-              style={disableSelectNoUnderline}
-            >
-              About
-            </Link>
-            <Link
-              className={`${
-                navbar ? 'text-black' : 'text-white'
-              } mx-3 nav-link-hover`}
-              to='/fundraising'
-              style={disableSelectNoUnderline}
-            >
-              Fundraising
-            </Link>
-            <Link
-              className={`${
-                navbar ? 'text-black' : 'text-white'
-              } mx-3 nav-link-hover`}
-              to='/news'
-              style={disableSelectNoUnderline}
-            >
-              News
-            </Link>
-            <Link
-              className={`${
-                navbar ? 'text-black' : 'text-white'
-              } mx-3 nav-link-hover`}
-              to='/contact'
-              style={disableSelectNoUnderline}
-            >
-              Contact Us
-            </Link>
-            <Button
-              onClick={() => {
-                navigate('/paypal-payment')
-              }}
-              className='mx-3'
-              variant='success'
-            >
-              <i className='fa fa-paypal me-1'></i>
-              Donate
-            </Button>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+          </Navbar.Brand>
+          <Navbar.Toggle variant='success' aria-controls='basic-navbar-nav' />
+          <Navbar.Collapse id='basic-navbar-nav'>
+            <Nav className='ms-auto'>
+              <Link
+                className={`${
+                  navbar ? 'text-black' : 'text-white'
+                } mx-3 nav-link-hover`}
+                to='/'
+                style={disableSelectNoUnderline}
+              >
+                Home
+              </Link>
+              <Link
+                className={`${
+                  navbar ? 'text-black' : 'text-white'
+                } mx-3 nav-link-hover`}
+                to='/about'
+                style={disableSelectNoUnderline}
+              >
+                About
+              </Link>
+              <Link
+                className={`${
+                  navbar ? 'text-black' : 'text-white'
+                } mx-3 nav-link-hover`}
+                to='/fundraising'
+                style={disableSelectNoUnderline}
+              >
+                Fundraising
+              </Link>
+              <Link
+                className={`${
+                  navbar ? 'text-black' : 'text-white'
+                } mx-3 nav-link-hover`}
+                to='/news'
+                style={disableSelectNoUnderline}
+              >
+                News
+              </Link>
+              <Link
+                className={`${
+                  navbar ? 'text-black' : 'text-white'
+                } mx-3 nav-link-hover`}
+                to='/contact'
+                style={disableSelectNoUnderline}
+              >
+                Contact Us
+              </Link>
+              <Button
+                onClick={() => {
+                  navigate('/paypal-payment')
+                }}
+                className='mx-3'
+                variant={`${navbar ? 'success' : 'outline-light'}`}
+              >
+                <i className='fa fa-paypal me-1'></i>
+                Donate
+              </Button>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </div>
   )
 }
 

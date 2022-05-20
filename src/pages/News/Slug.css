@@ -1,8 +1,34 @@
+.opensans-thin {
+  font-family: 'Open Sans';
+  font-weight: 500;
+}
+.opensans-thick {
+  font-family: 'Open Sans';
+  font-weight: 800;
+}
+.slug-img-parent {
+  height: 60vh;
+  position: relative;
+}
+
 .slug-img {
-  width: 100%;
-  height: 400px;
   object-fit: cover;
-  filter: brightness(20%);
+  filter: brightness(15%);
+  height: 100%;
+  width: 100%;
+}
+
+.news-slug-absolute-text {
+  position: absolute;
+  top: 50%; /* position the top  edge of the element at the middle of the parent */
+  left: 50%; /* position the left edge of the element at the middle of the parent */
+
+  transform: translate(
+    -50%,
+    -50%
+  ); /* This is a shorthand of
+                                       translateX(-50%) and translateY(-50%) */
+  color: white;
 }
 
 .slug-img-within-container {
@@ -12,5 +38,5 @@
 }
 
 .slug-content {
-  line-height: 32px;
+  line-height: 36px;
 }

@@ -1,5 +1,6 @@
 import React from 'react'
-import { Container, Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
+import PillButton from '../../components/PillButton'
 import '../styles/Fundraising.css'
 import 'aos/dist/aos.css'
 import { useNavigate } from 'react-router-dom'
@@ -28,9 +29,14 @@ const DonationArt = () => {
         Giving is not just about making a donation. It's about making a
         difference.
       </p>
-      <Button onClick={() => navigate('/paypal-payment')} variant='warning'>
+      <PillButton
+        primaryColor='#FFC107'
+        secondaryColor='#ffd146'
+        textColor='#1d1d1d'
+        handleClick={() => navigate('/paypal-payment')}
+      >
         <i className='fa fa-paypal me-2'></i>Donate with Paypal
-      </Button>
+      </PillButton>
     </div>
   )
 }

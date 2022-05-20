@@ -12,6 +12,7 @@ const AddNewsModal = ({
   setFirebaseData,
 }) => {
   const [titleInput, setTitleInput] = useState('')
+  const [locationInput, setLocationInput] = useState('')
   const [dateInput, setDateInput] = useState('')
   const [contentInput, setContentInput] = useState('')
   const [submitLoading, setSubmitLoading] = useState(false)
@@ -38,6 +39,7 @@ const AddNewsModal = ({
           date: dateInput,
           content: contentInput,
           img: res.data.url,
+          location: locationInput,
           newsType: selectValue,
           show: true,
           timestamp: serverTimestamp(),
@@ -46,6 +48,7 @@ const AddNewsModal = ({
         setFirebaseData([
           {
             title: titleInput,
+            location: locationInput,
             date: dateInput,
             content: contentInput,
             img: res.data.url,
@@ -66,6 +69,7 @@ const AddNewsModal = ({
         setTitleInput('')
         setDateInput('')
         setContentInput('')
+        setLocationInput('')
       })
       .catch((err) => {
         alert(err)
@@ -91,6 +95,8 @@ const AddNewsModal = ({
             setTitleInput={setTitleInput}
             titleInput={titleInput}
             setDateInput={setDateInput}
+            locationInput={locationInput}
+            setLocationInput={setLocationInput}
             dateInput={dateInput}
             setSelectValue={setSelectValue}
             setContentInput={setContentInput}

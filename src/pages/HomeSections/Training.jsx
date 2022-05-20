@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Container, Button } from 'react-bootstrap'
 import '../styles/Home.css'
 import PointingAtShirtImg from '../../assets/pointing-shirt.png'
+import PillButton from '../../components/PillButton'
 import { useNavigate } from 'react-router-dom'
 
 // animate on scroll
@@ -30,9 +31,14 @@ const Training = () => {
               insightful leader. Develop the abilities and build a strong
               foundation as someone who can leader the community.
             </p>
-            <Button onClick={() => navigate('/about')} variant='success'>
+            <PillButton
+              primaryColor='#FFC107'
+              secondaryColor='#ffd146'
+              textColor='#313131'
+              handleClick={() => navigate('/about')}
+            >
               Learn more
-            </Button>
+            </PillButton>
           </div>
           <div data-aos='fade-left' className='col-lg-5 col-12'>
             <img

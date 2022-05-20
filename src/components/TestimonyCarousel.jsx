@@ -16,7 +16,7 @@ const TestimonyCarousel = ({ index, handleSelect, loading, testimonyData }) => {
       ) : (
         testimonyData.map((item, index) => (
           <Carousel.Item interval={1500} key={index}>
-            <p className='lead col-md-10 mx-auto col-lg-9 mb-4'>
+            <p className='lead opensans-thin col-md-10 mx-auto col-lg-9 mb-4'>
               "{item.content}"
             </p>
             <div className='col-2 mx-auto my-2'>

@@ -12,7 +12,11 @@ const LogoAndDesc = () => {
       </h2>
       <p
         className='text-center col-lg-8 mx-auto montserrat'
-        style={{ lineHeight: '40px' }}
+        style={{
+          lineHeight: '40px',
+          fontFamily: 'Open Sans',
+          fontWeight: '500',
+        }}
       >
         The International Leadership Training Program (ILTP) is a 501(c)(3)
         non-profit organization that serves in the United States since 2001. Its

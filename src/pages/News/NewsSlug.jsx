@@ -56,8 +56,14 @@ const NewsSlug = () => {
         : firebaseData
             .filter((item) => item.id === id)
             .map((item, index) => (
-              <div key={index} data-aos='fade-down' data-aos-duration='2000'>
-                <img className='slug-img' src={item.img} alt='cover' />
+              <div key={index}>
+                <div className='slug-img-parent'>
+                  <img className='slug-img' src={item.img} alt='cover' />
+                  <h1 className='news-slug-absolute-text text-uppercase display-2 text-center'>
+                    {item.title}
+                  </h1>
+                </div>
+
                 <div
                   // ref={startOfImage}
                   className='py-5 col-11 col-sm-10 col-xl-6 mx-auto'
@@ -71,23 +77,29 @@ const NewsSlug = () => {
                       />
                     </div>
                     <h2
-                      className='mb-4 mt-3 text-dark ps-3 text-uppercase'
+                      className='mb-4 mt-3 text-dark ps-3'
                       style={{
                         borderLeft: 'solid #00B2B2 5px',
-                        letterSpacing: '2px',
+                        letterSpacing: '1px',
                       }}
                     >
                       {item.title}
                     </h2>
+                    <p className='text-muted opensans-thin'>
+                      <i
+                        className='bi bi-geo-alt-fill me-2'
+                        style={{ color: 'orange', fontSize: '20px' }}
+                      ></i>
+                      {item.location}
+                    </p>
                     <p className='text-muted'>{item.date}</p>
                     <p
                       style={{
-                        color: '#3C3744',
+                        color: '#6d6d6d',
                         textAlign: 'justify',
-                        fontWeight: '400',
                         whiteSpace: 'pre-line',
                       }}
-                      className='slug-content mt-2'
+                      className='slug-content mt-2 opensans-thin'
                     >
                       {item.content}
                     </p>

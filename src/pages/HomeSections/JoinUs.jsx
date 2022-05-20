@@ -1,6 +1,7 @@
 import React from 'react'
-import { Container, Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
+import PillButton from '../../components/PillButton'
 
 // animate on scroll
 import 'aos/dist/aos.css'
@@ -20,15 +21,23 @@ const JoinUs = () => {
           youth and students can participate in for little to no cost.
         </p>
       </div>
-      <Button onClick={() => navigate('/contact')} className='btn-warning mx-1'>
+
+      <PillButton
+        primaryColor='#FFC107'
+        secondaryColor='#ffd146'
+        textColor='#303030'
+        handleClick={() => navigate('/contact')}
+      >
         Join Us
-      </Button>
-      <Button
-        onClick={() => navigate('/paypal-payment')}
-        className='btn-warning mx-1'
+      </PillButton>
+      <PillButton
+        primaryColor='#FFC107'
+        secondaryColor='#ffd146'
+        textColor='#303030'
+        handleClick={() => navigate('/paypal-payment')}
       >
         <i className='fa fa-paypal me-1'></i>Donate
-      </Button>
+      </PillButton>
     </div>
   )
 }

@@ -44,13 +44,21 @@ const AdminNews = () => {
   }, [])
 
   // card click handler
-  const openModal = (itemId, itemTitle, itemImg, itemContent, itemDate) => {
+  const openModal = (
+    itemId,
+    itemTitle,
+    itemImg,
+    itemContent,
+    itemDate,
+    itemLocation
+  ) => {
     setCurrentItem({
       id: itemId,
       title: itemTitle,
       img: itemImg,
       content: itemContent,
       date: itemDate,
+      location: itemLocation,
     })
     setUpdateModalShow(true)
   }

@@ -7,6 +7,8 @@ const ModalBody = ({
   setTitleInput,
   titleInput,
   setDateInput,
+  locationInput,
+  setLocationInput,
   dateInput,
   setSelectValue,
   setContentInput,
@@ -27,6 +29,21 @@ const ModalBody = ({
             type='text'
             placeholder='Add title'
             value={titleInput}
+            className='form-control'
+          />
+        </div>
+        {/* Location Input */}
+        <div className='form-group mb-1'>
+          <label for='exampleFormControlTextarea1' className='my-2'>
+            Add location
+          </label>
+          <input
+            required
+            disabled={submitLoading}
+            onChange={(e) => setLocationInput(e.target.value)}
+            type='text'
+            placeholder='Ex: New Jersey, USA'
+            value={locationInput}
             className='form-control'
           />
         </div>

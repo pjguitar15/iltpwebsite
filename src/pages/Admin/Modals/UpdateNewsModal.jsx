@@ -22,7 +22,9 @@ const NewsPageModal = ({
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [date, setDate] = useState('')
+  const [locationInput, setLocationInput] = useState('')
   useEffect(() => {
+    setLocationInput(currentItem.location)
     setDate(currentItem.date)
     setTitle(currentItem.title)
     setContent(currentItem.content)
@@ -32,7 +34,12 @@ const NewsPageModal = ({
   const updateItem = async (e) => {
     e.preventDefault()
     const userDoc = doc(db, 'news-articles', currentItem.id)
-    const newFields = { title: title, content: content, date: date }
+    const newFields = {
+      title: title,
+      content: content,
+      location: locationInput,
+      date: date,
+    }
     await updateDoc(userDoc, newFields)
 
     alert('Update success!')
@@ -64,6 +71,20 @@ const NewsPageModal = ({
                 value={title}
                 type='text'
                 id='titleValue'
+                className='form-control'
+              />
+            </div>
+
+            {/* Location form group here */}
+            <div className='form-group mb-2'>
+              <label for='exampleFormControlTextareas' className='my-2'>
+                Edit location
+              </label>
+              <input
+                onChange={(e) => setLocationInput(e.target.value)}
+                value={locationInput}
+                type='text'
+                id='dateValue'
                 className='form-control'
               />
             </div>

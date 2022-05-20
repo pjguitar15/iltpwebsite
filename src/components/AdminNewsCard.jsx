@@ -15,7 +15,14 @@ const AdminNewsCard = ({ item, openModal, deleteHandler }) => {
           <Card.Text>{item.content.slice(0, 100)}...</Card.Text>
           <Button
             onClick={() =>
-              openModal(item.id, item.title, item.img, item.content, item.date)
+              openModal(
+                item.id,
+                item.title,
+                item.img,
+                item.content,
+                item.date,
+                item.location
+              )
             }
             variant='warning me-1 btn-sm'
           >

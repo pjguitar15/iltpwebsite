@@ -45,7 +45,7 @@ const AdminLogin = ({
   }
   return (
     <div className='bg-dark'>
-      <div className='Admin col-10 col-sm-8 col-lg-6 col-xl-3'>
+      <div className='Admin col-10 col-sm-8 col-lg-6 col-xl-4'>
         <Form onSubmit={handleLogin} className='col-lg-12 bg-light border p-5'>
           <div className='col-4 mx-auto mb-3'>
             <img className='w-100' src={iltplogo} alt='iltp logo' />
