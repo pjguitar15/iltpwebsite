@@ -6,11 +6,7 @@ import 'aos/dist/aos.css'
 import OurTeamCard from '../../components/OurTeamCard'
 // firebase import
 import { db } from '../../firebase/firebase-config'
-import {
-  collection,
-  getDocs,
-  query,
-} from 'firebase/firestore'
+import { collection, getDocs, query } from 'firebase/firestore'
 const OurTeam = () => {
   const [data] = useState(OurTeamData)
   const [firebaseData, setFirebaseData] = useState([])
@@ -36,9 +32,33 @@ const OurTeam = () => {
       </div>
       <Container className='py-5' style={{ marginTop: '60px' }}>
         <div className='row'>
-          {firebaseData.map((item, index) => (
-            <OurTeamCard key={index} item={item} />
-          ))}
+          {/* displys only position that contains chairman */}
+          {firebaseData
+            .filter((item) => item.position.toLowerCase().includes('chairman'))
+            .map((item, index) => (
+              <OurTeamCard key={index} item={item} />
+            ))}
+
+          {/* only displays the item that has coordinator in the position name */}
+          {firebaseData
+            .filter((item) =>
+              item.position.toLowerCase().includes('coordinator')
+            )
+            .map((item, index) => (
+              <OurTeamCard key={index} item={item} />
+            ))}
+          {/* Rest of the members here */}
+          {firebaseData
+            .filter(
+              (item) =>
+                !(
+                  item.position.toLowerCase().includes('coordinator') ||
+                  item.position.toLowerCase().includes('chairman')
+                )
+            )
+            .map((item, index) => (
+              <OurTeamCard key={index} item={item} />
+            ))}
         </div>
       </Container>
     </div>

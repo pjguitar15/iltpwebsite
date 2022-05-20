@@ -5,7 +5,7 @@ const ObjectivesCard = ({ item, textCenterOnImg, bottomBorder }) => {
     <div
       data-aos='flip-up'
       data-aos-duration='1000'
-      className='col-12 col-md-6 col-lg-3 mx-auto mb-4 px-2'
+      className='col-12 col-md-6 col-sm-6 col-lg-4 col-xl-3 mx-auto mb-4 px-2'
     >
       <div className=' position-relative p-0'>
         <img
@@ -23,6 +23,7 @@ const ObjectivesCard = ({ item, textCenterOnImg, bottomBorder }) => {
             style={{
               fontWeight: '500',
               fontSize: '20px',
+              width: '250px',
             }}
           >
             {item.text}

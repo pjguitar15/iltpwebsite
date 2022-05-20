@@ -35,7 +35,7 @@ const App = () => {
 
   return (
     <div>
-      <PayPalScriptProvider options={{ 'client-id': 'AXj6FdyoEliRvd6VC_5K-rjTYbZ44nkTGf2OPHu9PDCD8T7FIRO6WYNOBcCxv3gaak2-7R2HwWT33W7-' }}>
+      <PayPalScriptProvider options={{ 'client-id': 'AfmEZY5_AGZIvJuTr-zTzF_YI3C8BEY-1B6KdowcPKAA-Ufx_O5nYftqkMcf65zfUlcrEi1IKK8sUdZW' }}>
         <Router>
           <Routes>
             <Route path='/' element={<><NavbarComponent /><MainHome /><GetInTouch />
