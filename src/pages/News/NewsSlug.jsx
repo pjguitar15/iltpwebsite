@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import './Slug.css'
 import 'aos/dist/aos.css'
 import LoadingCard from '../../components/LoadingCard'
+import Aos from 'aos'
 // Firebase imports
 import { db } from '../../firebase/firebase-config'
 import { collection, getDocs, query, orderBy } from 'firebase/firestore'
@@ -24,6 +25,10 @@ const NewsSlug = () => {
       behavior: 'smooth',
     })
   }
+
+  useEffect(() => {
+    Aos.init({ duration: 2000 })
+  }, [])
 
   // firebase collection ref
   const collectionRef = collection(db, 'news-articles')
@@ -50,7 +55,7 @@ const NewsSlug = () => {
   // }, [id])
 
   return (
-    <div>
+    <div data-aos='fade-down'>
       {isDataLoading
         ? LoadingCard
         : firebaseData
