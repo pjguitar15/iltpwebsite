@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Container, Button, Form } from 'react-bootstrap'
 import { PayPalButtons } from '@paypal/react-paypal-js'
 import { useNavigate } from 'react-router-dom'
@@ -9,10 +9,16 @@ import SuccessModal from './SuccessModal'
 export const PaypalTextPage = () => {
   const [show, setShow] = useState(false)
   const [paidFor, setPaidFor] = useState(false)
-  const [donationAmount, setDonationAmount] = useState(5)
+  const [donationAmount, setDonationAmount] = useState('$5')
+  const [numWithDollar, setNumWithDollar] = useState('')
+  const inputReference = useRef(null)
 
   useEffect(() => {
     Aos.init({ duration: 2000 })
+  }, [])
+
+  useEffect(() => {
+    inputReference.current.focus()
   }, [])
 
   const navigate = useNavigate()
@@ -23,6 +29,11 @@ export const PaypalTextPage = () => {
     setPaidFor(true)
     setShow(true)
   }
+  useEffect(() => {
+    if (donationAmount.length > 0) {
+      setNumWithDollar('$' + donationAmount.slice(1))
+    }
+  }, [donationAmount])
 
   return (
     <div className='bg-dark text-light py-5' style={{ minHeight: '100vh' }}>
@@ -40,30 +51,29 @@ export const PaypalTextPage = () => {
           We appreciate your support!
         </h1>
         {/* Select amount */}
-        <Form.Group className='col-12 col-sm-6 col-lg-4 mx-auto'>
-          {/* <h1
-            data-aos='fade-down'
-            data-aos-duration='1000'
-            style={{ fontSize: '100px' }}
-            className='text-center py-4 lead'
-          >
-            ${donationAmount}.00
-          </h1> */}
-          <Form.Text className='text-light'>
-            {/* <span data-aos='fade-left' data-aos-duration='1000'>
-              You can change the amount here
-            </span> */}
+        <Form.Group className='col-12 col-sm-6 col-lg-4 mx-auto text-center'>
+          <Form.Text className='text-muted opensans-thin'>
+            Please type the amount below
           </Form.Text>
           <Form.Control
+            ref={inputReference}
             data-aos='fade-up'
             data-aos-duration='1000'
             // inside Home.css
-            className='text-center paypal-amount-input'
+            className='text-center paypal-amount-input shadow-none'
             placeholder='$1.00'
-            value={donationAmount}
-            onChange={(e) => setDonationAmount(e.target.value)}
-            type='number'
-            // size='lg'
+            value={numWithDollar}
+            onChange={(e) => {
+              const validCharacters = '1234567890'
+              const value = e.target.value
+              if (
+                value.length > 0 || // need this to allow character deletion
+                validCharacters.includes(value.substr(value.length - 1))
+              ) {
+                setDonationAmount(value)
+              }
+            }}
+            type='text'
             style={{
               height: '100px',
               fontSize: '80px',
@@ -94,7 +104,7 @@ export const PaypalTextPage = () => {
                   {
                     description: 'Fundraising Donation',
                     amount: {
-                      value: parseInt(donationAmount),
+                      value: parseInt(donationAmount.slice(1)),
                     },
                   },
                 ],

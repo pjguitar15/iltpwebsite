@@ -19,7 +19,7 @@ const SuccessModal = ({ show, setShow, donationAmount }) => {
         </Modal.Header>
         <Modal.Body>
           <div className='opensans-thin'>
-            Your ${donationAmount} donation has been sent successfuly to ILTP!
+            Your {donationAmount} donation has been sent successfuly to ILTP!
             Thank you very much!
           </div>
         </Modal.Body>

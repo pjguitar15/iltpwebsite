@@ -226,3 +226,7 @@
   color: white;
   font-weight: 100 !important;
 }
+
+.paypal-amount-input:focus {
+  outline: none !important;
+}
