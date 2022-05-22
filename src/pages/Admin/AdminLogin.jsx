@@ -36,6 +36,7 @@ const AdminLogin = ({ setUser, user, setPassword, password }) => {
         const errorMessage = err.message
         console.log(errorMessage)
         alert('Incorrect username/password')
+        setLoginLoading(false)
       })
   }
   return (
