@@ -2,17 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 // firebase imports
 import { db } from '../../../firebase/firebase-config'
-import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-  serverTimestamp,
-  query,
-  orderBy,
-} from 'firebase/firestore'
+import { updateDoc, doc } from 'firebase/firestore'
 
 const NewsPageModal = ({
   updateModalShow,

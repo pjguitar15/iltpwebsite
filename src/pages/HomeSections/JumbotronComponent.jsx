@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Carousel } from 'react-bootstrap'
+import { Carousel } from 'react-bootstrap'
 import '../styles/Home.css'
 import { JumbotronImageUrls } from '../../Data/JumbotronImageUrls'
 import { useNavigate } from 'react-router-dom'
@@ -7,17 +7,7 @@ import PillButton from '../../components/PillButton'
 
 // Firebase import
 import { db } from '../../firebase/firebase-config'
-import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-  serverTimestamp,
-  query,
-  orderBy,
-} from 'firebase/firestore'
+import { collection, getDocs, query } from 'firebase/firestore'
 
 // animate on scroll
 import Aos from 'aos'

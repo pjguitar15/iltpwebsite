@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
 const SuccessModal = ({ show, setShow, donationAmount }) => {
   const navigate = useNavigate('')
   const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
   return (
     <>
       <Modal

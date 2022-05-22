@@ -34,7 +34,7 @@ const FundraisingPhotos = () => {
               </Col>
             </Row>
             <Row
-              className='mt-5 p-4 '
+              className='mt-5 p-2'
               data-aos='fade-up'
               data-aos-duration='1000'
             >
@@ -46,7 +46,7 @@ const FundraisingPhotos = () => {
                   alt='fundraising'
                 />
               </Col>
-              <Col md='4'>
+              <Col md='4' className='col-12'>
                 <h3>Volunteers</h3>
                 <p
                   className='opensans-thin text-muted'

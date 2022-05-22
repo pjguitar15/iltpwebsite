@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import JumbotronComponent from './JumbotronComponent'
 import FeaturedNewsSection from './FeaturedNewsSection'
 import LatestNews from './LatestNews'

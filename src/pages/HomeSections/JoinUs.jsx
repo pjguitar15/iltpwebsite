@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import PillButton from '../../components/PillButton'
 
@@ -14,7 +13,7 @@ const JoinUs = () => {
     <div className='join-us text-center text-white'>
       <h1 className='display-1 m-0'>Join Us!</h1>
       <div className='col-lg-6 mx-auto become-a-member-div p-4 mb-4 '>
-        <h3>Become a member/Support Us!</h3>
+        <h3 className='text-uppercase'>Become a member/Support Us!</h3>
         <p className='lead mx-auto'>
           International Leadering Training Program is a non-profit organization.
           Our goal is to be able to host and coordinate events and activities

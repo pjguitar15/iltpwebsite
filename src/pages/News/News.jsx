@@ -15,11 +15,11 @@ const News = () => {
   // Loading State
   const [isDataLoading, setIsDataLoading] = useState(false)
   let navigate = useNavigate()
-  // firebase collection ref
-  const collectionRef = collection(db, 'news-articles')
 
   // fetch data from firebase
   useEffect(() => {
+    // firebase collection ref
+    const collectionRef = collection(db, 'news-articles')
     Aos.init({ duration: 600 })
 
     setIsDataLoading(true)

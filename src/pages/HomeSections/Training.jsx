@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Container, Button } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import '../styles/Home.css'
 import PointingAtShirtImg from '../../assets/pointing-shirt.png'
 import PillButton from '../../components/PillButton'

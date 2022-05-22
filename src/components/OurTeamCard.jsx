@@ -5,7 +5,7 @@ const OurTeamCard = ({ item }) => {
     <div
       data-aos='fade-down'
       data-aos-duration='1000'
-      className='col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4'
+      className='col-12 col-sm-6 col-lg-4 col-xl-3 mb-4'
     >
       <div style={{ height: '20rem' }}>
         <img

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from 'react-bootstrap'
 import { useNavigate, useParams } from 'react-router-dom'
 import './Slug.css'
@@ -17,26 +17,15 @@ const NewsSlug = () => {
   // const [data] = useState(NewsData)
   let navigate = useNavigate()
   let { id } = useParams()
-  // target scroll location
-  const startOfImage = useRef(null)
-
-  // function to scroll to specific location
-  const scrollToSection = (elementRef) => {
-    window.scrollTo({
-      top: elementRef.current.offsetTop,
-      behavior: 'smooth',
-    })
-  }
 
   useEffect(() => {
     Aos.init({ duration: 2000 })
   }, [])
 
-  // firebase collection ref
-  const collectionRef = collection(db, 'news-articles')
-
   // fetch data from firebase
   useEffect(() => {
+    // firebase collection ref
+    const collectionRef = collection(db, 'news-articles')
     setIsDataLoading(true)
     const q = query(collectionRef, orderBy('timestamp', 'desc'))
     const getData = async () => {
@@ -52,9 +41,6 @@ const NewsSlug = () => {
     getData()
   }, [])
 
-  // useEffect(() => {
-  //   scrollToSection(startOfImage)
-  // }, [id])
 
   return (
     <div data-aos='fade-down'>

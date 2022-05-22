@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import '../styles/AboutUs.css'
-import { OurTeamData } from '../../Data/OurTeamData'
 import 'aos/dist/aos.css'
 import OurTeamCard from '../../components/OurTeamCard'
 // firebase import
 import { db } from '../../firebase/firebase-config'
 import { collection, getDocs, query } from 'firebase/firestore'
 const OurTeam = () => {
-  const [data] = useState(OurTeamData)
   const [firebaseData, setFirebaseData] = useState([])
   // fetch data from firebase
   useEffect(() => {

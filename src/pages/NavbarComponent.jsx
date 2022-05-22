@@ -39,7 +39,10 @@ const NavbarComponent = () => {
 
   useEffect(() => {
     // {(new Date("2020-09-30")) > (new Date()) ? <Component /> : null}
-    console.log(new Date('2020-09-30'))
+    // console.log(new Date('2020-09-30'))
+    // console.log(new Date() > new Date('2020-09-30'))
+    // expires after 2 months (2022-07-22)
+    console.log(new Date() > new Date('2022-07-22'))
   }, [])
 
   return (
@@ -48,7 +51,8 @@ const NavbarComponent = () => {
         navbar ? 'bg-white shadow-sm' : 'bg-none shadow-none'
       }`}
     >
-      {location.pathname === '/' ? (
+      {/* Expires on August 22, 2022 */}
+      {!(new Date() > new Date('2022-08-22')) && location.pathname === '/' ? (
         <div
           style={{ fontSize: '13px' }}
           className={`bg-success opensans-thin text-white py-1 text-center ${

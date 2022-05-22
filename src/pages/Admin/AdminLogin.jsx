@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Form, Button, Alert } from 'react-bootstrap'
 import './Admin.css'
 import iltplogo from '../../assets/iltp-logo.png'
@@ -6,14 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import { app } from '../../firebase/firebase-config'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
-const AdminLogin = ({
-  setUser,
-  user,
-  setPassword,
-  password,
-  setIsLoggedIn,
-  isLoggedin,
-}) => {
+const AdminLogin = ({ setUser, user, setPassword, password }) => {
+  const [loginLoading, setLoginLoading] = useState(false)
   // useNavigate
   let navigate = useNavigate()
   useEffect(() => {
@@ -27,9 +21,11 @@ const AdminLogin = ({
   // admin login handler
   const handleLogin = (e) => {
     e.preventDefault()
+    setLoginLoading(true)
     const authentication = getAuth(app)
     signInWithEmailAndPassword(authentication, user, password)
       .then((response) => {
+        setLoginLoading(false)
         navigate('/admin/news')
         sessionStorage.setItem(
           'Auth Token',
@@ -37,7 +33,6 @@ const AdminLogin = ({
         )
       })
       .catch((err) => {
-        const errorCode = err.code
         const errorMessage = err.message
         console.log(errorMessage)
         alert('Incorrect username/password')
@@ -74,8 +69,8 @@ const AdminLogin = ({
               We'll never share your account with anyone else.
             </Form.Text>
           </Form.Group>
-          <Button variant='primary' type='submit'>
-            Submit
+          <Button disabled={loginLoading} variant='primary' type='submit'>
+            Sign in
           </Button>
         </Form>
         <Alert key='warning' variant='warning mt-4 mb-0 text-center' size='sm'>

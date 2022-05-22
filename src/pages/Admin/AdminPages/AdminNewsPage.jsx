@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import iltplogo from '../../../assets/iltp-logo.png'
-import AdminOurTeam from '../AdminOurTeam'
 import AdminNews from '../AdminNews'
-import AdminTestimonies from '../TestimoniesPage/AdminTestimonies'
-import AdminJumbo from '../AdminJumbo'
 import AdminNav from '../AdminNav'
-import AdminAbout from '../AdminAbout'
 
 const AdminPage = ({ setIsLoggedIn }) => {
   // useNavigate

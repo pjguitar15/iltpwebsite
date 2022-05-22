@@ -1,10 +1,8 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
 import PillButton from '../../components/PillButton'
 import '../styles/Fundraising.css'
 import 'aos/dist/aos.css'
 import { useNavigate } from 'react-router-dom'
-import DonateIcon from '../../assets/icons/donate-icon.png'
 const DonationArt = () => {
   const navigate = useNavigate()
   return (
