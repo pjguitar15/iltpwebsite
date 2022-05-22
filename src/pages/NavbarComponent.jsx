@@ -38,7 +38,8 @@ const NavbarComponent = () => {
   window.addEventListener('scroll', scrollListener)
 
   useEffect(() => {
-    console.log('test')
+    // {(new Date("2020-09-30")) > (new Date()) ? <Component /> : null}
+    console.log(new Date('2020-09-30'))
   }, [])
 
   return (
