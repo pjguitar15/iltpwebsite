@@ -92,7 +92,9 @@ const JumbotronComponent = () => {
                     strong foundation as someone who can leader the community.
                   </span>
                 ) : (
-                  firebaseData.map((item, index) => <span>{item.content}</span>)
+                  firebaseData.map((item, index) => (
+                    <span key={index}>{item.content}</span>
+                  ))
                 )}
               </p>
               <p>

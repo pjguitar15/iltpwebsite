@@ -37,6 +37,10 @@ const NavbarComponent = () => {
 
   window.addEventListener('scroll', scrollListener)
 
+  useEffect(() => {
+    console.log('test')
+  }, [])
+
   return (
     <div
       className={`shadow-sm fixed-top ${
