@@ -25,7 +25,7 @@ const JoinUs = () => {
       <PillButton
         primaryColor='#FFC107'
         secondaryColor='#ffd146'
-        textColor='#303030'
+        textColor='#1f1f1f'
         handleClick={() => navigate('/contact')}
       >
         Join Us
@@ -33,7 +33,7 @@ const JoinUs = () => {
       <PillButton
         primaryColor='#FFC107'
         secondaryColor='#ffd146'
-        textColor='#303030'
+        textColor='#1f1f1f'
         handleClick={() => navigate('/paypal-payment')}
       >
         <i className='fa fa-paypal me-1'></i>Donate
