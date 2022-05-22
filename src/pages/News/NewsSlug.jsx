@@ -119,7 +119,7 @@ const NewsSlug = () => {
                       <FacebookShareButton
                         quote={item.title}
                         hashtag='#iltpusa'
-                        url={`iltp2022.netlify.app/news/${id}}`}
+                        url={`iltp2022.netlify.app/news/${item.id}}`}
                       >
                         <FacebookIcon
                           logoFillColor='black'
