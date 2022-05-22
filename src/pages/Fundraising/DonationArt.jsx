@@ -13,9 +13,6 @@ const DonationArt = () => {
       data-aos='flip-left'
       data-aos-duration='2000'
     >
-      <div className='col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 mx-auto mb-4'>
-        <img className='w-100' src={DonateIcon} alt='donate icon' />
-      </div>
       <p className='text-danger montserrat art-red-paragraph my-0'>
         DONATE FOR A CAUSE
       </p>

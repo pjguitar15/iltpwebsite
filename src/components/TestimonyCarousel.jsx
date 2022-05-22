@@ -20,15 +20,18 @@ const TestimonyCarousel = ({ index, handleSelect, loading, testimonyData }) => {
               "{item.content}"
             </p>
             <div className='col-2 mx-auto my-2'>
-              <img
+              {/* Testimony member photos */}
+              <div
                 style={{
-                  borderRadius: '50%',
-                  height: '100px',
+                  display: 'inline-block',
                   width: '100px',
+                  height: '100px',
+                  background: `url(${item.img})`,
+                  backgroundPosition: '50% 50%',
+                  backgroundSize: 'cover',
+                  borderRadius: '50%',
                 }}
-                src={item.img}
-                alt='iltp members'
-              />
+              ></div>
             </div>
             <div className='testimony-person mt-4 bg-light mx-auto'>
               <div className='m-0 bg-success text-white bebas'>{item.name}</div>

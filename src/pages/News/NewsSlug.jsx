@@ -8,6 +8,8 @@ import Aos from 'aos'
 // Firebase imports
 import { db } from '../../firebase/firebase-config'
 import { collection, getDocs, query, orderBy } from 'firebase/firestore'
+// Facebook button share library
+import { FacebookShareButton, FacebookIcon } from 'react-share'
 const NewsSlug = () => {
   const [firebaseData, setFirebaseData] = useState([])
   // Loading State
@@ -108,6 +110,25 @@ const NewsSlug = () => {
                     >
                       {item.content}
                     </p>
+                    <hr />
+                    {/* Facebook share button here */}
+                    <div>
+                      <p className='opensans-thin text-muted'>
+                        Share this on Facebook
+                      </p>
+                      <FacebookShareButton
+                        quote={item.title}
+                        hashtag='#iltpusa'
+                        url={`iltp2022.netlify.app/news/${id}}`}
+                      >
+                        <FacebookIcon
+                          logoFillColor='black'
+                          round={true}
+                          size={40}
+                        />
+                      </FacebookShareButton>
+                    </div>
+                    <hr />
                     <Button
                       onClick={() => {
                         navigate('/news')
