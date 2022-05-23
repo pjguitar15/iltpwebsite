@@ -15,7 +15,6 @@ const PillButton = (props) => {
     verticalAlign: 'bottom',
     whiteSpace: 'nowrap',
     border: `none`,
-    fontFamily: 'lato',
     letterSpacing: '1px',
     transition:
       '0.15s background-color, 0.15s border-color, 0.15s color, 0.15s fill',
@@ -24,6 +23,8 @@ const PillButton = (props) => {
   }
   return (
     <button
+      // inside home.css
+      className='pill-btn'
       onClick={props.handleClick}
       style={pillBtn}
       onMouseEnter={() => setCurrentBgColor(props.secondaryColor)}

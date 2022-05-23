@@ -11,7 +11,7 @@ const LogoAndDesc = () => {
         International Leadership Training Program
       </h2>
       <p
-        className='text-justify col-lg-8 mx-auto montserrat px-4'
+        className='text-justify col-lg-8 mx-auto montserrat text-muted px-4'
         style={{
           textAlign: 'justify',
           lineHeight: '40px',

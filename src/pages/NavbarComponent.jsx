@@ -37,14 +37,6 @@ const NavbarComponent = () => {
 
   window.addEventListener('scroll', scrollListener)
 
-  useEffect(() => {
-    // {(new Date("2020-09-30")) > (new Date()) ? <Component /> : null}
-    // console.log(new Date('2020-09-30'))
-    // console.log(new Date() > new Date('2020-09-30'))
-    // expires after 2 months (2022-07-22)
-    console.log(new Date() > new Date('2022-07-22'))
-  }, [])
-
   return (
     <div
       className={`shadow-sm fixed-top ${

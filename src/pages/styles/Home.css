@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 *::selection {
   background: rgb(6, 139, 66);
   color: #ffffff;
@@ -229,4 +230,8 @@
 
 .paypal-amount-input:focus {
   outline: none !important;
+}
+
+.pill-btn {
+  font-family: 'lato';
 }
