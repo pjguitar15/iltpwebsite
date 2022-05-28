@@ -50,7 +50,6 @@ const AddTestimony = () => {
         })
       })
       .then(() => {
-        // Add React State Realtime Effect here
         setSubmitLoading(false)
         alert('Submitted Successfuly! Page will refresh')
         // set to emptry string onSubmit

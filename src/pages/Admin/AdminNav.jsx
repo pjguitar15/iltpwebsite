@@ -1,7 +1,8 @@
 import React from 'react'
+import iltplogo from '../../assets/iltp-logo.png'
 import { useNavigate } from 'react-router-dom'
 
-const AdminNav = ({ iltplogo, location }) => {
+const AdminNav = ({ location }) => {
   const navigate = useNavigate()
   const handleLogout = () => {
     alert('Thank you admin!')
@@ -76,6 +77,20 @@ const AdminNav = ({ iltplogo, location }) => {
       >
         <h6 className={`m-0`}>
           <i className='bi bi-speedometer me-2'></i>Our Team
+        </h6>
+      </div>
+
+      {/* Volunteer images */}
+      <div
+        onClick={() => navigate('/admin/volunteers')}
+        className={`${
+          location.pathname.slice(7) === 'volunteers'
+            ? 'bg-light text-dark'
+            : 'text-light'
+        } m-0 text-light py-3 admin-link`}
+      >
+        <h6 className={`m-0`}>
+          <i className='bi bi-person-lines-fill me-2' /> Volunteers
         </h6>
       </div>
       <div onClick={handleLogout} className={`m-0 text-light py-3 admin-link`}>

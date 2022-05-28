@@ -6,21 +6,21 @@ const ErrorPage = () => {
   let navigate = useNavigate()
   return (
     <div className='ErrorPage'>
-      <section class='error-container'>
+      <section className='error-container'>
         <span>4</span>
         <span>
-          <span class='screen-reader-text'>0</span>
+          <span className='screen-reader-text'>0</span>
         </span>
         <span>4</span>
       </section>
-      <p class='zoom-area'>
+      <p className='zoom-area'>
         You have entered an <b>unknown</b> page.
       </p>
-      <div class='link-container'>
+      <div className='link-container'>
         <button
           target='_blank'
           href='https://www.silocreativo.com/en/creative-examples-404-error-css/'
-          class='btn btn-sm btn-warning'
+          className='btn btn-sm btn-warning'
           onClick={() => {
             navigate('/')
           }}

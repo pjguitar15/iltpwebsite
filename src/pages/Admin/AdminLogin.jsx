@@ -31,6 +31,8 @@ const AdminLogin = ({ setUser, user, setPassword, password }) => {
           'Auth Token',
           response._tokenResponse.refreshToken
         )
+        setUser('')
+        setPassword('')
       })
       .catch((err) => {
         const errorMessage = err.message

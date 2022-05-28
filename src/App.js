@@ -24,9 +24,10 @@ import AdminUpdateTeam from './pages/Admin/AdminUpdateTeam'
 
 import { PaypalTextPage } from './components/paypal-modal/PaypalTextPage'
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { VolunteerActivities } from './pages/Admin/AdminPages/VolunteerActivities'
+import AddVolunteerImages from './pages/AddVolunteerImages'
 
 const App = () => {
-  const [isLoggedin, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
 
@@ -47,26 +48,23 @@ const App = () => {
               <Footer /></>} />
             <Route path='/contact' element={<><NavbarComponent /><ContactUs /><GetInTouch />
               <Footer /></>} />
-            <Route path='/admin' element={<AdminLogin setIsLoggedIn={setIsLoggedIn} isLoggedin={isLoggedin} setUser={setUser} user={user} password={password} setPassword={setPassword} />} />
+            <Route path='/admin' element={<AdminLogin setUser={setUser} user={user} password={password} setPassword={setPassword} />} />
 
             {/* <Route path='/adminpage' element={<AdminPage />} /> */}
             <Route path='*' element={<ErrorPage />} />
 
             {/* Protected Route */}
             {/* <Route element={<ProtectedRoute />}> */}
-            <Route path='/admin/news' element={<AdminNewsPage setIsLoggedIn={setIsLoggedIn} />} />
-            {/* adminpage/testimonies */}
-            <Route path='/admin/testimonies' element={<AdminTestimonyPage setIsLoggedIn={setIsLoggedIn} />} />
-            {/* adminpage/jumbotron */}
-            <Route path='/admin/jumbotron' element={<AdminJumbotronPage setIsLoggedIn={setIsLoggedIn} />} />
-            {/* adminpage/about */}
-            {/* <Route path='/admin/about' element={<AdminAboutPage setIsLoggedIn={setIsLoggedIn} />} /> */}
-            {/* adminpage/our-team */}
-            <Route path='/admin/team' element={<AdminTeamPage setIsLoggedIn={setIsLoggedIn} />} />
+            <Route path='/admin/news' element={<AdminNewsPage />} />
+            <Route path='/admin/testimonies' element={<AdminTestimonyPage />} />
+            <Route path='/admin/jumbotron' element={<AdminJumbotronPage />} />
+            <Route path='/admin/team' element={<AdminTeamPage />} />
+            <Route path='/admin/volunteers' element={<VolunteerActivities />} />
+            <Route path='/admin/volunteers/add' element={<AddVolunteerImages />} />
 
             {/* Add Testimony Route */}
             <Route path='/admin/add-testimony' element={<AddTestimony />} />
-            <Route path='/admin/testimonies/:id' element={<UpdateTestimonies setIsLoggedIn={setIsLoggedIn} />} />
+            <Route path='/admin/testimonies/:id' element={<UpdateTestimonies />} />
 
             {/* Add Team Member Route */}
             <Route path='/admin/team/add' element={<AddTeamMemberForm />} />

@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import iltplogo from '../../../assets/iltp-logo.png'
 
 import AdminTestimonies from '../TestimoniesPage/AdminTestimonies'
 
 import AdminNav from '../AdminNav'
 
-const AdminTestimonyPage = ({ setIsLoggedIn }) => {
+const AdminTestimonyPage = () => {
   // useLocation and useNavigate
   const location = useLocation()
   const navigate = useNavigate()
@@ -20,21 +19,13 @@ const AdminTestimonyPage = ({ setIsLoggedIn }) => {
     }
   }, [])
 
-  const handleLogout = () => {
-    alert('Thank you admin!')
-    setIsLoggedIn(false)
-  }
   return (
     <div>
       {/* Dashboard */}
       <div className='row m-0' style={{ height: '100vh' }}>
         <div className='col-12 col-md-5 col-lg-3 bg-dark pt-4 text-center px-0'>
           {/* Navigation */}
-          <AdminNav
-            location={location}
-            iltplogo={iltplogo}
-            handleLogout={handleLogout}
-          />
+          <AdminNav location={location} />
         </div>
         <div className='col-12 col-md-7 col-lg-9 p-5'>
           {location.pathname.slice(7) === 'testimonies' ? (
