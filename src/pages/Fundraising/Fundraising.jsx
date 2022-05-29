@@ -41,7 +41,6 @@ const Fundraising = () => {
         {/* image here */}
         <DonationArt />
         <FundraisingPhotos />
-        <hr />
         <OurActivities />
       </Container>
     </div>

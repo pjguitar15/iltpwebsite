@@ -25,32 +25,15 @@ const FundraisingPhotos = () => {
                 <h3>Fund Raising, Purpose, Finances</h3>
                 <p
                   className='opensans-thin text-muted'
-                  style={{ lineHeight: '30px' }}
+                  style={{ lineHeight: '30px', textAlign: 'justify' }}
                 >
                   Our volunteer teams conduct fund-raising activities
                   occasionally in order to cover the cost of service projects,
                   seminars and other operational expenses.
                 </p>
-              </Col>
-            </Row>
-            <Row
-              className='mt-5 p-2'
-              data-aos='fade-up'
-              data-aos-duration='1000'
-            >
-              <Col className='ms-auto mb-3' md='8' style={{ height: '400px' }}>
-                <img
-                  className='w-100 h-100'
-                  style={{ objectFit: 'cover' }}
-                  src={fr2}
-                  alt='fundraising'
-                />
-              </Col>
-              <Col md='4' className='col-12'>
-                <h3>Volunteers</h3>
                 <p
                   className='opensans-thin text-muted'
-                  style={{ lineHeight: '30px' }}
+                  style={{ lineHeight: '30px', textAlign: 'justify' }}
                 >
                   In fact, ILTP program is operated solely by volunteers and
                   your generous donations. At the same time, our volunteers are
@@ -59,6 +42,7 @@ const FundraisingPhotos = () => {
                 </p>
               </Col>
             </Row>
+
             <div className='mt-5 py-3'>
               <div className='text-center'>
                 <i

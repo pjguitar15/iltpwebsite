@@ -77,7 +77,6 @@ const AddVolunteerImages = () => {
   useEffect(() => {
     const slicedAlbum = albumNames.slice(0, 1).map((item) => item.name)
     setSelectedAlbum(slicedAlbum[0])
-    console.log(slicedAlbum[0])
   }, [albumNames])
   return (
     <>

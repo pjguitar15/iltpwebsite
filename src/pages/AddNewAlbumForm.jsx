@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button, Container, ListGroup, Spinner } from 'react-bootstrap'
+import { db } from '../firebase/firebase-config'
+import { addDoc, collection } from 'firebase/firestore'
 
 const AddNewAlbumForm = ({
   albumNames,
@@ -9,15 +11,18 @@ const AddNewAlbumForm = ({
   const [submitLoading, setSubmitLoading] = useState(false)
   const [albumNameInput, setAlbumNameInput] = useState('')
 
-  const formSubmit = (e) => {
+  const collectionRef = collection(db, 'volunteer-albums')
+  const formSubmit = async (e) => {
     e.preventDefault()
     if (albumNameInput) {
+      await addDoc(collectionRef, {
+        name: albumNameInput,
+      })
       setAlbumNames([...albumNames, { name: albumNameInput }])
       setAlbumNameInput('')
       setAddNewAlbumSelected(false)
-      console.log()
     } else {
-      console.log('Field is empty')
+      alert('Field is empty')
     }
   }
   return (
