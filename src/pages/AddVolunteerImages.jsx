@@ -70,11 +70,15 @@ const AddVolunteerImages = () => {
     const getData = async () => {
       const data = await getDocs(q)
       setAlbumNames(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-      setSelectedAlbum(albumNames.slice(0, 1).map((item) => item.name))
     }
     getData()
   }, [])
 
+  useEffect(() => {
+    const slicedAlbum = albumNames.slice(0, 1).map((item) => item.name)
+    setSelectedAlbum(slicedAlbum[0])
+    console.log(slicedAlbum[0])
+  }, [albumNames])
   return (
     <>
       {isAddNewAlbumSelected ? (
