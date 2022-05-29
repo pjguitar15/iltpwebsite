@@ -108,6 +108,9 @@ export const PaypalTextPage = () => {
                     },
                   },
                 ],
+                application_context: {
+                  shipping_preference: 'NO_SHIPPING',
+                },
               })
             }}
             onApprove={async (data, actions) => {
