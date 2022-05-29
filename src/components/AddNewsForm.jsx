@@ -78,7 +78,7 @@ const ModalBody = ({
             <option value='featured'>Featured</option>
           </Form.Select>
         </div>
-        <div class='form-group'>
+        <div className='form-group'>
           <label for='exampleFormControlTextarea1' className='my-2'>
             Edit your content
           </label>
@@ -88,7 +88,7 @@ const ModalBody = ({
             onChange={(e) => setContentInput(e.target.value)}
             value={contentInput}
             placeholder='Add content here'
-            class='form-control'
+            className='form-control'
             id='exampleFormControlTextarea1'
             rows='7'
           ></textarea>

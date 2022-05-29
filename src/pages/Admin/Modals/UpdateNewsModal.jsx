@@ -13,11 +13,13 @@ const NewsPageModal = ({
   const [content, setContent] = useState('')
   const [date, setDate] = useState('')
   const [locationInput, setLocationInput] = useState('')
+  const [imageUrl, setImageUrl] = useState('')
   useEffect(() => {
     setLocationInput(currentItem.location)
     setDate(currentItem.date)
     setTitle(currentItem.title)
     setContent(currentItem.content)
+    setImageUrl(currentItem.img)
   }, [currentItem])
 
   // Firebase update here
@@ -51,6 +53,16 @@ const NewsPageModal = ({
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={updateItem}>
+            <div className='form-group mb-2'>
+              <div style={{ height: '14rem' }}>
+                <img
+                  className='w-100 h-100'
+                  style={{ objectFit: 'cover' }}
+                  src={imageUrl}
+                  alt=''
+                />
+              </div>
+            </div>
             {/* Title form group here */}
             <div className='form-group mb-2'>
               <label for='exampleFormControlTextarea1' className='my-2'>
