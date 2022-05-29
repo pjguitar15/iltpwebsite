@@ -19,11 +19,11 @@ const OurActivities = () => {
       <h1 className='display-6 mb-4 text-center'>Volunteer Activities</h1>
       <div className='row'>
         {firebaseData.map((item, index) => (
-          <div key={index} className='col-xl-4 col-sm-6 col-12 p-2'>
-            <div>
+          <div key={index} className='col-xl-4 col-md-6 col-12 p-2'>
+            <div style={{ height: '17rem' }}>
               <img
                 src={item.img}
-                className='w-100'
+                className='w-100 h-100'
                 alt='activity'
                 style={{ objectFit: 'cover' }}
               />
