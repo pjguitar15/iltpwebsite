@@ -49,8 +49,14 @@ const OurActivities = () => {
               ))}
             <div className='row'>
               <div className='col-12 col-lg-6'>
-                <Button variant='info' className='mb-5'>
-                  View more photos on <strong>{albumNameItem.name}</strong>
+                <Button
+                  onClick={() =>
+                    alert('sorry, im still working on this part ^^`')
+                  }
+                  variant='outline-success'
+                  className='mb-5'
+                >
+                  View more photos on <strong>{albumNameItem.name}</strong>{' '}
                   album
                 </Button>
               </div>

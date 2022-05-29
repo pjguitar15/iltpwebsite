@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AdminNav from '../AdminNav'
-import { Button, Form, Modal } from 'react-bootstrap'
+import { Button, Form, Modal, Spinner } from 'react-bootstrap'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import {
@@ -14,6 +14,7 @@ import {
 import { db } from '../../../firebase/firebase-config'
 
 export const VolunteerActivities = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const [volunteerImages, setVolunteerImages] = useState([])
   const [volunteerAlbums, setVolunteerAlbums] = useState([])
   const [show, setShow] = useState(false)
@@ -23,6 +24,7 @@ export const VolunteerActivities = () => {
   const location = useLocation()
   const navigate = useNavigate()
   useEffect(() => {
+    setIsLoading(true)
     const collectionRef = collection(db, 'volunteer-images')
     const q = query(collectionRef, orderBy('timestamp', 'desc'))
     const getData = async () => {
@@ -30,6 +32,7 @@ export const VolunteerActivities = () => {
       setVolunteerImages(
         data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
       )
+      setIsLoading(false)
     }
     getData()
   }, [])
@@ -124,118 +127,137 @@ export const VolunteerActivities = () => {
                 </Form.Select>
               </div>
 
-              {/* display all images with x mark on top right */}
-              <div className='row py-4'>
-                {selectedVolunteerAlbum === 'all'
-                  ? volunteerImages.map((item, index) => (
-                      <div
-                        key={index}
-                        className='p-2 col-lg-3'
-                        onMouseEnter={() => setIsMouseEntered(item.id)}
-                        onMouseLeave={() => setIsMouseEntered('')}
-                      >
-                        <div
-                          className='position-relative bg-dark'
-                          style={{ height: '10rem' }}
-                        >
-                          <img
-                            style={
-                              isMouseEntered === item.id
-                                ? { opacity: '.3', objectFit: 'cover' }
-                                : { objectFit: 'cover' }
-                            }
-                            className='w-100 h-100'
-                            src={item.img}
-                            alt='test'
-                          />
-                          <Button
-                            onClick={() => {
-                              openModalAndSetDeleteId(item.id)
-                            }}
-                            style={{
-                              bottom: '0',
-                              right: '0',
-                              top: '0',
-                              left: '0',
-                              margin: 'auto',
-                              background: 'none',
-                            }}
-                            className={`position-absolute ${
-                              isMouseEntered === item.id ? 'd-block' : 'd-none'
-                            }`}
-                            variant='danger'
-                          >
-                            <svg
-                              xmlns='http://www.w3.org/2000/svg'
-                              width='24'
-                              height='24'
-                              fill='red'
-                              class='bi bi-trash3-fill'
-                              viewBox='0 0 16 16'
-                            >
-                              <path d='M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z' />
-                            </svg>
-                          </Button>
-                        </div>
-                      </div>
-                    ))
-                  : volunteerImages
-                      .filter((item) => item.album === selectedVolunteerAlbum)
-                      .map((item, index) => (
-                        <div
-                          key={index}
-                          className='p-2 col-lg-3'
-                          onMouseEnter={() => setIsMouseEntered(item.id)}
-                          onMouseLeave={() => setIsMouseEntered('')}
-                        >
+              {isLoading ? (
+                <div className='text-center'>
+                  <Spinner
+                    style={{ height: '7rem', width: '7rem' }}
+                    className='text-center'
+                    size='xl'
+                    animation='border'
+                  />
+                </div>
+              ) : (
+                <>
+                  <div className='row py-4'>
+                    {selectedVolunteerAlbum === 'all'
+                      ? volunteerImages.map((item, index) => (
                           <div
-                            className='position-relative bg-dark'
-                            style={{ height: '10rem' }}
+                            key={index}
+                            className='p-2 col-lg-3'
+                            onMouseEnter={() => setIsMouseEntered(item.id)}
+                            onMouseLeave={() => setIsMouseEntered('')}
                           >
-                            <img
-                              style={
-                                isMouseEntered === item.id
-                                  ? { opacity: '.3', objectFit: 'cover' }
-                                  : { objectFit: 'cover' }
-                              }
-                              className='w-100 h-100'
-                              src={item.img}
-                              alt='test'
-                            />
-                            <Button
-                              onClick={() => {
-                                openModalAndSetDeleteId(item.id)
-                              }}
-                              style={{
-                                bottom: '0',
-                                right: '0',
-                                top: '0',
-                                left: '0',
-                                margin: 'auto',
-                                background: 'none',
-                              }}
-                              className={`position-absolute ${
-                                isMouseEntered === item.id
-                                  ? 'd-block'
-                                  : 'd-none'
-                              }`}
-                              variant='danger'
+                            <div
+                              className='position-relative bg-dark'
+                              style={{ height: '10rem' }}
                             >
-                              <svg
-                                xmlns='http://www.w3.org/2000/svg'
-                                width='24'
-                                height='24'
-                                fill='red'
-                                class='bi bi-trash3-fill'
-                                viewBox='0 0 16 16'
+                              <img
+                                style={
+                                  isMouseEntered === item.id
+                                    ? { opacity: '.3', objectFit: 'cover' }
+                                    : { objectFit: 'cover' }
+                                }
+                                className='w-100 h-100'
+                                src={item.img}
+                                alt='test'
+                              />
+                              <Button
+                                onClick={() => {
+                                  openModalAndSetDeleteId(item.id)
+                                }}
+                                style={{
+                                  bottom: '0',
+                                  right: '0',
+                                  top: '0',
+                                  left: '0',
+                                  margin: 'auto',
+                                  background: 'none',
+                                }}
+                                className={`position-absolute ${
+                                  isMouseEntered === item.id
+                                    ? 'd-block'
+                                    : 'd-none'
+                                }`}
+                                variant='danger'
                               >
-                                <path d='M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z' />
-                              </svg>
-                            </Button>
+                                <svg
+                                  xmlns='http://www.w3.org/2000/svg'
+                                  width='24'
+                                  height='24'
+                                  fill='red'
+                                  class='bi bi-trash3-fill'
+                                  viewBox='0 0 16 16'
+                                >
+                                  <path d='M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z' />
+                                </svg>
+                              </Button>
+                            </div>
                           </div>
-                        </div>
-                      ))}
-              </div>
+                        ))
+                      : volunteerImages
+                          .filter(
+                            (item) => item.album === selectedVolunteerAlbum
+                          )
+                          .map((item, index) => (
+                            <div
+                              key={index}
+                              className='p-2 col-lg-3'
+                              onMouseEnter={() => setIsMouseEntered(item.id)}
+                              onMouseLeave={() => setIsMouseEntered('')}
+                            >
+                              <div
+                                className='position-relative bg-dark'
+                                style={{ height: '10rem' }}
+                              >
+                                <img
+                                  style={
+                                    isMouseEntered === item.id
+                                      ? { opacity: '.3', objectFit: 'cover' }
+                                      : { objectFit: 'cover' }
+                                  }
+                                  className='w-100 h-100'
+                                  src={item.img}
+                                  alt='test'
+                                />
+                                <Button
+                                  onClick={() => {
+                                    openModalAndSetDeleteId(item.id)
+                                  }}
+                                  style={{
+                                    bottom: '0',
+                                    right: '0',
+                                    top: '0',
+                                    left: '0',
+                                    margin: 'auto',
+                                    background: 'none',
+                                  }}
+                                  className={`position-absolute ${
+                                    isMouseEntered === item.id
+                                      ? 'd-block'
+                                      : 'd-none'
+                                  }`}
+                                  variant='danger'
+                                >
+                                  <svg
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    width='24'
+                                    height='24'
+                                    fill='red'
+                                    class='bi bi-trash3-fill'
+                                    viewBox='0 0 16 16'
+                                  >
+                                    <path d='M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z' />
+                                  </svg>
+                                </Button>
+                              </div>
+                            </div>
+                          ))}
+                  </div>{' '}
+                </>
+              )}
+              {/* display all images with x mark on top right */}
+
+              {/* end here */}
             </>
           ) : (
             ''

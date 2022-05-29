@@ -111,15 +111,6 @@ const NavbarComponent = () => {
                 className={`${
                   navbar ? 'text-black' : 'text-white'
                 } mx-3 nav-link-hover`}
-                to='/fundraising'
-                style={disableSelectNoUnderline}
-              >
-                Photos
-              </Link>
-              <Link
-                className={`${
-                  navbar ? 'text-black' : 'text-white'
-                } mx-3 nav-link-hover`}
                 to='/news'
                 style={disableSelectNoUnderline}
               >
