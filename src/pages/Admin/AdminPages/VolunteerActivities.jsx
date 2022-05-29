@@ -98,15 +98,12 @@ export const VolunteerActivities = () => {
           </Modal>
         </div>
         <div className='col-12 col-md-7 col-lg-9 p-5'>
-          {location.pathname.slice(7) === 'volunteers' ? (
+          {location.pathname.slice(7) === 'gallery' ? (
             //   update images here
             <>
-              <h3 className='text-dark'>Configure Volunteer Images</h3>
+              <h3 className='text-dark'>Configure Gallery</h3>
               <hr />
-              <Button
-                onClick={() => navigate('/admin/volunteers/add')}
-                size='sm'
-              >
+              <Button onClick={() => navigate('/admin/gallery/add')} size='sm'>
                 Add an image
               </Button>
               {/* Album selector */}

@@ -46,7 +46,7 @@ const AddVolunteerImages = () => {
         // Add React State Realtime Effect here
         setSubmitLoading(false)
         alert('Uploaded Successfully')
-        navigate('/admin/volunteers')
+        navigate('/admin/gallery')
         setSubmitLoading(false)
       })
       .catch((err) => {
@@ -58,7 +58,7 @@ const AddVolunteerImages = () => {
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
     if (authToken) {
-      navigate('/admin/volunteers/add')
+      navigate('/admin/gallery/add')
     } else {
       navigate('/admin')
     }
@@ -141,7 +141,7 @@ const AddVolunteerImages = () => {
                   disabled={submitLoading}
                   variant='primary'
                   size='sm'
-                  onClick={() => navigate('/admin/volunteers')}
+                  onClick={() => navigate('/admin/gallery')}
                 >
                   Back
                 </Button>

@@ -28,7 +28,7 @@ const AdminOurTeam = () => {
   }, [])
   return (
     <div>
-      <h1>Our Team</h1>
+      <h3>Our Team</h3>
       <p className='lead'>You can add, edit, and delete team members here. </p>
       <hr />
       <Button

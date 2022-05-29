@@ -82,15 +82,15 @@ const AdminNav = ({ location }) => {
 
       {/* Volunteer images */}
       <div
-        onClick={() => navigate('/admin/volunteers')}
+        onClick={() => navigate('/admin/gallery')}
         className={`${
-          location.pathname.slice(7) === 'volunteers'
+          location.pathname.slice(7) === 'gallery'
             ? 'bg-light text-dark'
             : 'text-light'
         } m-0 text-light py-3 admin-link`}
       >
         <h6 className={`m-0`}>
-          <i className='bi bi-person-lines-fill me-2' /> Volunteers
+          <i className='bi bi-person-lines-fill me-2' /> Gallery
         </h6>
       </div>
       <div onClick={handleLogout} className={`m-0 text-light py-3 admin-link`}>

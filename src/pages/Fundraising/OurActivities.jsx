@@ -36,7 +36,7 @@ const OurActivities = () => {
             {firebaseData
               .filter((el) => el.album === albumNameItem.name)
               .map((item, index) => (
-                <div key={index} className='col-xl-3 col-md-6 col-12 p-2 mb-3'>
+                <div key={index} className='col-xl-3 col-md-6 col-12 p-2 mb-5'>
                   <div style={{ height: '14rem' }}>
                     <img
                       src={item.img}
@@ -47,7 +47,7 @@ const OurActivities = () => {
                   </div>
                 </div>
               ))}
-            <div className='row'>
+            {/* <div className='row'>
               <div className='col-12 col-lg-6'>
                 <Button
                   onClick={() =>
@@ -60,7 +60,7 @@ const OurActivities = () => {
                   album
                 </Button>
               </div>
-            </div>
+            </div> */}
           </>
         ))}
       </div>

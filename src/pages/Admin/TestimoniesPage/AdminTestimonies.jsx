@@ -34,7 +34,7 @@ const AdminTestimonies = () => {
 
   return (
     <div>
-      <h1>Testimonies Pages</h1>
+      <h3>Testimonies Pages</h3>
       <p className='lead'>You can add, edit, and delete testimonies here</p>
       <hr />
       <Button size='sm' onClick={() => navigate('/admin/add-testimony')}>

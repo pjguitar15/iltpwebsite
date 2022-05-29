@@ -59,8 +59,8 @@ const App = () => {
             <Route path='/admin/testimonies' element={<AdminTestimonyPage />} />
             <Route path='/admin/jumbotron' element={<AdminJumbotronPage />} />
             <Route path='/admin/team' element={<AdminTeamPage />} />
-            <Route path='/admin/volunteers' element={<VolunteerActivities />} />
-            <Route path='/admin/volunteers/add' element={<AddVolunteerImages />} />
+            <Route path='/admin/gallery' element={<VolunteerActivities />} />
+            <Route path='/admin/gallery/add' element={<AddVolunteerImages />} />
 
             {/* Add Testimony Route */}
             <Route path='/admin/add-testimony' element={<AddTestimony />} />

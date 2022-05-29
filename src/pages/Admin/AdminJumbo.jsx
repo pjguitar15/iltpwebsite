@@ -37,7 +37,7 @@ const AdminJumbo = () => {
         jumbotronItem={jumbotronItem}
         setShowSuccessMessage={setShowSuccessMessage}
       />
-      <h1>Jumbotron section</h1>
+      <h3>Jumbotron section</h3>
       <p className='col-7 lead'>You can update the landing page text here</p>
       <hr />
       <Form>

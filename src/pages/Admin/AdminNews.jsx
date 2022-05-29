@@ -89,7 +89,7 @@ const AdminNews = () => {
         setAddModalShow={setAddModalShow}
         addModalShow={addModalShow}
       />
-      <h1>Configure News Page</h1>
+      <h3>Configure News Page</h3>
       <p className='col-7 lead'>You can add, edit, and delete news here</p>
       <hr />
       <Button size='sm' className='mb-3' onClick={addNewsHandler}>
