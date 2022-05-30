@@ -107,7 +107,10 @@ const AddVolunteerImages = () => {
             {/* Select */}
             <Form.Group>
               <Form.Text>Which album does this photo belongs?</Form.Text>
-              <Form.Select onChange={(e) => setSelectedAlbum(e.target.value)}>
+              <Form.Select
+                required
+                onChange={(e) => setSelectedAlbum(e.target.value)}
+              >
                 {albumNames.map((item, index) => (
                   <option key={index}>{item.name}</option>
                 ))}
