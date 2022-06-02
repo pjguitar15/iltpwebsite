@@ -78,7 +78,7 @@ const NavbarComponent = () => {
       )}
 
       <Navbar
-        variant={`${navbar ? 'light' : 'dark'} ${
+        variant={`${navbar || isToggleOpen ? 'light' : 'dark'} ${
           windowDimenion.winWidth < 990 ? 'dark' : 'light'
         } `}
         expand='lg'
