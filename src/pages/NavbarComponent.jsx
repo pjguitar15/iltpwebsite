@@ -6,10 +6,30 @@ import { useLocation, Link, useNavigate } from 'react-router-dom'
 
 const NavbarComponent = () => {
   const [navbar, setNavbar] = useState(false)
+  const [isToggleOpen, setIsToggleOpen] = useState(false)
+  const [windowDimenion, detectHW] = useState({
+    winWidth: window.innerWidth,
+    winHeight: window.innerHeight,
+  })
 
   // useLocation and useNavigate
   const location = useLocation()
   const navigate = useNavigate()
+
+  const detectSize = () => {
+    detectHW({
+      winWidth: window.innerWidth,
+      winHeight: window.innerHeight,
+    })
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', detectSize)
+
+    return () => {
+      window.removeEventListener('resize', detectSize)
+    }
+  }, [windowDimenion])
 
   // scrolls back to top when location is changed
   useEffect(() => {
@@ -57,7 +77,13 @@ const NavbarComponent = () => {
         ''
       )}
 
-      <Navbar expand='lg'>
+      <Navbar
+        variant={`${navbar ? 'light' : 'dark'} ${
+          windowDimenion.winWidth < 990 ? 'dark' : 'light'
+        } `}
+        expand='lg'
+        className={`${isToggleOpen ? 'bg-light' : ''}`}
+      >
         <Container>
           <Navbar.Brand className='py-0' style={{ cursor: 'pointer' }}>
             <Link
@@ -68,7 +94,7 @@ const NavbarComponent = () => {
               <img className='mt-0' src={iltpLogo} alt='iltp logo' />
               <div
                 className={`iltp-brand-text d-flex justify-content-center flex-column text-start 
-            ${navbar ? 'text-black' : 'text-white'}`}
+            ${navbar || isToggleOpen ? 'text-black' : 'text-white'}`}
               >
                 <span style={disableSelectNoUnderline}>
                   International Leadership
@@ -77,12 +103,15 @@ const NavbarComponent = () => {
               </div>
             </Link>
           </Navbar.Brand>
-          <Navbar.Toggle variant='success' aria-controls='basic-navbar-nav' />
+          <Navbar.Toggle
+            onClick={() => setIsToggleOpen(!isToggleOpen)}
+            aria-controls='basic-navbar-nav'
+          />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
               <Link
                 className={`${
-                  navbar ? 'text-black' : 'text-white'
+                  navbar || isToggleOpen ? 'text-black' : 'text-white'
                 } mx-2 nav-link-hover`}
                 to='/'
                 style={disableSelectNoUnderline}
@@ -91,7 +120,7 @@ const NavbarComponent = () => {
               </Link>
               <Link
                 className={`${
-                  navbar ? 'text-black' : 'text-white'
+                  navbar || isToggleOpen ? 'text-black' : 'text-white'
                 } mx-2 nav-link-hover`}
                 to='/about'
                 style={disableSelectNoUnderline}
@@ -100,7 +129,7 @@ const NavbarComponent = () => {
               </Link>
               <Link
                 className={`${
-                  navbar ? 'text-black' : 'text-white'
+                  navbar || isToggleOpen ? 'text-black' : 'text-white'
                 } mx-2 nav-link-hover`}
                 to='/photo-gallery'
                 style={disableSelectNoUnderline}
@@ -109,7 +138,7 @@ const NavbarComponent = () => {
               </Link>
               <Link
                 className={`${
-                  navbar ? 'text-black' : 'text-white'
+                  navbar || isToggleOpen ? 'text-black' : 'text-white'
                 } mx-2 nav-link-hover`}
                 to='/fundraising'
                 style={disableSelectNoUnderline}
@@ -118,7 +147,7 @@ const NavbarComponent = () => {
               </Link>
               <Link
                 className={`${
-                  navbar ? 'text-black' : 'text-white'
+                  navbar || isToggleOpen ? 'text-black' : 'text-white'
                 } mx-2 nav-link-hover`}
                 to='/news'
                 style={disableSelectNoUnderline}
@@ -127,7 +156,7 @@ const NavbarComponent = () => {
               </Link>
               <Link
                 className={`${
-                  navbar ? 'text-black' : 'text-white'
+                  navbar || isToggleOpen ? 'text-black' : 'text-white'
                 } mx-2 nav-link-hover`}
                 to='/contact'
                 style={disableSelectNoUnderline}
@@ -139,7 +168,9 @@ const NavbarComponent = () => {
                   navigate('/paypal-payment')
                 }}
                 className='mx-2'
-                variant={`${navbar ? 'success' : 'outline-light'}`}
+                variant={`${
+                  navbar || isToggleOpen ? 'success' : 'outline-light'
+                }`}
               >
                 <i className='fa fa-paypal me-1'></i>
                 Donate

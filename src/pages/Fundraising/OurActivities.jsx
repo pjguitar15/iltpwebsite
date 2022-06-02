@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { db } from '../../firebase/firebase-config'
 import { query, orderBy, getDocs, collection } from 'firebase/firestore'
-import { Button } from 'react-bootstrap'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const OurActivities = () => {
   const [firebaseData, setFirebaseData] = useState([])
@@ -38,29 +38,16 @@ const OurActivities = () => {
               .map((item, index) => (
                 <div key={index} className='col-xl-3 col-md-6 col-12 p-2 mb-5'>
                   <div style={{ height: '14rem' }}>
-                    <img
+                    <LazyLoadImage
+                      alt={'activity'}
+                      effect='blur'
                       src={item.img}
                       className='w-100 h-100'
-                      alt='activity'
                       style={{ objectFit: 'cover' }}
-                    />
+                    />  
                   </div>
                 </div>
               ))}
-            {/* <div className='row'>
-              <div className='col-12 col-lg-6'>
-                <Button
-                  onClick={() =>
-                    alert('sorry, im still working on this part ^^`')
-                  }
-                  variant='outline-success'
-                  className='mb-5'
-                >
-                  View more photos on <strong>{albumNameItem.name}</strong>{' '}
-                  album
-                </Button>
-              </div>
-            </div> */}
           </>
         ))}
       </div>
