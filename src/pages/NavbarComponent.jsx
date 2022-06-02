@@ -83,7 +83,7 @@ const NavbarComponent = () => {
               <Link
                 className={`${
                   navbar ? 'text-black' : 'text-white'
-                } mx-3 nav-link-hover`}
+                } mx-2 nav-link-hover`}
                 to='/'
                 style={disableSelectNoUnderline}
               >
@@ -92,7 +92,7 @@ const NavbarComponent = () => {
               <Link
                 className={`${
                   navbar ? 'text-black' : 'text-white'
-                } mx-3 nav-link-hover`}
+                } mx-2 nav-link-hover`}
                 to='/about'
                 style={disableSelectNoUnderline}
               >
@@ -101,7 +101,16 @@ const NavbarComponent = () => {
               <Link
                 className={`${
                   navbar ? 'text-black' : 'text-white'
-                } mx-3 nav-link-hover`}
+                } mx-2 nav-link-hover`}
+                to='/photo-gallery'
+                style={disableSelectNoUnderline}
+              >
+                Photo Gallery
+              </Link>
+              <Link
+                className={`${
+                  navbar ? 'text-black' : 'text-white'
+                } mx-2 nav-link-hover`}
                 to='/fundraising'
                 style={disableSelectNoUnderline}
               >
@@ -110,7 +119,7 @@ const NavbarComponent = () => {
               <Link
                 className={`${
                   navbar ? 'text-black' : 'text-white'
-                } mx-3 nav-link-hover`}
+                } mx-2 nav-link-hover`}
                 to='/news'
                 style={disableSelectNoUnderline}
               >
@@ -119,7 +128,7 @@ const NavbarComponent = () => {
               <Link
                 className={`${
                   navbar ? 'text-black' : 'text-white'
-                } mx-3 nav-link-hover`}
+                } mx-2 nav-link-hover`}
                 to='/contact'
                 style={disableSelectNoUnderline}
               >
@@ -129,7 +138,7 @@ const NavbarComponent = () => {
                 onClick={() => {
                   navigate('/paypal-payment')
                 }}
-                className='mx-3'
+                className='mx-2'
                 variant={`${navbar ? 'success' : 'outline-light'}`}
               >
                 <i className='fa fa-paypal me-1'></i>

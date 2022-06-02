@@ -22,6 +22,8 @@ const AddVolunteerImages = () => {
 
   const navigate = useNavigate()
   const collectionRef = collection(db, 'volunteer-images')
+
+  // Submit handler
   const submitHandler = (e) => {
     e.preventDefault()
     setSubmitLoading(true)
@@ -31,11 +33,13 @@ const AddVolunteerImages = () => {
     formData.append('upload_preset', 'iltp-news-images')
 
     const cloudName = 'philcob'
+    // POST REQUEST 1
     Axios.post(
       `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
       formData
     )
       .then((res) => {
+        // POST REQUEST 2
         addDoc(collectionRef, {
           img: res.data.url,
           album: selectedAlbum,

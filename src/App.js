@@ -5,6 +5,7 @@ import GetInTouch from './pages/GetInTouch'
 import Footer from './pages/Footer'
 import MainHome from './pages/HomeSections/MainHome'
 import AboutUs from './pages/AboutUs/AboutUs'
+import PhotoGallery from './pages/PhotoGallery/PhotoGallery'
 import News from './pages/News/News'
 import Fundraising from './pages/Fundraising/Fundraising'
 import ContactUs from './pages/ContactUs/ContactUs'
@@ -40,7 +41,9 @@ const App = () => {
               <Footer /></>} />
             <Route path='/about' element={<><NavbarComponent /><AboutUs /><GetInTouch />
               <Footer /></>} />
+            <Route path='/photo-gallery' element={<><NavbarComponent /><PhotoGallery /></>} />
             <Route path='/news' element={<><NavbarComponent /><News /><GetInTouch />
+
               <Footer /></>} />
             <Route path='/news/:id' element={<><NavbarComponent /><NewsSlug /><GetInTouch />
               <Footer /></>} />
