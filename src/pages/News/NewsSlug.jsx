@@ -49,6 +49,16 @@ const NewsSlug = () => {
             .filter((item) => item.id === id)
             .map((item, index) => (
               <div key={index}>
+                <meta property='og:title' content='The Rock' />
+                <meta property='og:type' content='video.movie' />
+                <meta
+                  property='og:url'
+                  content='https://www.imdb.com/title/tt0117500/'
+                />
+                <meta
+                  property='og:image'
+                  content='https://ia.media-imdb.com/images/rock.jpg'
+                />
                 <div className='slug-img-parent'>
                   <img className='slug-img' src={item.img} alt='cover' />
                   <h1 className='news-slug-absolute-text text-uppercase display-2 text-center'>

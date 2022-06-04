@@ -25,8 +25,8 @@ import AdminUpdateTeam from './pages/Admin/AdminUpdateTeam'
 
 import { PaypalTextPage } from './components/paypal-modal/PaypalTextPage'
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-import { VolunteerActivities } from './pages/Admin/AdminPages/VolunteerActivities'
-import AddVolunteerImages from './pages/AddVolunteerImages'
+import { VolunteerActivities } from './pages/Admin/AdminPages/AdminPhotoGallery'
+import AddImages from './pages/AddImages'
 
 const App = () => {
   const [user, setUser] = useState('')
@@ -63,7 +63,7 @@ const App = () => {
             <Route path='/admin/jumbotron' element={<AdminJumbotronPage />} />
             <Route path='/admin/team' element={<AdminTeamPage />} />
             <Route path='/admin/gallery' element={<VolunteerActivities />} />
-            <Route path='/admin/gallery/add' element={<AddVolunteerImages />} />
+            <Route path='/admin/gallery/add' element={<AddImages />} />
 
             {/* Add Testimony Route */}
             <Route path='/admin/add-testimony' element={<AddTestimony />} />

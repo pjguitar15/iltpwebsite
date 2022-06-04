@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import OurActivities from '../Fundraising/OurActivities'
+import Footer from '../../pages/Footer'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 
@@ -20,6 +21,7 @@ const PhotoGallery = () => {
       <Container>
         <OurActivities />
       </Container>
+      <Footer />
     </div>
   )
 }
