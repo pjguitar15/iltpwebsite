@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { db } from '../../firebase/firebase-config'
 import { query, orderBy, getDocs, collection } from 'firebase/firestore'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
-import { Button, Form } from 'react-bootstrap'
+import { Button, Form, Spinner } from 'react-bootstrap'
 
 const OurActivities = () => {
   const [firebaseData, setFirebaseData] = useState([])
+  const [imageLoading, setImageLoading] = useState(false)
   const [selectedYear, setSelectedYear] = useState('2019')
   const [selectedOptionValue, setSelectedOptionValue] =
     useState('winter-workshop')
@@ -29,11 +29,13 @@ const OurActivities = () => {
   }, [selectedOptionValue])
 
   useEffect(() => {
+    setImageLoading(true)
     const filtered = firebaseData.filter(
       (item) =>
         item.year === selectedYear && item.category === selectedOptionValue
     )
     setFilteredData(filtered)
+    setTimeout(() => setImageLoading(false), 1000)
   }, [firebaseData, selectedYear, selectedOptionValue])
   return (
     <div className='py-5 bg-waning'>
@@ -91,7 +93,7 @@ const OurActivities = () => {
           2022
         </Button>
       </p>
-      <div className='col-2 mb-4'>
+      <div className='col-lg-4 col-xl-3 mb-4'>
         <Form.Select onChange={(e) => setSelectedOptionValue(e.target.value)}>
           <option value='winter-workshop'>Winter Workshop</option>
           <option value='spring-workshop'>Spring Workshop</option>
@@ -106,30 +108,40 @@ const OurActivities = () => {
         </Form.Select>
       </div>
       <hr />
-      <h3 className='mb-4'>
-        <span className='text-capitalize'>{selectedOptionName} </span>
-        {selectedYear}
-      </h3>
-      <div className='row' style={{ paddingBottom: '100px' }}>
-        {filteredData.length > 0 ? (
-          filteredData.map((item, index) => (
-            <div key={index} className='col-lg-4 col-sm-6 pb-4'>
-              <div style={{ height: '13rem' }}>
-                <img
-                  className='w-100 h-100'
-                  style={{ objectFit: 'cover' }}
-                  src={item.img}
-                  alt=''
-                />
+      {imageLoading ? (
+        <>
+          <Spinner animation='grow' variant='success me-2 my-4' size='sm' />
+          <Spinner animation='grow' variant='success me-2 my-4' size='sm' />
+          <Spinner animation='grow' variant='success me-2 my-4' size='sm' />
+        </>
+      ) : (
+        <>
+          <h3 className='mb-4'>
+            <span className='text-capitalize'>{selectedOptionName} </span>
+            {selectedYear}
+          </h3>
+          <div className='row' style={{ paddingBottom: '100px' }}>
+            {filteredData.length > 0 ? (
+              filteredData.map((item, index) => (
+                <div key={index} className='col-lg-4 col-sm-6 pb-4'>
+                  <div style={{ height: '13rem' }}>
+                    <img
+                      className='w-100 h-100'
+                      style={{ objectFit: 'cover' }}
+                      src={item.img}
+                      alt=''
+                    />
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className='text-muted'>
+                <h3>No items to show</h3>
               </div>
-            </div>
-          ))
-        ) : (
-          <div className='text-muted'>
-            <h3>No items to show</h3>
+            )}
           </div>
-        )}
-      </div>
+        </>
+      )}
     </div>
   )
 }

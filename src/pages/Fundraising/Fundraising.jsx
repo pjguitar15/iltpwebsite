@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import DonationArt from './DonationArt'
 import FundraisingPhotos from './FundraisingPhotos'
-import OurActivities from './OurActivities'
 import '../styles/Fundraising.css'
 import DonateIcon from '../../assets/icons/donate-icon.png'
+import FundraisingItems from './FundraisingItems'
 
 // animate on scroll imports
 import Aos from 'aos'
@@ -39,6 +39,7 @@ const Fundraising = () => {
 
       <Container>
         {/* image here */}
+        <FundraisingItems />
         <DonationArt />
         <FundraisingPhotos />
       </Container>
