@@ -74,7 +74,7 @@ const JumbotronComponent = () => {
                   ))
                 )}
               </h1>
-              <p className='col-md-6 lead jumbo-paragraph'>
+              <p className='col-md-10 col-lg-7 lead jumbo-paragraph'>
                 {isLoading ? (
                   <span>
                     We empower you with everything you need to be a successful

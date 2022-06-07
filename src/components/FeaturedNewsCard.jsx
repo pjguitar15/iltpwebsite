@@ -8,7 +8,7 @@ const FeaturedNewsCard = ({ item, navigate }) => {
         <Card.Img
           style={{
             width: '100%',
-            height: '15vw',
+            height: '12rem',
             objectFit: 'cover',
           }}
           variant='top'

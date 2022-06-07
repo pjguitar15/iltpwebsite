@@ -76,12 +76,22 @@ const NavbarComponent = () => {
       ) : (
         ''
       )}
+      {windowDimenion.winWidth < 600 && navbar ? (
+        <div className='text-center py-2 bg-success col-12'>
+          <h6 className='text-light m-0 p-0'>
+            International Leadership Training Program
+          </h6>
+        </div>
+      ) : (
+        ''
+      )}
 
       <Navbar
         variant={`${navbar || isToggleOpen ? 'light' : 'dark'} ${
           windowDimenion.winWidth < 990 ? 'dark' : 'light'
         } `}
         expand='lg'
+        expanded={isToggleOpen}
         className={`${isToggleOpen ? 'bg-light' : ''}`}
       >
         <Container>
@@ -96,10 +106,18 @@ const NavbarComponent = () => {
                 className={`iltp-brand-text d-flex justify-content-center flex-column text-start 
             ${navbar || isToggleOpen ? 'text-black' : 'text-white'}`}
               >
-                <span style={disableSelectNoUnderline}>
-                  International Leadership
-                </span>
-                <span style={disableSelectNoUnderline}>Training Program</span>
+                {windowDimenion.winWidth < 600 ? (
+                  <h4>ILTP</h4>
+                ) : (
+                  <>
+                    <span style={disableSelectNoUnderline}>
+                      International Leadership
+                    </span>
+                    <span style={disableSelectNoUnderline}>
+                      Training Program
+                    </span>
+                  </>
+                )}
               </div>
             </Link>
           </Navbar.Brand>
@@ -110,6 +128,7 @@ const NavbarComponent = () => {
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
               <Link
+                onClick={() => setIsToggleOpen(false)}
                 className={`${
                   navbar || isToggleOpen ? 'text-black' : 'text-white'
                 } mx-2 nav-link-hover`}
@@ -119,6 +138,7 @@ const NavbarComponent = () => {
                 Home
               </Link>
               <Link
+                onClick={() => setIsToggleOpen(false)}
                 className={`${
                   navbar || isToggleOpen ? 'text-black' : 'text-white'
                 } mx-2 nav-link-hover`}
@@ -128,6 +148,7 @@ const NavbarComponent = () => {
                 About
               </Link>
               <Link
+                onClick={() => setIsToggleOpen(false)}
                 className={`${
                   navbar || isToggleOpen ? 'text-black' : 'text-white'
                 } mx-2 nav-link-hover`}
@@ -137,6 +158,7 @@ const NavbarComponent = () => {
                 Photo Gallery
               </Link>
               <Link
+                onClick={() => setIsToggleOpen(false)}
                 className={`${
                   navbar || isToggleOpen ? 'text-black' : 'text-white'
                 } mx-2 nav-link-hover`}
@@ -146,6 +168,7 @@ const NavbarComponent = () => {
                 Fundraising
               </Link>
               <Link
+                onClick={() => setIsToggleOpen(false)}
                 className={`${
                   navbar || isToggleOpen ? 'text-black' : 'text-white'
                 } mx-2 nav-link-hover`}
@@ -155,6 +178,7 @@ const NavbarComponent = () => {
                 News
               </Link>
               <Link
+                onClick={() => setIsToggleOpen(false)}
                 className={`${
                   navbar || isToggleOpen ? 'text-black' : 'text-white'
                 } mx-2 nav-link-hover`}

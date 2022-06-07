@@ -61,7 +61,7 @@ const NewsSlug = () => {
                 />
                 <div className='slug-img-parent'>
                   <img className='slug-img' src={item.img} alt='cover' />
-                  <h1 className='news-slug-absolute-text text-uppercase display-2 text-center'>
+                  <h1 className='news-slug-absolute-text text-capitalize col-11 display-2 text-center'>
                     {item.title}
                   </h1>
                 </div>

@@ -7,7 +7,7 @@ const DonationArt = () => {
   const navigate = useNavigate()
   return (
     <div
-      className='shadow py-5 my-5 text-center'
+      className='shadow py-5 my-5 text-center col-12 p-0'
       data-aos='flip-left'
       data-aos-duration='2000'
     >
