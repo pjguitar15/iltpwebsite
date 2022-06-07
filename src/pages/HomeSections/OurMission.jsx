@@ -37,8 +37,8 @@ const OurMission = () => {
             className='col-md-6 lead me-auto'
             style={{ fontWeight: '300', fontSize: '28px' }}
           >
-            "Impacting Lives Towards Peace raises self-awareness of the need to
-            unite families, communities, nations and the world."
+            "Our mission is to raise future leaders by Impacting Lives Towards
+            Peace"
           </p>
         </div>
       </Container>
