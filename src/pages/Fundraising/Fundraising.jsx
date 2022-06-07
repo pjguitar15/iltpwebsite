@@ -39,7 +39,7 @@ const Fundraising = () => {
 
       <Container>
         {/* image here */}
-        <FundraisingItems />
+        {/* <FundraisingItems /> */}
         <DonationArt />
         <FundraisingPhotos />
       </Container>
