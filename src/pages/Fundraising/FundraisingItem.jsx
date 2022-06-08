@@ -1,27 +1,55 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
 
-const FundraisingItem = ({ keychain }) => {
+const FundraisingItem = ({ item }) => {
   return (
-    <div className='col-lg-4 col-md-6 p-3'>
-      <div style={{ height: '13 rem' }}>
-        <img src={keychain} className='w-100 h-100' alt='item' />
-      </div>
-      {/* item name and description */}
-      <div className='px-2 py-3'>
-        <h4>Keychain</h4>
-        <p className='small text-muted'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora eius
-          deserunt architecto odit illo sapiente, ullam omnis fuga laboriosam.
-        </p>
-        <hr />
-        <div className='d-flex justify-content-between'>
-          <h4>$5</h4>
-          <Button size='sm' variant='warning'>
-            <i className='fa fa-paypal me-1'></i> Check Out Now
-          </Button>
+    <div className='col-xl-3 col-lg-4 col-md-6 col-12 py-3'>
+      <div className='fundraising-item'>
+        <div className='rounded'>
+          <div style={{ height: '22rem', position: 'relative' }}>
+            <img
+              style={{ objectFit: 'cover' }}
+              src={item.img}
+              className='w-100 h-100 item-img'
+              alt='item'
+            />
+            <div className='inside-fr-items w-100 text-center'>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='50'
+                height='50'
+                fill='white'
+                className='bi bi-bag-heart'
+                viewBox='0 0 16 16'
+              >
+                <path
+                  fill-rule='evenodd'
+                  d='M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5Zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0ZM14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1ZM8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z'
+                />
+              </svg>{' '}
+              <h4 className='text-light mt-2'>Order</h4>
+            </div>
+          </div>
+          {/* item name and description */}
+          <div className='px-2 py-3'>
+            <h6>{item.name}</h6>
+            <h4 className='rounded' style={{ color: '#ff3838' }}>
+              {item.name.toLowerCase().includes('hematite') ? '$30' : ''}
+
+              {item.name.toLowerCase().includes('nugget') ? '$30' : ''}
+
+              {item.name.toLowerCase().includes('leather') ? '$25' : ''}
+
+              {item.name.toLowerCase().includes('stone') ? '$25' : ''}
+
+              {item.name.toLowerCase().includes('beads') ? '$25' : ''}
+            </h4>
+          </div>
         </div>
       </div>
+      <div
+        className='col-12 neon'
+        style={{ height: '4px', background: 'gray' }}
+      ></div>
     </div>
   )
 }

@@ -36,7 +36,10 @@ export const PaypalTextPage = () => {
   }, [donationAmount])
 
   return (
-    <div className='bg-dark text-light py-5' style={{ minHeight: '100vh' }}>
+    <div
+      className='py-5'
+      style={{ minHeight: '100vh', background: 'rgb(225,250,208)' }}
+    >
       <SuccessModal
         setShow={setShow}
         show={show}
@@ -80,7 +83,6 @@ export const PaypalTextPage = () => {
               background: 'transparent',
               border: 'none',
               outline: 'none',
-              color: 'white',
             }}
           />
         </Form.Group>
@@ -93,9 +95,9 @@ export const PaypalTextPage = () => {
           <PayPalButtons
             forceReRender={[donationAmount]}
             style={{
-              layout: 'horizontal',
+              // layout: 'horizontal',
               height: 48,
-              shape: 'pill',
+              // shape: 'pill',
               tagline: false,
             }}
             createOrder={(data, actions) => {
@@ -108,9 +110,9 @@ export const PaypalTextPage = () => {
                     },
                   },
                 ],
-                application_context: {
-                  shipping_preference: 'NO_SHIPPING',
-                },
+                // application_context: {
+                //   shipping_preference: 'NO_SHIPPING',
+                // },
               })
             }}
             onApprove={async (data, actions) => {
@@ -128,7 +130,11 @@ export const PaypalTextPage = () => {
           />
         </div>
         <div className='text-center'>
-          <Button onClick={() => navigate(-1)} variant='outline-light mt-1'>
+          <Button
+            onClick={() => navigate(-1)}
+            variant='light mt-1'
+            className='shadow col-12 col-sm-6 col-lg-4'
+          >
             Cancel
           </Button>
         </div>
