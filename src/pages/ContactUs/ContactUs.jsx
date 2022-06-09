@@ -22,7 +22,11 @@ const ContactUs = () => {
           Contact Us
         </h1>
       </div>
-      <Container data-aos='flip-left' data-aos-duration='1000' className='py-5'>
+      <Container
+        data-aos='flip-left'
+        data-aos-duration='1000'
+        className='py-5 rubik-400'
+      >
         <h4>Talk to Us</h4>
         <p className='text-muted col-lg-5'>
           For your inquiry, please fill out the form below. We will do our best

@@ -191,7 +191,7 @@ const NavbarComponent = () => {
                 onClick={() => {
                   navigate('/paypal-payment')
                 }}
-                className='mx-2'
+                className='mx-2 rubik-400'
                 variant={`${
                   navbar || isToggleOpen ? 'success' : 'outline-light'
                 }`}

@@ -57,7 +57,7 @@ const News = () => {
               <div
                 data-aos='zoom-in'
                 key={index}
-                className='px-4 my-3 col-md-6'
+                className='px-4 my-3 col-md-6 rubik-400'
               >
                 <Card className=' border-0 rounded-0'>
                   <Card.Img
@@ -81,7 +81,7 @@ const News = () => {
                       onClick={() => {
                         navigate(`/news/${item.id}`)
                       }}
-                      variant='outline-primary btn-sm'
+                      variant='outline-primary btn-sm rubik-400'
                     >
                       Read more
                     </Button>

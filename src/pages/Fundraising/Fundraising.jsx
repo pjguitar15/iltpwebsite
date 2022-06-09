@@ -26,7 +26,7 @@ const Fundraising = () => {
           <div className='col-xl-2 col-lg-2 col-md-2 col-sm-2 col-3 mx-auto mb-4'>
             <img className='w-100' src={DonateIcon} alt='donate icon' />
           </div>
-          <h1>ILTP Fundraising Campaign</h1>
+          <h1 className='rubik-400'>ILTP Fundraising Campaign</h1>
           <p
             className='lead text-light col-md-7 mt-2 mx-auto'
             style={{ fontWeight: '100', lineHeight: '30px', fontSize: '17px' }}
@@ -39,7 +39,7 @@ const Fundraising = () => {
 
       <Container>
         {/* image here */}
-        {/* <FundraisingItems /> */}
+        <FundraisingItems />
         <DonationArt />
         <FundraisingPhotos />
       </Container>

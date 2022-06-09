@@ -18,12 +18,12 @@ const GetInTouch = () => {
         <p
           data-aos='zoom-in'
           data-aos-duration='500'
-          className='text-center lead col-lg-6 mx-auto'
+          className='text-center rubik-400 col-lg-6 mx-auto'
         >
           Contact us for more information about International Leadership
           Training Program
         </p>
-        <div className='contact-container row text-center m-0 py-5'>
+        <div className='contact-container row text-center m-0 py-5 rubik-400'>
           <div
             data-aos='fade-right'
             data-aos-duration='500'

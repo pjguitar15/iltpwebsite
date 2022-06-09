@@ -11,10 +11,12 @@ const JoinUs = () => {
   return (
     // background image is in join-us class
     <div className='join-us text-center text-white'>
-      <h1 className='display-1 m-0'>Join Us!</h1>
+      <h1 className='display-2 m-0 rubik-400'>Join Us!</h1>
       <div className='col-lg-6 mx-auto become-a-member-div p-4 mb-4 '>
-        <h3 className='text-uppercase'>Become a member/Support Us!</h3>
-        <p className='lead mx-auto'>
+        <h3 className='text-uppercase rubik-400'>
+          Become a member/Support Us!
+        </h3>
+        <p className='mx-auto rubik-300' style={{ fontSize: '18px' }}>
           International Leadering Training Program is a non-profit organization.
           Our goal is to be able to host and coordinate events and activities
           youth and students can participate in for little to no cost.

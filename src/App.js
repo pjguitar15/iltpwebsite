@@ -27,6 +27,7 @@ import { PaypalTextPage } from './components/paypal-modal/PaypalTextPage'
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { VolunteerActivities } from './pages/Admin/AdminPages/AdminPhotoGallery'
 import AddImages from './pages/AddImages'
+import ItemOpen from './pages/Fundraising/ItemOpen'
 
 const App = () => {
   const [user, setUser] = useState('')
@@ -49,6 +50,8 @@ const App = () => {
               <Footer /></>} />
             <Route path='/fundraising' element={<><NavbarComponent /><Fundraising /><GetInTouch />
               <Footer /></>} />
+
+            <Route path='/fundraising/item/:id' element={<><ItemOpen /></>} />
             <Route path='/contact' element={<><NavbarComponent /><ContactUs /><GetInTouch />
               <Footer /></>} />
             <Route path='/admin' element={<AdminLogin setUser={setUser} user={user} password={password} setPassword={setPassword} />} />

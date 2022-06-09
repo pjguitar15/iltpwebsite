@@ -42,7 +42,7 @@ const NewsSlug = () => {
   }, [])
 
   return (
-    <div data-aos='fade-down'>
+    <div data-aos='fade-down' className='rubik-400'>
       {isDataLoading
         ? LoadingCard
         : firebaseData
@@ -61,7 +61,7 @@ const NewsSlug = () => {
                 />
                 <div className='slug-img-parent'>
                   <img className='slug-img' src={item.img} alt='cover' />
-                  <h1 className='news-slug-absolute-text text-capitalize col-11 display-2 text-center'>
+                  <h1 className='news-slug-absolute-text text-capitalize col-11 text-center display-5'>
                     {item.title}
                   </h1>
                 </div>
@@ -101,7 +101,7 @@ const NewsSlug = () => {
                         textAlign: 'justify',
                         whiteSpace: 'pre-line',
                       }}
-                      className='slug-content mt-2 opensans-thin'
+                      className='slug-content mt-2 rubik-400'
                     >
                       {item.content}
                     </p>
@@ -129,7 +129,7 @@ const NewsSlug = () => {
                       onClick={() => {
                         navigate('/news')
                       }}
-                      variant='outline-dark mb-5 mt-4'
+                      variant='outline-dark mb-5 mt-4 rubik-400'
                     >
                       Back to News
                     </Button>

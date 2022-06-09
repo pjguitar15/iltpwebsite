@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap'
 
 const LatestNewsCard = ({ item, navigate }) => {
   return (
-    <div data-aos='zoom-in' className='p2 my-3 col-md-6 col-lg-4'>
+    <div data-aos='zoom-in' className='p2 my-3 col-md-6 col-lg-4 rubik-400'>
       <Card>
         <Card.Img
           style={{
@@ -25,7 +25,7 @@ const LatestNewsCard = ({ item, navigate }) => {
             onClick={() => {
               navigate(`/news/${item.id}`)
             }}
-            variant='outline-primary btn-sm'
+            variant='outline-primary btn-sm rubik-400'
           >
             Read more
           </Button>

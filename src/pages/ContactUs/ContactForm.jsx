@@ -45,7 +45,7 @@ const ContactForm = () => {
   }
   return (
     <div>
-      <Form ref={form} onSubmit={handleSubmit} className='col-lg-7'>
+      <Form ref={form} onSubmit={handleSubmit} className='col-lg-7 rubik-400'>
         <Form.Group className='mb-3'>
           <Form.Label>Full Name</Form.Label>
           <Form.Control

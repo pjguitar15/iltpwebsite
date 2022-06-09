@@ -1,9 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const FundraisingItem = ({ item }) => {
+  const navigate = useNavigate()
   return (
     <div className='col-xl-3 col-lg-4 col-md-6 col-12 py-3'>
-      <div className='fundraising-item'>
+      <div
+        onClick={() => navigate(`/fundraising/item/${item.id}`)}
+        className='fundraising-item'
+      >
         <div className='rounded'>
           <div style={{ height: '22rem', position: 'relative' }}>
             <img
@@ -31,17 +36,9 @@ const FundraisingItem = ({ item }) => {
           </div>
           {/* item name and description */}
           <div className='px-2 py-3'>
-            <h6>{item.name}</h6>
+            <h6 className='rubik-400'>{item.name}</h6>
             <h4 className='rounded' style={{ color: '#ff3838' }}>
-              {item.name.toLowerCase().includes('hematite') ? '$30' : ''}
-
-              {item.name.toLowerCase().includes('nugget') ? '$30' : ''}
-
-              {item.name.toLowerCase().includes('leather') ? '$25' : ''}
-
-              {item.name.toLowerCase().includes('stone') ? '$25' : ''}
-
-              {item.name.toLowerCase().includes('beads') ? '$25' : ''}
+              ${item.price}
             </h4>
           </div>
         </div>

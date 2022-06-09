@@ -18,7 +18,7 @@ const AboutUs = () => {
       <h1
         data-aos='fade-down'
         data-aos-duration='2000'
-        className='about-us-bg text-white text-center m-0'
+        className='about-us-bg text-white text-center m-0 rubik-400'
       >
         About Us
       </h1>

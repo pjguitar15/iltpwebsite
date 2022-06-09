@@ -94,23 +94,12 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className='footer-copyright text-center pb-2'>
-          <a className='text-white' href='https://mdbootstrap.com/'>
+        <div className='footer-copyright text-center pb-2 rubik-400'>
+          <a className='text-white' href='https://iltp.org/'>
             iltp.org
           </a>
           © 2022 ILTP ORG | All Rights Reserved
         </div>
-        {/* <div className='text-center p-2'>
-          Developed by{' '}
-          <a
-            target='_blank'
-            rel='noreferrer'
-            href='https://philcobportfolio.netlify.app/'
-            className='text-white'
-          >
-            Philcob Suzuki Josol
-          </a>
-        </div> */}
       </footer>
     </div>
   )

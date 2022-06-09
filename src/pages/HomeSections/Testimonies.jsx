@@ -45,7 +45,7 @@ const Testimonies = () => {
           data-aos-duration='500'
           className='text-center '
         >
-          <h1 className='m-0 mb-2'>Testimonies</h1>
+          <h1 className='m-0 rubik-400 mb-2'>Testimonies</h1>
           {/* index, handleSelect, loading, testimonyData */}
           <TestimonyCarousel
             index={index}
