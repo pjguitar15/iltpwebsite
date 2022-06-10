@@ -7,7 +7,7 @@ const FundraisingItems = () => {
   return (
     <div className='py-5'>
       <Container>
-        <h4 className='rubik-400'>Our Fundraising Items</h4>
+        <h4 className='rubik-400'>SHOP</h4>
         <div className='row'>
           {fundraisingItems.map((item, index) => (
             <FundraisingItem key={index} item={item} />

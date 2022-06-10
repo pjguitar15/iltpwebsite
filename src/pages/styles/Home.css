@@ -283,3 +283,7 @@
   filter: brightness(50%);
   transition: all 0.3s ease-in-out;
 }
+
+.view-cart-button {
+  cursor: pointer;
+}

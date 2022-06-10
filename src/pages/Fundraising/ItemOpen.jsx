@@ -2,16 +2,22 @@ import React, { useEffect, useState } from 'react'
 import { Button, Container } from 'react-bootstrap'
 import { useParams, useNavigate } from 'react-router-dom'
 import { fundraisingItems } from './FundraisingItemsData'
-import { PayPalButtons } from '@paypal/react-paypal-js'
 import { thankYouQuotes } from '../../Data/ThankYouQuotes'
+import { useCart } from '../../context/CartProvider'
+import { Modal } from 'react-bootstrap'
 
 const ItemOpen = () => {
   const [currItem, setCurrItem] = useState({})
   const [isNumberSet, setIsNumberSet] = useState(false)
-  const [paidFor, setPaidFor] = useState()
+  
   const [index, setIndex] = useState(0)
   const { id } = useParams()
   const navigate = useNavigate()
+  const {
+    addItemToList,
+    showAddToCartSuccessModal,
+    setShowAddToCartSuccessModal,
+  } = useCart()
 
   useEffect(() => {
     if (fundraisingItems) {
@@ -30,15 +36,33 @@ const ItemOpen = () => {
     console.log(index)
   }, [index])
 
-  const handleApprove = (orderId) => {
-    // Call backend function to fulfill order
-    // if response is success
-    setPaidFor(true)
-    // setShow(true)
-  }
+  
 
   return (
     <div className='bg-light py-5'>
+      <Modal
+        show={showAddToCartSuccessModal}
+        onHide={() => setShowAddToCartSuccessModal(false)}
+        className='rubik-400'
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Item added to cart! 🙌</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Woohoo, you just added {currItem.name} to cart! 🎊
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant='primary'
+            onClick={() => {
+              setShowAddToCartSuccessModal(false)
+              navigate(-1)
+            }}
+          >
+            Continue shopping
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <Container>
         <div className='row shadow bg-white border py-3 px-1 mx-auto col-lg-10'>
           <div className='col-md-6 col-12'>
@@ -65,42 +89,21 @@ const ItemOpen = () => {
               support. 💖
             </p>
             <p className='text-muted'>-ILTP</p>
-            {/* <PayPalButtons
-              forceReRender={[currItem]}
-              style={{
-                // layout: 'horizontal',
-                height: 48,
-                // shape: 'pill',
-                tagline: false,
-              }}
-              createOrder={(data, actions) => {
-                return actions.order.create({
-                  purchase_units: [
-                    {
-                      description: currItem.name,
-                      amount: {
-                        value: currItem.price,
-                      },
-                    },
-                  ],
-                  // application_context: {
-                  //   shipping_preference: 'NO_SHIPPING',
-                  // },
-                })
-              }}
-              onApprove={async (data, actions) => {
-                const order = await actions.order.capture()
-                console.log('order', order)
-                handleApprove(data.orderID)
-              }}
-              onError={(err) => {
-                // you can use alert components to handle alerts
-                console.error('PayPal Checkout onError', err)
-              }}
-              onCancel={() => {
-                // Display cancel message, modal or redirect user to cancel page or back to cart
-              }}
-            /> */}
+
+            <Button
+              onClick={() =>
+                addItemToList(
+                  currItem.id,
+                  currItem.name,
+                  currItem.price,
+                  currItem.img
+                )
+              }
+              variant='warning'
+              className='mt-auto col-12 col-lg-12 mb-2'
+            >
+              <i className='bi bi-bag-plus me-2'></i>Add to Cart
+            </Button>
             <Button variant='warning' className='mt-auto col-12 col-lg-12 mb-2'>
               Buy now
             </Button>

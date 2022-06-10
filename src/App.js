@@ -28,57 +28,65 @@ import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { VolunteerActivities } from './pages/Admin/AdminPages/AdminPhotoGallery'
 import AddImages from './pages/AddImages'
 import ItemOpen from './pages/Fundraising/ItemOpen'
+import CartPage from './pages/Fundraising/CartPage'
+
+// Context
+import CartProvider from './context/CartProvider'
 
 const App = () => {
   const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
+  console.log(process.env.REACT_APP_PAYPAL_CLIENT_ID)
 
   return (
     <div>
-      <PayPalScriptProvider options={{ 'client-id': 'AfO_6rkF27_MDJFTOUcoaAocdxi13AC8oYTmrV4qmt2h8Doi1LMgKM_R-Y7rDSOt2YJbWLPolWgo-r6b' }}>
+      <PayPalScriptProvider options={{ 'client-id': process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
         <Router>
-          <Routes>
-            <Route path='/' element={<><NavbarComponent /><MainHome /><GetInTouch />
-              <Footer /></>} />
-            <Route path='/about' element={<><NavbarComponent /><AboutUs /><GetInTouch />
-              <Footer /></>} />
-            <Route path='/photo-gallery' element={<><NavbarComponent /><PhotoGallery /></>} />
-            <Route path='/news' element={<><NavbarComponent /><News /><GetInTouch />
+          <CartProvider>
+            <Routes>
+              <Route path='/' element={<><NavbarComponent /><MainHome /><GetInTouch />
+                <Footer /></>} />
+              <Route path='/about' element={<><NavbarComponent /><AboutUs /><GetInTouch />
+                <Footer /></>} />
+              <Route path='/photo-gallery' element={<><NavbarComponent /><PhotoGallery /></>} />
+              <Route path='/news' element={<><NavbarComponent /><News /><GetInTouch />
 
-              <Footer /></>} />
-            <Route path='/news/:id' element={<><NavbarComponent /><NewsSlug /><GetInTouch />
-              <Footer /></>} />
-            <Route path='/fundraising' element={<><NavbarComponent /><Fundraising /><GetInTouch />
-              <Footer /></>} />
+                <Footer /></>} />
+              <Route path='/news/:id' element={<><NavbarComponent /><NewsSlug /><GetInTouch />
+                <Footer /></>} />
+              <Route path='/fundraising' element={<><NavbarComponent /><Fundraising /><GetInTouch />
+                <Footer /></>} />
+              <Route path='/fundraising/item/:id' element={<><ItemOpen /></>} />
+              <Route path='/fundraising/cart' element={<><NavbarComponent /><CartPage /><Footer /></>} />
 
-            <Route path='/fundraising/item/:id' element={<><ItemOpen /></>} />
-            <Route path='/contact' element={<><NavbarComponent /><ContactUs /><GetInTouch />
-              <Footer /></>} />
-            <Route path='/admin' element={<AdminLogin setUser={setUser} user={user} password={password} setPassword={setPassword} />} />
+              <Route path='/contact' element={<><NavbarComponent /><ContactUs /><GetInTouch />
+                <Footer /></>} />
+              <Route path='/admin' element={<AdminLogin setUser={setUser} user={user} password={password} setPassword={setPassword} />} />
 
-            {/* <Route path='/adminpage' element={<AdminPage />} /> */}
-            <Route path='*' element={<ErrorPage />} />
+              {/* <Route path='/adminpage' element={<AdminPage />} /> */}
+              <Route path='*' element={<ErrorPage />} />
 
-            {/* Protected Route */}
-            {/* <Route element={<ProtectedRoute />}> */}
-            <Route path='/admin/news' element={<AdminNewsPage />} />
-            <Route path='/admin/testimonies' element={<AdminTestimonyPage />} />
-            <Route path='/admin/jumbotron' element={<AdminJumbotronPage />} />
-            <Route path='/admin/team' element={<AdminTeamPage />} />
-            <Route path='/admin/gallery' element={<VolunteerActivities />} />
-            <Route path='/admin/gallery/add' element={<AddImages />} />
+              {/* Protected Route */}
+              {/* <Route element={<ProtectedRoute />}> */}
+              <Route path='/admin/news' element={<AdminNewsPage />} />
+              <Route path='/admin/testimonies' element={<AdminTestimonyPage />} />
+              <Route path='/admin/jumbotron' element={<AdminJumbotronPage />} />
+              <Route path='/admin/team' element={<AdminTeamPage />} />
+              <Route path='/admin/gallery' element={<VolunteerActivities />} />
+              <Route path='/admin/gallery/add' element={<AddImages />} />
 
-            {/* Add Testimony Route */}
-            <Route path='/admin/add-testimony' element={<AddTestimony />} />
-            <Route path='/admin/testimonies/:id' element={<UpdateTestimonies />} />
+              {/* Add Testimony Route */}
+              <Route path='/admin/add-testimony' element={<AddTestimony />} />
+              <Route path='/admin/testimonies/:id' element={<UpdateTestimonies />} />
 
-            {/* Add Team Member Route */}
-            <Route path='/admin/team/add' element={<AddTeamMemberForm />} />
-            <Route path='/admin/team/update/:id' element={<AdminUpdateTeam />} />
-            {/* </Route> */}
+              {/* Add Team Member Route */}
+              <Route path='/admin/team/add' element={<AddTeamMemberForm />} />
+              <Route path='/admin/team/update/:id' element={<AdminUpdateTeam />} />
+              {/* </Route> */}
 
-            <Route path='/paypal-payment' element={<PaypalTextPage />} />
-          </Routes>
+              <Route path='/paypal-payment' element={<PaypalTextPage />} />
+            </Routes>
+          </CartProvider>
         </Router>
       </PayPalScriptProvider>
     </div>

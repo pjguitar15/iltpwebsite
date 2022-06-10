@@ -63,7 +63,7 @@ export const PaypalTextPage = () => {
             data-aos='fade-up'
             data-aos-duration='1000'
             // inside Home.css
-            className='text-center paypal-amount-input shadow-none'
+            className='text-center paypal-amount-input shadow-none text-dark'
             placeholder='$1.00'
             value={numWithDollar}
             onChange={(e) => {
