@@ -286,4 +286,9 @@
 
 .view-cart-button {
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.view-cart-button:hover > .view-cart-button-child {
+  font-size: 20px;
+  transition: all 0.2s ease-in-out;
 }

@@ -34,6 +34,7 @@ const OurActivities = () => {
       (item) =>
         item.year === selectedYear && item.category === selectedOptionValue
     )
+    console.log(filtered)
     setFilteredData(filtered)
     setTimeout(() => setImageLoading(false), 1000)
   }, [firebaseData, selectedYear, selectedOptionValue])

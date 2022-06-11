@@ -9,7 +9,7 @@ import { Modal } from 'react-bootstrap'
 const ItemOpen = () => {
   const [currItem, setCurrItem] = useState({})
   const [isNumberSet, setIsNumberSet] = useState(false)
-  
+
   const [index, setIndex] = useState(0)
   const { id } = useParams()
   const navigate = useNavigate()
@@ -36,8 +36,6 @@ const ItemOpen = () => {
     console.log(index)
   }, [index])
 
-  
-
   return (
     <div className='bg-light py-5'>
       <Modal
@@ -60,6 +58,15 @@ const ItemOpen = () => {
             }}
           >
             Continue shopping
+          </Button>
+          <Button
+            variant='warning'
+            onClick={() => {
+              setShowAddToCartSuccessModal(false)
+              navigate('/fundraising/cart')
+            }}
+          >
+            Go to Cart
           </Button>
         </Modal.Footer>
       </Modal>
@@ -103,9 +110,6 @@ const ItemOpen = () => {
               className='mt-auto col-12 col-lg-12 mb-2'
             >
               <i className='bi bi-bag-plus me-2'></i>Add to Cart
-            </Button>
-            <Button variant='warning' className='mt-auto col-12 col-lg-12 mb-2'>
-              Buy now
             </Button>
             <Button
               className='mt-auto col-12 col-lg-12'

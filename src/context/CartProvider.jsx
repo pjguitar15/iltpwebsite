@@ -20,7 +20,6 @@ export const CartProvider = ({ children }) => {
     setCartList([...cartList, { id, name, price, img }])
     setShowAddToCartSuccessModal(true)
   }
-
   // remove from list
   const removeItemToList = (id) => {
     // get item
@@ -45,12 +44,14 @@ export const CartProvider = ({ children }) => {
     cartList.map((item) => setCartTotalPrice(cartTotalPrice + item.price))
   }, [cartList])
   const value = {
+    setCartList,
     cartList,
     addItemToList,
     showAddToCartSuccessModal,
     setShowAddToCartSuccessModal,
     cartTotalPrice,
     removeItemToList,
+    setCartTotalPrice,
   }
   return (
     <CartContext.Provider value={value}>
@@ -61,7 +62,7 @@ export const CartProvider = ({ children }) => {
           className='view-cart-button'
           style={{ position: 'fixed', bottom: '20px', right: '30px' }}
         >
-          <div className='rounded p-3 shadow bg-white text-center'>
+          <div className='rounded p-3 shadow bg-white text-center view-cart-button-child'>
             <div style={{ fontSize: '20px' }}>🛒</div>
             <h5 className='m-0 p-0'>
               {cartList.length} item{cartList.length > 1 ? 's' : ''} on cart!

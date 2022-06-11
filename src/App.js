@@ -32,15 +32,18 @@ import CartPage from './pages/Fundraising/CartPage'
 
 // Context
 import CartProvider from './context/CartProvider'
+import PurchasesPage from './pages/Admin/Purchases/PurchasesPage'
+import TestForm from './pages/Admin/Purchases/TestForm'
 
 const App = () => {
   const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
-  console.log(process.env.REACT_APP_PAYPAL_CLIENT_ID)
+  // console.log(process.env.REACT_APP_PAYPAL_CLIENT_ID)
 
   return (
     <div>
-      <PayPalScriptProvider options={{ 'client-id': process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
+      {/* <PayPalScriptProvider options={{ 'client-id': process.env.REACT_APP_PAYPAL_CLIENT_ID }}> */}
+      <PayPalScriptProvider options={{ 'client-id': 'AXj6FdyoEliRvd6VC_5K-rjTYbZ44nkTGf2OPHu9PDCD8T7FIRO6WYNOBcCxv3gaak2-7R2HwWT33W7-' }}>
         <Router>
           <CartProvider>
             <Routes>
@@ -74,6 +77,7 @@ const App = () => {
               <Route path='/admin/team' element={<AdminTeamPage />} />
               <Route path='/admin/gallery' element={<VolunteerActivities />} />
               <Route path='/admin/gallery/add' element={<AddImages />} />
+              <Route path='/admin/purchases' element={<PurchasesPage />} />
 
               {/* Add Testimony Route */}
               <Route path='/admin/add-testimony' element={<AddTestimony />} />
@@ -85,6 +89,7 @@ const App = () => {
               {/* </Route> */}
 
               <Route path='/paypal-payment' element={<PaypalTextPage />} />
+              <Route path='/test' element={<TestForm />} />
             </Routes>
           </CartProvider>
         </Router>
