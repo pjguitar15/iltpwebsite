@@ -8,8 +8,8 @@ import { addDoc, serverTimestamp, collection } from 'firebase/firestore'
 
 const AddVolunteerImages = () => {
   const [submitLoading, setSubmitLoading] = useState(false)
-  const [selectedImage, setSelectedImage] = useState()
-  const [selectedAlbum, setSelectedAlbum] = useState('')
+  const [selectedImage, setSelectedImage] = useState(null)
+  const [selectedAlbum, setSelectedAlbum] = useState('martin-luther-king-day')
   const [selectedYear, setSelectedYear] = useState('2018')
 
   const navigate = useNavigate()
@@ -32,6 +32,7 @@ const AddVolunteerImages = () => {
     )
       .then((res) => {
         // POST REQUEST 2
+        // http://res.cloudinary.com/philcob/image/upload/v1654299625/zsellrs9kdtcjryeihxz.jpg
         addDoc(collectionRef, {
           img: res.data.url,
           category: selectedAlbum,
@@ -74,7 +75,21 @@ const AddVolunteerImages = () => {
             <Form.Text className='mb-1'>Upload an image</Form.Text>
             <Form.Control
               disabled={submitLoading}
-              onChange={(e) => setSelectedImage(e.target.files[0])}
+              onChange={(e) => {
+                const image = e.target.files[0]
+                // this doesn't work
+                // new Compressor(image, {
+                //   quality: 0.1,
+                //   success: (compressedResult) => {
+                //     // compressedResult has the compressed file.
+                //     // Use the compressed file to upload the images to your server.
+                //     setSelectedImage(compressedResult)
+                //   },
+                // })
+                // setSelectedImage(image)
+
+                // try another method
+              }}
               required
               type='file'
             />

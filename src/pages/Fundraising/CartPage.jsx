@@ -329,7 +329,7 @@ const CartPage = () => {
                 return actions.order.create({
                   purchase_units: [
                     {
-                      description: 'test',
+                      description: 'ILTP Fundraising Item Purchase',
                       amount: {
                         value: cartTotalPrice,
                       },

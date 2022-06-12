@@ -42,8 +42,7 @@ const App = () => {
 
   return (
     <div>
-      {/* <PayPalScriptProvider options={{ 'client-id': process.env.REACT_APP_PAYPAL_CLIENT_ID }}> */}
-      <PayPalScriptProvider options={{ 'client-id': 'AXj6FdyoEliRvd6VC_5K-rjTYbZ44nkTGf2OPHu9PDCD8T7FIRO6WYNOBcCxv3gaak2-7R2HwWT33W7-' }}>
+      <PayPalScriptProvider options={{ 'client-id': process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
         <Router>
           <CartProvider>
             <Routes>
