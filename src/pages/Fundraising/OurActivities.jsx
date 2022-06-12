@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { db } from '../../firebase/firebase-config'
 import { query, orderBy, getDocs, collection } from 'firebase/firestore'
 import { Button, Form, Spinner } from 'react-bootstrap'
@@ -12,6 +12,8 @@ const OurActivities = () => {
   const [selectedOptionName, setSelectedOptionName] =
     useState('Winter Workshop')
   const [filteredData, setFilteredData] = useState([])
+  const imgTopRef = useRef()
+
   useEffect(() => {
     const collectionRef = collection(db, 'photos')
     const q = query(collectionRef, orderBy('timestamp', 'desc'))
@@ -34,12 +36,11 @@ const OurActivities = () => {
       (item) =>
         item.year === selectedYear && item.category === selectedOptionValue
     )
-    console.log(filtered)
     setFilteredData(filtered)
     setTimeout(() => setImageLoading(false), 1000)
   }, [firebaseData, selectedYear, selectedOptionValue])
   return (
-    <div className='py-5 bg-waning'>
+    <div className='py-5 bg-waning' ref={imgTopRef}>
       <h3 className='mb-4'>Photo Gallery</h3>
       <hr />
       <p className='mb-3'>
@@ -140,6 +141,16 @@ const OurActivities = () => {
                 <h3>No items to show</h3>
               </div>
             )}
+            <div className='col-12'>
+              <Button
+                onClick={() => {
+                  imgTopRef.current.scrollIntoView({ behavior: 'smooth' })
+                }}
+                variant='success'
+              >
+                Back to top
+              </Button>
+            </div>
           </div>
         </>
       )}

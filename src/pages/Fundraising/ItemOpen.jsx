@@ -32,10 +32,6 @@ const ItemOpen = () => {
     }
   }, [])
 
-  useEffect(() => {
-    console.log(index)
-  }, [index])
-
   return (
     <div className='bg-light py-5'>
       <Modal

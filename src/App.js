@@ -38,7 +38,6 @@ import TestForm from './pages/Admin/Purchases/TestForm'
 const App = () => {
   const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
-  // console.log(process.env.REACT_APP_PAYPAL_CLIENT_ID)
 
   return (
     <div>
