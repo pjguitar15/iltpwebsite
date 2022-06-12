@@ -200,6 +200,7 @@ const CartPage = () => {
               <Form.Group>
                 <Form.Text>Full name</Form.Text>
                 <Form.Control
+                  required
                   name='name'
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
@@ -225,6 +226,7 @@ const CartPage = () => {
               <Form.Group className='mt-2'>
                 <Form.Text>Contact number</Form.Text>
                 <Form.Control
+                  required
                   name='contact'
                   value={contact}
                   onChange={(e) => setContact(e.target.value)}
@@ -234,6 +236,7 @@ const CartPage = () => {
               <Form.Group className='mt-2'>
                 <Form.Text>Email</Form.Text>
                 <Form.Control
+                  required
                   name='email'
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -246,6 +249,7 @@ const CartPage = () => {
                 <div className='row'>
                   <div className='col-6'>
                     <Form.Control
+                      required
                       name='houseNumber'
                       value={houseNumber}
                       onChange={(e) => setHouseNumber(e.target.value)}
@@ -254,6 +258,7 @@ const CartPage = () => {
                   </div>
                   <div className='col-6'>
                     <Form.Control
+                      required
                       name='street'
                       value={street}
                       onChange={(e) => setStreet(e.target.value)}
@@ -264,6 +269,7 @@ const CartPage = () => {
                 <div className='row mt-2'>
                   <div className='col-6'>
                     <Form.Control
+                      required
                       name='city'
                       value={city}
                       onChange={(e) => setCity(e.target.value)}
@@ -272,6 +278,7 @@ const CartPage = () => {
                   </div>
                   <div className='col-6'>
                     <Form.Control
+                      required
                       name='state'
                       value={state}
                       onChange={(e) => setState(e.target.value)}
@@ -281,6 +288,7 @@ const CartPage = () => {
                 </div>
                 <div className='col-6 mt-2'>
                   <Form.Control
+                    required
                     name='zipCode'
                     value={zipCode}
                     onChange={(e) => setZipCode(e.target.value)}

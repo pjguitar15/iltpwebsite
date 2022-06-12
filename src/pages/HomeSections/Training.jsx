@@ -29,7 +29,7 @@ const Training = () => {
             <p className='col-md-12 text-white lead'>
               We empower you with everything you need to be a successful and
               insightful leader. Develop the abilities and build a strong
-              foundation as someone who can leader the community.
+              foundation as someone who can lead the community.
             </p>
             <PillButton
               primaryColor='#FFC107'

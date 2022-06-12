@@ -37,8 +37,8 @@ const OurMission = () => {
             className='col-md-6 lead me-auto'
             style={{ fontWeight: '300', fontSize: '28px' }}
           >
-            "Our mission is to raise future leaders by Impacting Lives Towards
-            Peace"
+            "Our mission is to raise young conscientious leaders who can
+            contribute to peace-building efforts around the world."
           </p>
         </div>
       </Container>

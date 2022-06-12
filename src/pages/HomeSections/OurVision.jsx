@@ -39,7 +39,8 @@ const OurVision = () => {
             className='text-dark lead col-md-6 ms-auto'
             style={{ fontWeight: '300', fontSize: '28px' }}
           >
-            "Our vision is One Family under God beyond race and religion."
+            "Our vision is to build a global peace family beyond race,
+            nationality, and religion."
           </p>
         </div>
       </Container>
