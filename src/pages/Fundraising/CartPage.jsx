@@ -93,6 +93,7 @@ const CartPage = () => {
       setCartTotalPrice(0)
     }
     addItem()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [paidFor])
 
   useEffect(() => {
@@ -181,9 +182,11 @@ const CartPage = () => {
 
         <Modal
           show={showModal}
+          onHide={() => setShowModal(false)}
           size='lg'
           aria-labelledby='contained-modal-title-vcenter'
           centered
+          closeButton
         >
           <Modal.Header closeButton>
             <Modal.Title id='contained-modal-title-vcenter'>

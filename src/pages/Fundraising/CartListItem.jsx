@@ -53,7 +53,7 @@ const CartListItem = ({ item, index }) => {
           <h5>${item.price}</h5>
           <div
             onClick={() => removeItemToList(item.id)}
-            className='btn btn-danger btn-sm'
+            className='btn btn-outline-danger btn-sm'
           >
             Remove
           </div>

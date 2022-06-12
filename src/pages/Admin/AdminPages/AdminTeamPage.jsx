@@ -15,6 +15,7 @@ const AdminTeamPage = ({ setIsLoggedIn }) => {
     } else {
       navigate('/admin')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

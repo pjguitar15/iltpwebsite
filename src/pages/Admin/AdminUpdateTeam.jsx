@@ -29,6 +29,7 @@ const AdminUpdateTeam = () => {
       setCurrItem(filtered)
     }
     getUsers()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -38,6 +39,7 @@ const AdminUpdateTeam = () => {
     } else {
       navigate('/admin')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

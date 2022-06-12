@@ -2,7 +2,6 @@ import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import PillButton from '../../components/PillButton'
 import fr1 from '../../assets/fundraising-photos/fr1.jpg'
-import fr2 from '../../assets/fundraising-photos/fr2.jpg'
 import { useNavigate } from 'react-router-dom'
 import 'aos/dist/aos.css'
 const FundraisingPhotos = () => {

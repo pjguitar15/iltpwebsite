@@ -17,6 +17,7 @@ const AdminLogin = ({ setUser, user, setPassword, password }) => {
     } else {
       navigate('/admin')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   // admin login handler
   const handleLogin = (e) => {

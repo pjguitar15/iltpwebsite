@@ -42,6 +42,7 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     cartList.map((item) => setCartTotalPrice(cartTotalPrice + item.price))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartList])
   const value = {
     setCartList,

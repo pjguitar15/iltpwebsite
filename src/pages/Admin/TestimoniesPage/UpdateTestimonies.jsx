@@ -20,6 +20,7 @@ const UpdateTestimonies = () => {
       setCurrItem(allItems.filter((element) => element.id === id))
     }
     getUsers()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // Update Handler
@@ -42,6 +43,7 @@ const UpdateTestimonies = () => {
     } else {
       navigate('/admin')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <div>

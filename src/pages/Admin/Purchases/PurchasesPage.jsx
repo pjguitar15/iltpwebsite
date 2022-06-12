@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import AdminNews from '../AdminNews'
 import AdminNav from '../AdminNav'
 import PurchaseItems from './PurchaseItems'
 
@@ -18,6 +17,7 @@ const AdminPage = () => {
     } else {
       navigate('/admin')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <div>

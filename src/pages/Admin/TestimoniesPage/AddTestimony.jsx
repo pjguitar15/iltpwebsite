@@ -26,6 +26,7 @@ const AddTestimony = () => {
     } else {
       navigate('/admin')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // Submit handler
