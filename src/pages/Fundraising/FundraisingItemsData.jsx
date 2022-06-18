@@ -44,7 +44,7 @@ export const fundraisingItems = [
     id: `d13e031d-71dc-42ca-a640-c8bdef7b52bd`,
     name: 'Amethyst Beads Bracelet',
     img: AmethystBeadsBracelet,
-    price: 25,
+    price: 30,
   },
   {
     id: `8527a687-47bb-4edc-ac09-d69f72c9eeed`,
@@ -175,7 +175,7 @@ export const fundraisingItems = [
     id: `e7b60537-b0f1-4107-9a07-a9c27eb465c4 `,
     name: 'Jasper Stone Necklace',
     img: JasperStoneNecklace,
-    price: 30,
+    price: 40,
   },
 
   {
@@ -257,7 +257,7 @@ export const fundraisingItems = [
     id: `f385cb6c-cb19-4f71-811f-fc6154c10fc9`,
     name: 'Tiger Eye Beads Bracelet',
     img: TigerEyeBeadsBracelet,
-    price: 25,
+    price: 30,
   },
   {
     id: `1bd8bb06-871d-4d8c-9ee7-324a487a1c2a`,
