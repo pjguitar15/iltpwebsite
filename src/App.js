@@ -41,7 +41,7 @@ const App = () => {
 
   return (
     <div>
-      <PayPalScriptProvider options={{ 'client-id': process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
+      <PayPalScriptProvider options={{ 'client-id': 'AfO_6rkF27_MDJFTOUcoaAocdxi13AC8oYTmrV4qmt2h8Doi1LMgKM_R-Y7rDSOt2YJbWLPolWgo-r6b' }}>
         <Router>
           <CartProvider>
             <Routes>
@@ -51,14 +51,13 @@ const App = () => {
                 <Footer /></>} />
               <Route path='/photo-gallery' element={<><NavbarComponent /><PhotoGallery /></>} />
               <Route path='/news' element={<><NavbarComponent /><News /><GetInTouch />
-
                 <Footer /></>} />
               <Route path='/news/:id' element={<><NavbarComponent /><NewsSlug /><GetInTouch />
                 <Footer /></>} />
-              <Route path='/fundraising' element={<><NavbarComponent /><Fundraising /><GetInTouch />
+              <Route path='/support' element={<><NavbarComponent /><Fundraising /><GetInTouch />
                 <Footer /></>} />
-              <Route path='/fundraising/item/:id' element={<><ItemOpen /></>} />
-              <Route path='/fundraising/cart' element={<><NavbarComponent /><CartPage /><Footer /></>} />
+              <Route path='/support/item/:id' element={<><ItemOpen /></>} />
+              <Route path='/support/cart' element={<><NavbarComponent /><CartPage /><Footer /></>} />
 
               <Route path='/contact' element={<><NavbarComponent /><ContactUs /><GetInTouch />
                 <Footer /></>} />

@@ -6,7 +6,7 @@ const FundraisingItem = ({ item }) => {
   return (
     <div className='col-xl-3 col-lg-4 col-md-6 col-12 py-3'>
       <div
-        onClick={() => navigate(`/fundraising/item/${item.id}`)}
+        onClick={() => navigate(`/support/item/${item.id}`)}
         className='fundraising-item'
       >
         <div className='rounded'>

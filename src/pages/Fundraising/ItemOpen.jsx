@@ -60,7 +60,7 @@ const ItemOpen = () => {
             variant='warning'
             onClick={() => {
               setShowAddToCartSuccessModal(false)
-              navigate('/fundraising/cart')
+              navigate('/support/cart')
             }}
           >
             Go to Cart

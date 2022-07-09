@@ -16,7 +16,10 @@ const JoinUs = () => {
         <h3 className='text-uppercase rubik-400'>
           Become a member/Support Us!
         </h3>
-        <p className='mx-auto rubik-300' style={{ fontSize: '18px' }}>
+        <p
+          className='mx-auto rubik-300'
+          style={{ fontSize: '18px', color: '#c9c9c9' }}
+        >
           International Leadering Training Program is a non-profit organization.
           Our goal is to be able to host and coordinate events and activities
           youth and students can participate in for little to no cost.

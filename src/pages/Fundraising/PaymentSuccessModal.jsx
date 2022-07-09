@@ -19,7 +19,7 @@ const PaymentSuccessModal = ({ showSuccessModal, setShowSuccessModal }) => {
             variant='primary'
             onClick={() => {
               setShowSuccessModal(false)
-              navigate('/fundraising')
+              navigate('/support')
             }}
           >
             Close

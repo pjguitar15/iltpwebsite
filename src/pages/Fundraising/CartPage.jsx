@@ -147,7 +147,7 @@ const CartPage = () => {
               <Button
                 variant='warning'
                 className='col-3 mx-auto'
-                onClick={() => navigate('/fundraising')}
+                onClick={() => navigate('/support')}
               >
                 Back to Shop
               </Button>
@@ -168,10 +168,7 @@ const CartPage = () => {
               >
                 Checkout
               </Button>
-              <Button
-                onClick={() => navigate('/fundraising')}
-                variant='warning'
-              >
+              <Button onClick={() => navigate('/support')} variant='warning'>
                 Continue Shopping
               </Button>
             </div>

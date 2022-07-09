@@ -57,9 +57,9 @@ export const CartProvider = ({ children }) => {
   return (
     <CartContext.Provider value={value}>
       {children}
-      {cartList.length > 0 && location.pathname !== '/fundraising/cart' ? (
+      {cartList.length > 0 && location.pathname !== '/support/cart' ? (
         <div
-          onClick={() => navigate('/fundraising/cart')}
+          onClick={() => navigate('/support/cart')}
           className='view-cart-button'
           style={{ position: 'fixed', bottom: '20px', right: '30px' }}
         >

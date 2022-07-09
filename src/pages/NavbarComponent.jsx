@@ -162,10 +162,10 @@ const NavbarComponent = () => {
                 className={`${
                   navbar || isToggleOpen ? 'text-black' : 'text-white'
                 } mx-2 nav-link-hover`}
-                to='/fundraising'
+                to='/support'
                 style={disableSelectNoUnderline}
               >
-                Fundraising
+                Support
               </Link>
               <Link
                 onClick={() => setIsToggleOpen(false)}

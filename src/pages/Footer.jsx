@@ -76,7 +76,7 @@ const Footer = () => {
                 <li>
                   <div
                     className='text-white text-decoration-underline'
-                    onClick={(e) => navigate('/fundraising')}
+                    onClick={(e) => navigate('/support')}
                   >
                     Fundraising
                   </div>

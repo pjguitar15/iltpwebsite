@@ -21,7 +21,7 @@ const FundraisingPhotos = () => {
                 />
               </Col>
               <Col md='4' className='me-auto'>
-                <h3>Fund Raising, Purpose, Finances</h3>
+                {/* <h3>Fund Raising, Purpose, Finances</h3>
                 <p
                   className='opensans-thin text-muted'
                   style={{ lineHeight: '30px', textAlign: 'justify' }}
@@ -29,13 +29,13 @@ const FundraisingPhotos = () => {
                   Our volunteer teams conduct fund-raising activities
                   occasionally in order to cover the cost of service projects,
                   seminars and other operational expenses.
-                </p>
+                </p> */}
                 <p
                   className='opensans-thin text-muted'
                   style={{ lineHeight: '30px', textAlign: 'justify' }}
                 >
-                  In fact, ILTP program is operated solely by volunteers and
-                  your generous donations. At the same time, our volunteers are
+                  ILTP program is operated solely by volunteers and your
+                  generous donations. At the same time, our volunteers are
                   learning from cross-cultural experiences as they come from
                   overseas.
                 </p>
