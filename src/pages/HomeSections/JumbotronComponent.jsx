@@ -92,7 +92,7 @@ const JumbotronComponent = () => {
                   primaryColor='#198754'
                   secondaryColor='#1b945b'
                   textColor='#ffffff'
-                  handleClick={() => navigate('/fundraising')}
+                  handleClick={() => navigate('/support')}
                 >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
