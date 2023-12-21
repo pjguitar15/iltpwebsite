@@ -7,6 +7,7 @@ import { MdOutlineAddCircle } from "react-icons/md"
 
 const AdminNav = ({ location }) => {
   const [galleryCollapsed, setGalleryCollapse] = useState(false)
+  const [awardsCollapsed, setAwardsCollapse] = useState(false)
   const navigate = useNavigate()
   const handleLogout = () => {
     alert("Thank you admin!")
@@ -126,19 +127,50 @@ const AdminNav = ({ location }) => {
         </div>
       </div>
 
+      {/* Awards */}
       <div
-        onClick={() => navigate("/admin/awards")}
+        onClick={() => setAwardsCollapse(!awardsCollapsed)}
         className={`${
           location.pathname.slice(7) === "awards" ||
           location.pathname.slice(7) === "awards/add"
             ? "bg-light text-dark"
             : "text-light"
-        } m-0 py-3 admin-link ps-5`}
+        } m-0 text-light py-3 admin-link ps-5`}
       >
-        <h6 className={`m-0 rubik-400`}>
-          <FaAward className="me-2" />
+        <h6 className={`m-0 rubik-400`} style={{ userSelect: "none" }}>
           Awards
+          <FaChevronRight
+            className="ms-2"
+            style={{
+              fontSize: "11px",
+              transform: awardsCollapsed ? "rotate(90deg)" : "rotate(0deg)",
+            }}
+          />{" "}
         </h6>
+      </div>
+      <div style={{ display: awardsCollapsed ? "block" : "none" }}>
+        <div
+          onClick={() => navigate("/admin/awards")}
+          className={`m-0 text-light py-3 admin-link ps-5`}
+          style={{
+            background: "#353535",
+          }}
+        >
+          <h6 className={`m-0 rubik-400 d-flex gap-2 ps-5`}>
+            <GrGallery /> View Awards
+          </h6>
+        </div>
+        <div
+          onClick={() => navigate("/admin/awards/add")}
+          className={`m-0 text-light py-3 admin-link ps-5`}
+          style={{
+            background: "#353535",
+          }}
+        >
+          <h6 className={`m-0 rubik-400 d-flex gap-2 ps-5`}>
+            <MdOutlineAddCircle /> Add Awards
+          </h6>
+        </div>
       </div>
 
       <div

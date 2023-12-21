@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import { Container } from 'react-bootstrap'
-import '../styles/Home.css'
+import React, { useState, useEffect } from "react"
+import { Container } from "react-bootstrap"
+import "../styles/Home.css"
 
 // Firebase import
-import { db } from '../../firebase/firebase-config'
-import { collection, getDocs, query } from 'firebase/firestore'
+import { db } from "../../firebase/firebase-config"
+import { collection, getDocs, query } from "firebase/firestore"
 
 // animate on scroll
-import 'aos/dist/aos.css'
-import TestimonyCarousel from '../../components/TestimonyCarousel'
+import "aos/dist/aos.css"
+import TestimonyCarousel from "../../components/TestimonyCarousel"
 
 const Testimonies = () => {
   const [index, setIndex] = useState(0)
@@ -19,7 +19,7 @@ const Testimonies = () => {
   // Fetch data from firebase
   useEffect(() => {
     // Firebase collection reference
-    const collectionRef = collection(db, 'testimonies')
+    const collectionRef = collection(db, "testimonies")
 
     setLoading(true)
     const q = query(collectionRef)
@@ -38,24 +38,28 @@ const Testimonies = () => {
   }
 
   return (
-    <div className='m-0'>
-      <div className='testimonies bg-white'>
-        <Container
-          data-aos='zoom-in'
-          data-aos-duration='500'
-          className='text-center '
-        >
-          <h1 className='m-0 rubik-400 mb-2'>Testimonies</h1>
-          {/* index, handleSelect, loading, testimonyData */}
-          <TestimonyCarousel
-            index={index}
-            handleSelect={handleSelect}
-            loading={loading}
-            testimonyData={testimonyData}
-          />
-        </Container>
-      </div>
-    </div>
+    <>
+      {testimonyData.length > 0 && (
+        <div className="m-0">
+          <div className="testimonies bg-white">
+            <Container
+              data-aos="zoom-in"
+              data-aos-duration="500"
+              className="text-center "
+            >
+              <h1 className="m-0 rubik-400 mb-2">Testimonies</h1>
+              {/* index, handleSelect, loading, testimonyData */}
+              <TestimonyCarousel
+                index={index}
+                handleSelect={handleSelect}
+                loading={loading}
+                testimonyData={testimonyData}
+              />
+            </Container>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 

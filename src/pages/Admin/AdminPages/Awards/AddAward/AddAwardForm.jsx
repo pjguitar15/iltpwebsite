@@ -74,6 +74,9 @@ const AddAwardForm = () => {
   return (
     <main>
       <ToastContainer />
+      <h3>Add an Award</h3>
+      <p className="col-7 text-secondary">You can add and delete awards here</p>
+      <hr />
       <div className="mb-2">
         <Link to="/admin/awards" className="text-primary">
           <span className="me-1" style={{ fontSize: "20px" }}>

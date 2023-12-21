@@ -1,0 +1,22 @@
+.year {
+  padding: 4px 20px !important;
+  border-radius: 15px !important;
+  border: none !important;
+}
+
+.year-selected {
+  background: rgb(16, 221, 54) !important;
+  color: rgb(0, 67, 0) !important;
+}
+
+.album {
+  background: rgb(142, 255, 162) !important;
+  color: rgb(0, 67, 0) !important;
+  padding: 4px 10px !important;
+  border-radius: 15px !important;
+  border: none !important;
+}
+
+.album-selected {
+  background: rgb(16, 221, 54) !important;
+}

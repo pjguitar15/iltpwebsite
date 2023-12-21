@@ -58,7 +58,7 @@ const App = () => {
               <Route path='/news/:id' element={<><NavbarComponent /><NewsSlug /><GetInTouch />
                 <Footer /></>} />
               <Route path='/support' element={<><NavbarComponent /><Fundraising /><GetInTouch />
-                <Footer /></>} />
+                <Footer /></>} /> 
               <Route path='/support/item/:id' element={<><ItemOpen /></>} />
               <Route path='/support/cart' element={<><NavbarComponent /><CartPage /><Footer /></>} />
 

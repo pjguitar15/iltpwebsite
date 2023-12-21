@@ -1,7 +1,7 @@
-import img1 from '../assets/carousel/img1.jpeg'
-import img2 from '../assets/carousel/img2.JPG'
-import img3 from '../assets/carousel/img3.JPG'
-import img4 from '../assets/carousel/img4.JPG'
+import img1 from "../assets/carousel/img1.jpeg"
+import img2 from "../assets/carousel/img2.webp"
+import img3 from "../assets/carousel/img3.JPG"
+import img4 from "../assets/carousel/img4.JPG"
 
 export const JumbotronImageUrls = [
   {

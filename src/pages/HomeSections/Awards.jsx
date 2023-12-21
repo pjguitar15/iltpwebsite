@@ -10,6 +10,9 @@ const Awards = () => {
   const [firebaseData, setFirebaseData] = useState([])
   const [certificates, setCertificates] = useState([])
 
+  const currentDate = new Date()
+  const year = currentDate.getFullYear()
+
   const createCertGroups = (data) => {
     const certificates = []
     for (let i = 0; i < data.length; i += 3) {
@@ -70,7 +73,7 @@ const Awards = () => {
             borderRight: "4px solid red",
           }}
         >
-          ILTP PVSA Award 2015 - 2022
+          ILTP PVSA Award 2015 - {year}
         </h1>
       </Container>
       <AwardsCarousel

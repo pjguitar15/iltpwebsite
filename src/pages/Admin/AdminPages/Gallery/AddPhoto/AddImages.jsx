@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from "react"
-import { Button, Form, Spinner, Container } from "react-bootstrap"
+import { Button, Form, Spinner } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
 import Axios from "axios"
 import { db } from "../../../../../firebase/firebase-config"
 import { addDoc, serverTimestamp, collection } from "firebase/firestore"
 // image compression package
 import imageCompression from "browser-image-compression"
-import UploadAgainModal from "../../../../../components/UploadAgainModal"
 import { IoMdAdd } from "react-icons/io"
 import { PiCaretCircleLeftLight } from "react-icons/pi"
 import useGetAlbums from "../../../../../helpers/hooks/useGetAlbums"
@@ -15,10 +14,10 @@ import { ProgressBar } from "react-bootstrap"
 const AddVolunteerImages = () => {
   const [submitLoading, setSubmitLoading] = useState(false)
   const [selectedImages, setSelectedImages] = useState([])
+  const [selectImageLoading, setSelectImageLoading] = useState(false)
   const [albums, setAlbums] = useState([])
   const [selectedAlbum, setSelectedAlbum] = useState("martin-luther-king-day")
-  const [selectedYear, setSelectedYear] = useState("2018")
-  const [show, setShow] = useState(false)
+  const [selectedYear, setSelectedYear] = useState("2023")
   const [currentProgress, setCurrentProgress] = useState(0)
   const [overallProgress, setOverallProgress] = useState(0)
 
@@ -30,14 +29,6 @@ const AddVolunteerImages = () => {
   useEffect(() => {
     setAlbums(firebaseData)
   }, [firebaseData])
-
-  // Add more photos handler
-  const addMorePhotos = () => {
-    setShow(false)
-    setSelectedImages(null)
-    setSubmitLoading(false)
-    fileRef.current.value = null
-  }
 
   // Submit handler
   const submitHandler = async (e) => {
@@ -90,9 +81,6 @@ const AddVolunteerImages = () => {
           }
         })
       )
-
-      // After all uploads and database updates are done
-      setShow(true)
     } catch (err) {
       alert(err)
     } finally {
@@ -100,6 +88,7 @@ const AddVolunteerImages = () => {
       // Reset progress state after completion
       setCurrentProgress(0)
       setOverallProgress(0)
+      navigate("/admin/gallery")
     }
   }
 
@@ -132,23 +121,18 @@ const AddVolunteerImages = () => {
         </Link>
       </div>
 
-      {/* <UploadAgainModal
-        show={show}
-        setShow={setShow}
-        setSubmitLoading={setSubmitLoading}
-        addMorePhotos={addMorePhotos}
-      /> */}
       <Form
         onSubmit={submitHandler}
         className="mx-auto bg-light p-5 border mt-3"
       >
         {/* Image */}
         <Form.Group className="my-2">
-          <Form.Text className="mb-1">Upload an image</Form.Text>
+          <Form.Text className="mb-1">Upload multiple images</Form.Text>
           <Form.Control
             ref={fileRef}
             disabled={submitLoading}
             onChange={async (e) => {
+              setSelectImageLoading(true)
               const imageFiles = e.target.files
 
               const options = {
@@ -165,7 +149,9 @@ const AddVolunteerImages = () => {
                 )
 
                 setSelectedImages(compressedFiles)
+                setSelectImageLoading(false)
               } catch (error) {
+                setSelectImageLoading(false)
                 console.log(error)
               }
             }}
@@ -239,21 +225,14 @@ const AddVolunteerImages = () => {
         <Form.Group className="mt-2">
           <Form.Text>Select Year</Form.Text>
           <Form.Select onChange={(e) => setSelectedYear(e.target.value)}>
-            <option>2018</option>
-            <option>2019</option>
-            <option>2020</option>
-            <option>2021</option>
+            <option>2023</option>
             <option>2022</option>
+            <option>2021</option>
+            <option>2020</option>
+            <option>2019</option>
+            <option>2018</option>
           </Form.Select>
         </Form.Group>
-
-        {currentProgress > 0 && (
-          <ProgressBar
-            animated
-            now={currentProgress}
-            label={`${currentProgress}%`}
-          />
-        )}
 
         {overallProgress > 0 && overallProgress < 100 && (
           <ProgressBar
@@ -270,10 +249,10 @@ const AddVolunteerImages = () => {
               size="sm"
               variant="warning"
               className="me-1"
-              disabled={submitLoading}
+              disabled={submitLoading || selectImageLoading}
               type="submit"
             >
-              {submitLoading ? (
+              {submitLoading || selectImageLoading ? (
                 <>
                   <Spinner animation="border" variant="light me-2" size="sm" />
                   Loading please wait...

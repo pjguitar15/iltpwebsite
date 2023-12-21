@@ -11,10 +11,8 @@ const AwardsContent = () => {
   return (
     <main>
       <ToastContainer />
-      <h3>Awards Page</h3>
-      <p className="col-7 text-secondary">
-        You can add, edit, and delete awards here
-      </p>
+      <h3>Awards</h3>
+      <p className="col-7 text-secondary">You can add and delete awards here</p>
       <hr />
       <Button
         size="sm"

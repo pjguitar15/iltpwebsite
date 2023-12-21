@@ -22,12 +22,17 @@ export const VolunteerActivities = () => {
   const [isMouseEntered, setIsMouseEntered] = useState("")
   const [currentDeleteItem, setCurrentDeleteItem] = useState()
   const [selectedCategory, setSelectedCategory] = useState("all")
-  const [selectedYear, setSelectedYear] = useState("2019")
+  const [selectedYear, setSelectedYear] = useState("2023")
+
+  const { firebaseData } = useGetAlbums()
 
   const location = useLocation()
   const navigate = useNavigate()
-  const { firebaseData } = useGetAlbums()
 
+  useEffect(() => {
+    console.log(firebaseData[0])
+    if (firebaseData) setSelectedCategory(firebaseData[0]?.value)
+  }, [firebaseData])
   useEffect(() => {
     setIsLoading(true)
     const collectionRef = collection(db, "photos")
@@ -155,6 +160,16 @@ export const VolunteerActivities = () => {
                   style={{ background: "none" }}
                 >
                   2022
+                </Button>
+                <Button
+                  onClick={() => setSelectedYear("2023")}
+                  className={`me-2 fw-bolder text-dark shadow-none  ${
+                    selectedYear === "2023" ? "border-dark" : "border-0"
+                  } `}
+                  size="sm"
+                  style={{ background: "none" }}
+                >
+                  2023
                 </Button>
               </p>
 
