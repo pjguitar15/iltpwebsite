@@ -10,14 +10,17 @@ import UploadAgainModal from "../../../../../components/UploadAgainModal"
 import { IoMdAdd } from "react-icons/io"
 import { PiCaretCircleLeftLight } from "react-icons/pi"
 import useGetAlbums from "../../../../../helpers/hooks/useGetAlbums"
+import { ProgressBar } from "react-bootstrap"
 
 const AddVolunteerImages = () => {
   const [submitLoading, setSubmitLoading] = useState(false)
-  const [selectedImage, setSelectedImage] = useState(null)
+  const [selectedImages, setSelectedImages] = useState([])
   const [albums, setAlbums] = useState([])
   const [selectedAlbum, setSelectedAlbum] = useState("martin-luther-king-day")
   const [selectedYear, setSelectedYear] = useState("2018")
   const [show, setShow] = useState(false)
+  const [currentProgress, setCurrentProgress] = useState(0)
+  const [overallProgress, setOverallProgress] = useState(0)
 
   const fileRef = useRef()
   const navigate = useNavigate()
@@ -31,44 +34,73 @@ const AddVolunteerImages = () => {
   // Add more photos handler
   const addMorePhotos = () => {
     setShow(false)
-    setSelectedImage(null)
+    setSelectedImages(null)
     setSubmitLoading(false)
     fileRef.current.value = null
   }
 
   // Submit handler
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault()
     setSubmitLoading(true)
-    // how to use axios. this is inside uploadImage function
-    const formData = new FormData()
-    formData.append("file", selectedImage)
-    formData.append("upload_preset", "iltp-news-images")
 
     const cloudName = "philcob"
-    console.log(selectedAlbum)
+    const uploadPreset = "iltp-news-images"
 
-    Axios.post(
-      `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-      formData
-    )
-      .then((res) => {
-        // POST REQUEST 2
-        // http://res.cloudinary.com/philcob/image/upload/v1654299625/zsellrs9kdtcjryeihxz.jpg
-        addDoc(collectionRef, {
-          img: res.data.url,
-          category: selectedAlbum,
-          year: selectedYear,
-          timestamp: serverTimestamp(),
+    // Calculate total progress steps based on the number of images
+    const totalSteps = selectedImages.length
+    let currentStep = 0
+
+    try {
+      await Promise.all(
+        selectedImages.map(async (image) => {
+          const formData = new FormData()
+          formData.append("file", image)
+          formData.append("upload_preset", uploadPreset)
+
+          try {
+            const res = await Axios.post(
+              `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+              formData,
+              {
+                onUploadProgress: (progressEvent) => {
+                  // Update progress for the current image
+                  const progress = Math.round(
+                    (progressEvent.loaded * 100) / progressEvent.total
+                  )
+                  setCurrentProgress(progress)
+                },
+              }
+            )
+
+            // Add the uploaded image to the database
+            await addDoc(collectionRef, {
+              img: res.data.url,
+              category: selectedAlbum,
+              year: selectedYear,
+              timestamp: serverTimestamp(),
+            })
+          } catch (err) {
+            console.error(err)
+            // Handle error if needed
+          } finally {
+            // Increase the current step after each image upload
+            currentStep++
+            setOverallProgress((currentStep / totalSteps) * 100)
+          }
         })
-      })
-      .then(() => {
-        setShow(true)
-      })
-      .catch((err) => {
-        alert(err)
-        setSubmitLoading(false)
-      })
+      )
+
+      // After all uploads and database updates are done
+      setShow(true)
+    } catch (err) {
+      alert(err)
+    } finally {
+      setSubmitLoading(false)
+      // Reset progress state after completion
+      setCurrentProgress(0)
+      setOverallProgress(0)
+    }
   }
 
   useEffect(() => {
@@ -100,12 +132,12 @@ const AddVolunteerImages = () => {
         </Link>
       </div>
 
-      <UploadAgainModal
+      {/* <UploadAgainModal
         show={show}
         setShow={setShow}
         setSubmitLoading={setSubmitLoading}
         addMorePhotos={addMorePhotos}
-      />
+      /> */}
       <Form
         onSubmit={submitHandler}
         className="mx-auto bg-light p-5 border mt-3"
@@ -117,27 +149,49 @@ const AddVolunteerImages = () => {
             ref={fileRef}
             disabled={submitLoading}
             onChange={async (e) => {
-              // try another method
-              const imageFile = e.target.files[0]
+              const imageFiles = e.target.files
 
               const options = {
                 maxSizeMB: 1,
                 maxWidthOrHeight: 1920,
                 useWebWorker: true,
               }
+
               try {
-                const compressedFile = await imageCompression(
-                  imageFile,
-                  options
+                const compressedFiles = await Promise.all(
+                  Array.from(imageFiles).map(async (file) => {
+                    return await imageCompression(file, options)
+                  })
                 )
-                setSelectedImage(compressedFile)
+
+                setSelectedImages(compressedFiles)
               } catch (error) {
                 console.log(error)
               }
             }}
             required
             type="file"
+            multiple // Enable multiple file selection
           />
+          {selectedImages.length > 0 && (
+            <div>
+              <div className="d-flex flex-wrap">
+                {selectedImages.map((image, index) => (
+                  <img
+                    key={index}
+                    src={URL.createObjectURL(image)}
+                    alt={`Preview-${index}`}
+                    className="img-thumbnail m-2"
+                    style={{
+                      maxWidth: "100px",
+                      maxHeight: "100px",
+                      objectFit: "cover",
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
         </Form.Group>
 
         <div className="row">
@@ -192,6 +246,22 @@ const AddVolunteerImages = () => {
             <option>2022</option>
           </Form.Select>
         </Form.Group>
+
+        {currentProgress > 0 && (
+          <ProgressBar
+            animated
+            now={currentProgress}
+            label={`${currentProgress}%`}
+          />
+        )}
+
+        {overallProgress > 0 && overallProgress < 100 && (
+          <ProgressBar
+            animated
+            now={overallProgress}
+            label={`${overallProgress}%`}
+          />
+        )}
 
         {/* Buttons */}
         <div className="d-flex justify-content-between">

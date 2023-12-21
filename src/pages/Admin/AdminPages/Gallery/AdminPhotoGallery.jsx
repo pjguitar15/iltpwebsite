@@ -29,10 +29,6 @@ export const VolunteerActivities = () => {
   const { firebaseData } = useGetAlbums()
 
   useEffect(() => {
-    console.log(photos)
-  }, [photos])
-
-  useEffect(() => {
     setIsLoading(true)
     const collectionRef = collection(db, "photos")
     const q = query(collectionRef, orderBy("timestamp", "desc"))
@@ -54,7 +50,6 @@ export const VolunteerActivities = () => {
     const userDoc = doc(db, "photos", currentDeleteItem)
     await deleteDoc(userDoc)
 
-    // realtime effect
     setPhotos(photos.filter((item) => item.id !== currentDeleteItem))
     setShow(false)
   }

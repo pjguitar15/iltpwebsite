@@ -33,7 +33,6 @@ const AddAlbum = () => {
         text: albumInput,
         value: albumInput.toLowerCase().split(" ").join("-"),
       }
-      console.log(textAndValue)
       try {
         addDoc(collectionRef, {
           text: albumInput,

@@ -46,7 +46,6 @@ const AddAwardForm = () => {
 
         setLoading(false)
         setErrorMessage("")
-        console.log("SUCCESS")
         toast.success(`Award has been submitted successfully.`, {
           position: "top-right",
           autoClose: 5000,

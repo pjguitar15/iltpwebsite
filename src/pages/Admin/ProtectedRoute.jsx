@@ -6,11 +6,9 @@ const ProtectedRoute = () => {
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
     if (authToken) {
-      console.log('log in set to true')
       setIsLoggedIn(true)
     } else {
       setIsLoggedIn(false)
-      console.log('log in set to false')
     }
   }, [])
   return isLoggedIn ? <Outlet /> : <Navigate to='/admin' />
