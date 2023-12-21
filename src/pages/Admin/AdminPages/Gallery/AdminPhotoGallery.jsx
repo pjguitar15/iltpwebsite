@@ -13,6 +13,7 @@ import {
 } from "firebase/firestore"
 import { db } from "../../../../firebase/firebase-config"
 import { IoMdAddCircleOutline } from "react-icons/io"
+import useGetAlbums from "../../../../helpers/hooks/useGetAlbums"
 
 export const VolunteerActivities = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -25,6 +26,7 @@ export const VolunteerActivities = () => {
 
   const location = useLocation()
   const navigate = useNavigate()
+  const { firebaseData } = useGetAlbums()
 
   useEffect(() => {
     console.log(photos)
@@ -101,21 +103,11 @@ export const VolunteerActivities = () => {
                 <Form.Select
                   onChange={(e) => setSelectedCategory(e.target.value)}
                 >
-                  <option value="all">All</option>
-                  <option value="martin-luther-king-day">
-                    Martin Luther King Day
-                  </option>
-                  <option value="global-youth-service-day">
-                    Global Youth Service Day
-                  </option>
-                  <option value="make-a-difference-day">
-                    Make A Difference Day
-                  </option>
-                  <option value="others">Others</option>
-                  <option value="winter-workshop">Winter Workshop</option>
-                  <option value="spring-workshop">Spring Workshop</option>
-                  <option value="summer-workshop">Summer Workshop</option>
-                  <option value="fall-workshop">Fall Workshop</option>
+                  {firebaseData.map((item, index) => (
+                    <option key={index} value={item.value}>
+                      {item.text}
+                    </option>
+                  ))}
                 </Form.Select>
               </div>
               <p className="mb-3 mt-4">

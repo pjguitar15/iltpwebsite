@@ -1,9 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
 import iltplogo from "../../assets/iltp-logo.png"
 import { useNavigate } from "react-router-dom"
 import { FaAward, FaChevronRight } from "react-icons/fa6"
+import { GrGallery } from "react-icons/gr"
+import { MdOutlineAddCircle } from "react-icons/md"
 
 const AdminNav = ({ location }) => {
+  const [galleryCollapsed, setGalleryCollapse] = useState(false)
   const navigate = useNavigate()
   const handleLogout = () => {
     alert("Thank you admin!")
@@ -12,12 +15,14 @@ const AdminNav = ({ location }) => {
     navigate("/admin")
   }
   return (
-    <div className="col-12 col-md-5 col-lg-3 bg-dark pt-4 text-center px-0">
+    <div className="col-12 col-md-5 col-lg-3 bg-dark pt-4 px-0">
       <div className="col-2 mx-auto">
         <img src={iltplogo} className="w-100" alt="iltp logo" />
       </div>
-      <h5 className="mt-2 text-white rubik-400">ILTP Admin</h5>
-      <p className="text-muted">Navigation</p>
+      <div className="text-center">
+        <h5 className="mt-2 text-white rubik-400">ILTP Admin</h5>
+        <p className="text-muted">Navigation</p>
+      </div>
 
       <div
         onClick={() => navigate("/admin/purchases")}
@@ -25,7 +30,7 @@ const AdminNav = ({ location }) => {
           location.pathname.slice(7) === "purchases"
             ? "bg-light text-dark"
             : "text-light"
-        } m-0 py-3 admin-link`}
+        } m-0 py-3 admin-link ps-5`}
       >
         <h6 className={`m-0 rubik-400`}>
           <svg
@@ -56,7 +61,7 @@ const AdminNav = ({ location }) => {
           location.pathname.slice(7) === "news"
             ? "bg-light text-dark"
             : "text-light"
-        } m-0 py-3 admin-link`}
+        } m-0 py-3 admin-link ps-5`}
       >
         <h6 className={`m-0 rubik-400`}>
           <i className="bi bi-newspaper me-2"></i>News Page
@@ -65,29 +70,60 @@ const AdminNav = ({ location }) => {
 
       {/* Gallery */}
       <div
-        onClick={() => navigate("/admin/gallery")}
+        onClick={() => setGalleryCollapse(!galleryCollapsed)}
         className={`${
           location.pathname.slice(7) === "gallery" ||
           location.pathname.slice(7) === "gallery/add" ||
           location.pathname.slice(7) === "gallery/album/add"
             ? "bg-light text-dark"
             : "text-light"
-        } m-0 text-light py-3 admin-link`}
+        } m-0 text-light py-3 admin-link ps-5`}
       >
-        <h6 className={`m-0 rubik-400`}>
-          <i className="bi bi-person-lines-fill me-2" /> Gallery
+        <h6 className={`m-0 rubik-400`} style={{ userSelect: "none" }}>
+          Gallery
+          <FaChevronRight
+            className="ms-2"
+            style={{
+              fontSize: "11px",
+              transform: galleryCollapsed ? "rotate(90deg)" : "rotate(0deg)",
+            }}
+          />{" "}
         </h6>
       </div>
-      <div
-        onClick={() => navigate("/admin/gallery")}
-        className={`m-0 text-light py-3 admin-link ps-4`}
-        style={{ background: "#353535" }}
-      >
-        <h6
-          className={`m-0 rubik-400 d-flex text-center justify-content-center align-items-center gap-2`}
+      <div style={{ display: galleryCollapsed ? "block" : "none" }}>
+        <div
+          onClick={() => navigate("/admin/gallery")}
+          className={`m-0 text-light py-3 admin-link ps-5`}
+          style={{
+            background: "#353535",
+          }}
         >
-          <FaChevronRight style={{ fontSize: "11px" }} /> Gallery
-        </h6>
+          <h6 className={`m-0 rubik-400 d-flex gap-2 ps-5`}>
+            <GrGallery /> View Gallery
+          </h6>
+        </div>
+        <div
+          onClick={() => navigate("/admin/gallery/add")}
+          className={`m-0 text-light py-3 admin-link ps-5`}
+          style={{
+            background: "#353535",
+          }}
+        >
+          <h6 className={`m-0 rubik-400 d-flex gap-2 ps-5`}>
+            <MdOutlineAddCircle /> Add images
+          </h6>
+        </div>
+        <div
+          onClick={() => navigate("/admin/gallery/album/add")}
+          className={`m-0 text-light py-3 admin-link ps-5`}
+          style={{
+            background: "#353535",
+          }}
+        >
+          <h6 className={`m-0 rubik-400 d-flex gap-2 ps-5`}>
+            <MdOutlineAddCircle /> Add albums
+          </h6>
+        </div>
       </div>
 
       <div
@@ -97,7 +133,7 @@ const AdminNav = ({ location }) => {
           location.pathname.slice(7) === "awards/add"
             ? "bg-light text-dark"
             : "text-light"
-        } m-0 py-3 admin-link`}
+        } m-0 py-3 admin-link ps-5`}
       >
         <h6 className={`m-0 rubik-400`}>
           <FaAward className="me-2" />
@@ -111,7 +147,7 @@ const AdminNav = ({ location }) => {
           location.pathname.slice(7) === "testimonies"
             ? "bg-light text-dark"
             : "text-light"
-        } m-0 py-3 admin-link`}
+        } m-0 py-3 admin-link ps-5`}
       >
         <h6 className={`m-0 rubik-400`}>
           <i className="bi bi-person-lines-fill me-2"></i> Testimonies
@@ -123,7 +159,7 @@ const AdminNav = ({ location }) => {
           location.pathname.slice(7) === "jumbotron"
             ? "bg-light text-dark"
             : "text-light"
-        } m-0 text-light py-3 admin-link`}
+        } m-0 text-light py-3 admin-link ps-5`}
       >
         <h6 className={`m-0 rubik-400`}>
           <i className="bi bi-blockquote-right me-2"></i>Jumbotron
@@ -136,14 +172,17 @@ const AdminNav = ({ location }) => {
           location.pathname.slice(7) === "team"
             ? "bg-light text-dark"
             : "text-light"
-        } m-0 text-light py-3 admin-link`}
+        } m-0 text-light py-3 admin-link ps-5`}
       >
         <h6 className={`m-0 rubik-400`}>
           <i className="bi bi-speedometer me-2"></i>Our Team
         </h6>
       </div>
 
-      <div onClick={handleLogout} className={`m-0 text-light py-3 admin-link`}>
+      <div
+        onClick={handleLogout}
+        className={`m-0 text-light py-3 admin-link ps-5`}
+      >
         <h6 className={`text-white m-0`}>
           <i className="bi bi-box-arrow-left me-2"></i>Logout
         </h6>

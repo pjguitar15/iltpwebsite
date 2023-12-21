@@ -9,10 +9,12 @@ import imageCompression from "browser-image-compression"
 import UploadAgainModal from "../../../../../components/UploadAgainModal"
 import { IoMdAdd } from "react-icons/io"
 import { PiCaretCircleLeftLight } from "react-icons/pi"
+import useGetAlbums from "../../../../../helpers/hooks/useGetAlbums"
 
 const AddVolunteerImages = () => {
   const [submitLoading, setSubmitLoading] = useState(false)
   const [selectedImage, setSelectedImage] = useState(null)
+  const [albums, setAlbums] = useState([])
   const [selectedAlbum, setSelectedAlbum] = useState("martin-luther-king-day")
   const [selectedYear, setSelectedYear] = useState("2018")
   const [show, setShow] = useState(false)
@@ -20,38 +22,11 @@ const AddVolunteerImages = () => {
   const fileRef = useRef()
   const navigate = useNavigate()
   const collectionRef = collection(db, "photos")
+  const { firebaseData } = useGetAlbums()
 
-  const albums = [
-    {
-      text: "Martin Luther King Day",
-      value: "martin-luther-king-day",
-    },
-    {
-      text: "Global Youth Service Day",
-      value: "global-youth-service-day",
-    },
-    {
-      text: "Make A Difference Day",
-      value: "make-a-difference-day",
-    },
-
-    {
-      text: "Winter Workshop",
-      value: "winter-workshop",
-    },
-    {
-      text: "Spring Workshop",
-      value: "spring-workshop",
-    },
-    {
-      text: "Summer Workshop",
-      value: "summer-workshop",
-    },
-    {
-      text: "Fall Workshop",
-      value: "fall-workshop",
-    },
-  ]
+  useEffect(() => {
+    setAlbums(firebaseData)
+  }, [firebaseData])
 
   // Add more photos handler
   const addMorePhotos = () => {
@@ -64,7 +39,7 @@ const AddVolunteerImages = () => {
   // Submit handler
   const submitHandler = (e) => {
     e.preventDefault()
-    // setSubmitLoading(true)
+    setSubmitLoading(true)
     // how to use axios. this is inside uploadImage function
     const formData = new FormData()
     formData.append("file", selectedImage)
@@ -73,28 +48,27 @@ const AddVolunteerImages = () => {
     const cloudName = "philcob"
     console.log(selectedAlbum)
 
-    // Axios.post(
-    //   `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-    //   formData
-    // )
-    //   .then((res) => {
-    //     // POST REQUEST 2
-    //     // http://res.cloudinary.com/philcob/image/upload/v1654299625/zsellrs9kdtcjryeihxz.jpg
-    //     addDoc(collectionRef, {
-    //       img: res.data.url,
-    //       category: selectedAlbum,
-    //       year: selectedYear,
-    //       timestamp: serverTimestamp(),
-    //     })
-    //   })
-    //   .then(() => {
-    //     // Add React State Realtime Effect here
-    //     setShow(true)
-    //   })
-    //   .catch((err) => {
-    //     alert(err)
-    //     setSubmitLoading(false)
-    //   })
+    Axios.post(
+      `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+      formData
+    )
+      .then((res) => {
+        // POST REQUEST 2
+        // http://res.cloudinary.com/philcob/image/upload/v1654299625/zsellrs9kdtcjryeihxz.jpg
+        addDoc(collectionRef, {
+          img: res.data.url,
+          category: selectedAlbum,
+          year: selectedYear,
+          timestamp: serverTimestamp(),
+        })
+      })
+      .then(() => {
+        setShow(true)
+      })
+      .catch((err) => {
+        alert(err)
+        setSubmitLoading(false)
+      })
   }
 
   useEffect(() => {
@@ -143,18 +117,6 @@ const AddVolunteerImages = () => {
             ref={fileRef}
             disabled={submitLoading}
             onChange={async (e) => {
-              // const image = e.target.files[0]
-              // this doesn't work
-              // new Compressor(image, {
-              //   quality: 0.1,
-              //   success: (compressedResult) => {
-              //     // compressedResult has the compressed file.
-              //     // Use the compressed file to upload the images to your server.
-              //     setSelectedImage(compressedResult)
-              //   },
-              // })
-              // setSelectedImage(image)
-
               // try another method
               const imageFile = e.target.files[0]
 
@@ -206,7 +168,7 @@ const AddVolunteerImages = () => {
             }}
           >
             <div
-              className={`p-3 d-flex justify-content-center align-items-center text-center rounded`}
+              className={`p-3 d-flex justify-content-center align-items-center text-center rounded text-secondary`}
               style={{
                 cursor: "pointer",
                 transition: "300ms",
@@ -215,7 +177,7 @@ const AddVolunteerImages = () => {
               }}
             >
               <IoMdAdd className="me-1" />
-              Add
+              Add/Remove albums
             </div>
           </div>
         </div>
