@@ -25,8 +25,6 @@ import AdminUpdateTeam from './pages/Admin/AdminUpdateTeam'
 
 import { PaypalTextPage } from './components/paypal-modal/PaypalTextPage'
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-import { VolunteerActivities } from './pages/Admin/AdminPages/AdminPhotoGallery'
-import AddImages from './pages/AddImages'
 import ItemOpen from './pages/Fundraising/ItemOpen'
 import CartPage from './pages/Fundraising/CartPage'
 
@@ -36,6 +34,9 @@ import PurchasesPage from './pages/Admin/Purchases/PurchasesPage'
 import TestForm from './pages/Admin/Purchases/TestForm'
 import Awards from './pages/Admin/AdminPages/Awards/Awards'
 import AddAward from './pages/Admin/AdminPages/Awards/AddAward/AddAward'
+import { VolunteerActivities } from './pages/Admin/AdminPages/Gallery/AdminPhotoGallery'
+import AddImagePage from './pages/Admin/AdminPages/Gallery/AddPhoto/AddImagePage'
+import AddAlbumPage from './pages/Admin/AdminPages/Gallery/AddAlbum/AddAlbumPage'
 
 const App = () => {
   const [user, setUser] = useState('')
@@ -77,7 +78,8 @@ const App = () => {
               <Route path='/admin/jumbotron' element={<AdminJumbotronPage />} />
               <Route path='/admin/team' element={<AdminTeamPage />} />
               <Route path='/admin/gallery' element={<VolunteerActivities />} />
-              <Route path='/admin/gallery/add' element={<AddImages />} />
+              <Route path='/admin/gallery/add' element={<AddImagePage />} />
+              <Route path='/admin/gallery/album/add' element={<AddAlbumPage />} />
               <Route path='/admin/purchases' element={<PurchasesPage />} />
 
               {/* Add Testimony Route */}

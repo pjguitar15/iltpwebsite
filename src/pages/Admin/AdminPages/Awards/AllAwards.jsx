@@ -35,7 +35,7 @@ const AllAwards = () => {
     getData()
   }, [])
   return (
-    <div className="row">
+    <div style={{ height: "75vh", overflow: "scroll" }} className="row">
       {isLoading ? (
         <div className="row">
           {Array.from({ length: 12 }).map((item) => (

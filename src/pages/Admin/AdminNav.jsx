@@ -63,6 +63,22 @@ const AdminNav = ({ location }) => {
         </h6>
       </div>
 
+      {/* Gallery */}
+      <div
+        onClick={() => navigate("/admin/gallery")}
+        className={`${
+          location.pathname.slice(7) === "gallery" ||
+          location.pathname.slice(7) === "gallery/add" ||
+          location.pathname.slice(7) === "gallery/album/add"
+            ? "bg-light text-dark"
+            : "text-light"
+        } m-0 text-light py-3 admin-link`}
+      >
+        <h6 className={`m-0 rubik-400`}>
+          <i className="bi bi-person-lines-fill me-2" /> Gallery
+        </h6>
+      </div>
+
       <div
         onClick={() => navigate("/admin/awards")}
         className={`${
@@ -102,18 +118,7 @@ const AdminNav = ({ location }) => {
           <i className="bi bi-blockquote-right me-2"></i>Jumbotron
         </h6>
       </div>
-      {/* <div
-        onClick={() => navigate('/admin/about')}
-        className={`${
-          location.pathname.slice(7) === 'about'
-            ? 'bg-light text-dark'
-            : 'text-light'
-        } m-0 text-light py-3 admin-link`}
-      >
-        <h6 className={`m-0`}>
-          <i className='bi bi-blockquote-right me-2'></i>About page
-        </h6>
-      </div> */}
+
       <div
         onClick={() => navigate("/admin/team")}
         className={`${
@@ -127,19 +132,6 @@ const AdminNav = ({ location }) => {
         </h6>
       </div>
 
-      {/* Volunteer images */}
-      <div
-        onClick={() => navigate("/admin/gallery")}
-        className={`${
-          location.pathname.slice(7) === "gallery"
-            ? "bg-light text-dark"
-            : "text-light"
-        } m-0 text-light py-3 admin-link`}
-      >
-        <h6 className={`m-0 rubik-400`}>
-          <i className="bi bi-person-lines-fill me-2" /> Gallery
-        </h6>
-      </div>
       <div onClick={handleLogout} className={`m-0 text-light py-3 admin-link`}>
         <h6 className={`text-white m-0`}>
           <i className="bi bi-box-arrow-left me-2"></i>Logout

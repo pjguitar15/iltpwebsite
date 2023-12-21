@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { Button } from 'react-bootstrap'
-import UpdateNewsModal from './Modals/UpdateNewsModal.jsx'
-import LoadingCard from '../../components/LoadingCard.jsx'
-import './Admin.css'
-import AddNewsModal from './Modals/AddNewsModal/AddNewsModal.jsx'
-import { db } from '../../firebase/firebase-config'
+import React, { useState, useEffect } from "react"
+import { Button } from "react-bootstrap"
+import UpdateNewsModal from "./Modals/UpdateNewsModal.jsx"
+import LoadingCard from "../../components/LoadingCard.jsx"
+import "./Admin.css"
+import AddNewsModal from "./Modals/AddNewsModal/AddNewsModal.jsx"
+import { db } from "../../firebase/firebase-config"
 import {
   collection,
   getDocs,
@@ -12,8 +12,9 @@ import {
   orderBy,
   doc,
   deleteDoc,
-} from 'firebase/firestore'
-import AdminNewsCard from '../../components/AdminNewsCard.jsx'
+} from "firebase/firestore"
+import AdminNewsCard from "../../components/AdminNewsCard.jsx"
+import { IoMdAddCircleOutline } from "react-icons/io"
 const AdminNews = () => {
   const [firebaseData, setFirebaseData] = useState([])
   const [currentItem, setCurrentItem] = useState({})
@@ -26,10 +27,10 @@ const AdminNews = () => {
   // fetch data from firebase
   useEffect(() => {
     // firebase collection ref
-    const collectionRef = collection(db, 'news-articles')
+    const collectionRef = collection(db, "news-articles")
 
     setIsLoading(true)
-    const q = query(collectionRef, orderBy('timestamp', 'desc'))
+    const q = query(collectionRef, orderBy("timestamp", "desc"))
     const getData = async () => {
       const data = await getDocs(q)
       setFirebaseData(
@@ -65,10 +66,10 @@ const AdminNews = () => {
 
   // handle delete
   const deleteHandler = async (id) => {
-    const userDoc = doc(db, 'news-articles', id)
+    const userDoc = doc(db, "news-articles", id)
     await deleteDoc(userDoc)
     setFirebaseData(firebaseData.filter((element) => element.id !== id))
-    alert('Item deleted')
+    alert("Item deleted")
   }
 
   // add news open modal handler
@@ -90,12 +91,17 @@ const AdminNews = () => {
         addModalShow={addModalShow}
       />
       <h3>Configure News Page</h3>
-      <p className='col-7 lead'>You can add, edit, and delete news here</p>
+      <p className="col-7 lead">You can add, edit, and delete news here</p>
       <hr />
-      <Button size='sm' className='mb-3' onClick={addNewsHandler}>
+      <Button
+        size="sm"
+        className="mb-3 d-flex align-items-center gap-1"
+        onClick={addNewsHandler}
+      >
+        <IoMdAddCircleOutline style={{ fontSize: "16px" }} />
         Add News
       </Button>
-      <div className='row'>
+      <div className="row" style={{ height: "70vh", overflow: "scroll" }}>
         {isLoading ? (
           <LoadingCard />
         ) : (
