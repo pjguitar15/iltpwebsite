@@ -23,10 +23,9 @@ const AdminPage = () => {
     <div>
       {/* Dashboard */}
       <div className="row m-0">
-        <div className="col-12 col-md-5 col-lg-3 bg-dark pt-4 text-center px-0">
-          {/* Navigation */}
-          <AdminNav location={location} />
-        </div>
+        {/* Navigation */}
+        <AdminNav location={location} />
+
         <div className="col-12 col-md-7 col-lg-9">
           {location.pathname.slice(7) === "purchases" ? <PurchaseItems /> : ""}
         </div>

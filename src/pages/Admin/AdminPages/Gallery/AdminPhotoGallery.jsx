@@ -65,24 +65,23 @@ export const VolunteerActivities = () => {
     <div>
       {/* All images */}
       <div className="row m-0" style={{ height: "100vh" }}>
-        <div className="col-12 col-md-5 col-lg-3 bg-dark pt-4 text-center px-0">
-          {/* Navigation */}
-          <AdminNav location={location} />
-          <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>Delete item</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-              <Button variant="danger" onClick={deleteHandler}>
-                Delete
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
+        {/* Navigation */}
+        <AdminNav location={location} />
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Delete item</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="danger" onClick={deleteHandler}>
+              Delete
+            </Button>
+          </Modal.Footer>
+        </Modal>
+
         <div className="col-12 col-md-7 col-lg-9 p-5">
           {location.pathname.slice(7) === "gallery" ? (
             //   update images here

@@ -1,7 +1,7 @@
 import React from "react"
 import iltplogo from "../../assets/iltp-logo.png"
 import { useNavigate } from "react-router-dom"
-import { FaAward } from "react-icons/fa6"
+import { FaAward, FaChevronRight } from "react-icons/fa6"
 
 const AdminNav = ({ location }) => {
   const navigate = useNavigate()
@@ -12,7 +12,7 @@ const AdminNav = ({ location }) => {
     navigate("/admin")
   }
   return (
-    <div>
+    <div className="col-12 col-md-5 col-lg-3 bg-dark pt-4 text-center px-0">
       <div className="col-2 mx-auto">
         <img src={iltplogo} className="w-100" alt="iltp logo" />
       </div>
@@ -76,6 +76,17 @@ const AdminNav = ({ location }) => {
       >
         <h6 className={`m-0 rubik-400`}>
           <i className="bi bi-person-lines-fill me-2" /> Gallery
+        </h6>
+      </div>
+      <div
+        onClick={() => navigate("/admin/gallery")}
+        className={`m-0 text-light py-3 admin-link ps-4`}
+        style={{ background: "#353535" }}
+      >
+        <h6
+          className={`m-0 rubik-400 d-flex text-center justify-content-center align-items-center gap-2`}
+        >
+          <FaChevronRight style={{ fontSize: "11px" }} /> Gallery
         </h6>
       </div>
 
