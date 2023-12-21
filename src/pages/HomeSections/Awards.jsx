@@ -1,45 +1,48 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Container } from "react-bootstrap"
-import cert2022 from "../../assets/iltp-cert/cert-2022.jpg"
-import cert2020 from "../../assets/iltp-cert/cert-2020.jpg"
-import cert2019 from "../../assets/iltp-cert/cert-2019.jpg"
-import cert2019Education from "../../assets/iltp-cert/cert-2019-education.jpg"
-import cert2018 from "../../assets/iltp-cert/cert-2018.jpg"
-import cert2017 from "../../assets/iltp-cert/cert-2017.jpg"
-import cert2016 from "../../assets/iltp-cert/cert-2016.jpg"
-import cert2015 from "../../assets/iltp-cert/cert-2015.jpg"
-import certOther1 from "../../assets/iltp-cert/cert-other-1.jpg"
-import certOther2 from "../../assets/iltp-cert/cert-other-2.jpg"
-import certOther3 from "../../assets/iltp-cert/cert-other-3.jpg"
 import presidentAward from "../../assets/PVSAimage.png"
 import AwardsCarousel from "../../components/AwardsCarousel"
+import { collection, getDocs, query, orderBy } from "firebase/firestore"
+import { db } from "../../firebase/firebase-config"
 
 const Awards = () => {
   const [index, setIndex] = useState(0)
+  const [firebaseData, setFirebaseData] = useState([])
+  const [certificates, setCertificates] = useState([])
 
-  // certs object
-  const certificates = [
-    {
-      cert1: cert2022,
-      cert2: cert2020,
-      cert3: cert2019,
-    },
-    {
-      cert1: cert2019Education,
-      cert2: cert2018,
-      cert3: cert2017,
-    },
-    {
-      cert1: cert2016,
-      cert2: cert2015,
-      cert3: certOther1,
-    },
-    {
-      cert1: certOther2,
-      cert2: certOther3,
-      cert3: cert2022,
-    },
-  ]
+  const createCertGroups = (data) => {
+    const certificates = []
+    for (let i = 0; i < data.length; i += 3) {
+      const group = {
+        cert1: data[i] ? data[i].img : null,
+        cert2: data[i + 1] ? data[i + 1].img : null,
+        cert3: data[i + 2] ? data[i + 2].img : null,
+      }
+      certificates.push(group)
+    }
+    return certificates
+  }
+
+  useEffect(() => {
+    // firebase collection ref
+    const collectionRef = collection(db, "awards")
+
+    const q = query(collectionRef, orderBy("timestamp", "desc"))
+    const getData = async () => {
+      const data = await getDocs(q)
+      setFirebaseData(
+        data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }))
+      )
+    }
+    getData()
+  }, [])
+
+  useEffect(() => {
+    setCertificates(createCertGroups(firebaseData))
+  }, [firebaseData])
 
   // handle carousel state
   const handleSelect = (selectedIndex, e) => {

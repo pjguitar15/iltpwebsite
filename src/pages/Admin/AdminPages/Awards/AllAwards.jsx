@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { IoCloseCircleOutline } from "react-icons/io5"
-import {
-  collection,
-  getDocs,
-  query,
-  orderBy,
-  doc,
-  deleteDoc,
-} from "firebase/firestore"
+import { collection, getDocs, query, orderBy } from "firebase/firestore"
 import { db } from "../../../../firebase/firebase-config"
 import { Placeholder } from "react-bootstrap/esm"
 import DeleteModal from "./DeleteModal"
