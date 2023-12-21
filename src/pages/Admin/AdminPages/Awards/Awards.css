@@ -1,0 +1,10 @@
+.io-close {
+  transition: 300ms;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.io-close:hover {
+  background: red;
+  color: white !important;
+}

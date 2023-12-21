@@ -34,6 +34,8 @@ import CartPage from './pages/Fundraising/CartPage'
 import CartProvider from './context/CartProvider'
 import PurchasesPage from './pages/Admin/Purchases/PurchasesPage'
 import TestForm from './pages/Admin/Purchases/TestForm'
+import Awards from './pages/Admin/AdminPages/Awards/Awards'
+import AddAward from './pages/Admin/AdminPages/Awards/AddAward/AddAward'
 
 const App = () => {
   const [user, setUser] = useState('')
@@ -69,6 +71,8 @@ const App = () => {
               {/* Protected Route */}
               {/* <Route element={<ProtectedRoute />}> */}
               <Route path='/admin/news' element={<AdminNewsPage />} />
+              <Route path='/admin/awards' element={<Awards />} />
+              <Route path='/admin/awards/add' element={<AddAward />} />
               <Route path='/admin/testimonies' element={<AdminTestimonyPage />} />
               <Route path='/admin/jumbotron' element={<AdminJumbotronPage />} />
               <Route path='/admin/team' element={<AdminTeamPage />} />
