@@ -1,13 +1,19 @@
 .opensans-thin {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-weight: 500;
 }
 .opensans-thick {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-weight: 800;
 }
+
 .slug-img-parent {
   height: 60vh;
+  position: relative;
+}
+
+.slug-img-parent-preview {
+  height: 30vh;
   position: relative;
 }
 

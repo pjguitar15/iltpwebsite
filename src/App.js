@@ -14,7 +14,7 @@ import ErrorPage from './pages/ErrorPage/ErrorPage'
 import AdminLogin from './pages/Admin/AdminLogin'
 
 // admin pages
-import AdminNewsPage from './pages/Admin/AdminPages/AdminNewsPage'
+import AdminNewsPage from './pages/Admin/AdminPages/AdminNews/AdminNewsPage'
 import AdminTestimonyPage from './pages/Admin/AdminPages/AdminTestimonyPage'
 import AdminJumbotronPage from './pages/Admin/AdminPages/AdminJumbotronPage'
 import UpdateTestimonies from './pages/Admin/TestimoniesPage/UpdateTestimonies'
@@ -58,7 +58,7 @@ const App = () => {
               <Route path='/news/:id' element={<><NavbarComponent /><NewsSlug /><GetInTouch />
                 <Footer /></>} />
               <Route path='/support' element={<><NavbarComponent /><Fundraising /><GetInTouch />
-                <Footer /></>} /> 
+                <Footer /></>} />
               <Route path='/support/item/:id' element={<><ItemOpen /></>} />
               <Route path='/support/cart' element={<><NavbarComponent /><CartPage /><Footer /></>} />
 

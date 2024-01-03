@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
-import AdminNews from "../AdminNews"
-import AdminNav from "../AdminNav"
+import AdminNews from "../../AdminNews"
+import AdminNav from "../../AdminNav"
 
 const AdminPage = () => {
   const navigate = useNavigate()

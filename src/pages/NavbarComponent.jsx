@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { Navbar, Container, Nav, Button } from 'react-bootstrap'
-import iltpLogo from '../assets/iltp-logo.png'
-import '../NavbarStyle.css'
-import { useLocation, Link, useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from "react"
+import { Navbar, Container, Nav, Button } from "react-bootstrap"
+import iltpLogo from "../assets/iltp-logo.png"
+import "../NavbarStyle.css"
+import { useLocation, Link, useNavigate } from "react-router-dom"
 
 const NavbarComponent = () => {
   const [navbar, setNavbar] = useState(false)
@@ -24,10 +24,10 @@ const NavbarComponent = () => {
   }
 
   useEffect(() => {
-    window.addEventListener('resize', detectSize)
+    window.addEventListener("resize", detectSize)
 
     return () => {
-      window.removeEventListener('resize', detectSize)
+      window.removeEventListener("resize", detectSize)
     }
   }, [windowDimenion])
 
@@ -38,12 +38,12 @@ const NavbarComponent = () => {
 
   // disable text selection
   const disableSelectNoUnderline = {
-    userSelect: 'none' /* supported by Chrome and Opera */,
-    WebkitUserSelect: 'none' /* Safari */,
-    KhtmlUserSelect: 'none' /* Konqueror HTML */,
-    MozUserSelect: 'none' /* Firefox */,
-    MsUserSelect: 'none' /* Internet Explorer/Edge */,
-    textDecoration: 'none',
+    userSelect: "none" /* supported by Chrome and Opera */,
+    WebkitUserSelect: "none" /* Safari */,
+    KhtmlUserSelect: "none" /* Konqueror HTML */,
+    MozUserSelect: "none" /* Firefox */,
+    MsUserSelect: "none" /* Internet Explorer/Edge */,
+    textDecoration: "none",
   }
 
   // change background to white when passed 300 axis Y up
@@ -55,56 +55,56 @@ const NavbarComponent = () => {
     }
   }
 
-  window.addEventListener('scroll', scrollListener)
+  window.addEventListener("scroll", scrollListener)
 
   return (
     <div
       className={`shadow-sm fixed-top ${
-        navbar ? 'bg-white shadow-sm' : 'bg-none shadow-none'
+        navbar ? "bg-white shadow-sm" : "bg-none shadow-none"
       }`}
     >
       {/* Expires on August 22, 2022 */}
-      {!(new Date() > new Date('2022-08-22')) && location.pathname === '/' ? (
+      {!(new Date() > new Date("2022-08-22")) && location.pathname === "/" ? (
         <div
-          style={{ fontSize: '13px' }}
+          style={{ fontSize: "13px" }}
           className={`bg-success opensans-thin text-white py-1 text-center ${
-            navbar ? 'd-none' : 'd-block'
+            navbar ? "d-none" : "d-block"
           }`}
         >
           Thank you for visiting our new ILTP website!
         </div>
       ) : (
-        ''
+        ""
       )}
       {windowDimenion.winWidth < 600 && navbar ? (
-        <div className='text-center py-2 bg-success col-12'>
-          <h6 className='text-light m-0 p-0'>
+        <div className="text-center py-2 bg-success col-12">
+          <h6 className="text-light m-0 p-0">
             International Leadership Training Program
           </h6>
         </div>
       ) : (
-        ''
+        ""
       )}
 
       <Navbar
-        variant={`${navbar || isToggleOpen ? 'light' : 'dark'} ${
-          windowDimenion.winWidth < 990 ? 'dark' : 'light'
+        variant={`${navbar || isToggleOpen ? "light" : "dark"} ${
+          windowDimenion.winWidth < 990 ? "dark" : "light"
         } `}
-        expand='lg'
+        expand="lg"
         expanded={isToggleOpen}
-        className={`${isToggleOpen ? 'bg-light' : ''}`}
+        className={`${isToggleOpen ? "bg-light" : ""}`}
       >
         <Container>
-          <Navbar.Brand className='py-0' style={{ cursor: 'pointer' }}>
+          <Navbar.Brand className="py-0" style={{ cursor: "pointer" }}>
             <Link
-              to='/'
-              style={{ textDecoration: 'none' }}
-              className='mt-3 mb-3 brand d-flex'
+              to="/"
+              style={{ textDecoration: "none" }}
+              className="mt-3 mb-3 brand d-flex"
             >
-              <img className='mt-0' src={iltpLogo} alt='iltp logo' />
+              <img className="mt-0" src={iltpLogo} alt="iltp logo" />
               <div
                 className={`iltp-brand-text d-flex justify-content-center flex-column text-start 
-            ${navbar || isToggleOpen ? 'text-black' : 'text-white'}`}
+            ${navbar || isToggleOpen ? "text-black" : "text-white"}`}
               >
                 {windowDimenion.winWidth < 600 ? (
                   <h4>ILTP</h4>
@@ -123,16 +123,16 @@ const NavbarComponent = () => {
           </Navbar.Brand>
           <Navbar.Toggle
             onClick={() => setIsToggleOpen(!isToggleOpen)}
-            aria-controls='basic-navbar-nav'
+            aria-controls="basic-navbar-nav"
           />
-          <Navbar.Collapse id='basic-navbar-nav'>
-            <Nav className='ms-auto'>
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto">
               <Link
                 onClick={() => setIsToggleOpen(false)}
                 className={`${
-                  navbar || isToggleOpen ? 'text-black' : 'text-white'
+                  navbar || isToggleOpen ? "text-black" : "text-white"
                 } mx-2 nav-link-hover`}
-                to='/'
+                to="/"
                 style={disableSelectNoUnderline}
               >
                 Home
@@ -140,9 +140,9 @@ const NavbarComponent = () => {
               <Link
                 onClick={() => setIsToggleOpen(false)}
                 className={`${
-                  navbar || isToggleOpen ? 'text-black' : 'text-white'
+                  navbar || isToggleOpen ? "text-black" : "text-white"
                 } mx-2 nav-link-hover`}
-                to='/about'
+                to="/about"
                 style={disableSelectNoUnderline}
               >
                 About
@@ -150,9 +150,9 @@ const NavbarComponent = () => {
               <Link
                 onClick={() => setIsToggleOpen(false)}
                 className={`${
-                  navbar || isToggleOpen ? 'text-black' : 'text-white'
+                  navbar || isToggleOpen ? "text-black" : "text-white"
                 } mx-2 nav-link-hover`}
-                to='/photo-gallery'
+                to="/photo-gallery"
                 style={disableSelectNoUnderline}
               >
                 Photo Gallery
@@ -160,9 +160,9 @@ const NavbarComponent = () => {
               <Link
                 onClick={() => setIsToggleOpen(false)}
                 className={`${
-                  navbar || isToggleOpen ? 'text-black' : 'text-white'
+                  navbar || isToggleOpen ? "text-black" : "text-white"
                 } mx-2 nav-link-hover`}
-                to='/support'
+                to="/support"
                 style={disableSelectNoUnderline}
               >
                 Support
@@ -170,9 +170,9 @@ const NavbarComponent = () => {
               <Link
                 onClick={() => setIsToggleOpen(false)}
                 className={`${
-                  navbar || isToggleOpen ? 'text-black' : 'text-white'
+                  navbar || isToggleOpen ? "text-black" : "text-white"
                 } mx-2 nav-link-hover`}
-                to='/news'
+                to="/news"
                 style={disableSelectNoUnderline}
               >
                 News
@@ -180,23 +180,24 @@ const NavbarComponent = () => {
               <Link
                 onClick={() => setIsToggleOpen(false)}
                 className={`${
-                  navbar || isToggleOpen ? 'text-black' : 'text-white'
+                  navbar || isToggleOpen ? "text-black" : "text-white"
                 } mx-2 nav-link-hover`}
-                to='/contact'
+                to="/contact"
                 style={disableSelectNoUnderline}
               >
                 Contact Us
               </Link>
               <Button
                 onClick={() => {
-                  navigate('/paypal-payment')
+                  navigate("/paypal-payment")
                 }}
-                className='mx-2 rubik-400'
+                className="mx-2 rubik-400 px-4"
                 variant={`${
-                  navbar || isToggleOpen ? 'success' : 'outline-light'
+                  navbar || isToggleOpen ? "success" : "outline-light"
                 }`}
+                style={{ borderRadius: "50px" }}
               >
-                <i className='fa fa-paypal me-1'></i>
+                <i className="fa fa-paypal me-1"></i>
                 Donate
               </Button>
             </Nav>

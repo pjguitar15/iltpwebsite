@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { Modal } from 'react-bootstrap'
-import { db } from '../../../../firebase/firebase-config'
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
-import Axios from 'axios'
-import AddNewsForm from '../../../../components/AddNewsForm'
+import React, { useState } from "react"
+import { Modal } from "react-bootstrap"
+import { db } from "../../../../firebase/firebase-config"
+import { collection, addDoc, serverTimestamp } from "firebase/firestore"
+import Axios from "axios"
+import AddNewsForm from "../../../../components/AddNewsForm"
 
 const AddNewsModal = ({
   setAddModalShow,
@@ -11,16 +11,16 @@ const AddNewsModal = ({
   firebaseData,
   setFirebaseData,
 }) => {
-  const [titleInput, setTitleInput] = useState('')
-  const [locationInput, setLocationInput] = useState('')
-  const [dateInput, setDateInput] = useState('')
-  const [contentInput, setContentInput] = useState('')
+  const [titleInput, setTitleInput] = useState("")
+  const [locationInput, setLocationInput] = useState("")
+  const [dateInput, setDateInput] = useState("")
+  const [contentInput, setContentInput] = useState("")
   const [submitLoading, setSubmitLoading] = useState(false)
   const [imageSelected, setImageSelected] = useState()
-  const [selectValue, setSelectValue] = useState('')
+  const [selectValue, setSelectValue] = useState("")
 
   // connect to collections
-  const collectionRef = collection(db, 'news-articles')
+  const collectionRef = collection(db, "news-articles")
 
   // handle submit
   const handleSubmit = async (e) => {
@@ -29,8 +29,8 @@ const AddNewsModal = ({
 
     // upload image
     const formData = new FormData()
-    formData.append('file', imageSelected)
-    formData.append('upload_preset', 'iltp-news-images')
+    formData.append("file", imageSelected)
+    formData.append("upload_preset", "iltp-news-images")
 
     Axios.post(`https://api.cloudinary.com/v1_1/philcob/image/upload`, formData)
       .then((res) => {
@@ -62,14 +62,14 @@ const AddNewsModal = ({
       .then(() => {
         // Add React State Realtime Effect here
         setSubmitLoading(false)
-        alert('Submitted Successfuly! Page will refresh')
+        alert("Submitted Successfuly! Page will refresh")
         setAddModalShow(false)
 
         // set to emptry string onSubmit
-        setTitleInput('')
-        setDateInput('')
-        setContentInput('')
-        setLocationInput('')
+        setTitleInput("")
+        setDateInput("")
+        setContentInput("")
+        setLocationInput("")
       })
       .catch((err) => {
         alert(err)
@@ -78,13 +78,13 @@ const AddNewsModal = ({
   return (
     <div>
       <Modal
-        size='lg'
+        // style={{ width: "100% !important" }}
         show={addModalShow}
         onHide={() => setAddModalShow(false)}
-        aria-labelledby='example-modal-sizes-title-lg'
+        aria-labelledby="example-modal-sizes-title-lg"
       >
         <Modal.Header closeButton>
-          <Modal.Title id='example-modal-sizes-title-lg'>
+          <Modal.Title id="example-modal-sizes-title-lg">
             Add News Item
           </Modal.Title>
         </Modal.Header>
@@ -102,6 +102,7 @@ const AddNewsModal = ({
             setContentInput={setContentInput}
             contentInput={contentInput}
             setImageSelected={setImageSelected}
+            imageSelected={imageSelected}
           />
         </Modal.Body>
       </Modal>

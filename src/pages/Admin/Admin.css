@@ -17,3 +17,20 @@
 .admin-link:hover > h6 {
   color: black !important;
 }
+
+.modal-content {
+  border-radius: 0 !important;
+  border: none !important;
+}
+
+.modal-dialog {
+  max-width: none !important;
+}
+
+.modal-backdrop {
+  background-color: white !important;
+}
+
+.modal-backdrop.show {
+  opacity: 1 !important;
+}
