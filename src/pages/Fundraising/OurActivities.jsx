@@ -19,7 +19,6 @@ const OurActivities = () => {
 
   useEffect(() => {
     if (firebaseData.length > 0) {
-      console.log(firebaseData)
       // setSelectedOptionValue(firebaseData[0].value)
       // selectedOptionName(firebaseData[0].text)
     }

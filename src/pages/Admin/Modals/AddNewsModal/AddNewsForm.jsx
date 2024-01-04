@@ -66,7 +66,6 @@ const ModalBody = ({
                 type="file"
                 onChange={(e) => {
                   const file = e.target.files[0]
-                  console.log(file)
                   setImageSelected(file)
                   if (file) {
                     const reader = new FileReader()
@@ -268,7 +267,6 @@ const ModalBody = ({
               onChange={(e) => {
                 const files = e.target.files
                 const filesArray = Array.from(files)
-                console.log(filesArray)
                 setImages(filesArray)
 
                 // Use FileReader to read image files and convert them to data URLs

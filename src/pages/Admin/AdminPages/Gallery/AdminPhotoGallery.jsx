@@ -30,7 +30,6 @@ export const VolunteerActivities = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    console.log(firebaseData[0])
     if (firebaseData) setSelectedCategory(firebaseData[0]?.value)
   }, [firebaseData])
   useEffect(() => {

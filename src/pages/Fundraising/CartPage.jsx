@@ -345,7 +345,6 @@ const CartPage = () => {
               }}
               onApprove={async (data, actions) => {
                 const order = await actions.order.capture()
-                console.log("order", order)
                 handleApprove(data.orderID)
                 setShowModal(false)
                 setShowSuccessModal(true)

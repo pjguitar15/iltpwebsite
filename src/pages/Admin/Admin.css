@@ -18,26 +18,26 @@
   color: black !important;
 }
 
-.modal-content {
+.add-news-modal .modal-content {
   border-radius: 0 !important;
   border: none !important;
 }
 
-.modal-dialog {
+.add-news-modal .modal-dialog {
   max-width: none !important;
   margin-top: 0px !important;
   margin-bottom: 0px !important;
 }
 
-.modal-backdrop {
+.add-news-modal .modal-backdrop {
   background-color: white !important;
 }
 
-.modal-backdrop.show {
+.add-news-modal .modal-backdrop.show {
   opacity: 1 !important;
 }
 
-.fade.m-0.modal.show {
+.add-news-modal .fade.m-0.modal.show {
   padding-left: 0px !important;
   overflow-y: hidden;
 }

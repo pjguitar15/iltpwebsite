@@ -1,12 +1,30 @@
-import React, { useEffect } from "react"
-import { Button, Card } from "react-bootstrap"
+import React, { useEffect, useState } from "react"
+import { Button, Card, Modal } from "react-bootstrap"
 
 const AdminNewsCard = ({ item, openModal, deleteHandler }) => {
-  useEffect(() => {
-    console.log(item)
-  }, [])
+  const [show, setShow] = useState(false)
   return (
     <div className="p-2 col-12 col-lg-6 col-xl-4">
+      <Modal show={show} onHide={() => setShow(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShow(false)}>
+            Close
+          </Button>
+          <Button
+            variant="danger"
+            onClick={() => {
+              setShow(false)
+              deleteHandler(item.id)
+            }}
+          >
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <Card>
         <Card.Img
           style={{ height: "100px", objectFit: "cover" }}
@@ -33,10 +51,7 @@ const AdminNewsCard = ({ item, openModal, deleteHandler }) => {
           >
             Update
           </Button>
-          <Button
-            onClick={() => deleteHandler(item.id)}
-            variant="danger btn-sm"
-          >
+          <Button onClick={() => setShow(true)} variant="danger btn-sm">
             Delete
           </Button>
         </Card.Body>

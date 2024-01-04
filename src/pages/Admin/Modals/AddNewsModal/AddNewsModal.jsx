@@ -32,7 +32,6 @@ const AddNewsModal = ({
   const { uploadImages } = useMultipleImagesUploader()
 
   useEffect(() => {
-    console.log(images.length)
     if (images.length > 4) {
       toast.error(`You can only add up to 4 photos.`, {
         position: "top-right",
@@ -152,7 +151,7 @@ const AddNewsModal = ({
     <div>
       <ToastContainer />
       <Modal
-        className="m-0"
+        className="m-0 add-news-modal"
         // style={{ width: "100% !important" }}
         show={addModalShow}
         onHide={() => setAddModalShow(false)}

@@ -32,15 +32,12 @@ const NewsPageModal = ({
     setSecondaryContent(currentItem.secondaryContent ?? "")
     setMultipleImages(currentItem.multipleImages)
     setImageUrl(currentItem.img)
-    console.log(currentItem)
   }, [currentItem])
 
   // Firebase update here
   const updateItem = async (e) => {
     e.preventDefault()
-    // setIsLoading(true)
-
-    console.log("Loading...")
+    setIsLoading(true)
 
     const results = await uploadImages(multipleImages)
     const imgUrls = results.map((item) => item.url)
@@ -50,12 +47,10 @@ const NewsPageModal = ({
     const formData = new FormData()
     formData.append("file", selectedImage) // selectedImage is a state
     formData.append("upload_preset", "iltp-news-images")
-    console.log(formData)
+    (formData)
     const cloudName = "philcob"
-    console.log("UPLOADING TO FIREBASE...")
     let featuredImgUrl = ""
     if (selectedImage) {
-      console.log("selectedImage", selectedImage)
       const response = await Axios.post(
         `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
         formData
@@ -215,7 +210,6 @@ const NewsPageModal = ({
               <Form.Control
                 onChange={(e) => {
                   setSecondaryContent(e.target.value)
-                  console.log(e.target.value)
                 }}
                 value={secondaryContent}
                 id="exampleFormControlTextarea2"
