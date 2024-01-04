@@ -1,13 +1,16 @@
-import React from 'react'
-import { Button, Card } from 'react-bootstrap'
+import React, { useEffect } from "react"
+import { Button, Card } from "react-bootstrap"
 
 const AdminNewsCard = ({ item, openModal, deleteHandler }) => {
+  useEffect(() => {
+    console.log(item)
+  }, [])
   return (
-    <div className='p-2 col-12 col-lg-6 col-xl-4'>
+    <div className="p-2 col-12 col-lg-6 col-xl-4">
       <Card>
         <Card.Img
-          style={{ height: '100px', objectFit: 'cover' }}
-          variant='top'
+          style={{ height: "100px", objectFit: "cover" }}
+          variant="top"
           src={item.img}
         />
         <Card.Body>
@@ -26,13 +29,13 @@ const AdminNewsCard = ({ item, openModal, deleteHandler }) => {
                 item.secondaryContent
               )
             }
-            variant='warning me-1 btn-sm'
+            variant="warning me-1 btn-sm"
           >
             Update
           </Button>
           <Button
             onClick={() => deleteHandler(item.id)}
-            variant='danger btn-sm'
+            variant="danger btn-sm"
           >
             Delete
           </Button>

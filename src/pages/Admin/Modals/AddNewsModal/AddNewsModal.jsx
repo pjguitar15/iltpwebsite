@@ -5,6 +5,7 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore"
 import Axios from "axios"
 import AddNewsForm from "./AddNewsForm"
 import { ToastContainer, toast } from "react-toastify"
+import useMultipleImagesUploader from "../../../../helpers/hooks/useMultipleImagesUploader"
 
 const AddNewsModal = ({
   setAddModalShow,
@@ -28,6 +29,7 @@ const AddNewsModal = ({
   const [isNewsTypeConfirmed, setIsNewsTypeConfirmed] = useState(false)
   const [images, setImages] = useState([])
   const multipleImageRef = useRef(null)
+  const { uploadImages } = useMultipleImagesUploader()
 
   useEffect(() => {
     console.log(images.length)
@@ -51,40 +53,10 @@ const AddNewsModal = ({
   const collectionRef = collection(db, "news-articles")
 
   const uploadMultipleImages = async (images) => {
-    const cloudName = "philcob"
-    const unsignedUploadPreset = "iltp-news-images"
+    const results = await uploadImages(images)
 
-    console.log(images)
-
-    const uploadPromises = images.map((image) => {
-      const formData = new FormData()
-      formData.append("file", image)
-      formData.append("upload_preset", unsignedUploadPreset)
-
-      return Axios.post(
-        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-        formData
-      )
-        .then((response) => response.data)
-        .catch((error) => {
-          console.error("Error uploading to Cloudinary:", error)
-          throw error
-        })
-    })
-
-    try {
-      // Wait for all upload promises to complete
-      const uploadResults = await Promise.all(uploadPromises)
-
-      // Process the upload results as needed (e.g., store public URLs or other data)
-      console.log("Upload results:", uploadResults)
-
-      // You can return the results or handle them in your component/state as needed
-      return uploadResults
-    } catch (error) {
-      // Handle errors, if any
-      console.error("Error uploading images:", error)
-      throw error
+    if (results) {
+      return results
     }
   }
 

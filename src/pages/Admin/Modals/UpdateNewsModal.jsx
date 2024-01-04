@@ -4,6 +4,7 @@ import { Modal, Button, Form } from "react-bootstrap"
 import { db } from "../../../firebase/firebase-config"
 import { updateDoc, doc } from "firebase/firestore"
 import Axios from "axios"
+import useMultipleImagesUploader from "../../../helpers/hooks/useMultipleImagesUploader"
 
 const NewsPageModal = ({
   updateModalShow,
@@ -17,14 +18,19 @@ const NewsPageModal = ({
   const [date, setDate] = useState("")
   const [locationInput, setLocationInput] = useState("")
   const [imageUrl, setImageUrl] = useState("")
-  const [selectedImage, setSelectedImage] = useState([])
+  const [selectedImage, setSelectedImage] = useState(null)
   const [selectedImageUrl, setSelectedImageUrl] = useState("")
+  const [multipleImages, setMultipleImages] = useState([])
+
+  const { uploadImages } = useMultipleImagesUploader()
+
   useEffect(() => {
     setLocationInput(currentItem.location)
     setDate(currentItem.date)
     setTitle(currentItem.title)
     setContent(currentItem.content)
     setSecondaryContent(currentItem.secondaryContent ?? "")
+    setMultipleImages(currentItem.multipleImages)
     setImageUrl(currentItem.img)
     console.log(currentItem)
   }, [currentItem])
@@ -32,48 +38,48 @@ const NewsPageModal = ({
   // Firebase update here
   const updateItem = async (e) => {
     e.preventDefault()
-    setIsLoading(true)
-    if (selectedImage.name) {
-      // how to use axios. this is inside uploadImage function
-      const formData = new FormData()
-      formData.append("file", selectedImage) // selectedImage is a state
-      formData.append("upload_preset", "iltp-news-images")
-      const cloudName = "philcob"
-      Axios.post(
+    // setIsLoading(true)
+
+    console.log("Loading...")
+
+    const results = await uploadImages(multipleImages)
+    const imgUrls = results.map((item) => item.url)
+    setMultipleImages(imgUrls)
+
+    // how to use axios. this is inside uploadImage function
+    const formData = new FormData()
+    formData.append("file", selectedImage) // selectedImage is a state
+    formData.append("upload_preset", "iltp-news-images")
+    console.log(formData)
+    const cloudName = "philcob"
+    console.log("UPLOADING TO FIREBASE...")
+    let featuredImgUrl = ""
+    if (selectedImage) {
+      console.log("selectedImage", selectedImage)
+      const response = await Axios.post(
         `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
         formData
       )
-        .then((res) => {
-          const userDoc = doc(db, "news-articles", currentItem.id)
-          const newFields = {
-            title: title,
-            content: content,
-            location: locationInput,
-            date: date,
-            img: res.data.url,
-          }
-          updateDoc(userDoc, newFields)
-        })
-        .then(() => {
-          alert("Update success!")
-          setUpdateModalShow(false)
-          setIsLoading(false)
-          window.location.reload(false)
-        })
-    } else {
-      const userDoc = doc(db, "news-articles", currentItem.id)
-      const newFields = {
-        title: title,
-        content: content,
-        location: locationInput,
-        date: date,
-      }
-      await updateDoc(userDoc, newFields)
+      featuredImgUrl = response.data.url
+    }
+
+    const userDoc = doc(db, "news-articles", currentItem.id)
+    const newFields = {
+      title,
+      content,
+      location: locationInput,
+      date,
+      multipleImages,
+      secondaryContent,
+      img: featuredImgUrl !== "" ? featuredImgUrl : imageUrl,
+    }
+
+    updateDoc(userDoc, newFields).then(() => {
       alert("Update success!")
       setUpdateModalShow(false)
       setIsLoading(false)
       window.location.reload(false)
-    }
+    })
   }
 
   const changeImageEvent = (event) => {
@@ -179,15 +185,40 @@ const NewsPageModal = ({
               ></Form.Control>
             </Form.Group>
 
+            <div className="row mt-4 mb-3">
+              <h6>Current multiple images</h6>
+              {multipleImages?.map((item, index) => (
+                <div className="col-lg-2" key={index}>
+                  <img className="w-100" src={item} alt="" />
+                </div>
+              ))}
+            </div>
+
+            <Form.Group>
+              <Form.Text>Update multiples images</Form.Text>
+              <Form.Control
+                onChange={(e) => {
+                  const files = e.target.files
+                  const filesArray = Array.from(files)
+                  setMultipleImages(filesArray)
+                }}
+                type="file"
+                multiple
+              />
+            </Form.Group>
+
             {/* text area here */}
             <Form.Group>
-              <label for="exampleFormControlTextarea1" className="my-2">
+              <label for="exampleFormControlTextarea2" className="my-2">
                 Edit your secondary content
               </label>
               <Form.Control
-                onChange={(e) => setSecondaryContent(e.target.value)}
+                onChange={(e) => {
+                  setSecondaryContent(e.target.value)
+                  console.log(e.target.value)
+                }}
                 value={secondaryContent}
-                id="exampleFormControlTextarea1"
+                id="exampleFormControlTextarea2"
                 as="textarea"
                 rows="7"
               ></Form.Control>
