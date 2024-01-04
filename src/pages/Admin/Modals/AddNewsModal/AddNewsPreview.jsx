@@ -1,21 +1,21 @@
-import React, { useEffect } from "react"
-import ExtraPhotos from "../pages/News/ExtraPhotos"
+import React from "react"
 import { IoMdTime } from "react-icons/io"
-import ExtraPhotosPreview from "../pages/News/ExtraPhotosPreview"
+import ExtraPhotosPreview from "../../../News/ExtraPhotosPreview"
 
 const AddNewsPreview = ({
   titleInput,
   locationInput,
   dateInput,
   contentInput,
-  imageSelected,
   featuredImagePreview,
+  content2Input,
+  multipleImagePreview,
 }) => {
-  useEffect(() => {
-    console.log(imageSelected)
-  }, [imageSelected])
   return (
-    <div className="rubik-400" style={{ height: "80vh", overflow: "scroll" }}>
+    <div
+      className="rubik-400 pt-3"
+      style={{ height: "93vh", overflowY: "scroll" }}
+    >
       <h4>Preview</h4>
       <div>
         <div className="slug-img-parent-preview">
@@ -94,7 +94,10 @@ const AddNewsPreview = ({
           </div>
         </div>
         <div style={{ background: "#f3f3f3" }}>
-          <ExtraPhotosPreview length={3} />
+          <ExtraPhotosPreview
+            content2Input={content2Input}
+            images={multipleImagePreview}
+          />
           <div className="col-9 mx-auto">
             {/* <Button
                 style={{ borderRadius: "50px", transition: "300ms" }}

@@ -51,7 +51,9 @@ const AdminNews = () => {
     itemImg,
     itemContent,
     itemDate,
-    itemLocation
+    itemLocation,
+    multipleImages,
+    secondaryContent
   ) => {
     setCurrentItem({
       id: itemId,
@@ -60,6 +62,8 @@ const AdminNews = () => {
       content: itemContent,
       date: itemDate,
       location: itemLocation,
+      multipleImages,
+      secondaryContent,
     })
     setUpdateModalShow(true)
   }

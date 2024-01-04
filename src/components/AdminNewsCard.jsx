@@ -21,7 +21,9 @@ const AdminNewsCard = ({ item, openModal, deleteHandler }) => {
                 item.img,
                 item.content,
                 item.date,
-                item.location
+                item.location,
+                item.multipleImages,
+                item.secondaryContent
               )
             }
             variant='warning me-1 btn-sm'
