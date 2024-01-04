@@ -31,12 +31,11 @@ const ModalBody = ({
   setIsLocationConfirmed,
   setIsDateConfirmed,
   setIsNewsTypeConfirmed,
-  images,
   setImages,
   multipleImagePreview,
   setMultipleImagePreview,
+  multipleImageRef,
 }) => {
-  const multipleImageRef = useRef(null)
   return (
     <div className="row">
       <div
@@ -254,7 +253,12 @@ const ModalBody = ({
 
           {/* New input for multiple images */}
           <div className="form-group">
-            <label className="mt-3 text-white">Upload multiple images</label>
+            <label className="mt-3 text-white">
+              Upload multiple images{" "}
+              <span style={{ fontStyle: "italic" }}>
+                (You can add up to 4 images)
+              </span>
+            </label>
             <input
               disabled={submitLoading}
               required
@@ -295,7 +299,10 @@ const ModalBody = ({
               for="exampleFormControlTextarea2"
               className="my-2 text-white"
             >
-              Edit secondary content
+              Edit secondary content{" "}
+              <span style={{ fontStyle: "italic" }}>
+                (Conclude your content)
+              </span>
             </label>
             <textarea
               required

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { Modal } from "react-bootstrap"
 import { db } from "../../../../firebase/firebase-config"
 import { collection, addDoc, serverTimestamp } from "firebase/firestore"
@@ -27,6 +27,25 @@ const AddNewsModal = ({
   const [isDateConfirmed, setIsDateConfirmed] = useState(false)
   const [isNewsTypeConfirmed, setIsNewsTypeConfirmed] = useState(false)
   const [images, setImages] = useState([])
+  const multipleImageRef = useRef(null)
+
+  useEffect(() => {
+    console.log(images.length)
+    if (images.length > 4) {
+      toast.error(`You can only add up to 4 photos.`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
+
+      multipleImageRef.current.value = null
+    }
+  }, [images])
 
   // connect to collections
   const collectionRef = collection(db, "news-articles")
@@ -200,8 +219,8 @@ const AddNewsModal = ({
             setIsDateConfirmed={setIsDateConfirmed}
             isNewsTypeConfirmed={isNewsTypeConfirmed}
             setIsNewsTypeConfirmed={setIsNewsTypeConfirmed}
-            images={images}
             setImages={setImages}
+            multipleImageRef={multipleImageRef}
           />
         </Modal.Body>
       </Modal>

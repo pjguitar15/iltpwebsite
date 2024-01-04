@@ -22,6 +22,10 @@ const NewsSlug = () => {
   let { id } = useParams()
 
   useEffect(() => {
+    console.log(firebaseData.filter((item) => item.id === id))
+  }, [firebaseData])
+
+  useEffect(() => {
     Aos.init({ duration: 2000 })
   }, [])
 
@@ -115,6 +119,18 @@ const NewsSlug = () => {
                       {item.content}
                     </p>
 
+                    {!item.multipleImages && (
+                      <Button
+                        onClick={() => {
+                          navigate("/news")
+                        }}
+                        style={{ borderRadius: "50px", transition: "300ms" }}
+                        variant="outline-dark mb-5 mt-4 rubik-400 px-4"
+                      >
+                        Back to News
+                      </Button>
+                    )}
+
                     {/* Facebook share button here
                     <div>
                       <p className='opensans-thin text-muted'>
@@ -136,20 +152,25 @@ const NewsSlug = () => {
                     <hr /> */}
                   </div>
                 </div>
-                <div style={{ background: "#f3f3f3" }}>
-                  <ExtraPhotos length={3} />
-                  <div className="col-11 col-sm-10 col-xl-7 mx-auto">
-                    <Button
-                      onClick={() => {
-                        navigate("/news")
-                      }}
-                      style={{ borderRadius: "50px", transition: "300ms" }}
-                      variant="outline-dark mb-5 mt-4 rubik-400 px-4"
-                    >
-                      Back to News
-                    </Button>
+                {item.multipleImages && (
+                  <div style={{ background: "#f3f3f3" }}>
+                    <ExtraPhotos
+                      content2Input={item.secondaryContent}
+                      images={item.multipleImages}
+                    />
+                    <div className="col-11 col-sm-10 col-xl-7 mx-auto">
+                      <Button
+                        onClick={() => {
+                          navigate("/news")
+                        }}
+                        style={{ borderRadius: "50px", transition: "300ms" }}
+                        variant="outline-dark mb-5 mt-4 rubik-400 px-4"
+                      >
+                        Back to News
+                      </Button>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             ))}
     </div>
