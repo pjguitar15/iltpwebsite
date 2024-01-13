@@ -16,7 +16,9 @@ const FeaturedNewsCard = ({ item, navigate }) => {
           className='rounded-0'
         />
         <Card.Body className='px-0'>
-          <Card.Title className='mb-3'>{item.title}</Card.Title>
+          <Card.Title className='mb-3 font-poppins-500'>
+            {item.title}
+          </Card.Title>
           <Card.Subtitle className='mb-3 text-muted'>{item.date}</Card.Subtitle>
           <Card.Text className='text-muted'>
             {item.content.slice(0, 150)}...
@@ -25,7 +27,7 @@ const FeaturedNewsCard = ({ item, navigate }) => {
             onClick={() => {
               navigate(`/news/${item.id}`)
             }}
-            variant='outline-primary btn-sm mt-2'
+            variant='outline-success btn-sm mt-2 rounded-full'
           >
             Read more
           </Button>

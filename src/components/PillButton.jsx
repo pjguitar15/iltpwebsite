@@ -24,7 +24,7 @@ const PillButton = (props) => {
   return (
     <button
       // inside home.css
-      className='pill-btn'
+      className='pill-btn font-poppins-500'
       onClick={props.handleClick}
       style={pillBtn}
       onMouseEnter={() => setCurrentBgColor(props.secondaryColor)}

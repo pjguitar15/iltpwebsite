@@ -44,7 +44,7 @@ const FeaturedNews = () => {
   return (
     <div className='featuredNews pb-5'>
       <Container>
-        <h3 className='text-center mb-5'>Latest News</h3>
+        <h3 className='text-center mb-5 font-poppins-500'>Latest News</h3>
         <div className='row'>
           {isDataLoading ? (
             <LoadingCard />

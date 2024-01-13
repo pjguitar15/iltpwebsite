@@ -16,7 +16,7 @@ const PhotoGallery = () => {
         data-aos-duration='2000'
         className='about-us-bg text-white text-center m-0 rubik-400'
       >
-        Photo Gallery
+        Gallery
       </h1>
       <Container>
         <OurActivities />

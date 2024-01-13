@@ -51,7 +51,7 @@ const OurActivities = () => {
   }, [allPhotos, selectedYear, selectedOptionValue])
   return (
     <div className='py-5 bg-waning' ref={imgTopRef}>
-      <h3 className='mb-4'>Photo Gallery</h3>
+      <h3 className='mb-4'>Gallery</h3>
       <hr />
       <p className='mb-3'>
         <Button
@@ -127,33 +127,12 @@ const OurActivities = () => {
       </p>
       <div className='col-lg-4 col-xl-3 mb-4'>
         <Form.Select onChange={(e) => setSelectedOptionValue(e.target.value)}>
+          <option>Fall Workshop</option>
           {firebaseData?.map((item, index) => (
             <option value={item.value}>{item.text}</option>
           ))}
         </Form.Select>
       </div>
-      {/* <div className="d-flex">
-        <Button
-          onClick={() => setSelectedYear("2023")}
-          className={`fw-bolder text-dark shadow-none album ${
-            selectedYear === "2023" ? "album-selected" : "border-0"
-          } `}
-          size="sm"
-          style={{ background: "none" }}
-        >
-          Martin Luther King
-        </Button>
-        <Button
-          onClick={() => setSelectedYear("2023")}
-          className={`fw-bolder text-dark shadow-none album ${
-            selectedYear === "2023" ? "album-selected" : "border-0"
-          } `}
-          size="sm"
-          style={{ background: "none" }}
-        >
-          Martin Luther King
-        </Button>
-      </div> */}
       <hr />
       {imageLoading ? (
         <>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
 .brand {
   font-weight: 400;
   /* font-size: 35px; */
@@ -8,6 +10,13 @@
   width: 75px;
 }
 
+.font-poppins-500 {
+  font-family: Poppins;
+  font-weight: 500 !important;
+}
+
 .iltp-brand-text {
   line-height: 23px;
+  font-family: Poppins;
+  font-weight: 500;
 }

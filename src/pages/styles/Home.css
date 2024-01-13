@@ -1,13 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+.font-poppins-500 {
+  font-family: Poppins;
+  font-weight: 500 !important;
+}
+
+.font-poppins-400 {
+  font-family: Poppins;
+  font-weight: 400 !important;
+}
+
+.font-poppins-300 {
+  font-family: Poppins;
+  font-weight: 300 !important;
+}
 
 .bg-green-gradient {
   background: linear-gradient(
     90deg,
-    rgb(43, 170, 96) 2.3%,
-    rgb(129, 204, 104) 98.3%
+    rgb(22, 124, 65) 2.3%,
+    rgb(52, 199, 130) 98.3%
   );
 }
 
@@ -17,12 +33,18 @@
 }
 
 .rubik-400 {
-  font-family: "rubik";
+  font-family: 'rubik';
   font-weight: 400;
 }
 .rubik-300 {
-  font-family: "rubik";
+  font-family: 'rubik';
   font-weight: 300;
+}
+
+@media (max-width: 991px) {
+  .jumbotron {
+    height: 70vh !important;
+  }
 }
 
 .jumbotron {
@@ -58,7 +80,6 @@
 
 .jumbo-header {
   font-size: 35px;
-  font-family: "Montserrat";
   font-weight: 500;
 }
 
@@ -66,7 +87,6 @@
 @media (min-width: 992px) {
   .jumbo-header {
     font-size: 55px;
-    font-family: "Montserrat";
     font-weight: 500;
   }
 
@@ -94,7 +114,7 @@
 }
 
 .testimony-img {
-  background-image: url("https://scontent.fmnl8-2.fna.fbcdn.net/v/t1.6435-9/82828674_2655387557884095_8705012983656349696_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeEUwh7kzHD8LYsElSsjfjOTmrltPeJnnguauW094meeC2l_EH07pKmrKJugk1pclLHkeHBvd06rkamIG9u-Yj6i&_nc_ohc=bDMije3dvPIAX_HwMGc&_nc_ht=scontent.fmnl8-2.fna&oh=00_AT-pm5YCF98kEXLwyJqCevGRj42-esq7nPzKJKyCr1G1wQ&oe=62878682");
+  background-image: url('https://scontent.fmnl8-2.fna.fbcdn.net/v/t1.6435-9/82828674_2655387557884095_8705012983656349696_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeEUwh7kzHD8LYsElSsjfjOTmrltPeJnnguauW094meeC2l_EH07pKmrKJugk1pclLHkeHBvd06rkamIG9u-Yj6i&_nc_ohc=bDMije3dvPIAX_HwMGc&_nc_ht=scontent.fmnl8-2.fna&oh=00_AT-pm5YCF98kEXLwyJqCevGRj42-esq7nPzKJKyCr1G1wQ&oe=62878682');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -125,6 +145,7 @@
 }
 .training {
   padding: 100px 0;
+  background: rgb(23, 27, 25);
 }
 
 .future-leaders {
@@ -152,13 +173,13 @@
 }
 
 .bebas {
-  font-family: "Bebas Neue";
+  font-family: 'Bebas Neue';
 }
 
 .join-us {
   /* Background */
   background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)),
-    url("../../assets/join-us-img.JPG");
+    url('../../assets/join-us-img.JPG');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -167,7 +188,7 @@
 }
 
 .contact-us-bg {
-  background-image: url("../../assets/contacts-bg.jpg");
+  background-image: url('../../assets/contacts-bg.webp');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -175,7 +196,7 @@
 
 .news-bg {
   background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.5)),
-    url("../../assets/news-bg.jpg");
+    url('../../assets/news-bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -211,7 +232,7 @@
 }
 
 .nav-link-hover:after {
-  content: "";
+  content: '';
   position: absolute;
   background-color: rgb(255, 255, 255);
   height: 3px;
@@ -231,7 +252,7 @@
       rgba(255, 255, 255, 0.5),
       rgba(253, 253, 253, 0.5)
     ),
-    url("../../assets/award-bg.jpg");
+    url('../../assets/award-bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -252,7 +273,8 @@
 }
 
 .pill-btn {
-  font-family: "rubik";
+  font-family: 'poppins';
+  font-weight: 500;
 }
 
 .fundraising-item {
@@ -300,4 +322,17 @@
 .view-cart-button:hover > .view-cart-button-child {
   font-size: 20px;
   transition: all 0.2s ease-in-out;
+}
+
+.bg-custom-green {
+  background: #046d33;
+}
+
+.jumbo-contact-btn {
+  transition: 300ms;
+}
+
+.jumbo-contact-btn:hover {
+  background: rgb(6, 139, 66) !important;
+  color: white !important;
 }

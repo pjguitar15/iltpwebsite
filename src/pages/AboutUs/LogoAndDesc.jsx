@@ -7,16 +7,14 @@ const LogoAndDesc = () => {
       <div className='col-3 col-lg-2 mx-auto'>
         <img src={ILTPLogo} className='w-100' alt='iltp logo' />
       </div>
-      <h2 className='text-center my-4 '>
+      <h2 className='text-center my-4 font-poppins-500'>
         International Leadership Training Program
       </h2>
       <p
-        className='text-justify col-lg-8 mx-auto montserrat text-muted px-4'
+        className='text-justify col-lg-8 mx-auto font-poppins-400 text-muted px-4'
         style={{
-          textAlign: 'justify',
+          textAlign: 'center',
           lineHeight: '40px',
-          fontFamily: 'Open Sans',
-          fontWeight: '500',
         }}
       >
         The International Leadership Training Program (ILTP) is a 501(c)(3)

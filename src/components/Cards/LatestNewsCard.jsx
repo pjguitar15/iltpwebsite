@@ -15,12 +15,11 @@ const LatestNewsCard = ({ item, navigate }) => {
           src={item.img}
         />
         <Card.Body>
-          <Card.Title>{item.title}</Card.Title>
+          <Card.Title className='font-poppins-500'>{item.title}</Card.Title>
           <Card.Subtitle className='mb-2 text-muted'>{item.date}</Card.Subtitle>
           <Card.Text className='mb-2 text-muted'>
             {item.content.slice(0, 150)}...
           </Card.Text>
-          {/* test */}
           <Button
             onClick={() => {
               navigate(`/news/${item.id}`)

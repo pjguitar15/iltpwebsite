@@ -16,7 +16,7 @@ const Training = () => {
   }, [])
 
   return (
-    <div className='bg-dark training text-center text-lg-start mx-0 px-0'>
+    <div className='training text-center text-lg-start mx-0 px-0'>
       <Container>
         <div className='row mx-0'>
           <div data-aos='fade-right' className='col-lg-7 col-12'>
@@ -44,7 +44,10 @@ const Training = () => {
             <img
               className='poiting-at-shirt-img d-none d-lg-inline'
               src={PointingAtShirtImg}
-              alt=''
+              alt='iltp-join'
+              style={{
+                borderRadius: '20px',
+              }}
             />
           </div>
         </div>
