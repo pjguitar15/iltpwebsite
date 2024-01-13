@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react"
-import AdminNav from "../../AdminNav"
-import { Button, Form, Modal, Spinner } from "react-bootstrap"
-import { useLocation, useNavigate } from "react-router-dom"
+import React, { useEffect, useState } from 'react'
+import AdminNav from '../../AdminNav'
+import { Button, Form, Modal, Spinner } from 'react-bootstrap'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import {
   collection,
@@ -10,19 +10,19 @@ import {
   getDocs,
   deleteDoc,
   doc,
-} from "firebase/firestore"
-import { db } from "../../../../firebase/firebase-config"
-import { IoMdAddCircleOutline } from "react-icons/io"
-import useGetAlbums from "../../../../helpers/hooks/useGetAlbums"
+} from 'firebase/firestore'
+import { db } from '../../../../firebase/firebase-config'
+import { IoMdAddCircleOutline } from 'react-icons/io'
+import useGetAlbums from '../../../../helpers/hooks/useGetAlbums'
 
 export const VolunteerActivities = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [photos, setPhotos] = useState([])
   const [show, setShow] = useState(false)
-  const [isMouseEntered, setIsMouseEntered] = useState("")
+  const [isMouseEntered, setIsMouseEntered] = useState('')
   const [currentDeleteItem, setCurrentDeleteItem] = useState()
-  const [selectedCategory, setSelectedCategory] = useState("all")
-  const [selectedYear, setSelectedYear] = useState("2023")
+  const [selectedCategory, setSelectedCategory] = useState('all')
+  const [selectedYear, setSelectedYear] = useState('2023')
 
   const { firebaseData } = useGetAlbums()
 
@@ -34,8 +34,8 @@ export const VolunteerActivities = () => {
   }, [firebaseData])
   useEffect(() => {
     setIsLoading(true)
-    const collectionRef = collection(db, "photos")
-    const q = query(collectionRef, orderBy("timestamp", "desc"))
+    const collectionRef = collection(db, 'photos')
+    const q = query(collectionRef, orderBy('timestamp', 'desc'))
     const getData = async () => {
       const data = await getDocs(q)
       setPhotos(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
@@ -51,7 +51,7 @@ export const VolunteerActivities = () => {
 
   // delete handler
   const deleteHandler = async () => {
-    const userDoc = doc(db, "photos", currentDeleteItem)
+    const userDoc = doc(db, 'photos', currentDeleteItem)
     await deleteDoc(userDoc)
 
     setPhotos(photos.filter((item) => item.id !== currentDeleteItem))
@@ -65,7 +65,7 @@ export const VolunteerActivities = () => {
   return (
     <div>
       {/* All images */}
-      <div className="row m-0" style={{ height: "100vh" }}>
+      <div className='row m-0' style={{ height: '100vh' }}>
         {/* Navigation */}
         <AdminNav location={location} />
         <Modal show={show} onHide={handleClose}>
@@ -74,31 +74,31 @@ export const VolunteerActivities = () => {
           </Modal.Header>
           <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button variant='secondary' onClick={handleClose}>
               Close
             </Button>
-            <Button variant="danger" onClick={deleteHandler}>
+            <Button variant='danger' onClick={deleteHandler}>
               Delete
             </Button>
           </Modal.Footer>
         </Modal>
 
-        <div className="col-12 col-md-7 col-lg-9 p-5">
-          {location.pathname.slice(7) === "gallery" ? (
+        <div className='col-12 col-md-7 col-lg-9 p-5'>
+          {location.pathname.slice(7) === 'gallery' ? (
             //   update images here
             <>
-              <h3 className="text-dark">Configure Gallery</h3>
+              <h3 className='text-dark'>Configure Gallery</h3>
               <hr />
               <Button
-                className="d-flex align-items-center gap-1"
-                onClick={() => navigate("/admin/gallery/add")}
-                size="sm"
+                className='d-flex align-items-center gap-1'
+                onClick={() => navigate('/admin/gallery/add')}
+                size='sm'
               >
-                <IoMdAddCircleOutline style={{ fontSize: "16px" }} />
+                <IoMdAddCircleOutline style={{ fontSize: '16px' }} />
                 Add an image
               </Button>
               {/* Album selector */}
-              <div className="col-lg-3 mt-3">
+              <div className='col-lg-3 mt-3'>
                 <Form.Select
                   onChange={(e) => setSelectedCategory(e.target.value)}
                 >
@@ -109,136 +109,146 @@ export const VolunteerActivities = () => {
                   ))}
                 </Form.Select>
               </div>
-              <p className="mb-3 mt-4">
+              <p className='mb-3 mt-4'>
                 <Button
-                  onClick={() => setSelectedYear("2018")}
+                  onClick={() => setSelectedYear('2018')}
                   className={`me-2 fw-bolder text-dark shadow-none ${
-                    selectedYear === "2018" ? "border-dark" : "border-0"
+                    selectedYear === '2018' ? 'border-dark' : 'border-0'
                   }`}
-                  size="sm"
-                  style={{ background: "none" }}
+                  size='sm'
+                  style={{ background: 'none' }}
                 >
                   2018
                 </Button>
                 <Button
-                  onClick={() => setSelectedYear("2019")}
+                  onClick={() => setSelectedYear('2019')}
                   className={`me-2 fw-bolder text-dark shadow-none  ${
-                    selectedYear === "2019" ? "border-dark" : "border-0"
+                    selectedYear === '2019' ? 'border-dark' : 'border-0'
                   } `}
-                  size="sm"
-                  style={{ background: "none" }}
+                  size='sm'
+                  style={{ background: 'none' }}
                 >
                   2019
                 </Button>
                 <Button
-                  onClick={() => setSelectedYear("2020")}
+                  onClick={() => setSelectedYear('2020')}
                   className={`me-2 fw-bolder text-dark shadow-none  ${
-                    selectedYear === "2020" ? "border-dark" : "border-0"
+                    selectedYear === '2020' ? 'border-dark' : 'border-0'
                   } `}
-                  size="sm"
-                  style={{ background: "none" }}
+                  size='sm'
+                  style={{ background: 'none' }}
                 >
                   2020
                 </Button>
                 <Button
-                  onClick={() => setSelectedYear("2021")}
+                  onClick={() => setSelectedYear('2021')}
                   className={`me-2 fw-bolder text-dark shadow-none  ${
-                    selectedYear === "2021" ? "border-dark" : "border-0"
+                    selectedYear === '2021' ? 'border-dark' : 'border-0'
                   } `}
-                  size="sm"
-                  style={{ background: "none" }}
+                  size='sm'
+                  style={{ background: 'none' }}
                 >
                   2021
                 </Button>
                 <Button
-                  onClick={() => setSelectedYear("2022")}
+                  onClick={() => setSelectedYear('2022')}
                   className={`me-2 fw-bolder text-dark shadow-none  ${
-                    selectedYear === "2022" ? "border-dark" : "border-0"
+                    selectedYear === '2022' ? 'border-dark' : 'border-0'
                   } `}
-                  size="sm"
-                  style={{ background: "none" }}
+                  size='sm'
+                  style={{ background: 'none' }}
                 >
                   2022
                 </Button>
                 <Button
-                  onClick={() => setSelectedYear("2023")}
+                  onClick={() => setSelectedYear('2023')}
                   className={`me-2 fw-bolder text-dark shadow-none  ${
-                    selectedYear === "2023" ? "border-dark" : "border-0"
+                    selectedYear === '2023' ? 'border-dark' : 'border-0'
                   } `}
-                  size="sm"
-                  style={{ background: "none" }}
+                  size='sm'
+                  style={{ background: 'none' }}
                 >
                   2023
+                </Button>
+                <Button
+                  onClick={() => setSelectedYear('2024')}
+                  className={`me-2 fw-bolder text-dark shadow-none  ${
+                    selectedYear === '2024' ? 'border-dark' : 'border-0'
+                  } `}
+                  size='sm'
+                  style={{ background: 'none' }}
+                >
+                  2024
                 </Button>
               </p>
 
               {isLoading ? (
-                <div className="text-center">
+                <div className='text-center'>
                   <Spinner
-                    style={{ height: "7rem", width: "7rem" }}
-                    className="text-center"
-                    size="xl"
-                    animation="border"
+                    style={{ height: '7rem', width: '7rem' }}
+                    className='text-center'
+                    size='xl'
+                    animation='border'
                   />
                 </div>
               ) : (
                 <>
                   <div
-                    className="row py-4"
-                    style={{ height: "65vh", overflow: "scroll" }}
+                    className='row py-4'
+                    style={{ height: '65vh', overflow: 'scroll' }}
                   >
-                    {selectedCategory === "all"
+                    {selectedCategory === 'all'
                       ? photos
                           .filter((item) => item.year === selectedYear)
                           .map((item, index) => (
                             <div
                               key={index}
-                              className="p-2 col-lg-3"
+                              className='p-2 col-lg-3'
                               onMouseEnter={() => setIsMouseEntered(item.id)}
-                              onMouseLeave={() => setIsMouseEntered("")}
+                              onMouseLeave={() => setIsMouseEntered('')}
                             >
                               <div
-                                className="position-relative bg-dark"
-                                style={{ height: "10rem" }}
+                                className='position-relative bg-dark'
+                                style={{ height: '10rem' }}
                               >
                                 <img
                                   style={
                                     isMouseEntered === item.id
-                                      ? { opacity: ".3", objectFit: "cover" }
-                                      : { objectFit: "cover" }
+                                      ? { opacity: '.3', objectFit: 'cover' }
+                                      : { objectFit: 'cover' }
                                   }
-                                  className="w-100 h-100"
+                                  className='w-100 h-100'
                                   src={item.img}
-                                  alt="test"
+                                  alt='test'
                                 />
                                 <Button
                                   onClick={() => {
                                     openModalAndSetDeleteId(item.id)
                                   }}
                                   style={{
-                                    bottom: "0",
-                                    right: "0",
-                                    top: "0",
-                                    left: "0",
-                                    margin: "auto",
-                                    background: "none",
+                                    bottom: '0',
+                                    right: '0',
+                                    top: '0',
+                                    left: '0',
+                                    margin: 'auto',
+                                    background: 'none',
                                   }}
                                   className={`position-absolute ${
                                     isMouseEntered === item.id
-                                      ? "d-block"
-                                      : "d-none"
+                                      ? 'd-block'
+                                      : 'd-none'
                                   }`}
-                                  variant="danger"
+                                  variant='danger'
                                 >
                                   <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24"
-                                    height="24"
-                                    fill="red"
-                                    class="bi bi-trash3-fill"
-                                    viewBox="0 0 16 16"
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    width='24'
+                                    height='24'
+                                    fill='red'
+                                    class='bi bi-trash3-fill'
+                                    viewBox='0 0 16 16'
                                   >
-                                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                                    <path d='M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z' />
                                   </svg>
                                 </Button>
                               </div>
@@ -253,58 +263,58 @@ export const VolunteerActivities = () => {
                           .map((item, index) => (
                             <div
                               key={index}
-                              className="p-2 col-lg-3"
+                              className='p-2 col-lg-3'
                               onMouseEnter={() => setIsMouseEntered(item.id)}
-                              onMouseLeave={() => setIsMouseEntered("")}
+                              onMouseLeave={() => setIsMouseEntered('')}
                             >
                               <div
-                                className="position-relative bg-dark"
-                                style={{ height: "10rem" }}
+                                className='position-relative bg-dark'
+                                style={{ height: '10rem' }}
                               >
                                 <img
                                   style={
                                     isMouseEntered === item.id
-                                      ? { opacity: ".3", objectFit: "cover" }
-                                      : { objectFit: "cover" }
+                                      ? { opacity: '.3', objectFit: 'cover' }
+                                      : { objectFit: 'cover' }
                                   }
-                                  className="w-100 h-100"
+                                  className='w-100 h-100'
                                   src={item.img}
-                                  alt="test"
+                                  alt='test'
                                 />
                                 <Button
                                   onClick={() => {
                                     openModalAndSetDeleteId(item.id)
                                   }}
                                   style={{
-                                    bottom: "0",
-                                    right: "0",
-                                    top: "0",
-                                    left: "0",
-                                    margin: "auto",
-                                    background: "none",
+                                    bottom: '0',
+                                    right: '0',
+                                    top: '0',
+                                    left: '0',
+                                    margin: 'auto',
+                                    background: 'none',
                                   }}
                                   className={`position-absolute ${
                                     isMouseEntered === item.id
-                                      ? "d-block"
-                                      : "d-none"
+                                      ? 'd-block'
+                                      : 'd-none'
                                   }`}
-                                  variant="danger"
+                                  variant='danger'
                                 >
                                   <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24"
-                                    height="24"
-                                    fill="red"
-                                    class="bi bi-trash3-fill"
-                                    viewBox="0 0 16 16"
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    width='24'
+                                    height='24'
+                                    fill='red'
+                                    class='bi bi-trash3-fill'
+                                    viewBox='0 0 16 16'
                                   >
-                                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                                    <path d='M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z' />
                                   </svg>
                                 </Button>
                               </div>
                             </div>
                           ))}
-                  </div>{" "}
+                  </div>{' '}
                 </>
               )}
               {/* display all images with x mark on top right */}
@@ -312,7 +322,7 @@ export const VolunteerActivities = () => {
               {/* end here */}
             </>
           ) : (
-            ""
+            ''
           )}
         </div>
       </div>

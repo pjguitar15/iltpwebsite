@@ -1,29 +1,29 @@
-import React, { useState, useEffect, useRef } from "react"
-import { Button, Form, Spinner } from "react-bootstrap"
-import { Link, useNavigate } from "react-router-dom"
-import Axios from "axios"
-import { db } from "../../../../../firebase/firebase-config"
-import { addDoc, serverTimestamp, collection } from "firebase/firestore"
+import React, { useState, useEffect, useRef } from 'react'
+import { Button, Form, Spinner } from 'react-bootstrap'
+import { Link, useNavigate } from 'react-router-dom'
+import Axios from 'axios'
+import { db } from '../../../../../firebase/firebase-config'
+import { addDoc, serverTimestamp, collection } from 'firebase/firestore'
 // image compression package
-import imageCompression from "browser-image-compression"
-import { IoMdAdd } from "react-icons/io"
-import { PiCaretCircleLeftLight } from "react-icons/pi"
-import useGetAlbums from "../../../../../helpers/hooks/useGetAlbums"
-import { ProgressBar } from "react-bootstrap"
+import imageCompression from 'browser-image-compression'
+import { IoMdAdd } from 'react-icons/io'
+import { PiCaretCircleLeftLight } from 'react-icons/pi'
+import useGetAlbums from '../../../../../helpers/hooks/useGetAlbums'
+import { ProgressBar } from 'react-bootstrap'
 
 const AddVolunteerImages = () => {
   const [submitLoading, setSubmitLoading] = useState(false)
   const [selectedImages, setSelectedImages] = useState([])
   const [selectImageLoading, setSelectImageLoading] = useState(false)
   const [albums, setAlbums] = useState([])
-  const [selectedAlbum, setSelectedAlbum] = useState("martin-luther-king-day")
-  const [selectedYear, setSelectedYear] = useState("2023")
+  const [selectedAlbum, setSelectedAlbum] = useState('martin-luther-king-day')
+  const [selectedYear, setSelectedYear] = useState('2024')
   const [currentProgress, setCurrentProgress] = useState(0)
   const [overallProgress, setOverallProgress] = useState(0)
 
   const fileRef = useRef()
   const navigate = useNavigate()
-  const collectionRef = collection(db, "photos")
+  const collectionRef = collection(db, 'photos')
   const { firebaseData } = useGetAlbums()
 
   useEffect(() => {
@@ -35,8 +35,8 @@ const AddVolunteerImages = () => {
     e.preventDefault()
     setSubmitLoading(true)
 
-    const cloudName = "philcob"
-    const uploadPreset = "iltp-news-images"
+    const cloudName = 'philcob'
+    const uploadPreset = 'iltp-news-images'
 
     // Calculate total progress steps based on the number of images
     const totalSteps = selectedImages.length
@@ -46,8 +46,8 @@ const AddVolunteerImages = () => {
       await Promise.all(
         selectedImages.map(async (image) => {
           const formData = new FormData()
-          formData.append("file", image)
-          formData.append("upload_preset", uploadPreset)
+          formData.append('file', image)
+          formData.append('upload_preset', uploadPreset)
 
           try {
             const res = await Axios.post(
@@ -88,16 +88,16 @@ const AddVolunteerImages = () => {
       // Reset progress state after completion
       setCurrentProgress(0)
       setOverallProgress(0)
-      navigate("/admin/gallery")
+      navigate('/admin/gallery')
     }
   }
 
   useEffect(() => {
-    let authToken = sessionStorage.getItem("Auth Token")
+    let authToken = sessionStorage.getItem('Auth Token')
     if (authToken) {
-      navigate("/admin/gallery/add")
+      navigate('/admin/gallery/add')
     } else {
-      navigate("/admin")
+      navigate('/admin')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -105,17 +105,17 @@ const AddVolunteerImages = () => {
   return (
     <>
       <h3>Add Images</h3>
-      <p className="col-7 text-secondary mb-0">
+      <p className='col-7 text-secondary mb-0'>
         You can add, edit, and delete images/albums here
       </p>
       <div>
         <Link
-          to="/admin/gallery"
-          className="text-primary"
-          style={{ textDecoration: "none" }}
+          to='/admin/gallery'
+          className='text-primary'
+          style={{ textDecoration: 'none' }}
         >
-          <span className="me-1" style={{ fontSize: "20px" }}>
-            <PiCaretCircleLeftLight className="text-primary" />
+          <span className='me-1' style={{ fontSize: '20px' }}>
+            <PiCaretCircleLeftLight className='text-primary' />
           </span>
           Return to Gallery
         </Link>
@@ -123,11 +123,11 @@ const AddVolunteerImages = () => {
 
       <Form
         onSubmit={submitHandler}
-        className="mx-auto bg-light p-5 border mt-3"
+        className='mx-auto bg-light p-5 border mt-3'
       >
         {/* Image */}
-        <Form.Group className="my-2">
-          <Form.Text className="mb-1">Upload multiple images</Form.Text>
+        <Form.Group className='my-2'>
+          <Form.Text className='mb-1'>Upload multiple images</Form.Text>
           <Form.Control
             ref={fileRef}
             disabled={submitLoading}
@@ -156,22 +156,22 @@ const AddVolunteerImages = () => {
               }
             }}
             required
-            type="file"
+            type='file'
             multiple // Enable multiple file selection
           />
           {selectedImages.length > 0 && (
             <div>
-              <div className="d-flex flex-wrap">
+              <div className='d-flex flex-wrap'>
                 {selectedImages.map((image, index) => (
                   <img
                     key={index}
                     src={URL.createObjectURL(image)}
                     alt={`Preview-${index}`}
-                    className="img-thumbnail m-2"
+                    className='img-thumbnail m-2'
                     style={{
-                      maxWidth: "100px",
-                      maxHeight: "100px",
-                      objectFit: "cover",
+                      maxWidth: '100px',
+                      maxHeight: '100px',
+                      objectFit: 'cover',
                     }}
                   />
                 ))}
@@ -180,51 +180,52 @@ const AddVolunteerImages = () => {
           )}
         </Form.Group>
 
-        <div className="row">
+        <div className='row'>
           <Form.Text>Which album does this photo belongs?</Form.Text>
           {albums.map((item, index) => (
             <div
               onClick={() => setSelectedAlbum(item.value)}
-              className="col-xl-3 col-md-4 col-sm-6 p-2"
+              className='col-xl-3 col-md-4 col-sm-6 p-2'
               key={index}
               value={item.value}
             >
               <div
                 className={`${
                   selectedAlbum === item.value
-                    ? "bg-primary text-white shadow"
-                    : "border bg-white "
+                    ? 'bg-primary text-white shadow'
+                    : 'border bg-white '
                 } p-3 d-flex justify-content-center text-center fw-bolder rounded`}
-                style={{ cursor: "pointer", transition: "300ms" }}
+                style={{ cursor: 'pointer', transition: '300ms' }}
               >
                 {item.text}
               </div>
             </div>
           ))}
           <div
-            className="col-lg-3 col-md-4 col-sm-6 p-2"
+            className='col-lg-3 col-md-4 col-sm-6 p-2'
             onClick={() => {
-              navigate("/admin/gallery/album/add")
+              navigate('/admin/gallery/album/add')
             }}
           >
             <div
               className={`p-3 d-flex justify-content-center align-items-center text-center rounded text-secondary`}
               style={{
-                cursor: "pointer",
-                transition: "300ms",
-                border: "solid 1px lightgray",
-                borderStyle: "dashed",
+                cursor: 'pointer',
+                transition: '300ms',
+                border: 'solid 1px lightgray',
+                borderStyle: 'dashed',
               }}
             >
-              <IoMdAdd className="me-1" />
+              <IoMdAdd className='me-1' />
               Add/Remove albums
             </div>
           </div>
         </div>
 
-        <Form.Group className="mt-2">
+        <Form.Group className='mt-2'>
           <Form.Text>Select Year</Form.Text>
           <Form.Select onChange={(e) => setSelectedYear(e.target.value)}>
+            <option>2024</option>
             <option>2023</option>
             <option>2022</option>
             <option>2021</option>
@@ -243,22 +244,22 @@ const AddVolunteerImages = () => {
         )}
 
         {/* Buttons */}
-        <div className="d-flex justify-content-between">
-          <Form.Group className="mt-3">
+        <div className='d-flex justify-content-between'>
+          <Form.Group className='mt-3'>
             <Button
-              size="sm"
-              variant="warning"
-              className="me-1"
+              size='sm'
+              variant='warning'
+              className='me-1'
               disabled={submitLoading || selectImageLoading}
-              type="submit"
+              type='submit'
             >
               {submitLoading || selectImageLoading ? (
                 <>
-                  <Spinner animation="border" variant="light me-2" size="sm" />
+                  <Spinner animation='border' variant='light me-2' size='sm' />
                   Loading please wait...
                 </>
               ) : (
-                "Add Image"
+                'Add Image'
               )}
             </Button>
           </Form.Group>
