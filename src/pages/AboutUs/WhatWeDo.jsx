@@ -46,10 +46,9 @@ const WhatWeDo = () => {
               qualifying volunteer hours.
             </p>
             <p className='about-paragraph'>
-              As of December 2019, more than 350 people from 38 countries joined
-              the program and became active community leaders in their home
-              countries. We raise future leaders who can impact lives towards
-              peace.
+              People coming from different countries joined the program and
+              became active community leaders in their home countries. We raise
+              future leaders who can impact lives towards peace.
             </p>
           </div>
         </div>

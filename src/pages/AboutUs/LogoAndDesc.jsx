@@ -20,9 +20,9 @@ const LogoAndDesc = () => {
         The International Leadership Training Program (ILTP) is a 501(c)(3)
         non-profit organization that serves in the United States since 2001. Its
         mission is to raise young conscientious leaders who can contribute to
-        peace-building efforts around the world. As of October 2017, 325 people
-        from as many as 34 countries joined the program and became active
-        community leaders in their home countries.
+        peace-building efforts around the world. People coming from different
+        countries joined the program and became active community leaders in
+        their home countries.
       </p>
     </div>
   )
