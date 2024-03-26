@@ -51,7 +51,7 @@ const ExtraPhotosPreview = ({ content2Input, images }) => {
               })}
             </div>
           ) : (
-            images.length === 4 && (
+            images.length <= 10 && (
               <div className='d-flex flex-wrap gap-2'>
                 {images.map((item, index) => (
                   <div

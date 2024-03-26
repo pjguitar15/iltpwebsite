@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react"
-import { Button, Form, Spinner } from "react-bootstrap"
-import AddNewsPreview from "./AddNewsPreview"
-import { IoMdCheckmark } from "react-icons/io"
-import RoundedCheckTag from "../../../../components/RoundedCheckTag"
+import React, { useRef, useState } from 'react'
+import { Button, Form, Spinner } from 'react-bootstrap'
+import AddNewsPreview from './AddNewsPreview'
+import { IoMdCheckmark } from 'react-icons/io'
+import RoundedCheckTag from '../../../../components/RoundedCheckTag'
 
 const ModalBody = ({
   handleSubmit,
@@ -37,33 +37,33 @@ const ModalBody = ({
   multipleImageRef,
 }) => {
   return (
-    <div className="row">
+    <div className='row'>
       <div
-        className="col-4 bg-dark p-5 m-0"
-        style={{ height: "93vh", overflowY: "scroll" }}
+        className='col-4 bg-dark p-5 m-0'
+        style={{ height: '93vh', overflowY: 'scroll' }}
       >
         <form onSubmit={handleSubmit}>
-          <div className="d-flex gap-2 flex-wrap mb-3">
-            {featuredImagePreview && <RoundedCheckTag title="Featured Image" />}
-            {isTitleConfirmed && <RoundedCheckTag title="Title" />}
-            {isLocationConfirmed && <RoundedCheckTag title="Location" />}
-            {isDateConfirmed && <RoundedCheckTag title="Date" />}
-            {isNewsTypeConfirmed && <RoundedCheckTag title="Type" />}
+          <div className='d-flex gap-2 flex-wrap mb-3'>
+            {featuredImagePreview && <RoundedCheckTag title='Featured Image' />}
+            {isTitleConfirmed && <RoundedCheckTag title='Title' />}
+            {isLocationConfirmed && <RoundedCheckTag title='Location' />}
+            {isDateConfirmed && <RoundedCheckTag title='Date' />}
+            {isNewsTypeConfirmed && <RoundedCheckTag title='Type' />}
           </div>
 
           {!featuredImagePreview && (
-            <div className="form-group">
+            <div className='form-group'>
               <label
-                for="exampleFormControlTextarea1"
-                className="mt-3text-white text-white"
+                for='exampleFormControlTextarea1'
+                className='mt-3text-white text-white'
               >
                 Add a featured photo
               </label>
               <input
                 disabled={submitLoading}
                 required
-                className="form-control"
-                type="file"
+                className='form-control'
+                type='file'
                 onChange={(e) => {
                   const file = e.target.files[0]
                   setImageSelected(file)
@@ -80,34 +80,34 @@ const ModalBody = ({
           )}
 
           {!isTitleConfirmed && (
-            <div className="form-group mb-1">
+            <div className='form-group mb-1'>
               <label
-                for="exampleFormControlTextarea1"
-                className="my-2 text-white"
+                for='exampleFormControlTextarea1'
+                className='my-2 text-white'
               >
                 Add Title
               </label>
-              <div className="d-flex gap-2">
+              <div className='d-flex gap-2'>
                 <input
                   required
                   disabled={submitLoading}
                   onChange={(e) => setTitleInput(e.target.value)}
-                  type="text"
-                  placeholder="Add title"
+                  type='text'
+                  placeholder='Add title'
                   value={titleInput}
-                  className="form-control"
+                  className='form-control'
                 />
                 <button
-                  type="button"
-                  disabled={titleInput === ""}
+                  type='button'
+                  disabled={titleInput === ''}
                   onClick={() => setIsTitleConfirmed(true)}
-                  className="rounded px-3 d-flex align-items-center"
+                  className='rounded px-3 d-flex align-items-center'
                   style={{
-                    background: "lightgreen",
-                    color: "darkgreen",
-                    border: "none",
-                    opacity: titleInput === "" ? 0.6 : 1,
-                    cursor: "not-allowed !important",
+                    background: 'lightgreen',
+                    color: 'darkgreen',
+                    border: 'none',
+                    opacity: titleInput === '' ? 0.6 : 1,
+                    cursor: 'not-allowed !important',
                   }}
                 >
                   <IoMdCheckmark />
@@ -118,34 +118,34 @@ const ModalBody = ({
 
           {/* Location Input */}
           {!isLocationConfirmed && (
-            <div className="form-group mb-1">
+            <div className='form-group mb-1'>
               <label
-                for="exampleFormControlTextarea1"
-                className="my-2 text-white"
+                for='exampleFormControlTextarea1'
+                className='my-2 text-white'
               >
                 Add Location
               </label>
-              <div className="d-flex gap-2">
+              <div className='d-flex gap-2'>
                 <input
                   required
                   disabled={submitLoading}
                   onChange={(e) => setLocationInput(e.target.value)}
-                  type="text"
-                  placeholder="Ex: New Jersey, USA"
+                  type='text'
+                  placeholder='Ex: New Jersey, USA'
                   value={locationInput}
-                  className="form-control"
+                  className='form-control'
                 />
                 <button
-                  type="button"
-                  disabled={locationInput === ""}
+                  type='button'
+                  disabled={locationInput === ''}
                   onClick={() => setIsLocationConfirmed(true)}
-                  className="rounded px-3 d-flex align-items-center"
+                  className='rounded px-3 d-flex align-items-center'
                   style={{
-                    background: "lightgreen",
-                    color: "darkgreen",
-                    border: "none",
-                    opacity: locationInput === "" ? 0.6 : 1,
-                    cursor: "not-allowed !important",
+                    background: 'lightgreen',
+                    color: 'darkgreen',
+                    border: 'none',
+                    opacity: locationInput === '' ? 0.6 : 1,
+                    cursor: 'not-allowed !important',
                   }}
                 >
                   <IoMdCheckmark />
@@ -156,34 +156,34 @@ const ModalBody = ({
 
           {/* Date Input */}
           {!isDateConfirmed && (
-            <div className="form-group mb-1">
+            <div className='form-group mb-1'>
               <label
-                for="exampleFormControlTextarea1"
-                className="my-2 text-white"
+                for='exampleFormControlTextarea1'
+                className='my-2 text-white'
               >
                 Add Date
               </label>
-              <div className="d-flex gap-2">
+              <div className='d-flex gap-2'>
                 <input
                   required
                   disabled={submitLoading}
                   onChange={(e) => setDateInput(e.target.value)}
-                  type="text"
-                  placeholder="Ex: May 15, 2022"
+                  type='text'
+                  placeholder='Ex: May 15, 2022'
                   value={dateInput}
-                  className="form-control"
+                  className='form-control'
                 />
                 <button
-                  type="button"
-                  disabled={dateInput === ""}
+                  type='button'
+                  disabled={dateInput === ''}
                   onClick={() => setIsDateConfirmed(true)}
-                  className="rounded px-3 d-flex align-items-center"
+                  className='rounded px-3 d-flex align-items-center'
                   style={{
-                    background: "lightgreen",
-                    color: "darkgreen",
-                    border: "none",
-                    opacity: dateInput === "" ? 0.6 : 1,
-                    cursor: "not-allowed !important",
+                    background: 'lightgreen',
+                    color: 'darkgreen',
+                    border: 'none',
+                    opacity: dateInput === '' ? 0.6 : 1,
+                    cursor: 'not-allowed !important',
                   }}
                 >
                   <IoMdCheckmark />
@@ -194,35 +194,35 @@ const ModalBody = ({
 
           {/* News type */}
           {!isNewsTypeConfirmed && (
-            <div className="form-group mb-1">
+            <div className='form-group mb-1'>
               <label
-                for="exampleFormControlTextarea1"
-                className="my-2 text-white"
+                for='exampleFormControlTextarea1'
+                className='my-2 text-white'
               >
                 News Type
               </label>
-              <div className="d-flex gap-2">
+              <div className='d-flex gap-2'>
                 <Form.Select
                   disabled={submitLoading}
                   required
                   onChange={(e) => setSelectValue(e.target.value)}
-                  aria-label="Default select example"
+                  aria-label='Default select example'
                 >
                   <option>Select</option>
-                  <option value="latest">Latest</option>
-                  <option value="featured">Featured</option>
+                  <option value='latest'>Latest</option>
+                  <option value='featured'>Featured</option>
                 </Form.Select>
                 <button
-                  type="button"
-                  disabled={selectValue === ""}
+                  type='button'
+                  disabled={selectValue === ''}
                   onClick={() => setIsNewsTypeConfirmed(true)}
-                  className="rounded px-3 d-flex align-items-center"
+                  className='rounded px-3 d-flex align-items-center'
                   style={{
-                    background: "lightgreen",
-                    color: "darkgreen",
-                    border: "none",
-                    opacity: selectValue === "" ? 0.6 : 1,
-                    cursor: "not-allowed !important",
+                    background: 'lightgreen',
+                    color: 'darkgreen',
+                    border: 'none',
+                    opacity: selectValue === '' ? 0.6 : 1,
+                    cursor: 'not-allowed !important',
                   }}
                 >
                   <IoMdCheckmark />
@@ -231,10 +231,10 @@ const ModalBody = ({
             </div>
           )}
 
-          <div className="form-group">
+          <div className='form-group'>
             <label
-              for="exampleFormControlTextarea1"
-              className="my-2 text-white"
+              for='exampleFormControlTextarea1'
+              className='my-2 text-white'
             >
               Edit your content
             </label>
@@ -243,26 +243,26 @@ const ModalBody = ({
               disabled={submitLoading}
               onChange={(e) => setContentInput(e.target.value)}
               value={contentInput}
-              placeholder="Add content here"
-              className="form-control"
-              id="exampleFormControlTextarea1"
-              rows="4"
+              placeholder='Add content here'
+              className='form-control'
+              id='exampleFormControlTextarea1'
+              rows='4'
             ></textarea>
           </div>
 
           {/* New input for multiple images */}
-          <div className="form-group">
-            <label className="mt-3 text-white">
-              Upload multiple images{" "}
-              <span style={{ fontStyle: "italic" }}>
-                (You can add up to 4 images)
+          <div className='form-group'>
+            <label className='mt-3 text-white'>
+              Upload multiple images{' '}
+              <span style={{ fontStyle: 'italic' }}>
+                (You can add up to 10 images)
               </span>
             </label>
             <input
               disabled={submitLoading}
               required
-              className="form-control"
-              type="file"
+              className='form-control'
+              type='file'
               ref={multipleImageRef}
               onChange={(e) => {
                 const files = e.target.files
@@ -292,13 +292,13 @@ const ModalBody = ({
             />
           </div>
 
-          <div className="form-group">
+          <div className='form-group'>
             <label
-              for="exampleFormControlTextarea2"
-              className="my-2 text-white"
+              for='exampleFormControlTextarea2'
+              className='my-2 text-white'
             >
-              Edit secondary content{" "}
-              <span style={{ fontStyle: "italic" }}>
+              Edit secondary content{' '}
+              <span style={{ fontStyle: 'italic' }}>
                 (Conclude your content)
               </span>
             </label>
@@ -307,46 +307,46 @@ const ModalBody = ({
               disabled={submitLoading}
               onChange={(e) => setContent2Input(e.target.value)}
               value={content2Input}
-              placeholder="Add content here"
-              className="form-control"
-              id="exampleFormControlTextarea2"
-              rows="4"
+              placeholder='Add content here'
+              className='form-control'
+              id='exampleFormControlTextarea2'
+              rows='4'
             ></textarea>
           </div>
 
           <Button
             disabled={submitLoading}
-            className="mt-3 px-4"
-            variant="light"
-            type="submit"
-            style={{ borderRadius: "50px" }}
+            className='mt-3 px-4'
+            variant='light'
+            type='submit'
+            style={{ borderRadius: '50px' }}
           >
             {submitLoading ? (
               <>
-                <Spinner animation="border" variant="light me-2" size="sm" />
+                <Spinner animation='border' variant='light me-2' size='sm' />
                 Loading please wait...
               </>
             ) : (
-              "Upload"
+              'Upload'
             )}
           </Button>
           <Button
             disabled={submitLoading}
-            className="mt-3 px-4 ms-2"
-            variant="outline-light"
-            type="submit"
-            style={{ borderRadius: "50px" }}
+            className='mt-3 px-4 ms-2'
+            variant='outline-light'
+            type='submit'
+            style={{ borderRadius: '50px' }}
             onClick={() => {
-              setTitleInput("")
+              setTitleInput('')
               setIsTitleConfirmed(false)
               setIsLocationConfirmed(false)
               setIsDateConfirmed(false)
               setIsNewsTypeConfirmed(false)
-              setContentInput("")
-              setLocationInput("")
+              setContentInput('')
+              setLocationInput('')
               setFeaturedImagePreview(null)
-              setDateInput("")
-              setContent2Input("")
+              setDateInput('')
+              setContent2Input('')
               setImages([])
               setMultipleImagePreview(null)
 
@@ -359,7 +359,7 @@ const ModalBody = ({
           </Button>
         </form>
       </div>
-      <div className="col-8">
+      <div className='col-8'>
         <AddNewsPreview
           titleInput={titleInput}
           locationInput={locationInput}

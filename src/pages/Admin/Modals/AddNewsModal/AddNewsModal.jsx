@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react"
-import { Modal } from "react-bootstrap"
-import { db } from "../../../../firebase/firebase-config"
-import { collection, addDoc, serverTimestamp } from "firebase/firestore"
-import Axios from "axios"
-import AddNewsForm from "./AddNewsForm"
-import { ToastContainer, toast } from "react-toastify"
-import useMultipleImagesUploader from "../../../../helpers/hooks/useMultipleImagesUploader"
+import React, { useEffect, useRef, useState } from 'react'
+import { Modal } from 'react-bootstrap'
+import { db } from '../../../../firebase/firebase-config'
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
+import Axios from 'axios'
+import AddNewsForm from './AddNewsForm'
+import { ToastContainer, toast } from 'react-toastify'
+import useMultipleImagesUploader from '../../../../helpers/hooks/useMultipleImagesUploader'
 
 const AddNewsModal = ({
   setAddModalShow,
@@ -13,14 +13,14 @@ const AddNewsModal = ({
   firebaseData,
   setFirebaseData,
 }) => {
-  const [titleInput, setTitleInput] = useState("")
-  const [locationInput, setLocationInput] = useState("")
-  const [dateInput, setDateInput] = useState("")
-  const [contentInput, setContentInput] = useState("")
-  const [content2Input, setContent2Input] = useState("")
+  const [titleInput, setTitleInput] = useState('')
+  const [locationInput, setLocationInput] = useState('')
+  const [dateInput, setDateInput] = useState('')
+  const [contentInput, setContentInput] = useState('')
+  const [content2Input, setContent2Input] = useState('')
   const [submitLoading, setSubmitLoading] = useState(false)
   const [imageSelected, setImageSelected] = useState()
-  const [selectValue, setSelectValue] = useState("")
+  const [selectValue, setSelectValue] = useState('')
   const [featuredImagePreview, setFeaturedImagePreview] = useState(null)
   const [multipleImagePreview, setMultipleImagePreview] = useState(null)
   const [isTitleConfirmed, setIsTitleConfirmed] = useState(false)
@@ -32,16 +32,16 @@ const AddNewsModal = ({
   const { uploadImages } = useMultipleImagesUploader()
 
   useEffect(() => {
-    if (images.length > 4) {
-      toast.error(`You can only add up to 4 photos.`, {
-        position: "top-right",
+    if (images.length > 10) {
+      toast.error(`You can only add up to 10 photos.`, {
+        position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "light",
+        theme: 'light',
       })
 
       multipleImageRef.current.value = null
@@ -49,7 +49,7 @@ const AddNewsModal = ({
   }, [images])
 
   // connect to collections
-  const collectionRef = collection(db, "news-articles")
+  const collectionRef = collection(db, 'news-articles')
 
   const uploadMultipleImages = async (images) => {
     const results = await uploadImages(images)
@@ -68,8 +68,8 @@ const AddNewsModal = ({
 
     // upload image
     const formData = new FormData()
-    formData.append("file", imageSelected)
-    formData.append("upload_preset", "iltp-news-images")
+    formData.append('file', imageSelected)
+    formData.append('upload_preset', 'iltp-news-images')
 
     Axios.post(`https://api.cloudinary.com/v1_1/philcob/image/upload`, formData)
       .then((res) => {
@@ -106,11 +106,11 @@ const AddNewsModal = ({
         setAddModalShow(false)
 
         // set to emptry string onSubmit
-        setTitleInput("")
-        setDateInput("")
-        setContentInput("")
-        setContent2Input("")
-        setLocationInput("")
+        setTitleInput('')
+        setDateInput('')
+        setContentInput('')
+        setContent2Input('')
+        setLocationInput('')
         setMultipleImagePreview(null)
         setFeaturedImagePreview(null)
         setIsTitleConfirmed(false)
@@ -119,29 +119,29 @@ const AddNewsModal = ({
         setIsNewsTypeConfirmed(false)
 
         toast.success(`Your new post has been uploaded successfully.`, {
-          position: "top-right",
+          position: 'top-right',
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: "light",
+          theme: 'light',
         })
       })
       .catch((err) => {
         console.log(err)
         toast.error(
-          "There was an error while uploading your news. Please contact your developer.",
+          'There was an error while uploading your news. Please contact your developer.',
           {
-            position: "top-right",
+            position: 'top-right',
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: "light",
+            theme: 'light',
           }
         )
       })
@@ -151,16 +151,16 @@ const AddNewsModal = ({
     <div>
       <ToastContainer />
       <Modal
-        className="m-0 add-news-modal"
+        className='m-0 add-news-modal'
         // style={{ width: "100% !important" }}
         show={addModalShow}
         onHide={() => setAddModalShow(false)}
-        aria-labelledby="example-modal-sizes-title-lg"
+        aria-labelledby='example-modal-sizes-title-lg'
       >
         <Modal.Header closeButton>
-          <Modal.Title id="example-modal-sizes-title-lg">Add News</Modal.Title>
+          <Modal.Title id='example-modal-sizes-title-lg'>Add News</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="p-0">
+        <Modal.Body className='p-0'>
           <AddNewsForm
             handleSubmit={handleSubmit}
             submitLoading={submitLoading}

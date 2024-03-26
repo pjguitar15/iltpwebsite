@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import FullScreenImage from './FullScreenImage'
 
 const ExtraPhotosPreview = ({ content2Input, images }) => {
+  const [selectedPreview, setSelectedPreview] = useState('')
+
   return (
     <div className='pt-5 col-11 col-sm-10 col-lg-10 col-xl-7 mx-auto'>
+      {selectedPreview && (
+        <div className='d-none d-lg-block'>
+          <FullScreenImage
+            selectedPreview={selectedPreview}
+            setSelectedPreview={setSelectedPreview}
+          />
+        </div>
+      )}
+
       <div>
         {images ? (
           images.length <= 3 ? (
@@ -14,7 +26,8 @@ const ExtraPhotosPreview = ({ content2Input, images }) => {
                       key={index}
                       className={`${images.length === 3 && `col-lg-6`}
                     ${images.length === 2 && `col-lg-6`} 
-                    py-1 px-1`}
+                    py-1 px-1 news-image-item`}
+                      onClick={() => setSelectedPreview(item)}
                     >
                       <img
                         style={{
@@ -33,7 +46,8 @@ const ExtraPhotosPreview = ({ content2Input, images }) => {
                       key={index}
                       className={`${images.length === 3 && `col-lg-12`}
                     ${images.length === 2 && `col-lg-6`} 
-                    py-1 px-1`}
+                    py-1 px-1 news-image-item`}
+                      onClick={() => setSelectedPreview(item)}
                     >
                       <img
                         style={{
@@ -51,21 +65,22 @@ const ExtraPhotosPreview = ({ content2Input, images }) => {
               })}
             </div>
           ) : (
-            images.length === 4 && (
+            images.length <= 10 && (
               <div className='d-flex flex-wrap gap-2 justify-content-start'>
                 {images.map((item, index) => (
                   <div
                     key={index}
-                    className='py-0'
+                    className='py-0 news-image-item'
                     style={{
-                      flex: '1 0 250px',
+                      flex: '1 0 350px',
                     }}
+                    onClick={() => setSelectedPreview(item)}
                   >
                     <img
                       style={{
                         objectFit: 'cover',
                         width: '100%',
-                        height: '300px',
+                        height: '350px',
                       }}
                       src={item}
                       alt=''

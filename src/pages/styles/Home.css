@@ -336,3 +336,10 @@
   background: rgb(6, 139, 66) !important;
   color: white !important;
 }
+
+.news-image-item:hover {
+  transform: scale(1.05);
+  transition: 300ms;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  cursor: pointer;
+}

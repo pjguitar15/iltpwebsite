@@ -22,10 +22,6 @@ const NewsSlug = () => {
   let { id } = useParams()
 
   useEffect(() => {
-    console.log(firebaseData.filter((item) => item.id === id))
-  }, [firebaseData])
-
-  useEffect(() => {
     Aos.init({ duration: 2000 })
   }, [])
 
