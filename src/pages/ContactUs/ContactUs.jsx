@@ -1,22 +1,23 @@
-import React, { useEffect } from 'react'
-import { Container } from 'react-bootstrap'
-import ContactForm from './ContactForm'
+import React, { useEffect } from "react";
+import { Container } from "react-bootstrap";
+import ContactForm from "./ContactForm";
 // animate on scroll
-import 'aos/dist/aos.css'
-import Aos from 'aos'
+import "aos/dist/aos.css";
+import Aos from "aos";
 // import photo
 
 const ContactUs = () => {
   useEffect(() => {
-    Aos.init({ duration: 600 })
-  }, [])
+    Aos.init({ duration: 600 });
+  }, []);
+
   return (
     <>
       <div
         data-aos='fade-down'
         data-aos-duration='2000'
         className='contact-us-bg'
-        style={{ padding: '150px 0' }}
+        style={{ padding: "150px 0" }}
       >
         <h1 className='text-white display-1 text-center py-3 col-lg-4 mx-auto my-0'>
           Contact Us
@@ -35,7 +36,7 @@ const ContactUs = () => {
         <ContactForm />
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default ContactUs
+export default ContactUs;
